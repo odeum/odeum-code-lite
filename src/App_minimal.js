@@ -16,13 +16,6 @@ class App extends Component {
 							<Tab />
 						</TabPanel>
 					</Menu>
-					<Menu>
-						<TabPanel>
-							<Tab />
-							<Tab />
-							<Tab />
-						</TabPanel>
-					</Menu>
 				</MenuPanel>
 				<Footer/>
 			</AppContainer>
@@ -31,4 +24,12 @@ class App extends Component {
 }
 
 export default App
+
+/* Outputs:
+
+Menu Item
+	Tab
+	Tab
+	Tab
+*/
 

@@ -42,7 +42,10 @@ All defaultProps are loaded with default values so a fully scaled down App templ
 [App_default.js](./src/App_default.js)
 
 A template with named values and more props passed would look like this:
-[App_pseudo.js](./src/App_pasudo.js)
+[App_normal.js](./src/App_normal.js)
+
+### Logo
+Default logo is odeumcode_logo.svg which is loaded default by Header component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
 
 - JSON config file(s) - colors, fonts, footer etc. or style objects.
 - Workspace components can be functional components passed as render props or class components.

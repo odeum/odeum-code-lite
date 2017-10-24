@@ -5,6 +5,7 @@ import { Heading, Text } from 'odeum-primitives'
 
 // Full path to selected theme
 import theme from './themes/bluehorizon.js'
+import logo from './bluehorizon.svg'
 
 class WorkSpaceComponent extends Component {
 	render() {
@@ -27,17 +28,26 @@ class WorkSpaceComponent extends Component {
 
 class App extends Component {
 
+	state = {
+		menuOpen: true
+	}
+
 	renderWorkspaceTab = () =>
 		<div>
-			Component Content
+			{/* Sub tab panel */}
+			<TabPanel>
+				<Tab icon={'menu'} label={'Tools'} active={true} />
+				<Tab icon={'timeline'} label={'Workflow'} />
+				<Tab icon={'cloud_upload'} label={'Upload'} />
+			</TabPanel>
 		</div>
 
 	render() {
 		return (
 			<AppContainer theme={theme}>
-				<Header search={true} />
-				<MenuPanel>
-					<Menu icon={'dashboard'} label={'Dashboard'}>
+				<Header logo={logo} search={true} />
+				<MenuPanel open={this.state.menuOpen}>
+					<Menu icon={'dashboard'} label={'Dashboard'} active={true}>
 						<TabPanel>
 							{/* Tabs using a render prop (workspace prop) that returns a component */}
 							<Tab icon={'dashboard'} label={'Tab 1'} workspace={this.renderWorkspaceTab}/>
