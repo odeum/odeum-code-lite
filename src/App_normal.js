@@ -3,6 +3,9 @@ import { AppContainer, Header, MenuPanel, Menu, Footer } from 'odeum-app'
 import { Button, ButtonPanel, Modal, TabPanel, Tab } from 'odeum-ui'
 import { Heading, Text } from 'odeum-primitives'
 
+// Adding custom workspace content components
+import Workspaces from './components/Workspaces'
+
 // Full path to selected theme
 import theme from './themes/bluehorizon.js'
 import logo from './bluehorizon.svg'
@@ -65,7 +68,7 @@ class App extends Component {
 							{/* Tabs using a render prop (workspace prop) that returns a component */}
 							<Tab icon={'menu'} label={'Tab 1'} workspace={this.renderWorkspaceTab} route={'/dashboard/menu'}/>
 							<Tab icon={'timeline'} label={'Tab 2'} workspace={<WorkSpaceComponent/>} route={'/dashboard/timeline'} />
-							<Tab icon={'cloud_upload'} label={'Tab 3'} route={'/dashboard/upload'}/>
+							<Tab icon={'cloud_upload'} label={'Tab 3'} workspace={<h3>This is my upload workspace</h3>} route={'/dashboard/upload'}/>
 
 							{/* Tabs that renders the workspace as child */}
 							<Tab icon={'dashboard'} label={'Tab 4'}>
@@ -81,11 +84,13 @@ class App extends Component {
 					</Menu>
 				
 					<Menu icon={'assignment'} label={'Forms'}>
-				
+
 						<TabPanel>
-							<Tab icon={'assignment'} label={'Tab 6'} workspace={this.renderWorkspaceTab} active={true}/>
-							<Tab icon={'assignment'} label={'Tab 7'} workspace={renderFunction}/>
-							<Tab icon={'assignment'} label={'Tab 8'} workspace={this.renderWorkspaceTab} closeable={true} />
+							{/* Tabs with key prop for dynamic composition */}
+							<Tab key={'1'} icon={'assignment'} label={'Tab 6'} workspace={this.renderWorkspaceTab} active={true}/>
+							<Tab key={'2'} icon={'assignment'} label={'Tab 7'} workspace={renderFunction}/>
+							<Tab key={'3'} icon={'assignment'} label={'Tab 8'} workspace={this.renderWorkspaceTab} closeable={true} />
+							<Tab key={'4'} icon={'assignment'} label={'Tab 9'} workspace={Workspaces.MyWorkspace} closeable={true} />
 						</TabPanel>
 				
 					</Menu>
