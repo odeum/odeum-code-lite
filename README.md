@@ -20,7 +20,7 @@ A scaled down "ODEUM Code" getting-started quickly framework
 
 
 ### Theme
-Default theme is ODEUM Code main theme. The theme file contains objects for colors and fonts for the selected theme.
+Default theme is ODEUM Code theme. The theme file contains objects for colors and fonts for the selected theme.
 
 A theme is passed as a theme prop to the <AppContainer> component. 
 
@@ -32,9 +32,17 @@ import theme from './themes/bluehorizon.js'
 <AppContainer theme={theme}>
 ```
 
+We might provide setTheme and getTheme functions to pattern check the contents of the theme file to ensure that the objects contains the required values. 
+
 
 ## Configuration:
+All components exported from **odeum-ui** and **odeum-app** has propTypes and defaultProps. 
 
-- JSON config file(s) - colors, fonts, footer etc. or style objects
+All defaultProps are loaded with default values so a fully scaled down App template will look like this:
+[App_default.js](./src/App_default.js)
 
-- Workspace component
+A template with named values and more props passed would look like this:
+[App_pseudo.js](./src/App_pasudo.js)
+
+- JSON config file(s) - colors, fonts, footer etc. or style objects.
+- Workspace components can be functional components passed as render props or class components.
