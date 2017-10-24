@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import { AppContainer, Header, MenuPanel, Menu, Footer, setTheme } from 'odeum-app'
+import { AppContainer, Header, MenuPanel, Menu, Footer } from 'odeum-app'
 import { Button, ButtonPanel, Modal, TabPanel, Tab } from 'odeum-ui'
-import { } from 'odeum-primitives'
+import { Heading, Text } from 'odeum-primitives'
 
 // Full path to selected theme
-const theme = './themes/bluehorizon.js'
+import theme from './themes/bluehorizon.js'
 
 class WorkSpaceComponent extends Component {
 	render() {
 		return (
 			<div>
+				<Heading>This is my workspace header</Heading>
+				<Text>This is my workspace intro text.</Text>
 				<ButtonPanel>
 					<Button label={'Button 1'}/>
 					<Button label={'Button 2'}/>
@@ -24,10 +26,6 @@ class WorkSpaceComponent extends Component {
 
 
 class App extends Component {
-	constructor(props) {
-		super(props)		
-		setTheme(theme)
-	}
 
 	renderWorkspaceTab = () =>
 		<div>
@@ -36,7 +34,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<AppContainer theme={setTheme(theme)}>
+			<AppContainer theme={theme}>
 				<Header search={true} />
 				<MenuPanel>
 					<Menu icon={'dashboard'} label={'Dashboard'}>
