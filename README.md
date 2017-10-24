@@ -47,5 +47,20 @@ A template with named values and more props passed would look like this:
 ### Logo
 Default logo is odeumcode_logo.svg which is loaded default by Header component unless it is overwritten by the Header prop "logo={'pathtologo.svg'}"
 
-- JSON config file(s) - colors, fonts, footer etc. or style objects.
-- Workspace components can be functional components passed as render props or class components.
+- JSON config file(s) - footer etc. or style objects.
+
+### Workspace components can be functional components (render props) or class components.
+
+## Routing
+Routing will be encapsulated and processed by the routable components through a route prop. The routable components are:
+- Logo
+- Menu
+- Tab
+
+Examples:
+
+```js
+<Menu {...props} route={'/dashboard'}>
+<Tab {...props} route={'/dashboard/timeline'} />
+
+```

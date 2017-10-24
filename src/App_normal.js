@@ -25,13 +25,15 @@ class WorkSpaceComponent extends Component {
 	}
 }
 
-
 class App extends Component {
+	constructor(props) {
+		super(props)
 
-	state = {
-		menuOpen: true
+		this.state = {
+			menuIsOpen: true
+		}			
 	}
-
+	
 	renderWorkspaceTab = () =>
 		<div>
 			{/* Sub tab panel */}
@@ -42,17 +44,28 @@ class App extends Component {
 			</TabPanel>
 		</div>
 
+	onToggleMenu = () => {
+		this.setState(({ menuIsOpen }) => (
+			{
+				menuIsOpen: !menuIsOpen
+			}
+		))
+	}
+
 	render() {
 		return (
 			<AppContainer theme={theme}>
-				<Header logo={logo} search={true} />
-				<MenuPanel open={this.state.menuOpen}>
-					<Menu icon={'dashboard'} label={'Dashboard'} active={true}>
+				<Header logo={logo} search={true} notifications={true} profile={true} avatar={true} />
+				
+				<MenuPanel open={this.state.menuIsOpen} onToggle={this.onToggleMenu} messages={true}>
+				
+					<Menu icon={'dashboard'} label={'Dashboard'} active={true} route={'/dashboard'}>
+				
 						<TabPanel>
 							{/* Tabs using a render prop (workspace prop) that returns a component */}
-							<Tab icon={'dashboard'} label={'Tab 1'} workspace={this.renderWorkspaceTab}/>
-							<Tab icon={'dashboard'} label={'Tab 2'} workspace={<WorkSpaceComponent />}/>
-							<Tab icon={'dashboard'} label={'Tab 3'}/>
+							<Tab icon={'menu'} label={'Tab 1'} workspace={this.renderWorkspaceTab} route={'/dashboard/menu'}/>
+							<Tab icon={'timeline'} label={'Tab 2'} workspace={<WorkSpaceComponent/>} route={'/dashboard/timeline'} />
+							<Tab icon={'cloud_upload'} label={'Tab 3'} route={'/dashboard/upload'}/>
 
 							{/* Tabs that renders the workspace as child */}
 							<Tab icon={'dashboard'} label={'Tab 4'}>
@@ -64,16 +77,22 @@ class App extends Component {
 							</Tab>
 
 						</TabPanel>
+				
 					</Menu>
+				
 					<Menu icon={'assignment'} label={'Forms'}>
+				
 						<TabPanel>
-							<Tab icon={'assignment'} label={'Tab 1'} workspace={this.renderWorkspaceTab} active={true}/>
-							<Tab icon={'assignment'} label={'Tab 2'} workspace={this.renderWorkspaceTab}/>
-							<Tab icon={'assignment'} label={'Tab 3'} workspace={this.renderWorkspaceTab} closeable={true} />
+							<Tab icon={'assignment'} label={'Tab 6'} workspace={this.renderWorkspaceTab} active={true}/>
+							<Tab icon={'assignment'} label={'Tab 7'} workspace={renderFunction}/>
+							<Tab icon={'assignment'} label={'Tab 8'} workspace={this.renderWorkspaceTab} closeable={true} />
 						</TabPanel>
+				
 					</Menu>
+				
 				</MenuPanel>
-				<Footer config={true}/>
+				
+				<Footer label={renderFooterLabel} link={'https://odeumcode.com'} open={true} help={true}/>
 			</AppContainer>
 		)
 	}
@@ -81,3 +100,12 @@ class App extends Component {
 
 export default App
 
+const renderFunction = () =>
+	<div>
+		This is a stateless functional component
+	</div>
+
+const renderFooterLabel = () =>
+	<div>
+		<strong>ODEUM Code Lite </strong> v2.0.0 (c) 2017
+	</div>
