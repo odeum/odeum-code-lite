@@ -64,3 +64,6 @@ Examples:
 <Tab {...props} route={'/dashboard/timeline'} />
 
 ```
+
+## 404 - Page Not Found!
+

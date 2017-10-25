@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppContainer, Header, MenuPanel, Menu, Footer } from 'odeum-app'
+import { AppContainer, Header, MenuPanel, Menu, Footer, Register } from 'odeum-app'
 import { Button, ButtonPanel, Modal, TabPanel, Tab } from 'odeum-ui'
 import { Heading, Text } from 'odeum-primitives'
 
@@ -21,8 +21,8 @@ class WorkSpaceComponent extends Component {
 					<Button label={'Button 2'}/>
 					<Button label={'Button 3'}/>
 				</ButtonPanel>
-				<Modal icon={'web_asset'} label={'This is a modal window'}
-				/>
+				<Modal icon={'web_asset'} label={'This is a modal window'}/>
+				<Register help={'12345-67890'} search={'12345-67890'}/>
 			</div>
 		)
 	}
@@ -57,7 +57,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<AppContainer theme={theme}>
+			<AppContainer theme={theme} login={true} route={'/'}>
 				<Header logo={logo} search={true} notifications={true} profile={true} avatar={true} />
 				
 				<MenuPanel open={this.state.menuIsOpen} onToggle={this.onToggleMenu} messages={true}>
@@ -97,7 +97,7 @@ class App extends Component {
 				
 				</MenuPanel>
 				
-				<Footer label={renderFooterLabel} link={'https://odeumcode.com'} open={true} help={true}/>
+				<Footer label={renderFooterLabel} labellink={handleLink} help={true}/>
 			</AppContainer>
 		)
 	}
@@ -114,3 +114,8 @@ const renderFooterLabel = () =>
 	<div>
 		<strong>ODEUM Code Lite </strong> v2.0.0 (c) 2017
 	</div>
+
+const handleLink = () => {
+	return 'https://odeumcode.com'
+}
+	
