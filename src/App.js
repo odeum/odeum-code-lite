@@ -7,7 +7,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Logo size={'50px'} />
+				<Logo size={'31px'} />
 				<Routing />
 			</div>
 		)
