@@ -8,7 +8,9 @@
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
-    "styled-components": "^2.2.2"
+    "styled-components": "^2.2.2",
+    "svgr": "^0.4.0",
+    "uuid": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
