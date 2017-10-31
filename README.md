@@ -53,7 +53,7 @@ Default logo is odeumcode_logo.svg which is loaded default by Header component u
 
 ## Routing
 Routing will be encapsulated and processed by the routable components through a route prop. The routable components are:
-- Logo
+- AppContainer (makes the logo routable)
 - Menu
 - Tab
 

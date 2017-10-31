@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppContainer, Header, MenuPanel, Menu, Footer, Register } from 'odeum-app'
+import { AppContainer, Header, MenuPanel, Menu, Footer, RegisterHelp, RegisterSearch } from 'odeum-app'
 import { Button, ButtonPanel, Modal, TabPanel, Tab } from 'odeum-ui'
 import { Heading, Text } from 'odeum-primitives'
 
@@ -7,7 +7,7 @@ import { Heading, Text } from 'odeum-primitives'
 import Workspaces from './components/Workspaces'
 
 // Full path to selected theme
-import theme from './themes/bluehorizon.js'
+import theme from './themes/default.js'
 import logo from './bluehorizon.svg'
 
 class WorkSpaceComponent extends Component {
@@ -22,7 +22,8 @@ class WorkSpaceComponent extends Component {
 					<Button label={'Button 3'}/>
 				</ButtonPanel>
 				<Modal icon={'web_asset'} label={'This is a modal window'}/>
-				<Register help={'12345-67890'} search={'12345-67890'}/>
+				<RegisterHelp id={'0307c917-ca92-4e3d-80e5-dc70fdcc81ee'} />
+				<RegisterSearch id={'0307c917-ca92-4e3d-80e5-dc70fdcc81ee'} />
 			</div>
 		)
 	}
