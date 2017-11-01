@@ -8,7 +8,8 @@ const theme = {
 		background: '#3B97D3',
 		color: '#FFF',
 		selected: '#216795',
-		hover: '#81C1EA'
+		hover: '#81C1EA',
+		bottomBorder: '1px solid #3087bf'
 	},
 
 	footer: {

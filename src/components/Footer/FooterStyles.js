@@ -6,6 +6,8 @@ import media from 'themes/media'
 export const FooterDiv = styled.div`
 display:flex;
 flex-flow: row nowrap;
+align-items:center;
+justify-content:center;
 width:100vw;
 height: 40px;
 background: ${theme.footer.background};

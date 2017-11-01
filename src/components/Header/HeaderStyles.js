@@ -11,18 +11,22 @@ flexFlow: row nowrap;
 width: 100vw;
 height:100px;
 align-items: center;
+justify-content:space-between;
 background-color: ${theme.header.background};
 color: ${theme.header.color};
 ${media.giant`height:100px;`}
 ${media.desktop`height:100px;`}
-${media.tablet`height:50px;`}
+${media.tablet`height:70px;`}
 ${media.phone`height:50px;`}
 `
 
 export const LogoDiv = styled.div`
-height:inherit;
+height:100%;
+max-height: 50px;
+align-self:center;
 `
 
 export const LogoImg = styled.img`
-height:inherit;
+width:100%;
+height:100%;
 `

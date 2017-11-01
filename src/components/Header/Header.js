@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
 export default class Header extends Component {
 	renderNotification = () => {
-		return(
+		return (
 			<div>NotF</div>
 		)
 	}
@@ -30,8 +31,14 @@ export default class Header extends Component {
 				{search && renderSearchBar()}
 				{avatar && renderAvatar()}
 				{notification && renderNotification()}
-				{/* Header */}
 			</HeaderDiv>
 		)
 	}
+}
+
+Header.propTypes = {
+	logo: PropTypes.element,
+	search: PropTypes.bool,
+	notification: PropTypes.bool,
+	avatar: PropTypes.bool,
 }

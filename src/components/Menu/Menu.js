@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { MenuDiv, MenuHeader, MenuItem } from './MenuStyles'
+import { MenuDiv, MenuHeader } from './MenuStyles'
 // import media from 'themes/media'
 import { Route } from 'react-router-dom'
+import MenuItem from './MenuItem'
 export default class Menu extends Component {
 	sizes = {
 		giant: 1170,
@@ -36,9 +37,7 @@ export default class Menu extends Component {
 	switch = () => (
 		this.setState({ close: !this.state.close })
 	)
-	// renderChild = (i) => this.props.children[i]
 	render() {
-		// console.log(this.props.children)
 		const { disableMenuAchordeon, close } = this.state
 		return (
 			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1 }}>
@@ -47,12 +46,17 @@ export default class Menu extends Component {
 						<button onClick={!disableMenuAchordeon ? this.switch : null}>M</button>
 					</MenuHeader>
 					{this.props.children.map((child, i) => (
-						<MenuItem key={i}>{child.props.label}</MenuItem>
+						<MenuItem key={i}
+							active={window.location.pathname.includes(child.props.route) ? true : false}
+							label={child.props.label}
+							route={child.props.route + child.props.children[0].props.route} />
 					))}
 
 				</MenuDiv> : null}
 				{this.props.children.map((child, i) => {
-					const renderChild = () => child
+					const renderChild = ({ match }) => {
+						return child
+					}
 					return <Route path={child.props.route} route={child.props.route} key={i} component={renderChild} />
 				})}
 			</div>

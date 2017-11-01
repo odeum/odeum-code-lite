@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { FrameworkContainer, WorkspaceContainer, MenuItem, Workspace } from 'AppStyles'
+import { FrameworkContainer, WorkspaceContainer, Workspace } from 'AppStyles'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import Menu from 'components/Menu/Menu'
-import logo from 'logo.svg'
+import logo from 'odeum_code_logo.svg'
 import TabContainer from 'components/Tabs/TabContainer'
+import Tab from 'components/Tabs/Tab'
 export default class App extends Component {
 	render() {
 		return (
@@ -13,27 +14,41 @@ export default class App extends Component {
 				<Header logo={logo} search={true} notification={true} avatar={true} />
 				<WorkspaceContainer>
 					<Menu>
-						{/* rename to MenuItem */}
-						<TabContainer route='/menu1' label={'hello'}>
-							{/* The li's will be replaced with Tab/ TabComponent */}
-							<li label={'tab'} route={'/tab1'} style={{ marginRight: 5 }}>
-								<Workspace style={{ flex: 4, display: 'flex', flexFlow: 'row' }}>
-									Workspace
+						<TabContainer route='/menu1' label={'Menu1'}>
+							<Tab label={'tab1'} route={'/tab1'}>
+								<Workspace>
+									Workspace1
 								</Workspace>
-							</li>
-							<li label={'tab'} route={'/tab2'} style={{ marginRight: 5 }}>Tab</li>
-							<li label={'tab'} route={'/tab3'} style={{ marginRight: 5 }}>Tab</li>
+							</Tab>
+							<Tab label={'tab2'} route={'/tab2'} >
+								<Workspace>
+									Workspace2
+								</Workspace>
+							</Tab>
+							<Tab label={'tab3'} route={'/tab3'} >
+								<Workspace>
+									Workspace3
+								</Workspace>
+							</Tab>
 						</TabContainer>
 
 
-						<TabContainer route='/menu2' label={'hello2'}>
-							<li className='Tab' style={{ marginRight: 5 }}>
-								<Workspace style={{ flex: 4, display: 'flex', flexFlow: 'row' }}>
-									Workspace2
+						<TabContainer route='/menu2' label={'Menu2'}>
+							<Tab label={'tab4'} route={'/tab4'} >
+								<Workspace>
+									Workspace4
 								</Workspace>
-							</li>
-							<li className='Tab' style={{ marginRight: 5 }}>Tab</li>
-							<li className='Tab' style={{ marginRight: 5 }}>Tab</li>
+							</Tab>
+							<Tab label={'tab5'} route={'/tab5'} >
+								<Workspace>
+									Workspace5
+								</Workspace>
+							</Tab>
+							<Tab label={'tab6'} route={'/tab6'} >
+								<Workspace>
+									Workspace6
+								</Workspace>
+							</Tab>
 						</TabContainer>
 
 					</Menu>
