@@ -49,6 +49,8 @@ export default class App extends Component {
 									Workspace6
 								</Workspace>
 							</Tab>
+							<Tab label={'tab7'} route={'/tab7'} >
+							</Tab>
 						</TabContainer>
 
 					</Menu>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppContainer, Header, MenuPanel, Menu, Footer, RegisterHelp, RegisterSearch } from 'odeum-app'
+import { AppContainer, Header, MenuPanel, Menu, Footer, Help, Search } from 'odeum-app'
 import { Button, ButtonPanel, Modal, TabPanel, Tab } from 'odeum-ui'
 import { Heading, Text } from 'odeum-primitives'
 
@@ -22,8 +22,8 @@ class WorkspaceComponent extends Component {
 					<Button label={'Button 3'}/>
 				</ButtonPanel>
 				<Modal icon={'web_asset'} label={'This is a modal window'}/>
-				<RegisterHelp id={'0307c917-ca92-4e3d-80e5-dc70fdcc81ee'} />
-				<RegisterSearch id={'0307c917-ca92-4e3d-80e5-dc70fdcc81ee'} />
+				<Help helpId={'0307c917-ca92-4e3d-80e5-dc70fdcc81ee'} />
+				<Search searchId={'0307c917-ca92-4e3d-80e5-dc70fdcc81ee'} />
 			</div>
 		)
 	}
