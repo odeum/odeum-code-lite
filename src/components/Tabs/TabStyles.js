@@ -13,12 +13,6 @@ export const TabList = styled.div`
 	align-items: end;
 `
 
-export const TabDiv = styled.div`
-	display:flex;
-	flex-flow: row nowrap;
-	align-items:center;
-	justify-content:center;
-`
 
 export const Link = styled(RouterLink) `
 	text-decoration:none;
@@ -33,12 +27,27 @@ export const Link = styled(RouterLink) `
 	border-radius: 5px 5px 0px 0px;
 	color:${props => props.selected ? '#fff' : '#000'};
 	background: ${props => props.selected ? theme.tab.selected : theme.tab.unselected};
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	transition: all 100ms ease-in-out;
+	&:hover{
+		background:${theme.tab.hover};
+		color:white;
+	}
 `
 
 export const SceneDiv = styled.div`
-	 display: flex;
-	 flex: 5;
-	 height: 100%;
-	 flex-flow: column nowrap;
-	 margin: 5px 5px 5px 5px;
-` 
+	display: flex;
+	flex: 5;
+	height: 100%;
+	flex-flow: column nowrap;
+	margin: 5px 5px 5px 5px;
+`
+export const TabIconDiv = styled.div`
+	width: 18px; 
+	height: 18px;
+	margin-right:8px;  
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`

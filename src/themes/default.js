@@ -28,6 +28,10 @@ const theme = {
 		selected: '#3B97D3',
 		hover: '#81C1EA',
 		unselected: '#E3E5E5'
+	},
+	icon: {
+		default: '#34495D',
+		selected: '#FFF'
 	}
 }
 

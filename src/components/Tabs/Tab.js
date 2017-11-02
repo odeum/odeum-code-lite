@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { TabDiv, Link } from './TabStyles'
-
+import { TabIconDiv, Link } from './TabStyles'
+import { Icon } from 'odeum-ui'
+import theme from 'themes/default'
 export default class Tab extends Component {
+	iconIsActive = () => this.props.active ? theme.icon.selected : theme.icon.default
 	render() {
 		return (
 			<Link to={this.props.route} selected={this.props.active}>
-				<TabDiv>
-					{this.props.label}
-				</TabDiv>
+				<TabIconDiv><Icon color={this.iconIsActive()} iconSize={20} icon={this.props.icon} style={{ marginRight: '0px' }} /></TabIconDiv>
+				{this.props.label}
 			</Link>
 		)
 	}

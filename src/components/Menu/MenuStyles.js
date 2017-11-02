@@ -39,7 +39,7 @@ export const Link = styled(RouterLink) `
 	text-decoration:none;
 	outline:0;
 	color:white;
-	width:100%;
+	width: 250px;
 	height:40px;
 	display:flex;
 	align-items:center;
@@ -48,4 +48,7 @@ export const Link = styled(RouterLink) `
 	&:hover{
 		background:${theme.menu.hover}
 	}
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	transition: all 100ms ease-in-out;
 `

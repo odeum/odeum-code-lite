@@ -37,7 +37,7 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-	logo: PropTypes.element,
+	logo: PropTypes.string,
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,

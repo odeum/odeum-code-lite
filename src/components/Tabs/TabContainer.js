@@ -3,6 +3,7 @@ import { TabList, SceneDiv } from './TabStyles'
 import { Route } from 'react-router-dom'
 import Tab from './Tab'
 export default class TabContainer extends Component {
+	renderChild = (child) => child.props.children ? () => child.props.children : null
 	render() {
 		return (
 			<SceneDiv>
@@ -11,13 +12,12 @@ export default class TabContainer extends Component {
 						<Tab key={i}
 							active={window.location.pathname.includes(child.props.route) ? true : false}
 							label={child.props.label}
+							icon={child.props.icon ? child.props.icon : this.props.icon}
 							route={this.props.route + child.props.route} />
 					))}
 				</TabList>
 				{this.props.children.map((child, i) => {
-					const renderChild = () => child.props.children
-
-					return <Route path={this.props.route + child.props.route} key={i} component={renderChild} />
+					return <Route key={i} path={this.props.route + child.props.route} component={this.renderChild(child)} />
 				})}
 
 			</SceneDiv>
