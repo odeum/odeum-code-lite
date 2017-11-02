@@ -10,13 +10,15 @@ export const FrameworkContainer = styled.div`
 
 export const WorkspaceContainer = styled.div`
 	flex: 1;
-	display: flex;` 
+	display: flex;
+	height: calc(100% - 70px);	
+` 
 
 export const MenuItem = styled.div`
 	flex:5;
 	display: flex;
 	flex-flow: column nowrap;
-	margin: 5px 5px 3px 5px;
+	margin: 5px 3px 5px 3px;
 `
 
 export const Workspace = styled.div`

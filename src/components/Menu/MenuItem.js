@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MenuItemDiv, Link } from './MenuStyles'
+import { IconDiv, ArrowIconDiv, Link } from './MenuStyles'
 import PropTypes from 'prop-types'
 
 
@@ -19,13 +19,11 @@ export default class MenuItem extends Component {
 	}
 
 	render() {
-		console.log('-----this.props-----')
-		console.log(this.props)
 		return (
 			<Link to={this.props.route} selected={this.props.active}>
-				<MenuItemDiv>
-					{this.props.label}
-				</MenuItemDiv>
+				<IconDiv alt='Icon placeholder'>IC</IconDiv>
+				{this.props.label}
+				<ArrowIconDiv alt='Icon placeholder'>AR</ArrowIconDiv>
 			</Link>
 		)
 	}

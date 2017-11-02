@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MenuDiv, MenuHeader } from './MenuStyles'
+import { MenuDiv, MenuHeader, IconDiv } from './MenuStyles'
 // import media from 'themes/media'
 import { Route } from 'react-router-dom'
 import MenuItem from './MenuItem'
@@ -12,7 +12,7 @@ export default class Menu extends Component {
 	}
 	constructor(props) {
 		super(props)
-		this.state = { close: false, disableMenuAchordeon: false }
+		this.state = { achordeon: true, disableMenuAchordeon: false }
 	}
 
 	componentDidMount() {
@@ -28,22 +28,23 @@ export default class Menu extends Component {
 		console.log('Comparison')
 		console.log(window.innerWidth < this.sizes.tablet)
 		if (window.innerWidth < this.sizes.tablet) {
-			this.setState({ close: true, disableMenuAchordeon: true })
+			this.setState({ achordeon: false, disableMenuAchordeon: true })
 		}
 		else {
 			this.setState({ disableMenuAchordeon: false })
 		}
 	}
 	switch = () => (
-		this.setState({ close: !this.state.close })
+		this.setState({ achordeon: !this.state.achordeon })
 	)
+	renderChild = (child) => () => child
 	render() {
-		const { disableMenuAchordeon, close } = this.state
+		const { disableMenuAchordeon, achordeon } = this.state
 		return (
 			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1 }}>
-				{!disableMenuAchordeon ? <MenuDiv>
+				<MenuDiv achordeon={achordeon}>
 					<MenuHeader>
-						<button onClick={!disableMenuAchordeon ? this.switch : null}>M</button>
+						<IconDiv onClick={!disableMenuAchordeon ? this.switch : null} style={{ color: 'white', cursor: 'pointer' }}>IC</IconDiv>
 					</MenuHeader>
 					{this.props.children.map((child, i) => (
 						<MenuItem key={i}
@@ -52,13 +53,10 @@ export default class Menu extends Component {
 							route={child.props.route + child.props.children[0].props.route} />
 					))}
 
-				</MenuDiv> : null}
-				{this.props.children.map((child, i) => {
-					const renderChild = ({ match }) => {
-						return child
-					}
-					return <Route path={child.props.route} route={child.props.route} key={i} component={renderChild} />
-				})}
+				</MenuDiv>
+				{this.props.children.map((child, i) =>
+					<Route path={child.props.route} route={child.props.route} key={i} component={this.renderChild(child)} />
+				)}
 			</div>
 		)
 	}
