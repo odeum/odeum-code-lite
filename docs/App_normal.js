@@ -34,7 +34,8 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			menuIsOpen: true
+			menuIsOpen: true,
+			helpId: ''
 		}			
 	}
 	
