@@ -9,15 +9,15 @@ color: #333;
 display: flex;
 flexFlow: row nowrap;
 width: 100vw;
-height:100px;
+height:80px;
 align-items: center;
 justify-content:space-between;
 background-color: ${theme.header.background};
 color: ${theme.header.color};
-${media.giant`height:100px;`}
-${media.desktop`height:100px;`}
-${media.tablet`height:70px;`}
-${media.phone`height:50px;`}
+${media.giant`height:80px;`}
+${media.desktop`height:80px;`}
+${media.tablet`height:50px;`}
+${media.phone`height:30px;`}
 `
 
 export const LogoDiv = styled.div`

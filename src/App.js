@@ -11,10 +11,17 @@ import Workspace from 'components/Workspace/Workspace'
 import NoTabsContainer from 'components/NoTabsContainer/NoTabsContainer'
 
 export default class App extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			helpID: 0
+		}
+	}
+	
 	render() {
 		return (
 			<AppContainer>
-				<Header logo={logo} search={true} notification={true} avatar={true} />
+				<Header logo={logo} search={false} notification={false} avatar={false} />
 				<MenuPanel>
 					<TabContainer icon={'assignment'} route='/menu1' label={'Assignments'}>
 						<Tab icon={'assignment'} label={'Forms'} route={'/forms'}>
@@ -29,7 +36,7 @@ export default class App extends Component {
 						</Tab>
 						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >
 							<Workspace>
-								{<iframe title={'phone'} width="560" height="315" src="https://www.youtube.com/embed/EVBsypHzF3U?start=170&autoplay=1" frameborder="0" allowfullscreen></iframe>}
+								{<iframe title={'phone'} width="560" height="315" src="https://www.youtube.com/embed/EVBsypHzF3U?start=170" frameborder="0" allowfullscreen></iframe>}
 							</Workspace>
 						</Tab>
 					</TabContainer>
