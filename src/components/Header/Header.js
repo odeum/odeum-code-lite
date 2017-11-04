@@ -2,7 +2,29 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
+import { ScreenSizes } from 'themes/media'
 export default class Header extends Component {
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			logo: this.props.logo ? this.props.logo : this.props.logos ? this.props.logos[0] : null
+		}
+	}
+	changeLogo = () => {
+		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? this.props.logos[0] : this.props.logos[1] })
+	}
+	componentWillMount() {
+		console.log(this.props.logos.length)
+		if (this.props.logos.length >= 2) {
+			this.changeLogo()
+			window.addEventListener('resize', this.changeLogo)
+		}
+	}
+	componentWillUnmount = () => {
+		window.removeEventListener('resize', this.changeLogo)
+	}
+
 	renderNotification = () => {
 		return (
 			<div>NotF</div>
@@ -15,7 +37,7 @@ export default class Header extends Component {
 	}
 	renderLogo = (logo) => {
 		return (
-			<LogoDiv>
+			<LogoDiv to={'/'}>
 				<LogoImg src={logo} />
 			</LogoDiv>)
 	}
@@ -23,8 +45,10 @@ export default class Header extends Component {
 		return (<div>Search</div>)
 	}
 	render() {
-		const { logo, search, notification, avatar } = this.props
+		const { search, notification, avatar } = this.props
+		const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
+		console.log(logo)
 		return (
 			<HeaderDiv>
 				{logo && renderLogo(logo)}

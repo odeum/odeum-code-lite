@@ -4,6 +4,11 @@ import { TabIconDiv, Link } from './TabStyles'
 import { Icon } from 'odeum-ui'
 import theme from 'themes/default'
 export default class Tab extends Component {
+	
+	componentWillMount() {
+		// this.props.SetHelpID(this.props.label)
+	}
+	
 	iconIsActive = () => this.props.active ? theme.icon.selected : theme.icon.default
 	render() {
 		return (

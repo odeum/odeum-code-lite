@@ -3,6 +3,11 @@ import { WorkspaceDiv } from './WorkspaceStyles'
 
 export default class Workspace extends Component {
 
+	componentWillMount() {
+		if (this.props.helpID)
+		 this.props.SetHelpID(this.props.helpID)
+	}
+	
 	render() {
 		return (
 			<WorkspaceDiv style={this.props.style}>

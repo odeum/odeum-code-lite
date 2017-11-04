@@ -3,6 +3,7 @@
 import styled from 'styled-components'
 import theme from 'themes/default'
 import media from 'themes/media'
+import { Link as RouterLink } from 'react-router-dom'
 
 export const HeaderDiv = styled.div`
 color: #333;
@@ -20,13 +21,21 @@ ${media.tablet`height:50px;`}
 ${media.phone`height:30px;`}
 `
 
-export const LogoDiv = styled.div`
+export const LogoDiv = styled(RouterLink)`
 height:100%;
 max-height: 50px;
 align-self:center;
+padding:5px;
+${media.giant`max-height:50px;`}
+${media.desktop`max-height:50px;`}
+${media.tablet`max-height:30px;`}
+${media.phone`max-height:30px;`}
 `
 
 export const LogoImg = styled.img`
-width:100%;
 height:100%;
+${media.giant`max-height:50px;`}
+${media.desktop`max-height:50px;`}
+${media.tablet`max-height:30px;`}
+${media.phone`max-height:30px;`}
 `

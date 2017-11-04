@@ -26,17 +26,17 @@ export default class MenuPanel extends Component {
 		return (
 			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1, overflowY: 'hidden' }}>
 				<MenuDiv>
-					{this.props.children.map((child, i) => (
+					{this.props.children.map((child, i) => (child.props.label ?
 						<MenuItem key={i}
 							active={window.location.pathname.includes(child.props.route) ? true : false}
 							icon={child.props.icon}
 							label={child.props.label}
-							route={child.props.route + this.childHasRoute(child)} />
+							route={child.props.route + this.childHasRoute(child)} /> : null
 					))}
 
 				</MenuDiv>
 				{this.props.children.map((child, i) =>
-					<Route path={child.props.route} route={child.props.route} key={i} component={this.renderChild(child)} />
+					<Route path={child.props.route} exact={child.props.exact ? child.props.exact : undefined} route={child.props.route} key={i} component={this.renderChild(child)} />
 				)
 				}
 			</div >

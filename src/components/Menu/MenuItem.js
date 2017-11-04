@@ -15,7 +15,7 @@ export default class MenuItem extends Component {
 
 	render() {
 		return (
-			<Link title={this.props.label} to={this.props.route} selected={this.props.active}>
+			<Link title={this.props.label} to={this.props.route} selected={this.props.active} achordeon={this.props.achordeon}>
 				<IconDiv><Icon color={'white'} iconSize={20} icon={this.props.icon} style={{ marginRight: '0px' }} /></IconDiv>
 				{this.props.label}
 				<ArrowIconDiv ><Icon icon={'keyboard_arrow_right'} iconSize={25} color={'white'} style={{ marginRight: '0px' }}/></ArrowIconDiv>
