@@ -14,7 +14,7 @@ export const MenuDiv = styled.div`
 `
 const BaseItem = styled.div`
 	border-bottom: ${theme.menu.bottomBorder};
-	height: 40px;
+	height: 50px;
 	width: 100%;
 	display:flex;
 	align-items:center;
@@ -40,7 +40,8 @@ export const Link = styled(RouterLink) `
 	outline:0;
 	color:white;
 	width: 250px;
-	height:40px;
+	height:50px;
+	font-weight:400;
 	display:flex;
 	align-items:center;
 	justify-content: space-between;
