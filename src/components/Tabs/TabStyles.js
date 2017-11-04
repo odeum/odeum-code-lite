@@ -45,9 +45,8 @@ export const Link = styled(RouterLink) `
 export const SceneDiv = styled.div`
 	display: flex;
 	flex: 5;
-	height: 100%;
 	flex-flow: column nowrap;
-	margin: 20px;
+	margin: 20px 10px 10px 20px;
 `
 export const TabIconDiv = styled.div`
 	width: 18px; 
