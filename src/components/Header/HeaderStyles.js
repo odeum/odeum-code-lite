@@ -23,19 +23,13 @@ ${media.phone`height:30px;`}
 
 export const LogoDiv = styled(RouterLink)`
 height:100%;
-max-height: 50px;
+max-height: 35px;
 align-self:center;
 padding:5px;
-${media.giant`max-height:50px;`}
-${media.desktop`max-height:50px;`}
-${media.tablet`max-height:30px;`}
-${media.phone`max-height:30px;`}
+
 `
 
 export const LogoImg = styled.img`
 height:100%;
-${media.giant`max-height:50px;`}
-${media.desktop`max-height:50px;`}
-${media.tablet`max-height:30px;`}
-${media.phone`max-height:30px;`}
+
 `

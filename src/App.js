@@ -9,6 +9,9 @@ import TabContainer from 'components/Tabs/TabContainer'
 import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import NoTabsContainer from 'components/NoTabsContainer/NoTabsContainer'
+/* Demo */
+import ReactComp from 'Demos/ReactComp'
+import { SimpleDiv } from 'Demos/SimpleDiv'
 
 export default class App extends Component {
 	constructor(props) {
@@ -26,41 +29,31 @@ export default class App extends Component {
 			<AppContainer>
 				<Header logo={BigLogo} search={false} notification={false} avatar={false} logos={[BigLogo, SmallLogo]} />
 				<MenuPanel>
-					<NoTabsContainer route='/notabs' label='No Tabs' icon='info'>
-						It works without tabs
-					</NoTabsContainer>
+					{
+						/* No Tabs Containers Demos */
+					}
 					<NoTabsContainer route='/' exact>
-						Last help ID: {this.state.helpID}
+						Home Demo <br />Last help ID: {this.state.helpID}
 					</NoTabsContainer>
-					<TabContainer icon={'assignment'} route='/menu1' label={'Assignments'} >
-						<Tab icon={'assignment'} label={'Forms'} route={'/forms'} >
-							<Workspace helpID={1}>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-								<p>Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
-								<p>Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!</p>
-								<p>Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-								<p>Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
-								<p>Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!</p>
-								<p>Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-								<p>Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
-								<p>Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!</p>
-								<p>Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-								<p>Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
-								<p>Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!</p>
-								<p>Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
-								<p>Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam!</p>
-								<p>Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!</p>
-								<p>Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
+					<NoTabsContainer route='/notabs' label='No Tabs Menu Item' icon='help'>
+						No Tabs Scene
+					</NoTabsContainer>
+					{/* 
+						End Region
+					*/}
 
+					{ /* 
+						Workspace with Children  
+					*/}
+					<TabContainer icon={'help'} route='/children_menu' label={'Menu With Children'} >
+						<Tab icon={'assignment'} label={'Overflow Test'} route={'/lorem_ipsum'} >
+							<Workspace helpID={1}>
+								<SimpleDiv/>
 							</Workspace>
 						</Tab>
-						<Tab icon={'assignment_turned_in'} label={'Reports'} route={'/reports'}>
+						<Tab icon={'assignment_turned_in'} label={'React Component'} route={'/react-component'}>
 							<Workspace helpID={2}>
-								Workspace2
+								<ReactComp/>
 							</Workspace>
 						</Tab>
 						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >
@@ -69,27 +62,20 @@ export default class App extends Component {
 							</Workspace>
 						</Tab>
 					</TabContainer>
+					{/* 
+						End Region
+					*/}
 
-					<TabContainer icon={'person'} route='/menu2' label={'Menu2'}>
-						<Tab label={'tab4'} route={'/tab4'} >
-							<Workspace>
-								Workspace4
-							</Workspace>
-						</Tab>
-						<Tab label={'tab5'} route={'/tab5'} >
-							<Workspace>
-								Workspace5
-							</Workspace>
-						</Tab>
-						<Tab label={'tab6'} route={'/tab6'} >
-							<Workspace>
-								Workspace6
-							</Workspace>
-						</Tab>
-						<Tab label={'tab7'} route={'/tab7'} >
-						</Tab>
+					{/* 
+						Workspace with props as workspace
+					*/}
+					<TabContainer icon={'help'} route='/menu2' label={'Menu With Workspace Prop'}>
+						<Tab label={'React Component'} route={'/react-component'} workspace={ReactComp} />
+						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv} />
 					</TabContainer>
-
+					{/* 
+						End Region
+					*/}
 				</MenuPanel>
 
 				<Footer />

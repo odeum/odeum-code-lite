@@ -2,16 +2,10 @@ import React, { Component } from 'react'
 // import { MenuHeader, IconDiv } from './MenuStyles'
 // import media from 'themes/media'
 import { Route } from 'react-router-dom'
-import MenuItem from './MenuItem'
-// import { Icon } from 'odeum-ui'
+import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 export default class MenuPanel extends Component {
-	sizes = {
-		giant: 1170,
-		desktop: 992,
-		tablet: 768,
-		phone: 376
-	}
+
 	constructor(props) {
 		super(props)
 		this.state = { achordeon: true, disableMenuAchordeon: false }

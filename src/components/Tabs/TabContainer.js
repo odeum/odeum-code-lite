@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import { TabList, SceneDiv } from './TabStyles'
 import { Route } from 'react-router-dom'
 import Tab from './Tab'
+import Workspace from 'components/Workspace/Workspace'
 export default class TabContainer extends Component {
-	renderChild = (child) => child.props.children ? () => child.props.children : null
+	renderChildren = () => this.props.children.map((child, i) => {
+		return <Route key={i} path={this.props.route + child.props.route} component={this.renderChild(child)} />
+	})
+	renderChild = (child) => child.props.children ? () => child.props.children : child.props.workspace ? () => <Workspace>{React.createElement(child.props.workspace)}</Workspace> : null
 	render() {
 		return (
 			<SceneDiv>
@@ -16,9 +20,7 @@ export default class TabContainer extends Component {
 							route={this.props.route + child.props.route} />
 					))}
 				</TabList>
-				{this.props.children.map((child, i) => {
-					return <Route key={i} path={this.props.route + child.props.route} component={this.renderChild(child)} />
-				})}
+				{this.renderChildren()}
 
 			</SceneDiv>
 		)

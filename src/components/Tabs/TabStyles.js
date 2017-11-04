@@ -12,7 +12,11 @@ export const TabList = styled.div`
 	max-height: 43px;
 	align-items: end;
 `
-
+export const TabText = styled.div`
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+`
 
 export const Link = styled(RouterLink) `
 	text-decoration:none;
@@ -21,8 +25,10 @@ export const Link = styled(RouterLink) `
 	display:flex;
 	height: 40px;
 	margin-right:3px;
-	max-width: 250px;
-	width:100px;
+	max-width:250px;
+	min-width:60px;
+	padding-left: 20px;
+	padding-right: 20px;
 	flex-flow:row nowrap;
 	border-radius: 5px 5px 0px 0px;
 	color:${props => props.selected ? '#fff' : '#000'};
@@ -41,7 +47,7 @@ export const SceneDiv = styled.div`
 	flex: 5;
 	height: 100%;
 	flex-flow: column nowrap;
-	margin: 5px 5px 5px 5px;
+	margin: 20px;
 `
 export const TabIconDiv = styled.div`
 	width: 18px; 
