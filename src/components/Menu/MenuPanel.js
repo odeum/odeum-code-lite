@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import MenuItem from './MenuItem'
 // import { Icon } from 'odeum-ui'
-import MenuDiv from "./MenuComponents/MenuDiv"	
+import MenuDiv from "./MenuComponents/MenuDiv"
 export default class MenuPanel extends Component {
 	sizes = {
 		giant: 1170,
@@ -24,7 +24,7 @@ export default class MenuPanel extends Component {
 	renderChild = (child) => () => child
 	render() {
 		return (
-			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1 }}>
+			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1, overflowY: 'hidden' }}>
 				<MenuDiv>
 					{this.props.children.map((child, i) => (
 						<MenuItem key={i}

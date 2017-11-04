@@ -7,10 +7,9 @@ export const MenuDiv = styled.div`
 	display:flex;
 	flex:1 0 auto;
 	flex-flow: column nowrap;
-	overflow:hidden;
+	overflow-x:hidden;
 	max-width:${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease-in-out;
-	overflow:hidden;
 `
 const BaseItem = styled.div`
 	border-bottom: ${theme.menu.bottomBorder};
