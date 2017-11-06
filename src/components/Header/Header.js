@@ -15,7 +15,6 @@ export default class Header extends Component {
 		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? this.props.logos[0] : this.props.logos[1] })
 	}
 	componentWillMount() {
-		console.log(this.props.logos.length)
 		if (this.props.logos.length >= 2) {
 			this.changeLogo()
 			window.addEventListener('resize', this.changeLogo)
@@ -48,7 +47,6 @@ export default class Header extends Component {
 		const { search, notification, avatar } = this.props
 		const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
-		console.log(logo)
 		return (
 			<HeaderDiv>
 				{logo && renderLogo(logo)}

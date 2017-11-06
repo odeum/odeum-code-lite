@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { FooterDiv } from 'components/Footer/FooterStyles'
+import { FooterDiv, B } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
-import ScreenSizes from 'themes/media'
+import { ScreenSizes } from 'themes/media'
 export default class Footer extends Component {
 	constructor(props) {
 		super(props)
@@ -11,21 +11,26 @@ export default class Footer extends Component {
 	}
 
 	componentWillMount() {
+		this.smallHelp()
 		window.addEventListener('resize', this.smallHelp)
 	}
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.smallHelp)
 	}
 	smallHelp = () => {
-		if (window.innerWidth <= ScreenSizes.tablet)
+		if (window.innerWidth <= ScreenSizes.tablet) {
 			this.setState({ small: true })
+		}
+		else if (window.innerWidth > ScreenSizes.tablet) {
+			this.setState({ small: false })
+		}
 	}
 	render() {
 		const date = new Date()
 		return (
 			<FooterDiv>
 				<div>
-					<b>ODEUM ePlan </b> &nbsp;v2.0.0 © Copyright
+					<B>ODEUM ePlan </B> v2.0.0 © Copyright
 					{date.getFullYear()}
 				</div>
 				<Help small={this.state.small} />

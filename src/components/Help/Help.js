@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
-import { Icon } from 'odeum-ui'
-import { HelpDiv } from './HelpStyles'
+// import { Icon } from 'odeum-ui'
+import { HelpDiv, B, Icon, HelpButton } from './HelpStyles'
+
 export default class Help extends Component {
 	render() {
+		console.log(this.props.small)
 		return (
 			<HelpDiv small={this.props.small}>
-				<Icon icon={'help'} style={{ marginRight: 0 }} />
-				{this.props.small ? 'Brug for Hjælp?' : ''}
+				<HelpButton>
+					<Icon icon={'help'} style={{ marginRight: "0px" }} />
+					{!this.props.small ? <B>Brug for Hjælp?</B> : null}
+				</HelpButton>
 			</HelpDiv>
 		)
 	}
