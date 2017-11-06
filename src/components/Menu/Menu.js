@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { TabList, SceneDiv } from './TabStyles'
 import { Route } from 'react-router-dom'
-import Tab from './Tab'
+import { TabList, SceneDiv } from '../Tabs/TabStyles'
+import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 export default class TabContainer extends Component {
 	renderChildren = () => this.props.children.map((child, i) => {
