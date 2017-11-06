@@ -15,6 +15,6 @@ border-left: 1px solid #aaa;
 height: 30px;
 align-items:center;
 margin-right: 15px;
-width: 130px;
+width: ${props => props.small ? '30px' : '130px'};
 justify-content:center;
 `
