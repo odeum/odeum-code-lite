@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
-import { ScreenSizes } from 'themes/media'
+import { ScreenSizes } from 'theme/media'
 export default class Header extends Component {
 
 	constructor(props) {
@@ -11,15 +11,18 @@ export default class Header extends Component {
 			logo: this.props.logo ? this.props.logo : this.props.logos ? this.props.logos[0] : null
 		}
 	}
+
 	changeLogo = () => {
 		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? this.props.logos[0] : this.props.logos[1] })
 	}
+
 	componentWillMount() {
 		if (this.props.logos.length >= 2) {
 			this.changeLogo()
 			window.addEventListener('resize', this.changeLogo)
 		}
 	}
+
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}
@@ -29,20 +32,24 @@ export default class Header extends Component {
 			<div>NotF</div>
 		)
 	}
+
 	renderAvatar = () => {
 		return (
 			<div>Avatar</div>
 		)
 	}
+
 	renderLogo = (logo) => {
 		return (
 			<LogoDiv to={'/'}>
 				<LogoImg src={logo} />
 			</LogoDiv>)
 	}
+
 	renderSearchBar = () => {
 		return (<div>Search</div>)
 	}
+	
 	render() {
 		const { search, notification, avatar } = this.props
 		const { logo } = this.state

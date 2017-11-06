@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TabIconDiv, Link, TabText } from './TabStyles'
 import { Icon } from 'odeum-ui'
-import theme from 'themes/default'
-export default class Tab extends Component {
+import theme from 'theme/default'
+
+class Tab extends Component {
 
 	componentWillMount() {
-		// this.props.SetHelpID(this.props.label)
+		if (this.props.helpID)
+			this.props.SetHelpID(this.props.helpID)
 	}
 
 	iconIsActive = () => this.props.active ? theme.icon.selected : theme.icon.default
+
 	render() {
 		return (
 			<Link to={this.props.route} selected={this.props.active}>
@@ -26,3 +29,5 @@ Tab.propTypes = {
 	label: PropTypes.string.isRequired,
 	route: PropTypes.string.isRequired
 }
+
+export default Tab

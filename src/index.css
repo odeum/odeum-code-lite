@@ -1,5 +1,6 @@
 body {
-	font-family: 'Source Sans Pro';
+	/* font-family: 'Sans Serif', Arial, Helvetica; */
+	font-family: 'Source Sans Pro', 'Sans Serif', Arial, Helvetica;
 	font-weight: 300;
-	font-size: 14px;
+	font-size: 15px;
 }

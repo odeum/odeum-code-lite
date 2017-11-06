@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-// import { MenuHeader, IconDiv } from './MenuStyles'
-// import media from 'themes/media'
 import { Route } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
-export default class MenuPanel extends Component {
+
+class MenuPanel extends Component {
 
 	constructor(props) {
 		super(props)
@@ -14,8 +13,10 @@ export default class MenuPanel extends Component {
 	switch = () => (
 		this.setState({ achordeon: !this.state.achordeon })
 	)
+
 	childHasRoute = (child) => child.props.children ? child.props.children[0].props ? child.props.children[0].props.route : '' : ''
 	renderChild = (child) => () => child
+	
 	render() {
 		return (
 			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1, overflowY: 'hidden' }}>
@@ -37,3 +38,5 @@ export default class MenuPanel extends Component {
 		)
 	}
 }
+
+export default MenuPanel

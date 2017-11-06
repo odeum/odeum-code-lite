@@ -27,7 +27,7 @@ A theme is passed as a theme prop to the <AppContainer> component.
 If no theme is provided to the AppContainer by the user, the AppContainer loads the default theme provided in the odeum-app package.
 
 ```js
-import theme from './themes/bluehorizon.js'
+import theme from './theme/bluehorizon.js'
 ...
 <AppContainer theme={theme}>
 ```

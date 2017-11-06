@@ -7,7 +7,7 @@ import App from 'App'
 
 import React, { Component } from 'react'
 
-export default class ReactRouter extends Component {
+class AppRouter extends Component {
 	render() {
 		return (
 			<Router>
@@ -18,3 +18,5 @@ export default class ReactRouter extends Component {
 		)
 	}
 }
+
+export default AppRouter

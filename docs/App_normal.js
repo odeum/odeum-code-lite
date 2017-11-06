@@ -7,7 +7,7 @@ import { Heading, Text } from 'odeum-primitives'
 import Workspaces from './components/Workspaces'
 
 // Full path to selected theme
-import theme from './themes/default.js'
+import theme from './theme/default.js'
 import logo from './bluehorizon.svg'
 
 class WorkspaceComponent extends Component {

@@ -3,12 +3,12 @@ import { IconDiv, ArrowIconDiv, Link, MenuText } from '../MenuStyles'
 import PropTypes from 'prop-types'
 import { Icon } from 'odeum-ui'
 
-export default class MenuItem extends Component {
-	
+class MenuItem extends Component {	
 	
 	componentWillMount = () => {
 		console.log(this.props.icon)
 	}
+	
 	componentWillUnmount = () => {
 		// this.setState({ active: false })
 	}
@@ -31,3 +31,5 @@ MenuItem.propTypes = {
 	icon: PropTypes.string
 
 }
+
+export default MenuItem

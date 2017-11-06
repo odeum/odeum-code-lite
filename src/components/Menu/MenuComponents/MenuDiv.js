@@ -16,6 +16,7 @@ export default class MenuDiv extends Component {
 		tablet: 768,
 		phone: 376
 	}
+
 	componentDidMount() {
 		this.updateWindowDimensions()
 		window.addEventListener('resize', this.updateWindowDimensions)
@@ -33,9 +34,11 @@ export default class MenuDiv extends Component {
 			this.setState({ disableAchordeon: false })
 		} 
 	}
+
 	switch = () => (
 		this.setState({ achordeon: !this.state.achordeon })
 	)
+	
 	render() {
 		const { disableAchordeon } = this.state
 		return (

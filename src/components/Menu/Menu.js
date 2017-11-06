@@ -3,7 +3,8 @@ import { Route } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
-export default class TabContainer extends Component {
+
+class Menu extends Component {
 	renderChildren = () => this.props.children.map((child, i) => {
 		return <Route key={i} path={this.props.route + child.props.route} component={this.renderChild(child)} />
 	})
@@ -26,3 +27,5 @@ export default class TabContainer extends Component {
 		)
 	}
 }
+
+export default Menu
