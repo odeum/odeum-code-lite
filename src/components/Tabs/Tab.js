@@ -6,11 +6,6 @@ import theme from 'theme/default'
 
 class Tab extends Component {
 
-	componentWillMount() {
-		if (this.props.helpID)
-			this.props.SetHelpID(this.props.helpID)
-	}
-
 	iconIsActive = () => this.props.active ? theme.icon.selected : theme.icon.default
 
 	render() {

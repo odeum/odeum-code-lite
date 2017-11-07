@@ -23,10 +23,6 @@ class App extends Component {
 			SetHelpID: this.SetHelpID
 		}
 
-		Tab.defaultProps = {
-			SetHelpID: this.SetHelpID
-		}
-
 	}
 
 	SetHelpID = (helpID) => {
