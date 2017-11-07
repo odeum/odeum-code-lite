@@ -30,7 +30,7 @@ class Menu extends Component {
 
 	renderNoTabs = () => {
 		return (
-			<Workspace style={{ margin: "20px" }}>
+			<Workspace>
 				{this.props.children}
 			</Workspace>
 		)

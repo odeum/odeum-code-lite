@@ -38,8 +38,14 @@ export const ArrowIconDiv = IconDiv.extend`
 export const MenuText = styled.div`
 	width: 100%;
 `
+export const MenuContainer = styled.div`
+	display:flex;
+	flex-flow: row nowrap;
+	flex:1;
+	overflow-y: hidden;
 
-export const Link = styled(RouterLink)`
+`
+export const Link = styled(RouterLink) `
 	border-bottom: ${theme.menu.bottomBorder};
 	text-decoration: none;
 	outline: 0;

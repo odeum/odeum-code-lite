@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
-
+import { MenuContainer } from './MenuStyles'
 class MenuPanel extends Component {
 
 	constructor(props) {
@@ -16,10 +16,10 @@ class MenuPanel extends Component {
 
 	childHasRoute = (child) => child.props.children ? child.props.children[0].props ? child.props.children[0].props.route : '' : ''
 	renderChild = (child) => () => child
-	
+
 	render() {
 		return (
-			<div style={{ display: 'flex', flexFlow: 'row nowrap', flex: 1, overflowY: 'hidden' }}>
+			<MenuContainer>
 				<MenuDiv>
 					{this.props.children.map((child, i) => (child.props.label ?
 						<MenuItem key={i}
@@ -34,7 +34,7 @@ class MenuPanel extends Component {
 					<Route path={child.props.route} exact={child.props.exact ? child.props.exact : undefined} route={child.props.route} key={i} component={this.renderChild(child)} />
 				)
 				}
-			</div >
+			</MenuContainer>
 		)
 	}
 }
