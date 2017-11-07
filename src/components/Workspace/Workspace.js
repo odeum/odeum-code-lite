@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { WorkspaceDiv } from './WorkspaceStyles'
 
-export default class Workspace extends Component {
+class Workspace extends Component {
 
 	componentWillMount() {
 		if (this.props.helpID)
@@ -16,3 +16,5 @@ export default class Workspace extends Component {
 		)
 	}
 }
+
+export default Workspace
