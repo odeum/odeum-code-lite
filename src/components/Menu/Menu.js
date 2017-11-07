@@ -5,8 +5,9 @@ import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 
 class Menu extends Component {
+
 	convertLabelToRoute = (label) => {
-		var route = label.replace(/\s+/g, '-').toLowerCase()
+		let route = label.replace(/\s+/g, '-').toLowerCase()
 		route = '/' + route
 		console.log('---route---')
 		console.log(route)

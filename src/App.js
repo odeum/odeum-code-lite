@@ -58,7 +58,7 @@ class App extends Component {
 							</Workspace>
 						</Tab>
 						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component'}>
-							<ReactComp />
+							<ReactComp helpID={2} />
 						</Tab>
 						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace'} >
 							<Workspace helpID={3}>
@@ -66,9 +66,9 @@ class App extends Component {
 							</Workspace>
 						</Tab>
 					</Menu>
-					{/* 
-						Workspace rendered from props
-						Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
+					{/* 					
+					Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
+					Workspace rendered from props
 					*/}
 					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
 						<Tab label={'React Component'} workspace={ReactComp} />
@@ -76,14 +76,14 @@ class App extends Component {
 						<Tab label={'No help'} icon={'assignment'} workspace={SimpleDiv} helpID={4} />
 					</Menu>
 				</MenuPanel>
-				<Footer label={renderFooterLabel} labelLink={handleLink()} target={''} debug={this.state.helpID} />
+				<Footer label={renderFooterLabel} labelLink={handleLink()} debug={String(this.state.helpID)} />
 			</AppContainer>
 		)
 	}
 }
 
 const handleLink = () => {
-	return '/children_menu/lorem_ipsum'
+	return '/children_menu/workspace'
 }
 
 const renderFooterLabel = () => {

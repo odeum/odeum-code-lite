@@ -35,7 +35,7 @@ class Footer extends Component {
 		return (
 			<FooterDiv>
 				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
-					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}{this.props.debug}
+					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
 				</Link>
 				<Help small={this.state.small} />
 			</FooterDiv>
@@ -44,7 +44,7 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-	label: PropTypes.string,
+	label: PropTypes.any,
 	labelLink: PropTypes.string,
 	target: PropTypes.string,
 	debug: PropTypes.string
