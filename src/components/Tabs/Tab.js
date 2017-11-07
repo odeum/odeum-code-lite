@@ -22,11 +22,13 @@ class Tab extends Component {
 
 Tab.propTypes = {
 	label: PropTypes.string.isRequired,
-	route: PropTypes.string
+	route: PropTypes.string,
+	icon: PropTypes.string
 }
 
 Tab.defaultProps = {
-	label: 'Tab'
+	label: 'Tab',
+	icon: 'tab'
 }
 
 export default Tab
