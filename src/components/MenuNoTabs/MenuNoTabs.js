@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Workspace from 'components/Workspace/Workspace'
 
-class NoTabs extends Component {
+class MenuNoTabs extends Component {
 
 	render() {
 		return (
@@ -12,4 +12,4 @@ class NoTabs extends Component {
 	}
 }
 
-export default NoTabs
+export default MenuNoTabs

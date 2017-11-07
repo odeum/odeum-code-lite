@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import AppContainer from 'components/AppContainer/AppStyles'
+import AppContainer from 'components/AppContainer/AppContainer'
 import Header from 'components/Header/Header'
-import Footer from 'components/Footer/Footer'
 import MenuPanel from 'components/Menu/MenuPanel'
+import MenuNoTabs from 'components/MenuNoTabs/MenuNoTabs'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
-import NoTabs from 'components/NoTabs/NoTabs'
+import Footer from 'components/Footer/Footer'
 import Logo from 'theme/logo.svg'
 import LogoIcon from 'theme/logo_icon.svg'
 
@@ -43,14 +43,14 @@ class App extends Component {
 
 				<MenuPanel>
 					{
-						/* No Tabs Containers Demos */
+						/* No Tabs demos */
 					}
-					<NoTabs route='/' exact>
+					<MenuNoTabs route='/' exact>
 						Home Demo <br />Last help ID: {this.state.helpID}
-					</NoTabs>
-					<NoTabs route='/home' label='No Tabs Menu Item' icon='home'>
-						No Tabs workspace
-					</NoTabs>
+					</MenuNoTabs>
+					<MenuNoTabs route='/home' label='Menu with no tabs' icon='home'>
+						No tabs workspace
+					</MenuNoTabs>
 					{/* 
 						End Region
 					*/}
@@ -58,7 +58,7 @@ class App extends Component {
 					{ /* 
 						Workspace with Children and help id's 
 					*/}
-					<Menu icon={'people'} route='/children_menu' label={'Menu With Children'} >
+					<Menu icon={'people'} route='/children_menu' label={'Menu with children'} >
 						<Tab icon={'assignment'} label={'Overflow Test'} route={'/lorem_ipsum'} >
 							<Workspace helpID={1}>
 								<SimpleDiv/>
@@ -83,7 +83,7 @@ class App extends Component {
 						Workspace with props as workspace. 
 						How can we include help when using this pattern?
 					*/}
-					<Menu icon={'tab'} route='/menu2' label={'Menu With Workspace Prop'}>
+					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
 						<Tab label={'React Component'} route={'/react-component'} workspace={ReactComp} />
 						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv} />
 						<Tab label={'No help'} icon={'assignment'} route={'/no-help'} workspace={SimpleDiv} helpID={4}/>
