@@ -5,16 +5,18 @@ import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 
 class Menu extends Component {
-	renderChildren = () => this.props.children.map((child, i) => {
-		return <Route key={i} path={this.props.route + child.props.route} component={this.renderChild(child)} />
+	renderChildren = () => this.props.children.map((child, index) => {
+		return <Route key={index} path={this.props.route + child.props.route} component={this.renderChild(child)} />
 	})
+
 	renderChild = (child) => child.props.children ? () => child.props.children : child.props.workspace ? () => <Workspace>{React.createElement(child.props.workspace)}</Workspace> : null
-	render() {
+
+	renderTabs = () => {
 		return (
 			<SceneDiv>
 				<TabList>
-					{this.props.children.map((child, i) => (
-						<Tab key={i}
+					{this.props.children.map((child, index) => (
+						<Tab key={index}
 							active={window.location.pathname.includes(child.props.route) ? true : false}
 							label={child.props.label}
 							icon={child.props.icon ? child.props.icon : this.props.icon}
@@ -22,9 +24,20 @@ class Menu extends Component {
 					))}
 				</TabList>
 				{this.renderChildren()}
-
 			</SceneDiv>
 		)
+	}
+
+	renderNoTabs = () => {
+		return (
+			<Workspace style={{ margin: "20px 10px 10px 20px" }}>
+				{this.props.children}
+			</Workspace>
+		)
+	}
+
+	render() {
+		return (this.props.children) ? (this.props.children[0].type === Tab) ? this.renderTabs() : this.renderNoTabs() : null
 	}
 }
 

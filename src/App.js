@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import AppContainer from 'components/AppContainer/AppContainer'
 import Header from 'components/Header/Header'
 import MenuPanel from 'components/Menu/MenuPanel'
-import MenuNoTabs from 'components/MenuNoTabs/MenuNoTabs'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
@@ -32,15 +31,17 @@ class App extends Component {
 
 	}
 
-	SetHelpID = (helpID) => helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
+	SetHelpID = (helpID) => {
+		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
+	}
 
 	render() {
 		return (
 			<AppContainer>
 				{/* 
 				What is it with the array of logos? 
-				Todo: Use default theme transparent and include theme prop in AppContainer that overwrites default theme
-				Todo: Include default logo in defaultprops in Header component
+				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
+				Todo: Include default logo in defaultprops in Header component and if logo prop is used then overwrite defaults
 				Todo: Remove all inline styles and use styled-components ...
 				*/}
 				<Header logo={Logo} logos={[Logo, LogoIcon]} />
@@ -50,12 +51,13 @@ class App extends Component {
 					{
 						/* No Tabs demos */
 					}
-					<MenuNoTabs route='/' exact>
+					<Menu route='/' exact>
 						Home Demo <br />Last help ID: {this.state.helpID}
-					</MenuNoTabs>
-					<MenuNoTabs route='/home' label='Menu with no tabs' icon='home'>
+					</Menu>
+
+					<Menu route='/home' label='Menu with no tabs' icon='home'>
 						No tabs workspace
-					</MenuNoTabs>
+					</Menu>
 					{/* 
 						End Region
 					*/}
@@ -71,7 +73,12 @@ class App extends Component {
 						</Tab>
 						<Tab icon={'assignment_turned_in'} label={'React Component'} route={'/react-component'}>
 							<Workspace helpID={2}>
-								<ReactComp/>								
+								<ReactComp/>
+								<Tab icon={'assignment'} label={'Sub tab'} route={'/subtab/lorem_ipsum'} >
+									<Workspace helpID={6}>
+										<SimpleDiv />
+									</Workspace>
+								</Tab>
 							</Workspace>
 						</Tab>
 						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >

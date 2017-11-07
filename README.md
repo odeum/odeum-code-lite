@@ -6,7 +6,6 @@ A scaled down "ODEUM Code" getting-started quickly framework
 - AppContainer
 - Header
 - MenuPanel
-- MenuNoTabs
 - Menu
 - Tab
 - Workspace
@@ -14,7 +13,7 @@ A scaled down "ODEUM Code" getting-started quickly framework
 - Logo
 
 ```js
-import { AppContainer, Header, MenuPanel, MenuNoTabs, Menu, Tab, Workspace, Footer, registerHotModule } from 'odeum-app'
+import { AppContainer, Header, MenuPanel, Menu, Tab, Workspace, Footer, registerHotModule } from 'odeum-app'
 import { Button, ButtonPanel, Modal, Dropdown, Input, Checkbox, ToggleSwitch } from 'odeum-ui'
 import { Heading, Text } from 'odeum-primitives'
 ```
