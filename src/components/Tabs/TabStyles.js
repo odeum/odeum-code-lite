@@ -19,7 +19,7 @@ export const TabText = styled.div`
 	white-space: nowrap;
 `
 
-export const Link = styled(RouterLink) `
+export const Link = styled(RouterLink)`
 	text-decoration: none;
 	align-items: center;
 	justify-content: center;
