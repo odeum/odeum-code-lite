@@ -18,8 +18,7 @@ export const FooterDiv = styled.div`
 	-moz-box-shadow: 0 0 3px 0 #ccc;
 	box-shadow: 0 0 3px 0 #ccc;
 	color: #5e5e5e;
-	font-family: 'Source Sans Pro';
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: 300;
 	text-align: center;
 	user-select: none;
