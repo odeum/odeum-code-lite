@@ -81,7 +81,9 @@ class App extends Component {
 
 					{/* 
 						Workspace with props as workspace. 
-						How can we include help when using this pattern?
+						Todo: How can we include help when using this pattern?
+						Todo: If no route is transfered then create dummy route from label
+						Todo: Create defaultprops from Menu and Tab so they can be used without any props
 					*/}
 					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
 						<Tab label={'React Component'} route={'/react-component'} workspace={ReactComp} />
