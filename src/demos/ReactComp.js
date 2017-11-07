@@ -15,7 +15,7 @@ export default class ReactComp extends Component {
 
 	render() {
 		return (
-			<Workspace helpID={200}>
+			<Workspace>
 				{<iframe title={'phone'} width="560" height="315" src="https://www.youtube.com/embed/EVBsypHzF3U?start=170" frameBorder="0" allowFullScreen></iframe>}
 			</Workspace>
 		)

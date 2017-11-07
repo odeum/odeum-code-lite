@@ -1,7 +1,7 @@
 {
   "name": "odeum-code-lite",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
+  "private": false,
   "dependencies": {
     "odeum-ui": "^0.1.24",
     "polished": "^1.8.1",
@@ -12,7 +12,6 @@
     "react-scripts": "1.0.14",
     "styled-components": "^2.2.2",
     "svgr": "^0.4.0",
-    "typeface-source-sans-pro": "^0.0.43",
     "uuid": "^3.1.0"
   },
   "scripts": {

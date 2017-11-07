@@ -6,7 +6,7 @@ import App from 'App'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 
-require('typeface-source-sans-pro')
+
 //TODO Check Hot Reloading
 class AppRouter extends Component {
 	render() {

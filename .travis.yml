@@ -10,12 +10,11 @@ script:
   - yarn
   - yarn build
   - cp ./build/index.html ./build/200.html
-#  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ../../
 
 deploy:
   provider: surge
   project: ./build/
-  domain: yournewapp.surge.sh
+  domain: odeumcodelite.surge.sh
   skip_cleanup: true
   on:
     all_branches: true
