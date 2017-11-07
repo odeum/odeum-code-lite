@@ -7,7 +7,6 @@ import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
 
-
 /* Demo */
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
@@ -38,8 +37,6 @@ class App extends Component {
 				Todo: Remove all inline styles and use styled-components ...
 				*/}
 				<Header />
-
-
 				<MenuPanel>
 					{
 						/* No Tabs demos */
@@ -51,65 +48,52 @@ class App extends Component {
 					<Menu route='/home' label='Menu with no tabs' icon='home'>
 						No tabs workspace
 					</Menu>
-					{/* 
-						End Region
-					*/}
-
 					{ /* 
 						Workspace with Children and help id's 
 					*/}
 					<Menu icon={'people'} route='/children_menu' label={'Menu with children'} >
-						<Tab icon={'assignment'} label={'Overflow Test'} route={'/lorem_ipsum'} >
+						<Tab icon={'assignment'} label={'Overflow'} route={'/overflow'} >
 							<Workspace helpID={1}>
 								<SimpleDiv />
 							</Workspace>
 						</Tab>
-						<Tab icon={'assignment_turned_in'} label={'Subtab'} route={'/react-component'}>
+						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component'}>
 							<ReactComp />
 						</Tab>
-						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >
+						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace'} >
 							<Workspace helpID={3}>
-								{<iframe title={'phone'} width="560" height="315" src="https://www.youtube.com/embed/EVBsypHzF3U?start=170" frameBorder="0" allowFullScreen></iframe>}
+								{<div>Hello Workspace ... </div>}
 							</Workspace>
 						</Tab>
 					</Menu>
 					{/* 
-						End Region
-					*/}
-
-					{/* 
-						Workspace with props as workspace. 
-						Todo: If no route is transfered then create dummy route from lowercase label
-						Function to create route from label or defaultLabel 
+						Workspace rendered from props
 						Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
 					*/}
 					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
 						<Tab label={'React Component'} workspace={ReactComp} />
 						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv} />
-						<Tab label={'No help'} icon={'assignment'} route={'/no-help'} workspace={SimpleDiv} helpID={4} />
+						<Tab label={'No help'} icon={'assignment'} workspace={SimpleDiv} helpID={4} />
 					</Menu>
-					{/* 
-						End Region
-					*/}
 				</MenuPanel>
-				{/* Render FooterLabel + Link 
-				label={renderFooterLabel} labellink={handleLink} help={true}
-				*/}
-				<Footer label={renderFooterLabel} labelLink={handleLink} helpId={this.state.helpID} />
+				<Footer label={renderFooterLabel} labelLink={handleLink()} target={''} debug={this.state.helpID} />
 			</AppContainer>
 		)
 	}
 }
+
 const handleLink = () => {
-	return 'http://google.ro'
+	return '/children_menu/lorem_ipsum'
 }
+
 const renderFooterLabel = () => {
 	const date = new Date()
 	return (
 		<div>
 			<b>ODEUM Code Lite </b> v1.0.0 © Copyright
-			{' '}{date.getFullYear()}
+			{' '}{date.getFullYear()}{' '}
 		</div>
 	)
 }
+
 export default App

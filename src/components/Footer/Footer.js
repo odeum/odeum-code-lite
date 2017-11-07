@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { FooterDiv, Link } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
 import { ScreenSizes } from 'theme/media'
+
 class Footer extends Component {
 	constructor(props) {
 		super(props)
+
 		this.state = {
 			small: false
 		}
@@ -31,8 +34,8 @@ class Footer extends Component {
 	render() {
 		return (
 			<FooterDiv>
-				<Link to={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink}>
-					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
+				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
+					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}{this.props.debug}
 				</Link>
 				<Help small={this.state.small} />
 			</FooterDiv>
@@ -40,11 +43,21 @@ class Footer extends Component {
 	}
 }
 
+Footer.propTypes = {
+	label: PropTypes.string,
+	labelLink: PropTypes.string,
+	target: PropTypes.string,
+	debug: PropTypes.string
+}
+
 Footer.defaultProps = {
 	label: <div>
 		<b>ODEUM Code Lite </b> v1.0.0 © Copyright
 	</div>,
-	labelLink: '/'
+	labelLink: '/',
+	target: '',
+	debug: ''
 
 }
+
 export default Footer
