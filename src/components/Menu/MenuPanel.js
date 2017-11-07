@@ -3,18 +3,24 @@ import { Route } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
+
 class MenuPanel extends Component {
-	convertLabelToRoute = (child) => {
-		console.log(child.props.children)
-		var route = child.props.children[0].props.label.replace(/\s+/g, '-').toLowerCase()
-		route = '/' + route
-		console.log('---route---')
-		console.log(route)
-		return route
-	}
 	constructor(props) {
 		super(props)
-		this.state = { achordeon: true, disableMenuAchordeon: false }
+
+		this.state = { 
+			achordeon: true, 
+			disableMenuAchordeon: false 
+		}
+	}
+	
+	convertLabelToRoute = (child) => {
+		// console.log(child.props.children)
+		var route = child.props.children[0].props.label.replace(/\s+/g, '-').toLowerCase()
+		route = '/' + route
+		// console.log('---route---')
+		// console.log(route)
+		return route
 	}
 
 	switch = () => (
