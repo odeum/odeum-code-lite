@@ -10,8 +10,8 @@ import Logo from 'theme/logo.svg'
 import LogoIcon from 'theme/logo_icon.svg'
 
 /* Demo */
-import ReactComp from 'demos/ReactComp'
-import { SimpleDiv } from 'demos/SimpleDiv'
+import ReactComp from 'Demos/ReactComp'
+import { SimpleDiv } from 'Demos/SimpleDiv'
 
 class App extends Component {
 	constructor(props) {
@@ -39,12 +39,10 @@ class App extends Component {
 		return (
 			<AppContainer>
 				{/* 
-				What is it with the array of logos? 
 				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
-				Todo: Include default logo in defaultprops in Header component and if logo prop is used then overwrite defaults
 				Todo: Remove all inline styles and use styled-components ...
 				*/}
-				<Header logo={Logo} logos={[Logo, LogoIcon]} />
+				<Header />
 
 
 				<MenuPanel>
@@ -68,12 +66,12 @@ class App extends Component {
 					<Menu icon={'people'} route='/children_menu' label={'Menu with children'} >
 						<Tab icon={'assignment'} label={'Overflow Test'} route={'/lorem_ipsum'} >
 							<Workspace helpID={1}>
-								<SimpleDiv/>
+								<SimpleDiv />
 							</Workspace>
 						</Tab>
-						<Tab icon={'assignment_turned_in'} label={'React Component'} route={'/react-component'}>
+						<Tab icon={'assignment_turned_in'} label={'Subtab'} route={'/react-component'}>
 							<Workspace helpID={2}>
-								<ReactComp/>
+								<ReactComp />
 								<Tab icon={'assignment'} label={'Sub tab'} route={'/subtab/lorem_ipsum'} >
 									<Workspace helpID={6}>
 										<SimpleDiv />
@@ -93,20 +91,22 @@ class App extends Component {
 
 					{/* 
 						Workspace with props as workspace. 
-						Todo: How can we include help when using this pattern?
 						Todo: If no route is transfered then create dummy route from lowercase label
+						Function to create route from label or defaultLabel 
 						Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
 					*/}
 					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
 						<Tab label={'React Component'} route={'/react-component'} workspace={ReactComp} />
 						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv} />
-						<Tab label={'No help'} icon={'assignment'} route={'/no-help'} workspace={SimpleDiv} helpID={4}/>
+						<Tab label={'No help'} icon={'assignment'} route={'/no-help'} workspace={SimpleDiv} helpID={4} />
 					</Menu>
 					{/* 
 						End Region
 					*/}
 				</MenuPanel>
-
+				{/* Render FooterLabel + Link 
+				label={renderFooterLabel} labellink={handleLink} help={true}
+				*/}
 				<Footer helpId={this.state.helpID} />
 			</AppContainer>
 		)

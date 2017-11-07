@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from 'theme/media'
+import theme from 'theme/default'
 export default class Header extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			logo: this.props.logo ? this.props.logo : this.props.logos ? this.props.logos[0] : null
+			logo: this.props.logo ? this.props.logo : this.props.logos ? this.props.logos[0] : theme.logo.default
 		}
 	}
 
@@ -17,7 +18,7 @@ export default class Header extends Component {
 	}
 
 	componentWillMount() {
-		if (this.props.logos.length >= 2) {
+		if (this.props.logos !== undefined) {
 			this.changeLogo()
 			window.addEventListener('resize', this.changeLogo)
 		}

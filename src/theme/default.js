@@ -1,3 +1,5 @@
+import ODEUMLogo from 'theme/logo.svg'
+
 const theme = {
 	header: {
 		background: '#2C3E50',
@@ -32,7 +34,10 @@ const theme = {
 	icon: {
 		default: '#34495D',
 		selected: '#FFF'
-	}
+	},
+	 logo: {
+		 default: ODEUMLogo
+	 }
 }
 
 export default theme

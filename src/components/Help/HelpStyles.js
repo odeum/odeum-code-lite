@@ -4,7 +4,7 @@ import theme from 'theme/default'
 import { Icon as DefaultIcon } from 'odeum-ui'
 
 export const B = styled.b`
-	font-size: 14px;
+	font-size: 12px;
 	margin-left: 4px;
 `
 export const Icon = styled(DefaultIcon)`

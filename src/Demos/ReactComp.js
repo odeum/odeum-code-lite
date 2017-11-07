@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Workspace from 'components/Workspace/Workspace'
+
 export default class ReactComp extends Component {
 	constructor(props) {
 		super(props)
@@ -13,10 +15,9 @@ export default class ReactComp extends Component {
 
 	render() {
 		return (
-			<div>
-				<button onClick={this.switch}>Button</button>
-				<br/>{this.state.ha.toString()}
-			</div>
+			<Workspace helpID={200}>
+				{<iframe title={'phone'} width="560" height="315" src="https://www.youtube.com/embed/EVBsypHzF3U?start=170" frameBorder="0" allowFullScreen></iframe>}
+			</Workspace>
 		)
 	}
 }
