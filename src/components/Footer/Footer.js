@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { FooterDiv, Bold } from 'components/Footer/FooterStyles'
+import { FooterDiv, Link } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
 import { ScreenSizes } from 'theme/media'
-
 class Footer extends Component {
 	constructor(props) {
 		super(props)
@@ -30,17 +29,22 @@ class Footer extends Component {
 	}
 
 	render() {
-		const date = new Date()
 		return (
 			<FooterDiv>
-				<div>
-					<Bold>ODEUM Code Lite </Bold> v1.0.0 © Copyright
-					{' '}{date.getFullYear()}{' '}({this.props.helpId})
-				</div>
+				<Link to={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink}>
+					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
+				</Link>
 				<Help small={this.state.small} />
 			</FooterDiv>
 		)
 	}
 }
 
+Footer.defaultProps = {
+	label: <div>
+		<b>ODEUM Code Lite </b> v1.0.0 © Copyright
+	</div>,
+	labelLink: '/'
+
+}
 export default Footer
