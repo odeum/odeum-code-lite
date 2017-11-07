@@ -36,31 +36,31 @@ class App extends Component {
 				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
 				Todo: Remove all inline styles and use styled-components ...
 				*/}
-				<Header />
+				<Header/>
 				<MenuPanel>
 					{
 						/* No Tabs demos */
 					}
-					<Menu route='/' exact>
+					<Menu route={'/'} exact>
 						Home Demo <br />Last help ID: {this.state.helpID}
 					</Menu>
 
-					<Menu route='/home' label='Menu with no tabs' icon='home'>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'}>
 						No tabs workspace
 					</Menu>
 					{ /* 
 						Workspace with Children and help id's 
 					*/}
-					<Menu icon={'people'} route='/children_menu' label={'Menu with children'} >
-						<Tab icon={'assignment'} label={'Overflow'} route={'/overflow'} >
+					<Menu icon={'people'} route={'/children_menu'} label={'Menu with children'}>
+						<Tab icon={'assignment'} label={'Overflow'} route={'/overflow'}>
 							<Workspace helpID={1}>
-								<SimpleDiv />
+								<SimpleDiv/>
 							</Workspace>
 						</Tab>
 						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component'}>
 							<ReactComp helpID={2} />
 						</Tab>
-						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace'} >
+						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace'}>
 							<Workspace helpID={3}>
 								{<div>Hello Workspace ... </div>}
 							</Workspace>
@@ -70,13 +70,22 @@ class App extends Component {
 					Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
 					Workspace rendered from props
 					*/}
-					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
+
+					<Menu icon={'tab'} route={'/menu2'} label={'Menu with prop'}>
 						<Tab label={'React Component'} workspace={ReactComp} />
-						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv} />
-						<Tab label={'No help'} icon={'assignment'} workspace={SimpleDiv} helpID={4} />
+						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv}/>
+						<Tab label={'No help'} icon={'assignment'} workspace={SimpleDiv} helpID={5} />
 					</Menu>
+
+					<Menu icon={'menu'} route={'/tabmenu'} label={'Menu with tabs'}>
+						<Tab route={'/tab1'}>
+						</Tab>
+						{/* <Tab route={'/tab2'}>
+						</Tab> */}
+					</Menu>
+
 				</MenuPanel>
-				<Footer label={renderFooterLabel} labelLink={handleLink()} debug={String(this.state.helpID)} />
+				<Footer label={renderFooterLabel} labelLink={handleLink()} debug={String(this.state.helpID)}/>
 			</AppContainer>
 		)
 	}
@@ -97,3 +106,4 @@ const renderFooterLabel = () => {
 }
 
 export default App
+
