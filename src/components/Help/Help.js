@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 import { HelpDiv, B, Icon, HelpButton } from './HelpStyles'
 
 export default class Help extends Component {
-	render() {
-		console.log(this.props.small)
+	render() {		
 		return (
 			<HelpDiv small={this.props.small}>
 				<HelpButton>
