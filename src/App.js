@@ -8,8 +8,8 @@ import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
 
 /* Demo */
-import ReactComp from 'Demos/ReactComp'
-import { SimpleDiv } from 'Demos/SimpleDiv'
+import ReactComp from 'demos/ReactComp'
+import { SimpleDiv } from 'demos/SimpleDiv'
 
 class App extends Component {
 	constructor(props) {
