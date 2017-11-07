@@ -12,7 +12,6 @@ class Footer extends Component {
 
 	componentWillMount() {
 		this.smallHelp()
-		console.log(this.props)
 		window.addEventListener('resize', this.smallHelp)
 	}
 
