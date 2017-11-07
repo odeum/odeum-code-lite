@@ -9,16 +9,17 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			logo: this.props.logo ? this.props.logo : this.props.logos ? this.props.logos[0] : theme.logo.default
+			logo: this.props.logo ? this.props.logo : this.props.logos ? this.props.logos[0] : theme.logo.default,
+			logos: theme.logo.bigLogo && theme.logo.smallLogo ? [theme.logo.bigLogo, theme.logo.smallLogo] : undefined
 		}
 	}
 
 	changeLogo = () => {
-		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? this.props.logos[0] : this.props.logos[1] })
+		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? this.state.logos[0] : this.state.logos[1] })
 	}
 
 	componentWillMount() {
-		if (this.props.logos !== undefined) {
+		if (this.state.logos !== undefined) {
 			this.changeLogo()
 			window.addEventListener('resize', this.changeLogo)
 		}
@@ -30,7 +31,7 @@ export default class Header extends Component {
 
 	renderNotification = () => {
 		return (
-			<div>NotF</div>
+			<div>NotiF</div>
 		)
 	}
 

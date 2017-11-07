@@ -6,8 +6,8 @@ import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
-import Logo from 'theme/logo.svg'
-import LogoIcon from 'theme/logo_icon.svg'
+// import Logo from 'theme/logo.svg'
+// import LogoIcon from 'theme/logo_icon.svg'
 
 /* Demo */
 import ReactComp from 'demos/ReactComp'

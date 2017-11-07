@@ -43,7 +43,6 @@ export const MenuContainer = styled.div`
 	flex-flow: row nowrap;
 	flex:1;
 	overflow-y: hidden;
-
 `
 export const Link = styled(RouterLink) `
 	border-bottom: ${theme.menu.bottomBorder};

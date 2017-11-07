@@ -6,5 +6,6 @@ export const WorkspaceDiv = styled.div`
 	flex-flow: row wrap;
 	background-color: white;
 	padding: 10px;
-	overflow-y: scroll;
+	overflow-y:auto;
+	border-radius: 0px 5px 5px 5px;
 `
