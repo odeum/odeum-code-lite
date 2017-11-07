@@ -5,14 +5,6 @@ import { Icon } from 'odeum-ui'
 
 class MenuItem extends Component {	
 	
-	componentWillMount = () => {
-		console.log(this.props.icon)
-	}
-	
-	componentWillUnmount = () => {
-		// this.setState({ active: false })
-	}
-
 	render() {
 		return (
 			<Link title={this.props.label} to={this.props.route} selected={this.props.active} achordeon={this.props.achordeon}>
@@ -25,6 +17,7 @@ class MenuItem extends Component {
 		)
 	}
 }
+
 MenuItem.propTypes = {
 	label: PropTypes.string.isRequired,
 	route: PropTypes.string.isRequired,
