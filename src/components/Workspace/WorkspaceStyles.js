@@ -7,5 +7,4 @@ export const WorkspaceDiv = styled.div`
 	background-color: white;
 	padding: 10px;
 	overflow-y: scroll;
-	margin: 20px;
 `
