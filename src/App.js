@@ -25,10 +25,6 @@ class App extends Component {
 			SetHelpID: this.SetHelpID
 		}
 
-		Tab.defaultProps = {
-			SetHelpID: this.SetHelpID
-		}
-
 	}
 
 	SetHelpID = (helpID) => {
@@ -72,11 +68,6 @@ class App extends Component {
 						<Tab icon={'assignment_turned_in'} label={'Subtab'} route={'/react-component'}>
 							<Workspace helpID={2}>
 								<ReactComp />
-								<Tab icon={'assignment'} label={'Sub tab'} route={'/subtab/lorem_ipsum'} >
-									<Workspace helpID={6}>
-										<SimpleDiv />
-									</Workspace>
-								</Tab>
 							</Workspace>
 						</Tab>
 						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >
