@@ -3,7 +3,7 @@ import {
 	Route,
 } from 'react-router-dom'
 
-import App from 'App'
+import App from '../../App'
 
 import React, { Component } from 'react'
 
