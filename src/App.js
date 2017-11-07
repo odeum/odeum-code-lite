@@ -37,8 +37,13 @@ class App extends Component {
 	render() {
 		return (
 			<AppContainer>
-				{/* What is it with the array of logos? */}
-				<Header logo={Logo} search={false} notification={false} avatar={false} logos={[Logo, LogoIcon]} />
+				{/* 
+				What is it with the array of logos? 
+				Todo: Use default theme transparent and include theme prop in AppContainer that overwrites default theme
+				Todo: Include default logo in defaultprops in Header component
+				Todo: Remove all inline styles and use styled-components ...
+				*/}
+				<Header logo={Logo} logos={[Logo, LogoIcon]} />
 
 
 				<MenuPanel>
@@ -82,8 +87,8 @@ class App extends Component {
 					{/* 
 						Workspace with props as workspace. 
 						Todo: How can we include help when using this pattern?
-						Todo: If no route is transfered then create dummy route from label
-						Todo: Create defaultprops from Menu and Tab so they can be used without any props
+						Todo: If no route is transfered then create dummy route from lowercase label
+						Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
 					*/}
 					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
 						<Tab label={'React Component'} route={'/react-component'} workspace={ReactComp} />

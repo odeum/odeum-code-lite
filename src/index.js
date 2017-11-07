@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import { registerHotModule } from 'components/AppRouter/registerHotModule'
 import { BrowserRouter as Router, Route, } from 'react-router-dom'
 import App from 'App'
 import registerServiceWorker from './registerServiceWorker'
@@ -24,14 +25,6 @@ render(
 	document.getElementById('root')
 )
 
-if (module.hot) {
-	module.hot.accept('components/AppRouter/AppRouter', () => {
-		const NextApp = require('components/AppRouter/AppRouter').default
-		render(
-			<NextApp />,
-			document.getElementById('root')
-		)
-	})
-}
-
+registerHotModule()
 registerServiceWorker()
+

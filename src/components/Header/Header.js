@@ -71,3 +71,10 @@ Header.propTypes = {
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,
 }
+
+Header.defaultProps = {
+	search: false, 
+	notification: false,
+	avatar: false
+}
+
