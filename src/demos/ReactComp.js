@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Workspace from 'components/Workspace/Workspace'
 
-export default class ReactComp extends Component {
+class ReactComp extends Component {
 	constructor(props) {
 		super(props)
 
@@ -15,7 +15,7 @@ export default class ReactComp extends Component {
 
 	render() {
 		return (
-			<Workspace>
+			<Workspace helpID={this.props.helpID}>
 				{<iframe 
 					title={'Lady Gaga - Telephone ft. Beyoncé'} 
 					width="560" 
@@ -28,3 +28,5 @@ export default class ReactComp extends Component {
 		)
 	}
 }
+
+export default ReactComp
