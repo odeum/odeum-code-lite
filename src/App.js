@@ -66,9 +66,7 @@ class App extends Component {
 							</Workspace>
 						</Tab>
 						<Tab icon={'assignment_turned_in'} label={'Subtab'} route={'/react-component'}>
-							<Workspace helpID={2}>
-								<ReactComp />
-							</Workspace>
+							<ReactComp />
 						</Tab>
 						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >
 							<Workspace helpID={3}>
