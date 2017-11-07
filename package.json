@@ -1,7 +1,7 @@
 {
   "name": "odeum-code-lite",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "dependencies": {
     "odeum-ui": "^0.1.24",
     "polished": "^1.8.1",
