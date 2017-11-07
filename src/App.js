@@ -6,8 +6,6 @@ import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
-import Logo from 'theme/logo.svg'
-import LogoIcon from 'theme/logo_icon.svg'
 
 /* Demo */
 import ReactComp from 'Demos/ReactComp'
@@ -72,11 +70,6 @@ class App extends Component {
 						<Tab icon={'assignment_turned_in'} label={'Subtab'} route={'/react-component'}>
 							<Workspace helpID={2}>
 								<ReactComp />
-								<Tab icon={'assignment'} label={'Sub tab'} route={'/subtab/lorem_ipsum'} >
-									<Workspace helpID={6}>
-										<SimpleDiv />
-									</Workspace>
-								</Tab>
 							</Workspace>
 						</Tab>
 						<Tab icon={'phone'} label={'Phone'} route={'/phone'} >

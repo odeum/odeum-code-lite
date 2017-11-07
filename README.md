@@ -27,7 +27,7 @@ import { Heading, Text } from 'odeum-primitives'
 
 
 ### Theme
-Default theme is ODEUM Code theme. The theme file contains objects for colors and fonts for the selected theme.
+Default theme is ODEUM Code theme. The theme file contains objects for colors, fonts and sizes for the selected theme.
 
 A theme is passed as a theme prop to the <AppContainer> component. 
 
