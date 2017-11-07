@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import theme from 'theme/default'
 import media from 'theme/media'
+import { Link as RouterLink } from 'react-router-dom'
 
 export const Bold = styled.b`
 	font-weight: 600;
@@ -26,4 +27,11 @@ export const FooterDiv = styled.div`
 	${media.desktop`height:40px;`}
 	${media.tablet`height:30px;`}
 	${media.phone`height:20px;`}
+`
+
+export const Link = styled(RouterLink) `
+	text-decoration: none;
+	align-items: center;
+	justify-content: center;
+	color:black;
 `

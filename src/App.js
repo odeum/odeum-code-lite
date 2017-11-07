@@ -96,10 +96,21 @@ class App extends Component {
 				{/* Render FooterLabel + Link 
 				label={renderFooterLabel} labellink={handleLink} help={true}
 				*/}
-				<Footer helpId={this.state.helpID} />
+				<Footer label={renderFooterLabel} labelLink={handleLink} helpId={this.state.helpID} />
 			</AppContainer>
 		)
 	}
 }
-
+const handleLink = () => {
+	return 'http://google.ro'
+}
+const renderFooterLabel = () => {
+	const date = new Date()
+	return (
+		<div>
+			<b>ODEUM Code Lite </b> v1.0.0 © Copyright
+			{' '}{date.getFullYear()}
+		</div>
+	)
+}
 export default App
