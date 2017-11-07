@@ -9,7 +9,7 @@ export const TabList = styled.div`
  	list-style: none;
  	padding: 0;
  	margin: 0;
-	max-height: 43px;
+	max-height: 40px;
 	align-items: end;
 `
 
