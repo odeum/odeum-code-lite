@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
@@ -9,8 +10,8 @@ class Menu extends Component {
 	convertLabelToRoute = (label) => {
 		let route = label.replace(/\s+/g, '-').toLowerCase()
 		route = '/' + route
-		console.log('---route---')
-		console.log(route)
+		// console.log('---route---')
+		// console.log(route)
 		return route
 	}
 	childRoute = (child) => {
@@ -22,6 +23,9 @@ class Menu extends Component {
 
 	renderChild = (child) => child.props.children ? () => child.props.children : child.props.workspace ? () => <Workspace>{React.createElement(child.props.workspace)}</Workspace> : null
 
+	/* 					
+	Todo: Use convertLabelToRoute for Tabs
+	*/
 	renderTabs = () => {
 		return (
 			<SceneDiv>
@@ -51,5 +55,16 @@ class Menu extends Component {
 		return (this.props.children) ? (this.props.children[0].type === Tab) ? this.renderTabs() : this.renderNoTabs() : null
 	}
 }
+
+Menu.propTypes = {
+	label: PropTypes.string,
+	route: PropTypes.string,
+	icon: PropTypes.string,
+}
+
+Menu.defaultProps = {
+	icon: 'menu'
+}
+
 
 export default Menu
