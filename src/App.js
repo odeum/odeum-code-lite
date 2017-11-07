@@ -84,7 +84,7 @@ class App extends Component {
 						Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
 					*/}
 					<Menu icon={'tab'} route='/menu2' label={'Menu with prop'}>
-						<Tab label={'React Component'} route={'/react-component'} workspace={ReactComp} />
+						<Tab label={'React Component'} workspace={ReactComp} />
 						<Tab label={'SimpleDiv'} icon={'phone'} route={'/simple-div'} workspace={SimpleDiv} />
 						<Tab label={'No help'} icon={'assignment'} route={'/no-help'} workspace={SimpleDiv} helpID={4} />
 					</Menu>
