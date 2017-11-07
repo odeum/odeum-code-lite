@@ -5,11 +5,19 @@ A scaled down "ODEUM Code" getting-started quickly framework
 ## Components:
 - AppContainer
 - Header
-- MenuPanel (collapsable)
-- Menu (menu item)
-- Footer
-- TabPanel
+- MenuPanel
+- MenuNoTabs
+- Menu
 - Tab
+- Workspace
+- Footer
+- Logo
+
+```js
+import { AppContainer, Header, MenuPanel, MenuNoTabs, Menu, Tab, Workspace, Footer, registerHotModule } from 'odeum-app'
+import { Button, ButtonPanel, Modal, Dropdown, Input, Checkbox, ToggleSwitch } from 'odeum-ui'
+import { Heading, Text } from 'odeum-primitives'
+```
 
 ## Added by you:
 - ODEUM UI
