@@ -10,8 +10,8 @@ import Logo from 'theme/logo.svg'
 import LogoIcon from 'theme/logo_icon.svg'
 
 /* Demo */
-import ReactComp from 'Demos/ReactComp'
-import { SimpleDiv } from 'Demos/SimpleDiv'
+import ReactComp from 'demos/ReactComp'
+import { SimpleDiv } from 'demos/SimpleDiv'
 
 class App extends Component {
 	constructor(props) {
