@@ -68,6 +68,7 @@ class App extends Component {
 					</Menu>
 					{/* 					
 					Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
+					Todo: Fix Menu/MenuPanel so you can settle for only 1 tab
 					Workspace rendered from props
 					*/}
 
@@ -78,10 +79,10 @@ class App extends Component {
 					</Menu>
 
 					<Menu icon={'menu'} route={'/tabmenu'} label={'Menu with tabs'}>
-						<Tab route={'/tab1'}>
+						<Tab route={'/tab1'} workspace={ReactComp}>
 						</Tab>
-						{/* <Tab route={'/tab2'}>
-						</Tab> */}
+						<Tab route={'/tab2'} workspace={SimpleDiv}>
+						</Tab>
 					</Menu>
 
 				</MenuPanel>

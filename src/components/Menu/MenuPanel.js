@@ -34,8 +34,8 @@ class MenuPanel extends Component {
 		return (
 			<MenuContainer>
 				<MenuDiv>
-					{this.props.children.map((child, i) => (child.props.label ?
-						<MenuItem key={i}
+					{this.props.children.map((child, index) => (child.props.label ?
+						<MenuItem key={index}
 							active={window.location.pathname.includes(child.props.route) ? true : false}
 							icon={child.props.icon}
 							label={child.props.label}

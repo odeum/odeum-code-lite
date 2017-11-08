@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { FooterDiv, Link } from 'components/Footer/FooterStyles'
+import { StyledFooter, Link } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
 import { ScreenSizes } from 'theme/media'
 
@@ -33,12 +33,12 @@ class Footer extends Component {
 
 	render() {
 		return (
-			<FooterDiv>
+			<StyledFooter>
 				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
-					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
+					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}{this.props.debug}
 				</Link>
 				<Help small={this.state.small} />
-			</FooterDiv>
+			</StyledFooter>
 		)
 	}
 }

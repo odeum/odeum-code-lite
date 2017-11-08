@@ -5,7 +5,7 @@ import media from 'theme/media'
 export const Bold = styled.b`
 	font-weight: 600;
 `
-export const FooterDiv = styled.div`
+export const StyledFooter = styled.div`
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
