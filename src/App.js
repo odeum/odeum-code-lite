@@ -100,8 +100,7 @@ const renderFooterLabel = () => {
 	const date = new Date()
 	return (
 		<div>
-			<b>ODEUM Code Lite </b> v1.0.0 © Copyright
-			{' '}{date.getFullYear()}{' '}
+			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright{' '}{date.getFullYear()}{' -  '}
 		</div>
 	)
 }

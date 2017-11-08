@@ -33,10 +33,10 @@ class Footer extends Component {
 
 	render() {
 		return (
-			<StyledFooter>
+			<StyledFooter>				
 				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
-					{this.props.label ? <this.props.label /> : <this.defaultProps.label />}{this.props.debug}
-				</Link>
+					{this.props.label ? <this.props.label /> : <this.defaultProps.label />} {' '}
+				</Link>{' '}({this.props.debug})
 				<Help small={this.state.small} />
 			</StyledFooter>
 		)
