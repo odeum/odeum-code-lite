@@ -86,7 +86,7 @@ class App extends Component {
 					</Menu>
 
 				</MenuPanel>
-				<Footer label={renderFooterLabel} labelLink={handleLink()} debug={String(this.state.helpID)}/>
+				<Footer label={RenderFooterLabel} labelLink={handleLink()} debug={String(this.state.helpID)}/>
 			</AppContainer>
 		)
 	}
@@ -96,11 +96,12 @@ const handleLink = () => {
 	return '/children_menu/workspace'
 }
 
-const renderFooterLabel = () => {
+const RenderFooterLabel = () => {
 	const date = new Date()
 	return (
 		<div>
-			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright{' '}{date.getFullYear()}{' -  '}
+			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
+			{' '}{date.getFullYear()} 
 		</div>
 	)
 }
