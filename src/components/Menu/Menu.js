@@ -6,7 +6,8 @@ import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 
 class Menu extends Component {
-
+	//#region Label Converting for Menu
+	route = (child) => this.props.route ? this.props.route : this.convertLabelToRoute(this.props.label)
 	convertLabelToRoute = (label) => {
 		let route = label.replace(/\s+/g, '-').toLowerCase()
 		route = '/' + route
@@ -14,45 +15,55 @@ class Menu extends Component {
 		// console.log(route)
 		return route
 	}
+	//#endregion
 	childRoute = (child) => {
 		return child.props.route ? child.props.route : this.convertLabelToRoute(child.props.label)
 	}
-	renderChildren = () => this.props.children.map((child, index) => {
-		return <Route key={index} path={this.props.route + this.childRoute(child)} component={this.renderChild(child)} />
+	renderChildren = (children) => children.map((child, index) => {
+		return <Route key={index} path={this.route() + this.childRoute(child)} component={this.renderChild(child)} />
 	})
 
-	renderChild = (child) => child.props.children ? () => child.props.children : child.props.workspace ? () => <Workspace>{React.createElement(child.props.workspace)}</Workspace> : null
+	renderChild = (child) => () => child.props.children
 
 	/* 					
 	Todo: Use convertLabelToRoute for Tabs
 	*/
-	renderTabs = () => {
-		return (
-			<SceneDiv>
-				<TabList>
-					{this.props.children.map((child, index) => (
-						<Tab key={index}
-							active={window.location.pathname.includes(this.childRoute(child)) ? true : false}
-							label={child.props.label}
-							icon={child.props.icon ? child.props.icon : this.props.icon}
-							route={this.props.route + this.childRoute(child)} />
-					))}
-				</TabList>
-				{this.renderChildren()}
-			</SceneDiv>
-		)
+	renderTabs = (children) => {
+		if (children[0].type === Tab)
+			return (
+				<SceneDiv>
+					<TabList>
+						{children.map((child, index) => (
+							<Tab key={index}
+								active={window.location.pathname.includes(this.childRoute(child)) ? true : false}
+								label={child.props.label}
+								icon={child.props.icon ? child.props.icon : this.props.icon}
+								route={this.route() + this.childRoute(child)} />
+						))}
+					</TabList>
+					{this.renderChildren(children)}
+				</SceneDiv>
+			)
+		else
+			return (
+				<SceneDiv>
+					{this.renderNoTabs(children)}
+				</SceneDiv>
+			)
 	}
 
-	renderNoTabs = () => {
+	renderNoTabs = (children) => {
 		return (
 			<Workspace>
-				{this.props.children}
+				{children}
 			</Workspace>
 		)
 	}
 
 	render() {
-		return (this.props.children) ? (this.props.children[0].type === Tab) ? this.renderTabs() : this.renderNoTabs() : null
+		const Children = []
+		Array.isArray(this.props.children) ? Children.push(...this.props.children) : Children.push(this.props.children)
+		return this.renderTabs(Children)
 	}
 }
 
