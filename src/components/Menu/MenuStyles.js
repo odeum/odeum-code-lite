@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from 'theme/default'
-import { Link as RouterLink } from 'react-router-dom'
+import { NavLink as RouterLink } from 'react-router-dom'
 
 export const MenuDiv = styled.div`
 	background-color: ${theme.menu.background};
@@ -55,9 +55,12 @@ export const Link = styled(RouterLink) `
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background: ${props => props.selected ? theme.menu.selected : null};
+
 	&:hover{
 		background: ${theme.menu.hover}
+	}
+	&.active{
+		background: ${theme.menu.selected}
 	}
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;
