@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
-
+import { Switch } from 'react-router-dom'
 class MenuPanel extends Component {
 	constructor(props) {
 		super(props)
@@ -21,6 +21,10 @@ class MenuPanel extends Component {
 		return route
 	}
 	//#endregion
+	componentWillMount = () => {
+		console.log(window.location.pathname)
+		this.setActiveMenu(window.location.pathname)
+	}
 
 	//#region Tabs Routing + Get First Tab Route 
 	getFirstChildRoute = (child) => {
@@ -60,27 +64,28 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
-	renderChild = (child) => () => child
+	renderChild = (child) => ({ match }) => { console.log(match); return child }
 	renderMenu = (children) => {
-		console.log(window.location.pathname)
 		return <MenuContainer>
 			<MenuDiv>
 				{children.map((child, index) => {
-					console.log(this.route(child) + this.getFirstChildRoute(child))
 					return (child.props.label ?
 						<MenuItem key={index}
-							active={this.state.activeMenu === (this.route(child) + this.getFirstChildRoute(child)) ? true : false}
+							helpID={child.props.helpID}
+							active={this.state.activeMenu === (this.route(child)) ? true : false}
 							icon={child.props.icon}
 							label={child.props.label}
-							route={this.route(child) + this.getFirstChildRoute(child)}
+							route={this.route(child)}
+							firstChild={this.getFirstChildRoute(child)}
 							onClick={this.setActiveMenu} /> : null
 					)
 				})}
 			</MenuDiv>
-			{children.map((child, i) => {
-				return <Route path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} key={i} component={this.renderChild(child)} />
-			})
-			}
+			<Switch>
+				{children.map((child, i) => {
+					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child)} />
+				})}
+			</Switch>
 		</MenuContainer>
 	}
 

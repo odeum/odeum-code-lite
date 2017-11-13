@@ -4,8 +4,8 @@ import { WorkspaceDiv } from './WorkspaceStyles'
 class Workspace extends Component {
 
 	componentWillMount() {
-		if (this.props.helpID)
-		 this.props.SetHelpID(this.props.helpID)
+		//if (this.props.helpID)
+		// this.props.SetHelpID(this.props.helpID) 
 	}
 	
 	render() {
@@ -18,3 +18,4 @@ class Workspace extends Component {
 }
 
 export default Workspace
+

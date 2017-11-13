@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from 'theme/default'
-import { Link as RouterLink } from 'react-router-dom'
+import { NavLink as RouterLink } from 'react-router-dom'
 
 export const TabList = styled.div`
 	flex: 1;
@@ -33,13 +33,17 @@ export const Link = styled(RouterLink)`
 	flex-flow: row nowrap;
 	border-radius: 5px 5px 0px 0px;
 	color: ${props => props.selected ? '#fff' : '#000'};
-	background: ${props => props.selected ? theme.tab.selected : theme.tab.unselected};
+	background: ${theme.tab.unselected};
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;
 	transition: all 100ms ease-in-out;
 	&:hover{
 		background: ${theme.tab.hover};
 		color: white;
+	}
+	&.active{
+		background: ${theme.tab.selected};
+		color:white;
 	}
 `
 
