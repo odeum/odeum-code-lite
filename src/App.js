@@ -32,7 +32,7 @@ class App extends Component {
 	}
 
 	SetHelpID = (helpID) => {
-		console.log(helpID)
+		// console.log(helpID)
 		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
 	}
 
@@ -51,7 +51,6 @@ class App extends Component {
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'}>
 						<ReactComp/>
 						<SimpleDiv />
-
 					</Menu>
 
 					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab'}>

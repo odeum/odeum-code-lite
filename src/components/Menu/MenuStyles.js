@@ -55,7 +55,7 @@ export const Link = styled(RouterLink) `
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background: ${(props) => props.activemenu === 'truer' ? theme.menu.selected : theme.menu.unselected};
+	background: ${(props) => props.activemenu === 'true' ? theme.menu.selected : theme.menu.unselected};
 	&:hover{
 		background: ${theme.menu.hover}
 	}

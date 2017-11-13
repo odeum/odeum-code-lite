@@ -22,8 +22,9 @@ class MenuPanel extends Component {
 	}
 	//#endregion
 	componentWillMount = () => {
-		console.log(window.location.pathname)
-		this.setActiveMenu(window.location.pathname)
+		// console.log(window.location.pathname)
+		// this.setActiveMenu(window.location.pathname)
+
 	}
 
 	//#region Tabs Routing + Get First Tab Route 
@@ -56,27 +57,28 @@ class MenuPanel extends Component {
 	switch = () => (
 		this.setState({ achordeon: !this.state.achordeon })
 	)
-	setActiveMenu = (route) => {
-		this.setState({ activeMenu: route })
+	setActiveMenu = (key) => {
+		console.log('aici', key)
+		this.setState({ activeMenu: key })
 	}
 
 	//#endregion
 
 	//#region Rendering
 
-	renderChild = (child) => ({ match }) => { console.log(match); return child }
+	renderChild = (child) => ({ match }) => { return child }
 	renderMenu = (children) => {
 		return <MenuContainer>
 			<MenuDiv>
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}
+							MenuID={index}
 							helpID={child.props.helpID}
-							active={this.state.activeMenu === (this.route(child)) ? true : false}
+							active={this.state.activeMenu === (index) ? true : false }
 							icon={child.props.icon}
 							label={child.props.label}
-							route={this.route(child)}
-							firstChild={this.getFirstChildRoute(child)}
+							route={this.route(child) + this.getFirstChildRoute(child)}
 							onClick={this.setActiveMenu} /> : null
 					)
 				})}
@@ -90,6 +92,7 @@ class MenuPanel extends Component {
 	}
 
 	render() {
+		console.log('MenuPanel', this.state.activeMenu)
 		const Children = []
 		Array.isArray(this.props.children) ? Children.push(...this.props.children) : Children.push(this.props.children)
 		return this.renderMenu(Children)

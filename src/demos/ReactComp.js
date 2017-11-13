@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'odeum-ui'
 
-import Workspace from 'components/Workspace/Workspace'
+// import Workspace from 'components/Workspace/Workspace'
 
 class ReactComp extends Component {
 	constructor(props) {
@@ -17,7 +17,6 @@ class ReactComp extends Component {
 	render() {
 		return (
 			<div>
-
 				<Button
 					label={'Show video: ' + String(this.state.showVideo).toLowerCase()}
 					icon={'play_circle_outline'}

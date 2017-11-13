@@ -7,13 +7,9 @@ import Workspace from 'components/Workspace/Workspace'
 
 class Menu extends Component {
 	componentWillMount = () => {
-	  console.log(this.props)
+	//   console.log(this.props)
 	}
 	
-	// componentWillMount() {
-	// 	if (this.props.helpID)
-	// 		this.props.SetHelpID(this.props.helpID)
-	// }
 	//#region Label Converting for Menu
 	route = (child) => this.props.route ? this.props.route : this.convertLabelToRoute(this.props.label)
 	convertLabelToRoute = (label) => {
