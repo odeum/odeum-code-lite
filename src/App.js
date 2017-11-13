@@ -10,24 +10,27 @@ import Footer from 'components/Footer/Footer'
 /* Demo */
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
-
+import RouteDemo from 'demos/RouteDemo'
 class App extends Component {
+
+	/*Temporary Help Demo */
+
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			helpID: 0
 		}
-
 		Menu.defaultProps = {
 			SetHelpID: this.SetHelpID,
 			icon: 'menu'
 		}
 
 		Tab.defaultProps = {
-			SetHelpID: this.SetHelpID
+			SetHelpID: this.SetHelpID,
+			label: 'Tab',
+			icon: 'tab'
 		}
-
 
 	}
 
@@ -36,12 +39,12 @@ class App extends Component {
 		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
 	}
 
+	/*End TempDemo */
 	render() {
 		return (
 			<AppContainer>
 				{/* 
 				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
-				Todo: Remove all inline styles and use styled-components ...
 				*/}
 				<Header />
 				<MenuPanel>
@@ -49,13 +52,13 @@ class App extends Component {
 						<SimpleDiv />
 					</Menu>
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'}>
-						<ReactComp/>
+						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 
-					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab'}>
+					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'}>
 						<Tab icon={'assignment'} label={'Overflow'} helpID={11} >
-							<SimpleDiv />
+							<RouteDemo />
 						</Tab>
 					</Menu>
 					<Menu icon={'people'} route={'/children1'} label={'Menu with children'}>
@@ -76,12 +79,10 @@ class App extends Component {
 					</Menu>
 					{/* 					
 					Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
-					Todo: Fix Menu/MenuPanel so you can settle for only 1 tab
-					Workspace rendered from props
 					*/}
 
 				</MenuPanel>
-				<Footer label={RenderFooterLabel} labelLink={handleLink()} debug={String(this.state.helpID)} />
+				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpID={this.state.helpID} />
 			</AppContainer>
 		)
 	}

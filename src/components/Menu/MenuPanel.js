@@ -92,7 +92,6 @@ class MenuPanel extends Component {
 	}
 
 	render() {
-		console.log('MenuPanel', this.state.activeMenu)
 		const Children = []
 		Array.isArray(this.props.children) ? Children.push(...this.props.children) : Children.push(this.props.children)
 		return this.renderMenu(Children)

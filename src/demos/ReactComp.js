@@ -32,6 +32,7 @@ class ReactComp extends Component {
 						frameBorder="0"
 						allowFullScreen>
 					</iframe>}
+					
 				</div>
 			</div>
 		)
