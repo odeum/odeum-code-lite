@@ -8,7 +8,8 @@ class MenuItem extends Component {
 		icon: 'menu'
 	}
 	cutRoutes = (string) => {
-		var match = string.match(/\/\S*\//i)
+		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)
+		console.log(string, match)
 		return match ? match[0] : null
 	}
 	componentWillMount() {
@@ -19,6 +20,7 @@ class MenuItem extends Component {
 			this.activate()
 	}
 	activate = () => {
+		// console.log('bing')
 		this.props.onClick(this.props.MenuID ? this.props.MenuID : 0)
 	}
 	render() {

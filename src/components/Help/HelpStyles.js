@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import media from 'theme/media'
-import theme from 'theme/default'
+// import theme from 'theme/default'
 import { Icon as DefaultIcon } from 'odeum-ui'
 
 export const Bold = styled.b`
@@ -10,7 +10,7 @@ export const Bold = styled.b`
 
 export const Icon = styled(DefaultIcon)`
 	&:hover{
-		background: ${theme.tab.hover};
+		background: ${props => props.theme.tab.hover};
 		color: white;
 		border-left: 1px solid white;
 	}
@@ -44,7 +44,7 @@ export const HelpButton = styled.div`
 	align-items: center;
 	justify-content: center;
 	&:hover{
-		background: ${theme.tab.selected};
+		background: ${props => props.theme.tab.selected};
 		color: white;
 		border-left: 1px solid white;
 		border-radius: 5px;

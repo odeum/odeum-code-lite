@@ -4,13 +4,17 @@ import Header from 'components/Header/Header'
 import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
-// import Workspace from 'components/Workspace/Workspace'
+import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
 
 /* Demo */
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
 import RouteDemo from 'demos/RouteDemo'
+import redTheme from 'theme/redTheme'
+import greenTheme from 'theme/greenTheme'
+import theme from 'theme/default'
+
 class App extends Component {
 
 	/*Temporary Help Demo */
@@ -19,7 +23,11 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			helpID: 0
+			helpID: 0,
+			theme: redTheme
+		}
+		Workspace.defaultProps = {
+			SetHelpID: this.SetHelpID
 		}
 		Menu.defaultProps = {
 			SetHelpID: this.SetHelpID,
@@ -38,26 +46,31 @@ class App extends Component {
 		// console.log(helpID)
 		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
 	}
-
+	changeTheme = () => {
+		return this.state.theme === greenTheme ? this.setState({ theme: redTheme }) : this.state.theme === redTheme ? this.setState({ theme: theme }) : this.state.theme === theme ? this.setState({ theme: greenTheme }) : this.setState({ theme: greenTheme })
+		// this.setState({ theme: greenTheme })
+	}
 	/*End TempDemo */
 	render() {
 		return (
-			<AppContainer>
+
+			<AppContainer theme={this.state.theme}>
 				{/* 
 				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
 				*/}
-				<Header />
+				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
 					<Menu route={'/'} exact helpID={10}>
+						<button onClick={this.changeTheme}>Change Theme</button>
 						<SimpleDiv />
 					</Menu>
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'}>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 
-					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'}>
-						<Tab icon={'assignment'} label={'Overflow'} helpID={11} >
+					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
+						<Tab icon={'assignment'} label={'Overflow'}  >
 							<RouteDemo />
 						</Tab>
 					</Menu>

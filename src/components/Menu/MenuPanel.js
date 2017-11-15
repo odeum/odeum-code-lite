@@ -4,6 +4,8 @@ import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
 import { Switch } from 'react-router-dom'
+import NotFound from '../AppContainer/NotFound'
+
 class MenuPanel extends Component {
 	constructor(props) {
 		super(props)
@@ -11,7 +13,7 @@ class MenuPanel extends Component {
 		this.state = {
 			achordeon: true,
 			disableMenuAchordeon: false,
-			activeMenu: '/'
+			activeMenu: 0
 		}
 	}
 	//#region Label Converting for Menu
@@ -58,7 +60,7 @@ class MenuPanel extends Component {
 		this.setState({ achordeon: !this.state.achordeon })
 	)
 	setActiveMenu = (key) => {
-		console.log('aici', key)
+		// console.log('ActiveMenu', key)
 		this.setState({ activeMenu: key })
 	}
 
@@ -75,7 +77,7 @@ class MenuPanel extends Component {
 						<MenuItem key={index}
 							MenuID={index}
 							helpID={child.props.helpID}
-							active={this.state.activeMenu === (index) ? true : false }
+							active={this.state.activeMenu === (index) ? true : false}
 							icon={child.props.icon}
 							label={child.props.label}
 							route={this.route(child) + this.getFirstChildRoute(child)}
@@ -87,6 +89,7 @@ class MenuPanel extends Component {
 				{children.map((child, i) => {
 					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child)} />
 				})}
+				<Route path={'*'} component={NotFound} />
 			</Switch>
 		</MenuContainer>
 	}

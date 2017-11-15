@@ -1,37 +1,41 @@
 {
-	"name": "odeum-code-lite",
-	"version": "0.1.2",
-	"private": false,
-	"description": "A scaled down ODEUM Code getting-started quickly framework",
-	"author": "Christian Broberg",
-	"license": "MIT",
-	"keywords": [
-		"react",
-		"odeum",
-		"odeum-code",
-		"odeum-code-lite",
-		"styled-components",
-		"primitives",
-		"ui",
-		"ui-primitives",
-		"ui-components",
-		"framework",
-		"javascript"
-	],
-	"dependencies": {
-		"odeum-ui": "^0.1.26",
-		"polished": "^1.8.2",
-		"prop-types": "^15.6.0",
-		"react": "^16.0.0",
-		"react-dom": "^16.0.0",
-		"react-router-dom": "^4.2.2",
-		"react-scripts": "1.0.17",
-		"styled-components": "^2.2.3"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
-	}
+  "name": "odeum-code-lite",
+  "version": "0.1.2",
+  "private": false,
+  "description": "A scaled down ODEUM Code getting-started quickly framework",
+  "author": "Christian Broberg",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "odeum",
+    "odeum-code",
+    "odeum-code-lite",
+    "styled-components",
+    "primitives",
+    "ui",
+    "ui-primitives",
+    "ui-components",
+    "framework",
+    "javascript"
+  ],
+  "dependencies": {
+    "odeum-ui": "^0.1.26",
+    "polished": "^1.8.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "styled-components": "^2.2.3",
+    "styled-theming": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10"
+  }
 }

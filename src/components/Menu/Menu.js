@@ -27,7 +27,7 @@ class Menu extends Component {
 		return <Route key={index} path={this.route() + this.childRoute(child)} component={this.renderChild(child)} />
 	})
 
-	renderChild = (child) => () => <Workspace>{child.props.children}</Workspace>
+	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
 
 	//#endregion
 
@@ -60,7 +60,7 @@ class Menu extends Component {
 
 	renderNoTabs = (children) => {
 		return (
-			<Workspace>
+			<Workspace helpID={this.props.helpID ? this.props.helpID : null }>
 				{children}
 			</Workspace>
 		)
