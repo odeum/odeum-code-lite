@@ -49,13 +49,21 @@ class App extends Component {
 		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
 	}
 	changeTheme = () => {
-		return this.state.theme === eplanTheme ? this.setState({ theme: greenTheme }) : this.state.theme === greenTheme ? this.setState({ theme: redTheme }) : this.state.theme === redTheme ? this.setState({ theme: theme }) : this.state.theme === theme ? this.setState({ theme: greenTheme }) : this.setState({ theme: eplanTheme })		
+		return this.state.theme === eplanTheme ?
+			this.setState({ theme: greenTheme }) :
+			this.state.theme === greenTheme ?
+				this.setState({ theme: redTheme }) :
+				this.state.theme === redTheme ?
+					this.setState({ theme: theme }) :
+					this.state.theme === theme ?
+						this.setState({ theme: eplanTheme }) :
+						this.setState({ theme: eplanTheme })
 	}
 	/*End TempDemo */
 
 	render() {
 		return (
-			<AppContainer theme={this.state.theme}>
+			<AppContainer theme={this.state.theme} >
 				{/* 
 				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
 				*/}

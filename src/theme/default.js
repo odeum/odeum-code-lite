@@ -36,11 +36,17 @@ const theme = {
 		default: '#34495D',
 		selected: '#FFF'
 	},
-	 logo: {
-		 default: ODEUM_Logo,
-		 bigLogo: ODEUM_Logo,
-		 smallLogo: ODEUM_icon
-	 }
+	quicknav: {
+		button: {
+			background: '#3B97D3',
+			color: '#FFF'
+		}
+	},
+	logo: {
+		default: ODEUM_Logo,
+		bigLogo: ODEUM_Logo,
+		smallLogo: ODEUM_icon
+	}
 }
 
 export default theme

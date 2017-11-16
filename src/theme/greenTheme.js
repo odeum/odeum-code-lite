@@ -36,6 +36,12 @@ const greenTheme = {
 		default: '#34495D',
 		selected: '#E8F5E9'
 	},
+	quicknav: {
+		button: {
+			background: '#1B5E20',
+			color: '#FFF'
+		}
+	},
 	 logo: {
 		 default: logoGreen,
 		 bigLogo: logoGreen,

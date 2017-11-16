@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from 'theme/media'
-// import theme from 'theme/default'
+import theme from 'theme/default'
 
 export default class Header extends Component {
 
@@ -18,18 +18,21 @@ export default class Header extends Component {
 	changeLogo = (logo) => {
 		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? logo.default : logo.smallLogo })
 	}
-
+	/*TODO: Default Logo always */
 	componentWillMount() {
 		if (this.props.logo !== undefined) {
-			this.changeLogo(this.props.logo)
+			if (this.props.logo === 'default')
+				this.changeLogo(theme.logo)
+			else
+				this.changeLogo(this.props.logo)
 			window.addEventListener('resize', this.changeLogo)
 		}
 	}
 	componentWillUpdate = (nextProps, nextState) => {
 		if (this.props.logo !== nextProps.logo)
-	 		 this.changeLogo(nextProps.logo)
+			this.changeLogo(nextProps.logo)
 	}
-	
+
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}
@@ -56,7 +59,7 @@ export default class Header extends Component {
 	renderSearchBar = () => {
 		return (<div>Search</div>)
 	}
-	
+
 	render() {
 		// console.log(this.props.logo)
 		const { search, notification, avatar } = this.props
@@ -81,7 +84,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-	search: false, 
+	search: false,
 	notification: false,
 	avatar: false
 }

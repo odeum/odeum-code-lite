@@ -48,7 +48,7 @@ export const Link = styled(RouterLink) `
 	border-bottom: ${props => props.theme.menu.bottomBorder};
 	text-decoration: none;
 	outline: 0;
-	color: white;
+	color: ${props => props.theme.menu.color};
 	width: 250px;
 	height: 50px;
 	font-weight: 300;

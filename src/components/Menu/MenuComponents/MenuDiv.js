@@ -7,7 +7,7 @@ export default class MenuDiv extends Component {
 		super(props)
 		this.state = {
 			achordeon: true,
-			disableAchordeon: false
+			disableMenu: false
 		}
 	}
 	sizes = {
@@ -27,11 +27,12 @@ export default class MenuDiv extends Component {
 	}
 
 	updateWindowDimensions = () => {
-		if (window.innerWidth < this.sizes.tablet && !this.state.disableAchordeon) {
-			this.setState({ achordeon: false, disableMenuAchordeon: true })
+		if (window.innerWidth < this.sizes.tablet) {
+			console.log('bing')
+			this.setState({ achordeon: false, disableMenu: true })
 		}
-		else if (window.innerWidth >= this.sizes.tablet && this.state.disableMenuAchordeon) {
-			this.setState({ disableAchordeon: false })
+		else if (window.innerWidth >= this.sizes.tablet ) {
+			this.setState({ disableMenu: false })
 		} 
 	}
 
@@ -40,17 +41,18 @@ export default class MenuDiv extends Component {
 	)
 	
 	render() {
-		const { disableAchordeon } = this.state
+		const { disableMenu } = this.state
+		console.log(disableMenu)
 		return (
-			<MenuCont achordeon={this.state.achordeon}>
+			!disableMenu ? <MenuCont achordeon={this.state.achordeon}>
 				<MenuHeader>
-					<IconDiv onClick={!disableAchordeon ? this.switch : null}
+					<IconDiv onClick={ this.switch }
 						style={{ cursor: 'pointer' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
 					</IconDiv>
 				</MenuHeader>
 				{this.props.children}
-			</MenuCont>
+			</MenuCont> : null
 		)
 	}
 }
