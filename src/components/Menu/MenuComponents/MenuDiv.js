@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { MenuDiv as MenuCont, MenuHeader, IconDiv } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
-import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 
 export default class MenuDiv extends Component {
 	constructor(props) {
@@ -30,11 +29,11 @@ export default class MenuDiv extends Component {
 	updateWindowDimensions = () => {
 		if (window.innerWidth < this.sizes.tablet) {
 			this.setState({ achordeon: false, disableMenu: true })
-			this.props.quicknav()
+			this.props.quicknav(true)
 		}
 		else if (window.innerWidth >= this.sizes.tablet ) {
 			this.setState({ disableMenu: false })
-			this.props.quicknav()			
+			this.props.quicknav(false)			
 		} 
 	}
 
@@ -43,10 +42,9 @@ export default class MenuDiv extends Component {
 	)
 	
 	render() {
-		const { disableMenu } = this.state
-		console.log(disableMenu)
+		// const { disableMenu } = this.state
 		return (
-			!disableMenu ? <MenuCont achordeon={this.state.achordeon}>
+			 <MenuCont achordeon={this.state.achordeon}>
 				<MenuHeader>
 					<IconDiv onClick={ this.switch }
 						style={{ cursor: 'pointer' }}>
@@ -54,7 +52,7 @@ export default class MenuDiv extends Component {
 					</IconDiv>
 				</MenuHeader>
 				{this.props.children}
-			</MenuCont> : <QuickNavigation/>
+			</MenuCont> 
 		)
 	}
 }

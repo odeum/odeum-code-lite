@@ -9,7 +9,6 @@ class MenuItem extends Component {
 	}
 	cutRoutes = (string) => {
 		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)
-		console.log(string, match)
 		return match ? match[0] : null
 	}
 	componentWillMount() {

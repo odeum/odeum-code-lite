@@ -5,6 +5,7 @@ import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
 import { Switch } from 'react-router-dom'
 import NotFound from '../AppContainer/NotFound'
+import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 
 class MenuPanel extends Component {
 	constructor(props) {
@@ -56,8 +57,8 @@ class MenuPanel extends Component {
 
 	//#region State Management
 
-	switch = () => (
-		this.setState({ quicknav: !this.state.quicknav })
+	switch = (bool) => (
+		this.setState({ quicknav: bool })
 	)
 	setActiveMenu = (key) => {
 		// console.log('ActiveMenu', key)
@@ -71,7 +72,7 @@ class MenuPanel extends Component {
 	renderChild = (child) => ({ match }) => { return child }
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
-			<MenuDiv quicknav={this.switch}>
+			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}
@@ -84,7 +85,7 @@ class MenuPanel extends Component {
 							onClick={this.setActiveMenu} /> : null
 					)
 				})}
-			</MenuDiv>
+			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
 				{children.map((child, i) => {
 					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child)} />

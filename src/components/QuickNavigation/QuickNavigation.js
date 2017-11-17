@@ -4,7 +4,16 @@ import {
 	Spacer, TabList, TabItem,
 	MenuItem, MenuList
 } from './QuickNavigationStyles'
+import { NavLink } from 'react-router-dom'
 
+
+//TODO:
+//1. Generate Route from label
+//2. Generate label from route
+//3. Check for tabs => if no tabs => direct link else tabs
+//4. Remove tabs when screen is small
+//5. Generalize the function for label conversion in utils.js
+//6. Remove inline Styling
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -13,16 +22,22 @@ export default class QuickNavigation extends Component {
 		this.state = {
 			quickNav: false,
 			showButton: true,
+			activeMenu: 0
 		}
 	}
 	menuClick = () => (e) => {
 		e.stopPropagation()
-		console.log('bing')
+	}
+	setActiveMenu = (index) => (e) => {
+		e.preventDefault()
+		e.stopPropagation()
+		this.setState({ activeMenu: index })
 	}
 	openNav = () => {
 		this.setState({ quickNav: !this.state.quickNav })
 	}
 	render() {
+		console.log(this.props)
 		const { quickNav } = this.state
 		return (
 
@@ -32,35 +47,18 @@ export default class QuickNavigation extends Component {
 					<QuickNavMenu onClick={this.menuClick()}>
 						<button onClick={this.openNav}>X</button>
 						<Spacer />
+
 						<TabList>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>SomeVeryLongNameTab</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
-							<TabItem>Tab 1</TabItem>
+							{React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).map((tab, index) => {
+								return <TabItem key={index}><NavLink to={tab.props.route ? this.props.menus[this.state.activeMenu].props.route + tab.props.route : this.props.menus[this.state.activeMenu].props.route + '/' + tab.props.label}>{tab.props.label}</NavLink></TabItem>
+							})
+							}
 						</TabList>
 						<Spacer />
 						<MenuList>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
-							<MenuItem>Tab 1</MenuItem>
+							{React.Children.toArray(this.props.menus).map((menu, index) =>
+								<MenuItem key={index} onClick={this.setActiveMenu(index)}>{menu.props.label ? menu.props.label : menu.props.route}</MenuItem>
+							)}
 						</MenuList>
 					</QuickNavMenu>
 				</QuickNavContainer>

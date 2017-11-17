@@ -40,7 +40,7 @@ export const MenuText = styled.div`
 `
 export const MenuContainer = styled.div`
 	display:flex;
-	flex-flow: ${props => props.quicknav ? 'column nowrap' : 'column wrap'};
+	flex-flow: ${props => props.quicknav ? 'column nowrap'  : 'row nowrap' };
 	flex:1;
 	overflow-y: hidden;
 `

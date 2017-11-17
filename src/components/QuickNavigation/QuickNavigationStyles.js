@@ -4,12 +4,12 @@ export const MenuItem = styled.div`
     background:${props => props.theme.quicknav.button.background};
     color: ${props => props.theme.quicknav.button.color};
     height:50px;
-    width: 100px;
     display: flex;
     align-items:center;
     justify-content: space-evenly;
     border-radius:4px;
     margin:0px 15px;
+    padding: 0px 15px;
     &:first-child{
         margin-left:1px;
     }
@@ -50,12 +50,11 @@ export const MenuList = styled.div`
 export const TabList = styled.div`
     display: flex;
     flex-flow: column wrap;
-    height: 35px;
-    max-height:35px;
+    height: 45px;
+    max-height:50px;
     margin: 0;
-    padding:0;
-    line-height:15px;
-    justify-content: space-evenly;
+    padding:5px;
+    line-height:35px;
     align-items:center;
     overflow-x: auto;
     width:90vw;
@@ -84,13 +83,14 @@ export const QuickNavMenu = styled.div`
     height:100%;
     max-height: 210px;
     border-radius: 5px;
+    border: 1px solid #cbc8c8;
+    padding: 5px;
 `
 export const QuickNavContainer = styled.div`
     display:flex;
     align-items:center;
     justify-content: flex-end;
     flex-flow: column nowrap;
-    background:#00000088;
     color:black;
     width: 100vw;
     height: ${props => props.quickNav ? '100vh' : '0px'};
