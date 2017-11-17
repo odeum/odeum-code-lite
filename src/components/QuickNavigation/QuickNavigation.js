@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { QuickNavButton, QuickNavMenu } from './QuickNavigationStyles'
+import {
+	QuickNavButton, QuickNavMenu,
+	Spacer, TabList, TabItem,
+	MenuItem, MenuList
+} from './QuickNavigationStyles'
 
 
 export default class QuickNavigation extends Component {
@@ -22,7 +26,38 @@ export default class QuickNavigation extends Component {
 			<div style={{ zIndex: '1', display: 'flex', flexFlow: 'column' }}>
 				<QuickNavButton onClick={this.openNav}>Quick Navigation</QuickNavButton>
 				<QuickNavMenu quickNav={quickNav}>
-					<QuickNavButton onClick={this.openNav}>Close Navigation</QuickNavButton>
+					<button onClick={this.openNav}>X</button>
+					<Spacer />
+					<TabList>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>SomeVeryLongNameTab</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+						<TabItem>Tab 1</TabItem>
+					</TabList>
+					<Spacer />
+					<MenuList>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+						<MenuItem>Tab 1</MenuItem>
+					</MenuList>
 				</QuickNavMenu>
 			</div >
 
