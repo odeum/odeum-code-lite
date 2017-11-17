@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { MenuDiv as MenuCont, MenuHeader, IconDiv } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
+import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 
 export default class MenuDiv extends Component {
 	constructor(props) {
@@ -28,11 +29,12 @@ export default class MenuDiv extends Component {
 
 	updateWindowDimensions = () => {
 		if (window.innerWidth < this.sizes.tablet) {
-			console.log('bing')
 			this.setState({ achordeon: false, disableMenu: true })
+			this.props.quicknav()
 		}
 		else if (window.innerWidth >= this.sizes.tablet ) {
 			this.setState({ disableMenu: false })
+			this.props.quicknav()			
 		} 
 	}
 
@@ -52,7 +54,7 @@ export default class MenuDiv extends Component {
 					</IconDiv>
 				</MenuHeader>
 				{this.props.children}
-			</MenuCont> : null
+			</MenuCont> : <QuickNavigation/>
 		)
 	}
 }

@@ -67,7 +67,7 @@ export const QuickNavButton = styled.div`
     border-radius: 7px;
     color: ${props => props.theme.quicknav.button.color};
     padding: 10px 15px;
-    position:absolute;
+    position:fixed;
     bottom: 10%;
     align-self:center;
     cursor: pointer;
@@ -75,19 +75,28 @@ export const QuickNavButton = styled.div`
         background: ${props => props.theme.tab.hover}
     }
 `
-
 export const QuickNavMenu = styled.div`
     display:flex;
+    justify-content: space-evenly;
     align-items:center;
-    justify-content: space-around;
-    flex-flow: column nowrap;
+    flex-flow:column wrap;
     background:white;
+    height:100%;
+    max-height: 210px;
+    border-radius: 5px;
+`
+export const QuickNavContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content: flex-end;
+    flex-flow: column nowrap;
+    background:#00000088;
     color:black;
     width: 100vw;
-    height: ${props => props.quickNav ? '210px' : '0px'};
+    height: ${props => props.quickNav ? '100vh' : '0px'};
     overflow: hidden;
-    position:absolute;
+    position:fixed;
     z-index:2;
     transition: height 300ms ease-in-out;
-    bottom: 0%;
+    bottom: 0;
 `

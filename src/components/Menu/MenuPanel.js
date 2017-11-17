@@ -11,7 +11,7 @@ class MenuPanel extends Component {
 		super(props)
 
 		this.state = {
-			achordeon: true,
+			quicknav: false,
 			disableMenuAchordeon: false,
 			activeMenu: 0
 		}
@@ -57,7 +57,7 @@ class MenuPanel extends Component {
 	//#region State Management
 
 	switch = () => (
-		this.setState({ achordeon: !this.state.achordeon })
+		this.setState({ quicknav: !this.state.quicknav })
 	)
 	setActiveMenu = (key) => {
 		// console.log('ActiveMenu', key)
@@ -70,8 +70,8 @@ class MenuPanel extends Component {
 
 	renderChild = (child) => ({ match }) => { return child }
 	renderMenu = (children) => {
-		return <MenuContainer>
-			<MenuDiv>
+		return <MenuContainer quicknav={this.state.quicknav}>
+			<MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}

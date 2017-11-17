@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { StyledFooter, Link } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
 import { ScreenSizes } from 'theme/media'
-import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 
 class Footer extends Component {
 	constructor(props) {
@@ -42,7 +41,7 @@ class Footer extends Component {
 					</div>
 				</Link>
 				<Help small={this.state.small} helpID={this.props.helpID} />
-			</StyledFooter> : <QuickNavigation/>
+			</StyledFooter> : null
 		)
 	}
 }
