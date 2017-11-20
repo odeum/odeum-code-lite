@@ -5,8 +5,8 @@ import {
 	MenuItem, MenuList
 } from './QuickNavigationStyles'
 import { NavLink } from 'react-router-dom'
-
-
+import Tab from '../Tabs/Tab'
+import { convertLabelToRoute } from '../utils/Functions'
 //TODO:
 //1. Generate Route from label
 //2. Generate label from route
@@ -36,8 +36,23 @@ export default class QuickNavigation extends Component {
 	openNav = () => {
 		this.setState({ quickNav: !this.state.quickNav })
 	}
+	renderMenuItem = (menu, index) => {
+		var route = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
+		// console.log('route:', route)
+		if (React.Children.toArray(menu.props.children)[0].type === Tab)
+			return <MenuItem key={index} onClick={this.setActiveMenu(index)}>{menu.props.label}</MenuItem>
+		else
+			return <MenuItem key={index} onClick={this.setActiveMenu(index)}><NavLink to={route}>{menu.props.label}</NavLink></MenuItem>
+	}
+	renderTabItem = (tab, menu, index) => {
+		// console.log('menu', menu.props)
+		// console.log('tab', tab.props)
+		var menuRoute = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
+		var route = tab.props.route ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
+		return <TabItem key={index}><NavLink to={route}>{tab.props.label ? tab.props.label : tab.props.route}</NavLink></TabItem>
+	}
 	render() {
-		console.log(this.props)
+		// console.log(this.props)
 		const { quickNav } = this.state
 		return (
 
@@ -49,15 +64,13 @@ export default class QuickNavigation extends Component {
 						<Spacer />
 
 						<TabList>
-							{React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).map((tab, index) => {
-								return <TabItem key={index}><NavLink to={tab.props.route ? this.props.menus[this.state.activeMenu].props.route + tab.props.route : this.props.menus[this.state.activeMenu].props.route + '/' + tab.props.label}>{tab.props.label}</NavLink></TabItem>
-							})
-							}
+							{React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).map((tab, index) => 
+								tab.type === Tab ? this.renderTabItem(tab, this.props.menus[this.state.activeMenu], index) : undefined)}
 						</TabList>
 						<Spacer />
 						<MenuList>
 							{React.Children.toArray(this.props.menus).map((menu, index) =>
-								<MenuItem key={index} onClick={this.setActiveMenu(index)}>{menu.props.label ? menu.props.label : menu.props.route}</MenuItem>
+								this.renderMenuItem(menu, index)
 							)}
 						</MenuList>
 					</QuickNavMenu>

@@ -16,22 +16,23 @@ import redTheme from 'theme/redTheme'
 import greenTheme from 'theme/greenTheme'
 import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
+import MenuItem from './components/Menu/MenuComponents/MenuItem'
 
 class App extends Component {
 
-	/*Temporary Help Demo */
+	//#region Temporary Help Demo
 
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			helpID: 0,
-			theme: eplanTheme
+			theme: greenTheme
 		}
 		Workspace.defaultProps = {
 			SetHelpID: this.SetHelpID
 		}
-		Menu.defaultProps = {
+		MenuItem.defaultProps = {
 			SetHelpID: this.SetHelpID,
 			icon: 'menu'
 		}
@@ -43,7 +44,7 @@ class App extends Component {
 		}
 
 	}
-
+	
 	SetHelpID = (helpID) => {
 		// console.log(helpID)
 		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
@@ -59,17 +60,15 @@ class App extends Component {
 						this.setState({ theme: eplanTheme }) :
 						this.setState({ theme: eplanTheme })
 	}
-	/*End TempDemo */
+
+	//#endregion TempDemo
 
 	render() {
 		return (
 			<AppContainer theme={this.state.theme} >
-				{/* 
-				Todo: Use default theme transparently and include theme prop in AppContainer that overwrites default theme
-				*/}
 				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
-					<Menu route={'/'} exact helpID={10}>
+					<Menu route={'/'} label={'Home'} exact helpID={10}>
 						<Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button>
 						<SimpleDiv />
 					</Menu>
