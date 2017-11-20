@@ -30,7 +30,7 @@ class Menu extends Component {
 		if (children[0].type === Tab)
 			return (
 				<SceneDiv>
-					<TabList>
+					{!this.props.quicknav ? <TabList>
 						{children.map((child, index) => (
 							<Tab key={index}
 								helpID={child.props.helpID}
@@ -39,7 +39,7 @@ class Menu extends Component {
 								icon={child.props.icon}
 								route={this.route() + this.childRoute(child)} />
 						))}
-					</TabList>
+					</TabList> : null}
 					<Switch>
 						{this.renderChildren(children)}
 					</Switch>
@@ -62,6 +62,7 @@ class Menu extends Component {
 	}
 
 	render() {
+		console.log(this.props.quicknav)
 		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }

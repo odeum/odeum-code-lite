@@ -53,10 +53,10 @@ class MenuPanel extends Component {
 		if (children[0].props.route)
 			return children[0].props.route
 		else
-		if (children[0].props.label)
-			return convertLabelToRoute(children[0].props.label)
-		else
-			return '' // there is no 
+			if (children[0].props.label)
+				return convertLabelToRoute(children[0].props.label)
+			else
+				return '' // there is no 
 		// return this.convertChildLabelToRoute(child, true) 
 	}
 
@@ -83,7 +83,7 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
-	renderChild = (child) => ({ match }) => { return child }
+	renderChild = (child) => ({ match }) => { return React.cloneElement(child, { quicknav: this.state.quicknav }) }
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
