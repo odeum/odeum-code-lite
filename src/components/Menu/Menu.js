@@ -4,19 +4,14 @@ import { Route, Switch } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
-
+import { convertLabelToRoute } from '../utils/Functions'
 class Menu extends Component {
 
 	//#region Label Converting for Menu
-	route = (child) => this.props.route ? this.props.route : this.convertLabelToRoute(this.props.label)
-	convertLabelToRoute = (label) => {
-		let route = label.replace(/\s+/g, '-').toLowerCase()
-		route = '/' + route
-		return route
-	}
+	route = (child) => this.props.route ? this.props.route : convertLabelToRoute(this.props.label)
 
 	childRoute = (child) => {
-		return child.props.route ? child.props.route : this.convertLabelToRoute(child.props.label)
+		return child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
 	}
 
 	//#endregion
@@ -60,16 +55,14 @@ class Menu extends Component {
 
 	renderNoTabs = (children) => {
 		return (
-			<Workspace helpID={this.props.helpID ? this.props.helpID : null }>
+			<Workspace helpID={this.props.helpID ? this.props.helpID : null}>
 				{children}
 			</Workspace>
 		)
 	}
 
 	render() {
-		const Children = []
-		Array.isArray(this.props.children) ? Children.push(...this.props.children) : Children.push(this.props.children)
-		return this.renderTabs(Children)
+		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }
 

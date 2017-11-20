@@ -6,6 +6,7 @@ import { MenuContainer } from './MenuStyles'
 import { Switch } from 'react-router-dom'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
+import { convertLabelToRoute, sizes } from '../utils/Functions'
 
 class MenuPanel extends Component {
 	constructor(props) {
@@ -17,40 +18,53 @@ class MenuPanel extends Component {
 			activeMenu: 0
 		}
 	}
-	//#region Label Converting for Menu
-	route = (child) => child.props.route ? child.props.route : this.convertLabelToRoute(child.props.label)
-	convertLabelToRoute = (label) => {
-		var route = '/' + label.replace(/\s+/g, '-').toLowerCase()
-		return route
-	}
-	//#endregion
 	componentWillMount = () => {
-		// console.log(window.location.pathname)
-		// this.setActiveMenu(window.location.pathname)
-
+		this.updateWindowSize()
+		window.addEventListener('resize', this.updateWindowSize)
+	}
+	componentWillUnmount = () => {
+		window.removeEventListener('resize', this.updateWindowSize)
 	}
 
-	//#region Tabs Routing + Get First Tab Route 
+	//#region Display quickNav or Menu 
+	updateWindowSize = () => {
+		// console.log('MenuDiv', 'resized')s
+		if (window.innerWidth < sizes.tablet)
+			//QuickNav on
+			this.setState({
+				quicknav: true
+			})
+		if (window.innerWidth >= sizes.tablet)
+			this.setState({
+				quicknav: false
+			})
+
+	}
+	//#endregion 
+
+
+
+	//#region Routing + Get First Child Route 
+
+	route = (child) => child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
+
 	getFirstChildRoute = (child) => {
-		if (Array.isArray(child.props.children)) {
-			if (child.props.children[0].props.route)
-				return child.props.children[0].props.route
-			else
-				return this.convertChildLabelToRoute(child, true)
-		}
-		else if (child.props.children.props.route) { return child.props.children.props.route }
-		else return this.convertChildLabelToRoute(child, false)
+		var children = React.Children.toArray(child.props.children)
+		if (children[0].props.route)
+			return children[0].props.route
+		else
+		if (children[0].props.label)
+			return convertLabelToRoute(children[0].props.label)
+		else
+			return '' // there is no 
+		// return this.convertChildLabelToRoute(child, true) 
 	}
+
 	convertChildLabelToRoute = (child, many) => {
 		var route = ''
-		if (many === true) {
-			if (child.props.children[0].props.label)
-				route = '/' + child.props.children[0].props.label.replace(/\s+/g, '-').toLowerCase()
-		}
-		else if (child.props.children.props.label)
-			route = '/' + child.props.children.props.label.replace(/\s+/g, '-').toLowerCase()
-		// console.log('---route---')
-		// console.log(route)
+		var children = React.Children.toArray(child.props.children)
+		if (children[0].props.label)
+			route = convertLabelToRoute(children[0].props.label)
 		return route
 	}
 	//#endregion
@@ -76,6 +90,7 @@ class MenuPanel extends Component {
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}
+							SetHelpID={this.props.SetHelpID}
 							MenuID={index}
 							helpID={child.props.helpID}
 							active={this.state.activeMenu === (index) ? true : false}
@@ -96,9 +111,7 @@ class MenuPanel extends Component {
 	}
 
 	render() {
-		const Children = []
-		Array.isArray(this.props.children) ? Children.push(...this.props.children) : Children.push(this.props.children)
-		return this.renderMenu(Children)
+		return this.renderMenu(React.Children.toArray(this.props.children))
 	}
 
 	//#endregion

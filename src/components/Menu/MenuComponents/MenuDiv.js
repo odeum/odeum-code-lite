@@ -6,35 +6,8 @@ export default class MenuDiv extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			achordeon: true,
-			disableMenu: false
+			achordeon: true
 		}
-	}
-	sizes = {
-		giant: 1170,
-		desktop: 992,
-		tablet: 768,
-		phone: 376
-	}
-
-	componentDidMount() {
-		this.updateWindowDimensions()
-		window.addEventListener('resize', this.updateWindowDimensions)
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.updateWindowDimensions)
-	}
-
-	updateWindowDimensions = () => {
-		if (window.innerWidth < this.sizes.tablet) {
-			this.setState({ achordeon: false, disableMenu: true })
-			this.props.quicknav(true)
-		}
-		else if (window.innerWidth >= this.sizes.tablet ) {
-			this.setState({ disableMenu: false })
-			this.props.quicknav(false)			
-		} 
 	}
 
 	switch = () => (
@@ -42,7 +15,6 @@ export default class MenuDiv extends Component {
 	)
 	
 	render() {
-		// const { disableMenu } = this.state
 		return (
 			 <MenuCont achordeon={this.state.achordeon}>
 				<MenuHeader>
