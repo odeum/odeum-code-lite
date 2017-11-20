@@ -53,10 +53,10 @@ class MenuPanel extends Component {
 		if (children[0].props.route)
 			return children[0].props.route
 		else
-			if (children[0].props.label)
-				return convertLabelToRoute(children[0].props.label)
-			else
-				return '' // there is no 
+		if (children[0].props.label)
+			return convertLabelToRoute(children[0].props.label)
+		else
+			return '' // there is no 
 		// return this.convertChildLabelToRoute(child, true) 
 	}
 
