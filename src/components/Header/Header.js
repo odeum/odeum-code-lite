@@ -7,20 +7,28 @@ import theme from 'theme/default'
 
 //TODO Check the logo dissapearing on resize 
 export default class Header extends Component {
+	constructor(props) {
+	  super(props)
+	
+	  this.state = {
+		 quicknav: false,
+		 logo: undefined
+	  }
+	}
+	
 	updateLogo = () => {
 		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
+		this.setState({ quicknav: window.innerWidth <= ScreenSizes.tablet ? true : false })
 	}
 	changeLogo = (logo) => {
-
-		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? logo.default : logo.smallLogo })
-		console.log(logo.smallLogo)
+		this.setState({ logo: logo.default })
 	}
 	/*TODO: Default Logo always */
 	componentWillMount() {
 		if (this.props.logo !== undefined)
-			this.changeLogo(theme.logo)
-		else
 			this.changeLogo(this.props.logo)
+		else
+			this.changeLogo(theme.logo)
 		window.addEventListener('resize', this.updateLogo)
 
 	}
@@ -48,7 +56,7 @@ export default class Header extends Component {
 		// console.log('renderLogo', logo)
 		return (
 			<LogoDiv to={'/'}>
-				<LogoImg src={logo} />
+				<LogoImg src={logo}/>
 			</LogoDiv>)
 	}
 
@@ -62,7 +70,7 @@ export default class Header extends Component {
 		const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
-			<HeaderDiv>
+			<HeaderDiv quicknav={this.state.quicknav}>
 				{logo && renderLogo(logo)}
 				{search && renderSearchBar()}
 				{avatar && renderAvatar()}

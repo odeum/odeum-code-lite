@@ -8,11 +8,11 @@ import { Link as RouterLink } from 'react-router-dom'
 export const HeaderDiv = styled.div`
 	color: #333;
 	display: flex;
-	flexFlow: row nowrap;
+	flex-flow: row nowrap;
 	width: 100vw;
 	height: 80px;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: ${props => props.quicknav ? 'center' : 'space-between'};
 	background-color: ${props => props.theme.header.background};
 	color: ${props => props.theme.header.color};
 	${media.giant`height:80px;`}
@@ -22,7 +22,7 @@ export const HeaderDiv = styled.div`
 `
 
 export const LogoDiv = styled(RouterLink)`
-	height: 100%;
+	height: 50%;
 	max-height: 35px;
 	align-self: center;
 	padding: 5px;
@@ -30,4 +30,5 @@ export const LogoDiv = styled(RouterLink)`
 
 export const LogoImg = styled.img`
 	height: 100%;
+
 `
