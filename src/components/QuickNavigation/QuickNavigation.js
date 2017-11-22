@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-	QuickNavButton, QuickNavMenu, QuickNavContainer,
+	QuickNavButton, QuickNavMenu, QuickNavContainer, QuickNav,
 	Spacer, TabList, TabItem,
 	MenuItem, MenuList, Link
 } from './QuickNavigationStyles'
@@ -9,7 +9,7 @@ import Tab from '../Tabs/Tab'
 import { convertLabelToRoute } from '../utils/Functions'
 
 //TODO:
-//6. Remove inline Styling
+//7. Active Menu Item, Active Tab Item
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -53,7 +53,7 @@ export default class QuickNavigation extends Component {
 		const { quickNav } = this.state
 		return (
 
-			<div style={{ zIndex: '1', display: 'flex', flexFlow: 'row nowrap', alignItems: 'center', justifyContent: 'center' }}>
+			<QuickNav>
 				<QuickNavButton onClick={this.openNav}>Quick Navigation</QuickNavButton>
 				<QuickNavContainer quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu onClick={this.menuClick()}>
@@ -72,7 +72,7 @@ export default class QuickNavigation extends Component {
 						</MenuList>
 					</QuickNavMenu>
 				</QuickNavContainer>
-			</div >
+			</QuickNav >
 
 
 

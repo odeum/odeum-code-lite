@@ -23,7 +23,7 @@ export default class Header extends Component {
 	changeLogo = (logo) => {
 		this.setState({ logo: logo.default })
 	}
-	componentWillMount() {
+	componentDidMount = () => {
 		if (this.props.logo !== undefined)
 			this.changeLogo(this.props.logo)
 		else

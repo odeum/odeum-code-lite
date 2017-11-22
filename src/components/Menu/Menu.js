@@ -6,14 +6,14 @@ import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import { convertLabelToRoute } from '../utils/Functions'
 class Menu extends Component {
+
 	componentWillMount = () => {
-		console.log('-------')
-		console.log('this.props.activeMenu', this.props.activeMenu)
-		console.log('this.props.route', this.props.route)
-		console.log('this.props.index', this.props.index)
-		console.log('-----')
+		// console.log('-------')
+		// console.log('this.props.activeMenu', this.props.activeMenu)
+		// console.log('this.props.route', this.props.route)
+		// console.log('this.props.index', this.props.index)
+		// console.log('-----')
 		if (window.location.pathname.includes(this.props.route) && this.props.activeMenu !== this.props.index) {
-		
 			this.props.setActiveMenu(this.props.index)
 		}
 	}
@@ -73,7 +73,7 @@ class Menu extends Component {
 	}
 
 	render() {
-		console.log(this.props.quicknav)
+		// console.log(this.props.quicknav)
 		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }

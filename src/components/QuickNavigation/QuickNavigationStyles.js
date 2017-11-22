@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
+export const QuickNav = styled.div`
+    z-index: 1; 
+    display: flex; 
+    flex-flow: row nowrap;
+    align-items: center; 
+    justify-content: center;
+`
 export const Link = styled(NavLink)`
     text-decoration:none;
     background:${props => props.theme.quicknav.button.background};
@@ -40,6 +47,9 @@ export const TabItem = styled(NavLink)`
         margin-left:15px;
     }
     cursor:pointer;
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
 `
 
 export const Spacer = styled.div`
