@@ -56,7 +56,7 @@ class MenuPanel extends Component {
 		if (children[0].props.label)
 			return convertLabelToRoute(children[0].props.label)
 		else
-			return '' 
+			return ''
 	}
 
 	convertChildLabelToRoute = (child, many) => {
@@ -82,7 +82,7 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
-	renderChild = (child) => ({ match }) => { return React.cloneElement(child, { quicknav: this.state.quicknav }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
@@ -102,7 +102,7 @@ class MenuPanel extends Component {
 			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
 				{children.map((child, i) => {
-					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child)} />
+					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child, i)} />
 				})}
 				<Route path={'*'} component={NotFound} />
 			</Switch>

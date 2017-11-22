@@ -1,4 +1,5 @@
-import ODEUM_icon from 'theme/logo_icon.svg'
+// import ODEUM_icon from 'theme/logo_icon.svg'
+// Small Icon not used anymore
 import logoGreen from 'theme/logo_green.svg'
 
 const greenTheme = {
@@ -45,7 +46,7 @@ const greenTheme = {
 	 logo: {
 		 default: logoGreen,
 		 bigLogo: logoGreen,
-		 smallLogo: ODEUM_icon
+		//  smallLogo: ODEUM_icon
 	 }
 }
 

@@ -6,6 +6,17 @@ import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import { convertLabelToRoute } from '../utils/Functions'
 class Menu extends Component {
+	componentWillMount = () => {
+		console.log('-------')
+		console.log('this.props.activeMenu', this.props.activeMenu)
+		console.log('this.props.route', this.props.route)
+		console.log('this.props.index', this.props.index)
+		console.log('-----')
+		if (window.location.pathname.includes(this.props.route) && this.props.activeMenu !== this.props.index) {
+		
+			this.props.setActiveMenu(this.props.index)
+		}
+	}
 
 	//#region Label Converting for Menu
 	route = (child) => this.props.route ? this.props.route : convertLabelToRoute(this.props.label)

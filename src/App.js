@@ -7,7 +7,7 @@ import Tab from 'components/Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
 import { Button } from 'odeum-ui'
-
+import { Link } from 'react-router-dom'
 /* Demo */
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
@@ -44,7 +44,7 @@ class App extends Component {
 		}
 
 	}
-	
+
 	SetHelpID = (helpID) => {
 		// console.log(helpID)
 		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
@@ -100,13 +100,19 @@ class App extends Component {
 					</Menu>
 					<Menu label={'Theme'} icon={'opacity'}>
 						<Tab icon={'tab'} label={'Theme'} route={'/themetab'}>
-							<div>Click the button below continously to change the theme of the framework.</div>
-							<Button
-								label={'Change Theme'}
-								icon={'opacity'}
-								color={this.state.theme.menu.background}
-								onClick={this.changeTheme}
-							/>
+							<div style={{ display: 'flex', flexFlow: 'column' }}>
+								<div>Click the button below continously to change the theme of the framework.</div>
+								<Button
+									label={'Change Theme'}
+									icon={'opacity'}
+									color={this.state.theme.menu.background}
+									onClick={this.changeTheme}
+								/>
+								<Link to={'/'}>Route Home</Link>
+								<Link to={'/child/overflow'}>Route Child</Link>
+								<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
+								<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
+							</div>
 						</Tab>
 					</Menu>
 					{/* 					

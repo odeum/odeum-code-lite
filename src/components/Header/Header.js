@@ -8,14 +8,14 @@ import theme from 'theme/default'
 //TODO Check the logo dissapearing on resize 
 export default class Header extends Component {
 	constructor(props) {
-	  super(props)
-	
-	  this.state = {
-		 quicknav: false,
-		 logo: undefined
-	  }
+		super(props)
+
+		this.state = {
+			quicknav: false,
+			logo: undefined
+		}
 	}
-	
+
 	updateLogo = () => {
 		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
 		this.setState({ quicknav: window.innerWidth <= ScreenSizes.tablet ? true : false })
@@ -23,7 +23,6 @@ export default class Header extends Component {
 	changeLogo = (logo) => {
 		this.setState({ logo: logo.default })
 	}
-	/*TODO: Default Logo always */
 	componentWillMount() {
 		if (this.props.logo !== undefined)
 			this.changeLogo(this.props.logo)
@@ -40,32 +39,25 @@ export default class Header extends Component {
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}
-	renderNotification = () => {
-		return (
-			<div>NotiF</div>
-		)
-	}
+	renderNotification = () => (
+		<div>NotiF</div>
+	)
 
-	renderAvatar = () => {
-		return (
-			<div>Avatar</div>
-		)
-	}
+	renderAvatar = () => (
+		<div>Avatar</div>
+	)
 
-	renderLogo = (logo) => {
-		// console.log('renderLogo', logo)
-		return (
-			<LogoDiv to={'/'}>
-				<LogoImg src={logo}/>
-			</LogoDiv>)
-	}
+	renderLogo = (logo) => (
+		<LogoDiv to={'/'}>
+			<LogoImg src={logo} />
+		</LogoDiv>)
+
 
 	renderSearchBar = () => {
 		return (<div>Search</div>)
 	}
 
 	render() {
-		// console.log(this.props.logo)
 		const { search, notification, avatar } = this.props
 		const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this

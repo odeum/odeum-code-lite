@@ -1,5 +1,16 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
+export const Link = styled(NavLink)`
+    text-decoration:none;
+    background:${props => props.theme.quicknav.button.background};
+    color: ${props => props.theme.quicknav.button.color};
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
+    height:100%;
+    width:100%;
+`
 export const MenuItem = styled.div`
     background:${props => props.theme.quicknav.button.background};
     color: ${props => props.theme.quicknav.button.color};
@@ -13,18 +24,22 @@ export const MenuItem = styled.div`
     &:first-child{
         margin-left:1px;
     }
+    cursor:pointer;
 `
 
-export const TabItem = styled.div`
+export const TabItem = styled(NavLink)`
+    text-decoration: none;
     min-width: 50px;
     margin:0px 30px;
     height: 30px;
+    color:black;
     &:hover{
         color: royalblue;
     }
     &:first-child{
         margin-left:15px;
     }
+    cursor:pointer;
 `
 
 export const Spacer = styled.div`
@@ -50,12 +65,13 @@ export const MenuList = styled.div`
 export const TabList = styled.div`
     display: flex;
     flex-flow: column wrap;
+    align-items:center;
+    justify-content:center;
     height: 45px;
     max-height:50px;
     margin: 0;
     padding:5px;
     line-height:35px;
-    align-items:center;
     overflow-x: auto;
     width:90vw;
 `
