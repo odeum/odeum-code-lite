@@ -6,14 +6,16 @@ import { Icon } from 'odeum-ui'
 class MenuItem extends Component {
 
 	cutRoutes = (string) => {
+		// console.log(string)
 		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)
 		return match ? match[0] : null
 	}
 	componentWillMount() {
 		if (this.props.helpID && this.props.active)
 			this.props.SetHelpID(this.props.helpID)
-		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route))
+		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route)) {
 			this.activate()
+		}
 	}
 	activate = () => {
 		this.props.onClick(this.props.MenuID ? this.props.MenuID : 0)

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { AppDiv } from './AppStyles'
 import { ThemeProvider } from "styled-components"
 import theme from 'theme/default'
+
 class AppContainer extends Component {
 
 	render() {

@@ -9,8 +9,9 @@ class Workspace extends Component {
 	}
 
 	render() {
+		const { noTab } = this.props
 		return (
-			<WorkspaceDiv style={this.props.style}>
+			<WorkspaceDiv style={this.props.style} noTab={noTab}>
 				{this.props.children}
 			</WorkspaceDiv>
 		)

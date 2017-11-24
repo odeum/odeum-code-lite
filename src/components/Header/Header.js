@@ -5,7 +5,6 @@ import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from 'theme/media'
 import theme from 'theme/default'
 
-//TODO Check the logo dissapearing on resize 
 export default class Header extends Component {
 	constructor(props) {
 		super(props)
@@ -18,16 +17,14 @@ export default class Header extends Component {
 
 	updateLogo = () => {
 		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
-		this.setState({ quicknav: window.innerWidth <= ScreenSizes.tablet ? true : false })
+		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
 	}
 	changeLogo = (logo) => {
 		this.setState({ logo: logo.default })
 	}
 	componentDidMount = () => {
 		if (this.props.logo !== undefined)
-			this.changeLogo(this.props.logo)
-		else
-			this.changeLogo(theme.logo)
+			this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
 
 	}

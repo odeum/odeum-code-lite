@@ -12,16 +12,16 @@ export const HeaderDiv = styled.div`
 	width: 100vw;
 	height: 80px;
 	align-items: center;
-	justify-content: ${props => props.quicknav ? 'center' : 'space-between'};
+	justify-content: ${props => props.quicknav ? () => { console.log(props.quicknav); return 'center' } : 'space-between'};
 	background-color: ${props => props.theme.header.background};
 	color: ${props => props.theme.header.color};
 	${media.giant`height:80px;`}
 	${media.desktop`height:80px;`}
 	${media.tablet`height:50px;`}
-	${media.phone`height:30px;`}
+	${media.phone`height:50px;`}
 `
 
-export const LogoDiv = styled(RouterLink)`
+export const LogoDiv = styled(RouterLink) `
 	height: 50%;
 	max-height: 35px;
 	align-self: center;

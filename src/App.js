@@ -68,15 +68,22 @@ class App extends Component {
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
-					<Menu route={'/'} label={'Home'} exact helpID={10}>
+					<Menu route={'/'} exact label={'Home'} helpID={10}>
 						<Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button>
-						<SimpleDiv />
+						{/* <SimpleDiv /> */}
 					</Menu>
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
-
+					<Menu route={'/form'} label={'Form'}>
+						<Tab route={''} exact label={'Test'}>
+							Test
+						</Tab>
+						<Tab route={'/test2'} label={'Test2'}>
+							Test2
+						</Tab>
+					</Menu>
 					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
 						<Tab icon={'assignment'} label={'Overflow'}  >
 							<RouteDemo />
