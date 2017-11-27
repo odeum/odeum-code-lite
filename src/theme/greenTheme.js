@@ -4,6 +4,7 @@ import logoGreen from 'theme/logo_green.svg'
 
 const greenTheme = {
 	header: {
+		height: '80px',
 		background: '#1B5E20',
 		color: '#E8F5E9'
 	},
@@ -43,11 +44,12 @@ const greenTheme = {
 			color: '#FFF'
 		}
 	},
-	 logo: {
-		 default: logoGreen,
-		 bigLogo: logoGreen,
+	logo: {
+		height: '100%',
+		default: logoGreen,
+		bigLogo: logoGreen,
 		//  smallLogo: ODEUM_icon
-	 }
+	}
 }
 
 export default greenTheme

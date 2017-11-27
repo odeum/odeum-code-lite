@@ -3,6 +3,7 @@ import ODEUM_icon from 'theme/logo_icon.svg'
 
 const theme = {
 	header: {
+		height: '150px',
 		background: '#2C3E50',
 		color: '#FFF'
 	},
@@ -43,6 +44,7 @@ const theme = {
 		}
 	},
 	logo: {
+		height: '35px',
 		default: ODEUM_Logo,
 		bigLogo: ODEUM_Logo,
 		smallLogo: ODEUM_icon

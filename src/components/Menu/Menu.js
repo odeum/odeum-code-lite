@@ -26,7 +26,6 @@ class Menu extends Component {
 	route = (child) => this.props.route !== undefined ? this.props.route : convertLabelToRoute(this.props.label)
 
 	childRoute = (child) => {
-		console.log(child.props.route)
 		return child.props.route !== undefined ? child.props.route : convertLabelToRoute(child.props.label)
 	}
 
