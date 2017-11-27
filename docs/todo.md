@@ -1,3 +1,5 @@
-1. how to pass another theme inside the app
-2. Move helpId on Menu and Tab
-3. Get Rid of Workspace
+1. MenuPanel Check for Menu subchild
+2. If not Menu don't render
+3. error coding, use strict subchildren
+4. Padding on logo
+5. Footer dissapears on Tablet size (portrait) (Ipad Air 2)

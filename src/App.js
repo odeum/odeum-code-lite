@@ -17,7 +17,7 @@ import greenTheme from 'theme/greenTheme'
 import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import MenuItem from './components/Menu/MenuComponents/MenuItem'
-
+import Tabb from './demos/Tabb'
 class App extends Component {
 
 	//#region Temporary Help Demo
@@ -69,10 +69,12 @@ class App extends Component {
 				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
 					<Menu route={'/'} exact label={'Home'} helpID={10}>
-						<Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button>
-						{/* <SimpleDiv /> */}
+						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
+						<SimpleDiv />
+					
 					</Menu>
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
+						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>

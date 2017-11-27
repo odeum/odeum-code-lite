@@ -45,7 +45,7 @@ const greenTheme = {
 		}
 	},
 	logo: {
-		height: '100%',
+		height: '35px',
 		default: logoGreen,
 		bigLogo: logoGreen,
 		//  smallLogo: ODEUM_icon

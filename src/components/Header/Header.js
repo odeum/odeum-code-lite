@@ -28,10 +28,11 @@ export default class Header extends Component {
 		window.addEventListener('resize', this.updateLogo)
 
 	}
-	// componentWillUpdate = (nextProps, nextState) => {
-	// 	if (this.props.logo !== nextProps.logo)
-	// 		this.changeLogo(nextProps.logo)
-	// }
+	//This is used on Theme Change
+	componentWillUpdate = (nextProps, nextState) => {
+		if (this.props.logo !== nextProps.logo)
+			this.changeLogo(nextProps.logo)
+	}
 
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
