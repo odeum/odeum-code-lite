@@ -2,6 +2,10 @@ html {
 	font-size: 62.5%;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 body {	
 	font-family: Helvetica, 'Sans Serif', Arial;
 	font-weight: 300;

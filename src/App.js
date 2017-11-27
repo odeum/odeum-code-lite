@@ -27,7 +27,7 @@ class App extends Component {
 
 		this.state = {
 			helpID: 0,
-			theme: greenTheme
+			theme: theme
 		}
 		Workspace.defaultProps = {
 			SetHelpID: this.SetHelpID
