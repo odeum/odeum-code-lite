@@ -6,7 +6,7 @@ import { MenuContainer } from './MenuStyles'
 import { Switch } from 'react-router-dom'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
-import { convertLabelToRoute } from '../utils/Functions'
+import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { ScreenSizes as sizes } from '../../theme/media'
 import Tab from 'components/Tabs/Tab'
 
@@ -47,9 +47,9 @@ class MenuPanel extends Component {
 
 
 	//#region Routing + Get First Child Route 
-
+	//TODO
 	route = (child) => child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
-
+	//TODO
 	getFirstChildRoute = (child) => {
 		var children = React.Children.toArray(child.props.children)
 		if (children[0].type === Tab) {
@@ -107,8 +107,9 @@ class MenuPanel extends Component {
 				})}
 			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
+				{/* TODO exact */}
 				{children.map((child, i) => {
-					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child, i)} />
+					return <Route key={i} path={this.route(child)} exact={isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 				})}
 				<Route path={'*'} component={NotFound} />
 			</Switch>

@@ -18,6 +18,7 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import MenuItem from './components/Menu/MenuComponents/MenuItem'
 import Tabb from './demos/Tabb'
+import Flex from './demos/Flex'
 class App extends Component {
 
 	//#region Temporary Help Demo
@@ -66,12 +67,12 @@ class App extends Component {
 	render() {
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} />
+				<Header logo={this.state.theme.logo}/>
 				<MenuPanel>
-					<Menu route={'/'} exact label={'Home'} helpID={10}>
+					<Menu route={'/'} label={'Home'} helpID={10}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
-						<SimpleDiv />
-					
+						{/* <SimpleDiv /> */}
+						<Flex/>
 					</Menu>
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
 						<Tabb />
@@ -79,7 +80,7 @@ class App extends Component {
 						<SimpleDiv />
 					</Menu>
 					<Menu route={'/form'} label={'Form'}>
-						<Tab route={''} exact label={'Test'}>
+						<Tab route={''} label={'Test'}>
 							Test
 						</Tab>
 						<Tab route={'/test2'} label={'Test2'}>
@@ -129,7 +130,7 @@ class App extends Component {
 					*/}
 
 				</MenuPanel>
-				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpID={this.state.helpID} />
+				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpID={this.state.helpID} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}

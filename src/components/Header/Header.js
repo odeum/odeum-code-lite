@@ -23,10 +23,8 @@ export default class Header extends Component {
 		this.setState({ logo: logo.default })
 	}
 	componentDidMount = () => {
-		if (this.props.logo !== undefined)
-			this.updateLogo()
+		this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
-
 	}
 	//This is used on Theme Change
 	componentWillUpdate = (nextProps, nextState) => {

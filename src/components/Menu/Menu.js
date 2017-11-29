@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
-import { convertLabelToRoute } from '../utils/Functions'
+import { convertLabelToRoute, isExact } from '../utils/Functions'
 
 class Menu extends Component {
 	constructor(props) {
@@ -23,8 +23,9 @@ class Menu extends Component {
 	}
 
 	//#region Label Converting for Menu
+	//TODO
 	route = (child) => this.props.route !== undefined ? this.props.route : convertLabelToRoute(this.props.label)
-
+	//TODO
 	childRoute = (child) => {
 		return child.props.route !== undefined ? child.props.route : convertLabelToRoute(child.props.label)
 	}
@@ -36,7 +37,7 @@ class Menu extends Component {
 	renderChildren = (children) => children.map((child, index) => {
 		// console.log(child.props.exact, child.props.label)
 		return <Route key={index} path={this.route() + this.childRoute(child)}
-			exact={child.props.exact ? child.props.exact : undefined}
+			exact={isExact(this.childRoute(child))}
 			component={this.renderChild(child)} />
 	})
 
@@ -62,7 +63,7 @@ class Menu extends Component {
 								icon={child.props.icon}
 								route={this.route() + this.childRoute(child)}
 								setActiveTab={this.setActiveTab}
-								activeTab={this.state.activeTab}/>
+								activeTab={this.state.activeTab} />
 						))}
 					</TabList> : null}
 					<Switch>
@@ -71,7 +72,6 @@ class Menu extends Component {
 				</SceneDiv>
 			)
 		else {
-			console.log(children)
 			return (
 				<SceneDiv>
 					{this.renderNoTabs(children)}
