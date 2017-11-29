@@ -9,13 +9,23 @@ class Tab extends Component {
 
 
 	componentWillMount() {
-		if (this.props.helpID && this.props.active) {
-			this.props.SetHelpID(this.props.helpID)
-		}
 		if (window.location.pathname.includes(this.props.route) && this.props.activeTab !== this.props.tabID) {
 			this.activate()
+			this.setHelpID()
 		}
-		
+		console.log('Mounted', this.props.label)
+	}
+
+	// componentDidMount = () => {
+	// 	if (this.props.helpID && this.props.active) {
+	// 		this.props.SetHelpID(this.props.helpID, 'Tab')
+	// 	}
+	// }
+
+	setHelpID = () => {
+		if (this.props.helpID) {
+			this.props.SetHelpID(this.props.helpID, 'Tab')
+		}
 	}
 	activate = () => {
 		this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
@@ -24,7 +34,7 @@ class Tab extends Component {
 
 	render() {
 		return (
-			<Link to={this.props.route} activetab={this.props.active.toString()}>
+			<Link to={this.props.route} activetab={this.props.active.toString()} onClick={this.activate}>
 				<TabIconDiv><Icon color={this.iconIsActive()} iconSize={20} icon={this.props.icon ? this.props.icon : this.defaultProps.icon} style={{ marginRight: '0px' }} /></TabIconDiv>
 				<TabText>
 					{this.props.label}

@@ -3,9 +3,9 @@ import { WorkspaceDiv } from './WorkspaceStyles'
 
 class Workspace extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		if (this.props.helpID)
-			this.props.SetHelpID(this.props.helpID)
+			this.props.SetHelpID(this.props.helpID, 'Workspace')
 	}
 
 	render() {

@@ -4,11 +4,13 @@ import Header from 'components/Header/Header'
 import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
-import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
+import Page from 'components/Menu/Page'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
+
 /* Demo */
+
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
 import RouteDemo from 'demos/RouteDemo'
@@ -16,40 +18,21 @@ import redTheme from 'theme/redTheme'
 import greenTheme from 'theme/greenTheme'
 import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
-import MenuItem from './components/Menu/MenuComponents/MenuItem'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
+
+/* End Import Demo */
+
 class App extends Component {
-
-	//#region Temporary Help Demo
-
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			helpID: 0,
 			theme: theme
 		}
-		Workspace.defaultProps = {
-			SetHelpID: this.SetHelpID
-		}
-		MenuItem.defaultProps = {
-			SetHelpID: this.SetHelpID,
-			icon: 'menu'
-		}
-
-		Tab.defaultProps = {
-			SetHelpID: this.SetHelpID,
-			label: 'Tab',
-			icon: 'tab'
-		}
 
 	}
 
-	SetHelpID = (helpID) => {
-		// console.log(helpID)
-		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
-	}
 	changeTheme = () => {
 		return this.state.theme === eplanTheme ?
 			this.setState({ theme: greenTheme }) :
@@ -62,28 +45,27 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
-	//#endregion TempDemo
 
 	render() {
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo}/>
+				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
-					<Menu route={'/'} label={'Home'} helpID={10}>
+					<Page route={'/'} helpID={10}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
 						{/* <SimpleDiv /> */}
-						<Flex/>
-					</Menu>
+						<Flex />
+					</Page>
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 					<Menu route={'/form'} label={'Form'}>
-						<Tab route={''} label={'Test'}>
+						<Tab route={''} label={'Test'} helpID={2}>
 							Test
 						</Tab>
-						<Tab route={'/test2'} label={'Test2'}>
+						<Tab route={'/test2'} label={'Test2'} helpID={3}>
 							Test2
 						</Tab>
 					</Menu>
@@ -103,8 +85,8 @@ class App extends Component {
 							<div>Hello Workspace ... </div>
 						</Tab>
 					</Menu>
-					<Menu label={'Auto Generated'} helpID={'auto'}>
-						<Tab label={'Route'}>
+					<Menu label={'Auto Generated'}>
+						<Tab label={'Route'} helpID={'0'}>
 							Auto Generated Route
 						</Tab>
 					</Menu>
@@ -130,7 +112,7 @@ class App extends Component {
 					*/}
 
 				</MenuPanel>
-				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpID={this.state.helpID} helpLabel={'Brug for Hjaelp?'} />
+				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}
