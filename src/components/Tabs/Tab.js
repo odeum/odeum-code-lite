@@ -6,35 +6,34 @@ import theme from 'theme/default'
 
 
 class Tab extends Component {
+	constructor(props) {
+		super(props)
 
+		this.state = {
+			active: false
+		}
+	}
 
 	componentWillMount() {
-		if (window.location.pathname.includes(this.props.route) && this.props.activeTab !== this.props.tabID) {
-			this.activate()
-			this.setHelpID()
+		console.log(window.location.pathname.includes(this.props.route), this.props.activeTab !== this.props.tabID)
+		if (window.location.pathname === this.props.route && !this.state.active) {
+			this.setState({ active: true })
 		}
-		console.log('Mounted', this.props.label)
+
+
+		//else
+		//this.setState({ active: false })
 	}
 
-	// componentDidMount = () => {
-	// 	if (this.props.helpID && this.props.active) {
-	// 		this.props.SetHelpID(this.props.helpID, 'Tab')
-	// 	}
-	// }
-
-	setHelpID = () => {
-		if (this.props.helpID) {
-			this.props.SetHelpID(this.props.helpID, 'Tab')
-		}
-	}
 	activate = () => {
+		console.log(this.props.tabID)
 		this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
 	}
-	iconIsActive = () => this.props.active ? theme.icon.selected : theme.icon.default
+	iconIsActive = () => this.state.active ? theme.icon.selected : theme.icon.default
 
 	render() {
 		return (
-			<Link to={this.props.route} activetab={this.props.active.toString()} onClick={this.activate}>
+			<Link to={this.props.route} activetab={this.state.active.toString()} onClick={this.activate}>
 				<TabIconDiv><Icon color={this.iconIsActive()} iconSize={20} icon={this.props.icon ? this.props.icon : this.defaultProps.icon} style={{ marginRight: '0px' }} /></TabIconDiv>
 				<TabText>
 					{this.props.label}

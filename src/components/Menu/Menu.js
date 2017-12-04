@@ -17,15 +17,13 @@ class Menu extends Component {
 
 
 	componentWillMount = () => {
-		if (window.location.pathname.includes(this.props.route) && this.props.activeMenu !== this.props.index) {
+		if (window.location.pathname.includes(this.props.route) && this.props.index !== undefined && this.props.activeMenu !== this.props.index) {
 			this.props.setActiveMenu(this.props.index)
 		}
 	}
 
 	//#region Label Converting for Menu
-	//TODO
 	route = (child) => this.props.route !== undefined ? this.props.route : convertLabelToRoute(this.props.label)
-	//TODO
 	childRoute = (child) => {
 		return child.props.route !== undefined ? child.props.route : convertLabelToRoute(child.props.label)
 	}
@@ -44,9 +42,15 @@ class Menu extends Component {
 	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
 
 	//#endregion
-
+	setHelpID = (id) => {
+		if (this.props.SetHelpID)
+			this.props.SetHelpID(id, 'Menu')
+	}
 	setActiveTab = (key) => {
+		console.log('SetActiveTab', key)
 		this.setState({ activeTab: key })
+		this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
+
 
 	}
 	renderTabs = (children) => {
@@ -89,6 +93,7 @@ class Menu extends Component {
 	}
 
 	render() {
+		console.log(this.props.label, this.state.activeTab)
 		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }

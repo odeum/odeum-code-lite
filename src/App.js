@@ -49,49 +49,49 @@ class App extends Component {
 	render() {
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} />
+				<Header />
 				<MenuPanel>
-					<Page route={'/'} helpID={10}>
+					<Page route={'/'} helpID={1}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
 						{/* <SimpleDiv /> */}
 						<Flex />
 					</Page>
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={2}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 					<Menu route={'/form'} label={'Form'}>
-						<Tab route={''} label={'Test'} helpID={2}>
+						<Tab route={''} label={'Test'} helpID={3}>
 							Test
 						</Tab>
-						<Tab route={'/test2'} label={'Test2'} helpID={3}>
+						<Tab route={'/test2'} label={'Test2'} helpID={4}>
 							Test2
 						</Tab>
 					</Menu>
 					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
-						<Tab icon={'assignment'} label={'Overflow'}  >
+						<Tab icon={'assignment'} label={'Overflow'} helpID={5} >
 							<RouteDemo />
 						</Tab>
 					</Menu>
-					<Menu icon={'people'} route={'/children1'} label={'Menu with children'}>
-						<Tab icon={'assignment'} label={'Overflow'} helpID={104}>
+					<Menu icon={'people'} route={'/children1'} label={'Menu with children'} helpID={50}>
+						<Tab icon={'assignment'} label={'Overflow'} helpID={6}>
 							<SimpleDiv />
 						</Tab>
-						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component1'} helpID={12}>
-							<ReactComp helpID={2} />
+						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component1'} helpID={7}>
+							<ReactComp />
 						</Tab>
-						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace1'} helpID={13}>
+						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace1'} helpID={8}>
 							<div>Hello Workspace ... </div>
 						</Tab>
 					</Menu>
 					<Menu label={'Auto Generated'}>
-						<Tab label={'Route'} helpID={'0'}>
+						<Tab label={'Route'} helpID={'9'}>
 							Auto Generated Route
 						</Tab>
 					</Menu>
 					<Menu label={'Theme'} icon={'opacity'}>
-						<Tab icon={'tab'} label={'Theme'} route={'/themetab'}>
+						<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
 							<div style={{ display: 'flex', flexFlow: 'column' }}>
 								<div>Click the button below continously to change the theme of the framework.</div>
 								<Button

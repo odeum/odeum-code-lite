@@ -1,3 +1,5 @@
+import 'core-js/es6/map'
+import 'core-js/es6/set'
 import React, { Component } from 'react'
 import { AppDiv } from './AppStyles'
 import { ThemeProvider } from "styled-components"
@@ -6,6 +8,7 @@ import Footer from '../Footer/Footer'
 import Tab from '../Tabs/Tab'
 import Workspace from '../Workspace/Workspace'
 import MenuItem from '../Menu/MenuComponents/MenuItem'
+import Menu from '../Menu/Menu'
 class AppContainer extends Component {
 	constructor(props) {
 		super(props)
@@ -20,15 +23,19 @@ class AppContainer extends Component {
 			SetHelpID: this.SetHelpID,
 			icon: 'menu'
 		}
+		Menu.defaultProps = {
+			SetHelpID: this.SetHelpID
+		}
 
 		Tab.defaultProps = {
-			SetHelpID: this.SetHelpID,
+
 			label: 'Tab',
 			icon: 'tab'
 		}
 	}
+
 	SetHelpID = (id, e) => {
-		console.log(id, e)
+		// console.log(id, e)
 		return id === this.state.helpID ? null : this.setState({ helpID: id })
 	}
 	render() {

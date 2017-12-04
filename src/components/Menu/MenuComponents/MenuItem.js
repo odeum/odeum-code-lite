@@ -11,14 +11,18 @@ class MenuItem extends Component {
 		return match ? match[0] : null
 	}
 	componentWillMount() {
-		if (this.props.helpID && this.props.active)
-			this.props.SetHelpID(this.props.helpID, 'MenuItem')
+		this.setHelpID()
 		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route)) {
 			this.activate()
 		}
 	}
+	setHelpID = () => {
+		if (this.props.helpID)
+			this.props.SetHelpID(this.props.helpID, 'MenuItem')
+	}
 	activate = () => {
 		this.props.onClick(this.props.MenuID ? this.props.MenuID : 0)
+		this.setHelpID()
 	}
 	render() {
 		return (

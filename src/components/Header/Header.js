@@ -26,12 +26,10 @@ export default class Header extends Component {
 		this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
 	}
-	//This is used on Theme Change
 	componentWillUpdate = (nextProps, nextState) => {
 		if (this.props.logo !== nextProps.logo)
 			this.changeLogo(nextProps.logo)
 	}
-
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}
@@ -70,7 +68,7 @@ export default class Header extends Component {
 
 //TODO 
 Header.propTypes = {
-	logo: PropTypes.object || PropTypes.string,
+	logo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,

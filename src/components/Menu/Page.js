@@ -3,7 +3,7 @@ import Menu from './Menu'
 export default class Page extends Component {
 	render() {
 		return (
-			<Menu route={this.props.route} helpID={this.props.helpID}>
+			<Menu {...this.props}>
 				{this.props.children}
 			</Menu>
 		)

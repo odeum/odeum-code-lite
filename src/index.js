@@ -1,5 +1,8 @@
+import 'core-js/es6/map'
+import 'core-js/es6/set'
 import React, { Component } from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
+// import { render } from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
@@ -7,10 +10,6 @@ import App from 'App'
 
 // import AppRouter from 'AppRouter'
 
-// Christian Do not touch this, this is Hot Reload Module code for my own dev "needs"
-// it does not affect with absolute anything odeum-app as it is not included anywhere
-// A user if wishes can do the same thing on it's own project 
-// or keep the same format from OA-Tester
 
 class AppRouter extends Component {
 	render() {
@@ -25,7 +24,7 @@ class AppRouter extends Component {
 }
 export default AppRouter
 
-render(
+ReactDOM.render(
 	<AppRouter />,
 	document.getElementById('root')
 )
@@ -33,7 +32,7 @@ render(
 if (module.hot) {
 	module.hot.accept('./index'.default, () => {
 		const NextApp = require('./index').default
-		render(
+		ReactDOM.render(
 			<NextApp />,
 			document.getElementById('root')
 		)

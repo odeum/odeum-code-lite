@@ -44,8 +44,8 @@ export default class QuickNavigation extends Component {
 			return <MenuItem key={index} onClick={this.setActiveMenu(index)}><Link to={route}>{menu.props.label}</Link></MenuItem>
 	}
 	renderTabItem = (tab, menu, index) => {
-		var menuRoute = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
-		var route = tab.props.route ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
+		var menuRoute = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
+		var route = tab.props.route !== undefined ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
 		return <TabItem key={index} to={route} onClick={this.tabClick}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
 	}
 	render() {

@@ -88,7 +88,7 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
