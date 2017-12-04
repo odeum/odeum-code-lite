@@ -49,9 +49,8 @@ class Menu extends Component {
 	setActiveTab = (key) => {
 		console.log('SetActiveTab', key)
 		this.setState({ activeTab: key })
-		this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
-
-
+		if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
+			this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
 	}
 	renderTabs = (children) => {
 		if (children[0].type === Tab)
@@ -60,10 +59,9 @@ class Menu extends Component {
 					{!this.props.quicknav ? <TabList>
 						{children.map((child, index) => (
 							<Tab key={index}
-								helpID={child.props.helpID}
+								helpID={child.props.helpID ? child.props.helpID : undefined}
 								tabID={index}
 								exact={isExact(this.childRoute(child))}
-								active={index === this.state.activeTab ? true : false}
 								label={child.props.label}
 								icon={child.props.icon}
 								route={this.route() + this.childRoute(child)}

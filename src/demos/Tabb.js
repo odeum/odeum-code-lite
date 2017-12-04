@@ -6,7 +6,7 @@ export default class Tabb extends Component {
 		return (
 			<div>
 				<Menu label={'home'}>
-					<Tab route={'/test2'} label={'Test2'}>
+					<Tab route={'/test2'} label={'Test2'} helpID={100}>
 						Test2
 					</Tab>
 					<Tab route={'/test3'} label={'Test3'}>
