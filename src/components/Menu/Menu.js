@@ -62,6 +62,7 @@ class Menu extends Component {
 							<Tab key={index}
 								helpID={child.props.helpID}
 								tabID={index}
+								exact={isExact(this.childRoute(child))}
 								active={index === this.state.activeTab ? true : false}
 								label={child.props.label}
 								icon={child.props.icon}

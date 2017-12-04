@@ -15,14 +15,20 @@ class Tab extends Component {
 	}
 
 	componentWillMount() {
-		console.log(window.location.pathname.includes(this.props.route), this.props.activeTab !== this.props.tabID)
-		if (window.location.pathname === this.props.route && !this.state.active) {
-			this.setState({ active: true })
+		console.log('exact', this.props.exact)
+		if (!this.props.exact) {
+			if (window.location.pathname.includes(this.props.route) && !this.state.active) {
+				this.setState({ active: true })
+			}
+		}
+		else {
+			if (window.location.pathname === this.props.route && !this.state.active) {
+				this.setState({ active: true })
+			}
 		}
 
+		console.log(window.location.pathname.includes(this.props.route), this.state.active)
 
-		//else
-		//this.setState({ active: false })
 	}
 
 	activate = () => {
