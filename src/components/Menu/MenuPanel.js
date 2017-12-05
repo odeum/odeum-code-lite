@@ -107,7 +107,6 @@ class MenuPanel extends Component {
 				})}
 			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
-				{/* TODO exact */}
 				{children.map((child, i) => {
 					return <Route key={i} path={this.route(child)} exact={isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 				})}
