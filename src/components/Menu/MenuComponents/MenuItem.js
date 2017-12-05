@@ -46,5 +46,8 @@ MenuItem.propTypes = {
 	icon: PropTypes.string
 
 }
-
+MenuItem.defaultProps = {
+	// 	SetHelpID: this.SetHelpID,
+	icon: 'menu'
+}
 export default MenuItem

@@ -56,8 +56,9 @@ Tab.propTypes = {
 	icon: PropTypes.string
 }
 
-// Tab.defaultProps = {
-//	label:'Tab',
-// 	icon: 'tab'
-// }
+
+Tab.defaultProps = {
+	label: 'Tab',
+	icon: 'tab'
+}
 export default Tab

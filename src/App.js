@@ -20,7 +20,6 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
-import { GetHelpID } from 'components/utils/HelpReducer'
 
 /* End Import Demo */
 
