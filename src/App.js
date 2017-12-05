@@ -20,6 +20,7 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
+import { GetHelpID } from 'components/utils/HelpReducer'
 
 /* End Import Demo */
 
@@ -74,7 +75,7 @@ class App extends Component {
 							<RouteDemo />
 						</Tab>
 					</Menu>
-					<Menu icon={'people'} route={'/children1'} label={'Menu with children'} helpID={50}>
+					<Menu icon={'people'} route={'/children1'} label={'Menu with children'} >
 						<Tab icon={'assignment'} label={'Overflow'} helpID={6}>
 							<SimpleDiv />
 						</Tab>
@@ -127,7 +128,7 @@ const RenderFooterLabel = () => {
 	return (
 		<div>
 			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
-			{' '}{date.getFullYear()}
+			{' '}{date.getFullYear()}{' Debug2 '}{GetHelpID()}
 		</div>
 	)
 }

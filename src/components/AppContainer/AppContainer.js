@@ -9,23 +9,22 @@ import Tab from '../Tabs/Tab'
 import Workspace from '../Workspace/Workspace'
 import MenuItem from '../Menu/MenuComponents/MenuItem'
 import Menu from '../Menu/Menu'
+// import { SetHelpID } from '../utils/HelpReducers'
 class AppContainer extends Component {
 	constructor(props) {
 		super(props)
 
-		this.state = {
-			helpID: 100
-		}
-		Workspace.defaultProps = {
-			SetHelpID: this.SetHelpID
-		}
+		// this.state = {
+		// 	helpID: 100
+		// }
+
 		MenuItem.defaultProps = {
-			SetHelpID: this.SetHelpID,
+		// 	SetHelpID: this.SetHelpID,
 			icon: 'menu'
 		}
-		Menu.defaultProps = {
-			SetHelpID: this.SetHelpID
-		}
+		// Menu.defaultProps = {
+		// 	SetHelpID: this.SetHelpID
+		// }
 
 		Tab.defaultProps = {
 
@@ -34,20 +33,14 @@ class AppContainer extends Component {
 		}
 	}
 
-	SetHelpID = (id, e) => {
-		// console.log(id, e)
-		return id === this.state.helpID ? null : this.setState({ helpID: id })
-	}
+	// SetHelpID = (id, e) => {
+	// 	SetHelpID(id)
+	// }
 	render() {
 		return (
 			<ThemeProvider theme={this.props.theme ? this.props.theme : theme} >
 				<AppDiv>
-					{this.props.children.map((child, index) => {
-						if (child.type === Footer)
-							return React.cloneElement(child, { key: index, helpID: this.state.helpID })
-						else
-							return React.cloneElement(child, { key: index })
-					})}
+					{this.props.children}
 				</AppDiv>
 			</ThemeProvider>
 		)

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { StyledFooter, Link } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
 import { ScreenSizes } from 'theme/media'
-
 class Footer extends Component {
 	constructor(props) {
 		super(props)
@@ -14,6 +13,7 @@ class Footer extends Component {
 	}
 
 	componentWillMount() {
+
 		this.smallHelp()
 		window.addEventListener('resize', this.smallHelp)
 	}

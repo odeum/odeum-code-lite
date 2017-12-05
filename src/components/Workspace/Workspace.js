@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { WorkspaceDiv } from './WorkspaceStyles'
+import { SetHelpID } from '../utils/HelpReducer'
 
 class Workspace extends Component {
 
 	componentDidMount() {
 		if (this.props.helpID)
-			this.props.SetHelpID(this.props.helpID, 'Workspace')
+			SetHelpID(this.props.helpID)
 	}
 
 	render() {

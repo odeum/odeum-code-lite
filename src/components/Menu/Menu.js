@@ -5,6 +5,7 @@ import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
+import { SetHelpID } from '../utils/HelpReducer'
 
 class Menu extends Component {
 	constructor(props) {
@@ -43,11 +44,13 @@ class Menu extends Component {
 
 	//#endregion
 	setHelpID = (id) => {
-		if (this.props.SetHelpID)
-			this.props.SetHelpID(id, 'Menu')
+
+		console.log('Menu', id)
+		SetHelpID(id)
+
 	}
 	setActiveTab = (key) => {
-		console.log('SetActiveTab', key)
+		//console.log('SetActiveTab', key)
 		this.setState({ activeTab: key })
 		if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
 			this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
@@ -92,7 +95,7 @@ class Menu extends Component {
 	}
 
 	render() {
-		console.log(this.props.label, this.state.activeTab)
+		// console.log(this.props.label, this.state.activeTab)
 		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }

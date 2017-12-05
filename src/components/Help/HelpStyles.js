@@ -3,12 +3,23 @@ import media from 'theme/media'
 // import theme from 'theme/default'
 import { Icon as DefaultIcon } from 'odeum-ui'
 
+export const HelpPopUp = styled.div`
+	background: white;
+	border: 1px solid #3f3f3f;
+	z-index: 1;
+	height: 150px;
+	width: 150px;
+	position: fixed;
+	bottom: 10%;
+	right: 2%;
+`
+
 export const Bold = styled.b`
 	font-size: 12px;
 	margin-left: 4px;
 `
 
-export const Icon = styled(DefaultIcon)`
+export const Icon = styled(DefaultIcon) `
 	&:hover{
 		background: ${props => props.theme.tab.hover};
 		color: white;

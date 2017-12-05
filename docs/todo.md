@@ -3,3 +3,4 @@
 - [ ] error coding, use strict subchildren
 - [ ] Padding on logo
 - [x] Footer dissapears on Tablet size (portrait) (Ipad Air 2)
+- [] -webkit-overflow-scrolling: touch; for iOS

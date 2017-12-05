@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { IconDiv, ArrowIconDiv, Link, MenuText } from '../MenuStyles'
 import PropTypes from 'prop-types'
 import { Icon } from 'odeum-ui'
+import { SetHelpID } from '../../utils/HelpReducer'
 
 class MenuItem extends Component {
 
@@ -17,8 +18,10 @@ class MenuItem extends Component {
 		}
 	}
 	setHelpID = () => {
-		if (this.props.helpID)
-			this.props.SetHelpID(this.props.helpID, 'MenuItem')
+		if (this.props.helpID) {
+			console.log('MenuItem', this.props.label)
+			SetHelpID(this.props.helpID)
+		}
 	}
 	activate = () => {
 		this.props.onClick(this.props.MenuID ? this.props.MenuID : 0)

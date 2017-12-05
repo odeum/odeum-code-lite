@@ -5,7 +5,8 @@ import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from 'theme/media'
 import theme from 'theme/default'
 
-export default class Header extends Component {
+
+class Header extends Component {
 	constructor(props) {
 		super(props)
 
@@ -80,3 +81,4 @@ Header.defaultProps = {
 	avatar: false
 }
 
+export default Header
