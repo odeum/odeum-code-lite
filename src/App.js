@@ -52,31 +52,31 @@ class App extends Component {
 			<AppContainer theme={this.state.theme} >
 				<Header />
 				<MenuPanel>
-					<Page route={'/'} helpID={1}>
+					<Page route={'/'} helpID={'root'}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
 						{/* <SimpleDiv /> */}
 						<Flex />
 					</Page>
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={2}>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 					<Menu route={'/form'} label={'Form'}>
-						<Tab route={''} label={'Test'} helpID={3}>
+						<Tab route={''} label={'Test2'} helpID={'/Form'}>
 							Test
 						</Tab>
-						<Tab route={'/test2'} label={'Test2'} helpID={4}>
+						<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
 							Test2
 						</Tab>
 					</Menu>
 					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
-						<Tab icon={'assignment'} label={'Overflow'} helpID={5} >
+						<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
 							<RouteDemo />
 						</Tab>
 					</Menu>
 					<Menu icon={'people'} route={'/children1'} label={'Menu with children'} >
-						<Tab icon={'assignment'} label={'Overflow'} helpID={6}>
+						<Tab icon={'assignment'} label={'Overflow'} helpID={'/ch/overflow'}>
 							<SimpleDiv />
 						</Tab>
 						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component1'} helpID={7}>
@@ -128,7 +128,8 @@ const RenderFooterLabel = () => {
 	return (
 		<div>
 			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
-			{' '}{date.getFullYear()}{' Debug2 '}{GetHelpID()}
+			{' '}{date.getFullYear()}
+			{/* {' Debug2 '}{GetHelpID()} */}
 		</div>
 	)
 }

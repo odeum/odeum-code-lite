@@ -21,6 +21,9 @@ class Menu extends Component {
 		if (window.location.pathname.includes(this.props.route) && this.props.index !== undefined && this.props.activeMenu !== this.props.index) {
 			this.props.setActiveMenu(this.props.index)
 		}
+		if (this.props.helpID) {
+			SetHelpID(this.props.helpID)
+		}
 	}
 
 	//#region Label Converting for Menu
