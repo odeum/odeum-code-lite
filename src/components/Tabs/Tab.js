@@ -34,7 +34,8 @@ class Tab extends Component {
 	}
 
 	activate = () => {
-		this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
+		if (this.props.activeTab !== this.props.tabID)
+			this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
 	}
 	iconIsActive = () => this.state.active ? theme.icon.selected : theme.icon.default
 
