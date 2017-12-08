@@ -48,8 +48,13 @@ class App extends Component {
 
 	render() {
 		return (
+<<<<<<< HEAD
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo}/>
+=======
+			<AppContainer >
+				<Header />
+>>>>>>> dcff0afc8b5ff89458ef5cf7840df37507787123
 				<MenuPanel>
 					<Page route={'/'} helpID={'root'}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
@@ -62,11 +67,49 @@ class App extends Component {
 						<SimpleDiv />
 					</Menu>
 					<Menu route={'/form'} label={'Form'}>
-						<Tab route={''} label={'Test2'} helpID={'/Form'}>
-							Test
+						<Tab route={''} label={'Test1'} helpID={'/Form'}>
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
 						</Tab>
 						<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
-							Test2
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
 						</Tab>
 					</Menu>
 					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
