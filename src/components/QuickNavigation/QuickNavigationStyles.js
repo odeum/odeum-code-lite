@@ -10,24 +10,26 @@ export const QuickNav = styled.div`
 `
 export const Link = styled(NavLink) `
     text-decoration:none;
-    background:${props => props.theme.quicknav.button.background};
-    color: ${props => props.theme.quicknav.button.color};
+    color: inherit;
     display: flex;
+	flex-flow: column;
     align-items:center;
-    justify-content: space-evenly;
+    justify-content: center;
     height:100%;
     width:100%;
 `
 export const MenuItem = styled.div`
-    background:${props => props.theme.quicknav.button.background};
-    color: ${props => props.theme.quicknav.button.color};
+    background:${props => props.theme.tab.unselected};
+    color: ${props => props.theme.quicknav.button.background};
     height:50px;
     display: flex;
+	flex-flow: column;
     align-items:center;
-    justify-content: space-evenly;
-    border-radius:4px;
-    margin:0px 15px;
-    padding: 0px 15px;
+    justify-content: center;
+    border-radius:5px;
+	min-width: 100px;
+    margin:0px 7px;
+    padding: 0px 7px;
     &:first-child{
         margin-left:1px;
     }
@@ -43,15 +45,12 @@ export const MenuItem = styled.div`
 
 export const TabItem = styled(NavLink) `
     text-decoration: none;
-    min-width: 50px;
-    margin:0px 30px;
-    height: 30px;
+    min-width: auto;
+    padding:0px 15px;
+    height: 20px;
     color:${({ activetab }) => activetab === 'true' ? 'royalblue' : 'black'};
     &:hover{
         color: royalblue;
-    }
-    &:first-child{
-        margin-left:15px;
     }
     cursor:pointer;
     display: flex;
@@ -68,8 +67,8 @@ export const Spacer = styled.div`
 export const MenuList = styled.div`
     display: flex;
     flex-flow: column wrap;
-    height: 45px;
-    max-height:45px;
+    height: 70px;
+    max-height:70px;
     margin: 0;
     padding:0;
     line-height:15px;
@@ -80,23 +79,28 @@ export const MenuList = styled.div`
 `
 
 export const TabList = styled.div`
-    display: flex;
-    flex-flow: column wrap;
+    display: grid;
+	grid-template-columns: repeat(${props => props.tabs}, auto);
+	align-content: center;
+    /* flex-flow: column wrap;
     align-items:center;
-    justify-content:center;
-    height: 45px;
+    justify-content:center; */
+    height: 25px;
     max-height:50px;
     margin: 0;
-    padding:5px;
-    line-height:35px;
+    padding:20px 0px;
+    line-height:20px;
     overflow-x: auto;
     width:90vw;
+	white-space: nowrap;
+	overflow-y:hidden;
+
 `
 
 export const QuickNavButton = styled.div`
     background: ${props => props.theme.quicknav.button.background};
     border: none;
-    border-radius: 7px;
+    border-radius: 15px;
     color: ${props => props.theme.quicknav.button.color};
     padding: 10px 15px;
     position:fixed;
@@ -111,8 +115,10 @@ export const QuickNavButton = styled.div`
 	justify-content: center;
 `
 export const QuickNavMenu = styled.div`
-    display:flex;
-    justify-content: space-evenly;
+    display:grid;
+	grid-template-columns: auto;
+	grid-template-rows: 50px 1px 50px 1px 70px;
+    justify-content: flex-end;
     align-items:center;
     flex-flow:column wrap;
     background:white;

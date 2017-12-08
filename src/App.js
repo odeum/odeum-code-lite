@@ -49,7 +49,7 @@ class App extends Component {
 	render() {
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo}/>
+				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
 					<Page route={'/'} helpID={'root'}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}

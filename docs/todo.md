@@ -5,14 +5,19 @@
 - [x] error coding, use strict subchildren
 - [x] Margin on logo
 - [x] Footer dissapears on Tablet size (portrait) (Ipad Air 2)
-- [ ] -webkit-overflow-scrolling: touch; for iOS
+
+
+## Workspace
+
+- [ ] Overflow + Components transformation for Responsiveness 
+- [ ] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
 
-- [ ] QuickNav Styling
+- [ ] QuickNav Styling - Partial Done
 - [ ] Quick Navigation select first tab when only 1
-- [ ] / route as Home
-- [ ] Quick Navigation 'menu' icon default else from theme
+- [x] '/' route as Home
+- [x] Quick Navigation 'menu' icon default else from theme
 
 
 # 1. TODO for odeum-app
@@ -28,19 +33,19 @@
 ## 1.1. TODO:
 
 ### 1.1.1. Foundation:
-- [v] Custom themes available for integration through AppContainer + (test with custom theme)
-- [v] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
-- [v] Help label prop? Language ... 
-- [v] Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
-- [v] Help Redux functions (functional approach)
-- [v] Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
+- [x] Custom themes available for integration through AppContainer + (test with custom theme)
+- [x] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
+- [x] Help label prop? Language ... 
+- [x] Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
+- [x] Help Redux functions (functional approach)
+- [x] Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
 	<!-- Help is not getting stuff from a static object but it renders the ID of the active tab/menuItem in a small pop up through Redux-->
-- Help Pop-over Styling
-- Quick Navigation style object prop
-- Quick Navigation select first tab when only 1
-- Quick Navigation 'menu' icon default else from theme
-- Function to open and close MenuPanel from code/state
-- 404 - page not found component
+- [ ] Help Pop-over Styling
+- [ ] Quick Navigation style object prop
+- [ ] Quick Navigation select first tab when only 1
+- [ ] Quick Navigation 'menu' icon default else from theme
+- [ ] Function to open and close MenuPanel from code/state
+- [ ] 404 - page not found component
 
 ### 1.1.2. Extension:
 - Form component

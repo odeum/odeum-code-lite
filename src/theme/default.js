@@ -39,7 +39,7 @@ const theme = {
 	},
 	quicknav: {
 		button: {
-			background: '#3B97D3',
+			background: '#216795',
 			color: '#FFF'
 		}
 	},
