@@ -8,7 +8,7 @@ export const QuickNav = styled.div`
     align-items: center; 
     justify-content: center;
 `
-export const Link = styled(NavLink)`
+export const Link = styled(NavLink) `
     text-decoration:none;
     background:${props => props.theme.quicknav.button.background};
     color: ${props => props.theme.quicknav.button.color};
@@ -31,10 +31,17 @@ export const MenuItem = styled.div`
     &:first-child{
         margin-left:1px;
     }
+	&:hover{
+		/* background: rgba(59,151,211,0.8); */
+		border: 10px;
+		border-color: rgba(59,151,211,0.3);
+		box-shadow: 0 0 0 3px rgba(59,151,211,0.3);
+		}
+
     cursor:pointer;
 `
 
-export const TabItem = styled(NavLink)`
+export const TabItem = styled(NavLink) `
     text-decoration: none;
     min-width: 50px;
     margin:0px 30px;
@@ -99,6 +106,9 @@ export const QuickNavButton = styled.div`
     &:hover{
         background: ${props => props.theme.tab.hover}
     }
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `
 export const QuickNavMenu = styled.div`
     display:flex;

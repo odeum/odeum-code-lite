@@ -7,6 +7,7 @@ import {
 // import { NavLink } from 'react-router-dom'
 import Tab from '../Tabs/Tab'
 import { convertLabelToRoute } from '../utils/Functions'
+import { Icon } from 'odeum-ui'
 
 //TODO:
 //7. Active Menu Item, Active Tab Item
@@ -45,7 +46,7 @@ export default class QuickNavigation extends Component {
 
 
 	renderMenuItem = (menu, index) => {
-		var route = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
+		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
 		if (React.Children.toArray(menu.props.children)[0].type === Tab)
 			return <MenuItem key={index} onClick={this.setActiveMenu(index, false)}>{menu.props.label}</MenuItem>
 		else
@@ -62,7 +63,7 @@ export default class QuickNavigation extends Component {
 		return (
 
 			<QuickNav>
-				<QuickNavButton onClick={this.openNav}>Quick Navigation</QuickNavButton>
+				<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: 8 }} />Quick Menu</QuickNavButton>
 				<QuickNavContainer quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu onClick={this.menuClick()}>
 						<button onClick={this.openNav}>X</button>
