@@ -48,13 +48,8 @@ class App extends Component {
 
 	render() {
 		return (
-<<<<<<< HEAD
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo}/>
-=======
-			<AppContainer >
-				<Header />
->>>>>>> dcff0afc8b5ff89458ef5cf7840df37507787123
 				<MenuPanel>
 					<Page route={'/'} helpID={'root'}>
 						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
