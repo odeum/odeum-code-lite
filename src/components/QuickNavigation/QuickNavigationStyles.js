@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
-export const QuickNav = styled.div`
-    z-index: 1; 
-    display: flex; 
-    flex-flow: row nowrap;
-    align-items: center; 
-    justify-content: center;
-`
 export const Link = styled(NavLink) `
     text-decoration:none;
     color: inherit;
@@ -18,6 +11,9 @@ export const Link = styled(NavLink) `
     height:100%;
     width:100%;
 `
+
+//#region Menu Button & List
+
 export const MenuItem = styled.div`
     background:${props => props.theme.tab.unselected};
     color: ${props => props.theme.quicknav.button.background};
@@ -42,13 +38,30 @@ export const MenuItem = styled.div`
 
     cursor:pointer;
 `
+export const MenuList = styled.div`
+	display: flex;
+	flex-flow: column wrap;
+	height: 70px;
+	max-height:70px;
+	margin: 0;
+	padding:0;
+	line-height:15px;
+	justify-content: space-evenly;
+	align-items:center;
+	overflow-x: auto;
+	width:90vw;
+`
+
+//#endregion
+
+//#region Tab Text & List
 
 export const TabItem = styled(NavLink) `
     text-decoration: none;
     min-width: auto;
     padding:0px 15px;
     height: 20px;
-    color:${({ activetab }) => activetab === 'true' ? 'royalblue' : 'black'};
+    color:${props => props.activetab === 'true' ? props.theme.quicknav.tab.selected : props.theme.quicknav.tab.unselected};
     &:hover{
         color: royalblue;
     }
@@ -58,25 +71,6 @@ export const TabItem = styled(NavLink) `
     justify-content: space-evenly;
 `
 
-export const Spacer = styled.div`
-    display: flex;
-    width: 90vw;
-    min-height: 1px;
-    background: #cbc8c8;
-`
-export const MenuList = styled.div`
-    display: flex;
-    flex-flow: column wrap;
-    height: 70px;
-    max-height:70px;
-    margin: 0;
-    padding:0;
-    line-height:15px;
-    justify-content: space-evenly;
-    align-items:center;
-    overflow-x: auto;
-    width:90vw;
-`
 
 export const TabList = styled.div`
     display: grid;
@@ -95,6 +89,18 @@ export const TabList = styled.div`
 	white-space: nowrap;
 	overflow-y:hidden;
 
+`
+
+//#endregion
+
+//#region QuickNav Button, Overlay and Spacer
+
+export const QuickNav = styled.div`
+	z-index: 1; 
+	display: flex; 
+	flex-flow: row nowrap;
+	align-items: center; 
+	justify-content: center;
 `
 
 export const QuickNavButton = styled.div`
@@ -142,3 +148,11 @@ export const QuickNavContainer = styled.div`
     transition: height 300ms ease-in-out;
     bottom: 0;
 `
+
+export const Spacer = styled.div`
+	width: 90vw;
+	min-height: 1px;
+	background: #cbc8c8;
+`
+
+//#endregion

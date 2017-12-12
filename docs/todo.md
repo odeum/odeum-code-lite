@@ -1,3 +1,17 @@
+# 1. TODO for odeum-app
+<!-- TOC -->
+
+- [1. TODO for odeum-app](#1-todo-for-odeum-app)
+	- [Framework](#framework)
+	- [Workspace](#workspace)
+	- [QuickNav](#quicknav)
+	- [1.1. TODO:](#11-todo)
+		- [1.1.1. Foundation:](#111-foundation)
+		- [1.1.2. Extension:](#112-extension)
+		- [1.1.3. Advanced:](#113-advanced)
+
+<!-- /TOC -->
+
 ## Framework
 
 - [x] MenuPanel Check for Menu subchild
@@ -10,26 +24,21 @@
 ## Workspace
 
 - [ ] Overflow + Components transformation for Responsiveness 
+	- [ ] CSS Wrap
 - [ ] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
 
-- [ ] QuickNav Styling - Partial Done
 - [ ] Quick Navigation select first tab when only 1
 - [x] '/' route as Home
 - [x] Quick Navigation 'menu' icon default else from theme
+- [ ] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
+- [ ] Header Buttons
+- [ ] Help Pop-up
+- [ ] Close Button
+- [ ] 
 
 
-# 1. TODO for odeum-app
-<!-- TOC -->
-
-- [1. TODO for odeum-app](#1-todo-for-odeum-app)
-	- [1.1. TODO:](#11-todo)
-		- [1.1.1. Foundation:](#111-foundation)
-		- [1.1.2. Extension:](#112-extension)
-		- [1.1.3. Advanced:](#113-advanced)
-
-<!-- /TOC -->
 ## 1.1. TODO:
 
 ### 1.1.1. Foundation:
@@ -41,7 +50,7 @@
 - [x] Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
 	<!-- Help is not getting stuff from a static object but it renders the ID of the active tab/menuItem in a small pop up through Redux-->
 - [ ] Help Pop-over Styling
-- [ ] Quick Navigation style object prop
+- [x] Quick Navigation style object prop
 - [ ] Quick Navigation select first tab when only 1
 - [ ] Quick Navigation 'menu' icon default else from theme
 - [ ] Function to open and close MenuPanel from code/state
