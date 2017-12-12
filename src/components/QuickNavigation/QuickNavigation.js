@@ -2,22 +2,21 @@ import React, { Component } from 'react'
 import {
 	QuickNavButton, QuickNavMenu, QuickNavContainer, QuickNav,
 	Spacer, TabList, TabItem,
-	MenuItem, MenuList, Link
+	MenuItem, MenuList, Link, Header, SubHeader
 } from './QuickNavigationStyles'
 // import { NavLink } from 'react-router-dom'
 import Tab from '../Tabs/Tab'
 import { convertLabelToRoute } from '../utils/Functions'
 import { Icon } from 'odeum-ui'
+import HeaderButton from './HeaderButton'
 
-//TODO:
-//7. Active Menu Item, Active Tab Item
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			quickNav: false,
+			quickNav: true,
 			showButton: true,
 			activeMenu: 0,
 			activeTab: {
@@ -43,7 +42,8 @@ export default class QuickNavigation extends Component {
 		this.setState({ activeMenu: index, quickNav: !closeNav })
 	}
 
-	openNav = () => {
+	openNav = (e) => {
+		e.stopPropagation()		
 		this.setState({ quickNav: !this.state.quickNav })
 	}
 
@@ -91,7 +91,16 @@ export default class QuickNavigation extends Component {
 				<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 				<QuickNavContainer quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu onClick={this.menuClick()}>
-						<button onClick={this.openNav}>X</button>
+						<Header>
+							<SubHeader>
+								<HeaderButton icon={'help'} />
+								<HeaderButton icon={'search'} />
+							</SubHeader>
+							<div style={{ alignSelf: 'center', justifyContent: 'center' }}>
+								Quick Navigation
+							</div>
+							<HeaderButton icon={'close'} onClick={this.openNav} />
+						</Header>
 						<Spacer />
 
 						<TabList tabs={React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).length}>

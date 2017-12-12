@@ -1,6 +1,31 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
+//#region Header button
+
+export const RoundButton = styled.div`
+	background: none;
+	color: ${props => props.theme.quicknav.button.background};
+	width: 30px;
+	height:30px;
+	border-radius: 30px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	justify-self:flex-end;
+`
+export const Header = styled.div`
+	display:grid;
+	grid-template-rows: auto;
+	grid-auto-flow:column;
+	justify-items: center;
+`
+export const SubHeader = styled.div`
+	display:flex;
+	align-items:center;
+	justify-self: flex-start;
+`
+//#endregion
 export const Link = styled(NavLink) `
     text-decoration:none;
     color: inherit;
@@ -15,7 +40,7 @@ export const Link = styled(NavLink) `
 //#region Menu Button & List
 
 export const MenuItem = styled.div`
-    background:${props => props.theme.tab.unselected};
+    background:${props => props.theme.quicknav.button.unselected};
     color: ${props => props.theme.quicknav.button.background};
     height:50px;
     display: flex;

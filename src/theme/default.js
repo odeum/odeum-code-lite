@@ -40,6 +40,7 @@ const theme = {
 	quicknav: {
 		button: {
 			background: '#216795',
+			unselected: '#E3E5E5',
 			color: '#FFF'
 		},
 		tab: {
