@@ -9,15 +9,17 @@ import Tab from '../Tabs/Tab'
 import { convertLabelToRoute } from '../utils/Functions'
 import { Icon } from 'odeum-ui'
 import HeaderButton from './HeaderButton'
-
+import HelpPopUp from '../Help/HelpPopUp'
+import { SetHelpID } from '../utils/HelpReducer'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			quickNav: true,
+			quickNav: false,
 			showButton: true,
+			showHelp: false,
 			activeMenu: 0,
 			activeTab: {
 				tab: 0,
@@ -26,8 +28,12 @@ export default class QuickNavigation extends Component {
 		}
 	}
 
-	tabClick = (e) => {
-
+	helpClick = () => {
+		this.setState({ showHelp: !this.state.showHelp })
+	}
+	tabClick = (id, helpID) => (e) => {
+		e.preventDefault()
+		SetHelpID(helpID)
 		var activeTab = { tab: parseInt(e.target.id, 10), menu: this.state.activeMenu }
 		this.setState({ quickNav: false, activeTab: activeTab })
 	}
@@ -43,8 +49,10 @@ export default class QuickNavigation extends Component {
 	}
 
 	openNav = (e) => {
-		e.stopPropagation()		
+		e.stopPropagation()
 		this.setState({ quickNav: !this.state.quickNav })
+		if (this.state.showHelp === true)
+			this.setState({ showHelp: false })
 	}
 
 	activeTab = (tab, menu) => tab === this.state.activeTab.tab && menu === this.state.activeTab.menu ? 'true' : 'false'
@@ -52,7 +60,7 @@ export default class QuickNavigation extends Component {
 	renderMenuItem = (menu, index) => {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
-		console.log(route)
+		// console.log(route)
 		if (route === '' || route === '/') {
 			return <MenuItem key={index} onClick={this.setActiveMenu(index, true)}>
 				<Link to={route}>
@@ -78,22 +86,24 @@ export default class QuickNavigation extends Component {
 		}
 	}
 	renderTabItem = (tab, menu, index) => {
+		console.log(tab.props.helpID)
 		var menuRoute = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
 		var route = tab.props.route !== undefined ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
-		return <TabItem key={index} activetab={this.activeTab(index, this.state.activeMenu)} id={index} to={route} onClick={this.tabClick}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
+		return <TabItem key={index} helpid={tab.props.helpID} activetab={this.activeTab(index, this.state.activeMenu)} id={index} to={route} onClick={this.tabClick(index, tab.props.helpID)}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
 	}
 	render() {
 		// console.log(this.props)
-		const { quickNav } = this.state
+		const { quickNav, showHelp } = this.state
 		return (
 
 			<QuickNav>
+				<HelpPopUp openHelp={showHelp} handleHelp={this.helpClick} />
 				<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 				<QuickNavContainer quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu onClick={this.menuClick()}>
 						<Header>
 							<SubHeader>
-								<HeaderButton icon={'help'} />
+								<HeaderButton icon={'help'} onClick={this.helpClick} />
 								<HeaderButton icon={'search'} />
 							</SubHeader>
 							<div style={{ alignSelf: 'center', justifyContent: 'center' }}>

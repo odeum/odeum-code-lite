@@ -81,7 +81,7 @@ export const MenuList = styled.div`
 
 //#region Tab Text & List
 
-export const TabItem = styled(NavLink) `
+export const TabItem = styled(NavLink)`
     text-decoration: none;
     min-width: auto;
     padding:0px 15px;

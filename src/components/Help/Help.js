@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { HelpDiv, Bold, Icon, HelpButton, HelpPopUp } from './HelpStyles'
 import { GetHelpID } from '../utils/HelpReducer'
 
+
+
 class Help extends Component {
 	constructor(props) {
 		super(props)
@@ -12,8 +14,9 @@ class Help extends Component {
 		}
 	}
 	setHelpPopUpRef = (node) => {
-		  this.node = node 
+		this.node = node
 	}
+
 	renderHelp = () => {
 		var helpID = GetHelpID()
 		return <HelpPopUp innerRef={this.setHelpPopUpRef}>
@@ -23,7 +26,6 @@ class Help extends Component {
 			<p>Description</p>
 		</HelpPopUp>
 	}
-
 	onClickOutsise = (e) => {
 		if (this.state.openHelp) {
 			if (!this.node.contains(e.target)) {

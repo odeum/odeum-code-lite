@@ -6,12 +6,13 @@ import { Icon as DefaultIcon } from 'odeum-ui'
 export const HelpPopUp = styled.div`
 	background: white;
 	border: 1px solid #3f3f3f;
-	z-index: 1;
-	height: 150px;
-	width: 150px;
+	z-index: 99;
+	height: 90vh;
+	width: 90vw;
 	position: fixed;
-	bottom: 10%;
-	right: 2%;
+    left: 50%;
+	top: 5%;
+    transform: translate(-50%, 0);
 `
 
 export const Bold = styled.b`
