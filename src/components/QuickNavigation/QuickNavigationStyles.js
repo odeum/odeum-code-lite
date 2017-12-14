@@ -64,14 +64,18 @@ export const MenuItem = styled.div`
     cursor:pointer;
 `
 export const MenuList = styled.div`
-	display: flex;
-	flex-flow: column wrap;
+    display: grid;
+	align-content: center;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+/* 	display: flex;
+	flex-flow: column wrap; 
+	justify-content:space-evenly;*/
 	height: 70px;
 	max-height:70px;
 	margin: 0;
 	padding:0;
 	line-height:15px;
-	justify-content: space-evenly;
 	align-items:center;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
@@ -100,8 +104,9 @@ export const TabItem = styled(NavLink)`
 
 export const TabList = styled.div`
     display: grid;
-	grid-template-columns: repeat(${props => props.tabs}, auto);
+	grid-auto-columns: auto;
 	align-content: center;
+	grid-auto-flow: column;
     /* flex-flow: column wrap;
     align-items:center;
     justify-content:center; */
