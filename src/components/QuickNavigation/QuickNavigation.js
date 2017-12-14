@@ -32,7 +32,7 @@ export default class QuickNavigation extends Component {
 		this.setState({ showHelp: !this.state.showHelp })
 	}
 	tabClick = (id, helpID) => (e) => {
-		e.preventDefault()
+		// e.preventDefault()
 		SetHelpID(helpID)
 		var activeTab = { tab: parseInt(e.target.id, 10), menu: this.state.activeMenu }
 		this.setState({ quickNav: false, activeTab: activeTab })

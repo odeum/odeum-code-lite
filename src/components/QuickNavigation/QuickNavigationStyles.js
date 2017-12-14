@@ -74,6 +74,7 @@ export const MenuList = styled.div`
 	justify-content: space-evenly;
 	align-items:center;
 	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 	width:90vw;
 `
 
@@ -109,6 +110,7 @@ export const TabList = styled.div`
     margin: 0;
     padding:20px 0px;
     line-height:20px;
+	-webkit-overflow-scrolling: touch;
     overflow-x: auto;
     width:90vw;
 	white-space: nowrap;
@@ -170,7 +172,7 @@ export const QuickNavContainer = styled.div`
     overflow: hidden;
     position:fixed;
     z-index:2;
-    transition: height 300ms ease-in-out;
+    transition: height 200ms ease-in-out;
     bottom: 0;
 `
 
