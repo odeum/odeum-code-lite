@@ -1,8 +1,10 @@
-import ODEUM_icon from 'theme/logo_icon.svg'
+// import ODEUM_icon from 'theme/logo_icon.svg'
+// Small Icon not used anymore
 import logoGreen from 'theme/logo_green.svg'
 
 const greenTheme = {
 	header: {
+		height: '80px',
 		background: '#1B5E20',
 		color: '#E8F5E9'
 	},
@@ -40,13 +42,18 @@ const greenTheme = {
 		button: {
 			background: '#1B5E20',
 			color: '#FFF'
+		},
+		tab: {
+			selected: '#43A047',
+			unselected: '#000'
 		}
 	},
-	 logo: {
-		 default: logoGreen,
-		 bigLogo: logoGreen,
-		 smallLogo: ODEUM_icon
-	 }
+	logo: {
+		height: '35px',
+		default: logoGreen,
+		bigLogo: logoGreen,
+		//  smallLogo: ODEUM_icon
+	}
 }
 
 export default greenTheme

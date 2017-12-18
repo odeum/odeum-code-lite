@@ -2,21 +2,30 @@ import React, { Component } from 'react'
 import { IconDiv, ArrowIconDiv, Link, MenuText } from '../MenuStyles'
 import PropTypes from 'prop-types'
 import { Icon } from 'odeum-ui'
+import { SetHelpID } from '../../utils/HelpReducer'
 
 class MenuItem extends Component {
 
 	cutRoutes = (string) => {
+		// console.log(string)
 		var match = string.match(/(\/\S*\/)|(\/\S*$)/i)
 		return match ? match[0] : null
 	}
 	componentWillMount() {
-		if (this.props.helpID && this.props.active)
-			this.props.SetHelpID(this.props.helpID)
-		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route))
+		this.setHelpID()
+		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route)) {
 			this.activate()
+		}
+	}
+	setHelpID = () => {
+		if (this.props.helpID) {
+			console.log('MenuItem', this.props.label)
+			SetHelpID(this.props.helpID)
+		}
 	}
 	activate = () => {
 		this.props.onClick(this.props.MenuID ? this.props.MenuID : 0)
+		this.setHelpID()
 	}
 	render() {
 		return (
@@ -37,5 +46,8 @@ MenuItem.propTypes = {
 	icon: PropTypes.string
 
 }
-
+MenuItem.defaultProps = {
+	// 	SetHelpID: this.SetHelpID,
+	icon: 'menu'
+}
 export default MenuItem

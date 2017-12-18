@@ -4,11 +4,13 @@ import Header from 'components/Header/Header'
 import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
-import Workspace from 'components/Workspace/Workspace'
 import Footer from 'components/Footer/Footer'
+import Page from 'components/Menu/Page'
 import { Button } from 'odeum-ui'
+import { Link } from 'react-router-dom'
 
 /* Demo */
+
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
 import RouteDemo from 'demos/RouteDemo'
@@ -16,39 +18,21 @@ import redTheme from 'theme/redTheme'
 import greenTheme from 'theme/greenTheme'
 import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
-import MenuItem from './components/Menu/MenuComponents/MenuItem'
+import Tabb from './demos/Tabb'
+import Flex from './demos/Flex'
+
+/* End Import Demo */
 
 class App extends Component {
-
-	//#region Temporary Help Demo
-
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			helpID: 0,
-			theme: greenTheme
-		}
-		Workspace.defaultProps = {
-			SetHelpID: this.SetHelpID
-		}
-		MenuItem.defaultProps = {
-			SetHelpID: this.SetHelpID,
-			icon: 'menu'
-		}
-
-		Tab.defaultProps = {
-			SetHelpID: this.SetHelpID,
-			label: 'Tab',
-			icon: 'tab'
+			theme: theme
 		}
 
 	}
-	
-	SetHelpID = (helpID) => {
-		// console.log(helpID)
-		return helpID === this.state.helpID ? null : this.setState({ helpID: helpID })
-	}
+
 	changeTheme = () => {
 		return this.state.theme === eplanTheme ?
 			this.setState({ theme: greenTheme }) :
@@ -61,52 +45,104 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
-	//#endregion TempDemo
 
 	render() {
 		return (
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
 				<MenuPanel>
-					<Menu route={'/'} label={'Home'} exact helpID={10}>
-						<Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button>
-						<SimpleDiv />
-					</Menu>
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={10}>
+					<Page route={'/'} helpID={'root'}>
+						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
+						{/* <SimpleDiv /> */}
+						<Flex />
+					</Page>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
-
+					<Menu route={'/form'} label={'Form'}>
+						<Tab route={''} label={'Test1'} helpID={'/Form'}>
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+						</Tab>
+						<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+							<Flex />
+						</Tab>
+					</Menu>
 					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
-						<Tab icon={'assignment'} label={'Overflow'}  >
+						<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
 							<RouteDemo />
 						</Tab>
 					</Menu>
-					<Menu icon={'people'} route={'/children1'} label={'Menu with children'}>
-						<Tab icon={'assignment'} label={'Overflow'} helpID={104}>
+					<Menu icon={'people'} route={'/children1'} label={'Menu with children'} >
+						<Tab icon={'assignment'} label={'Overflow'} helpID={'/ch/overflow'}>
 							<SimpleDiv />
 						</Tab>
-						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component1'} helpID={12}>
-							<ReactComp helpID={2} />
+						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component1'} helpID={7}>
+							<ReactComp />
 						</Tab>
-						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace1'} helpID={13}>
+						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace1'} helpID={8}>
 							<div>Hello Workspace ... </div>
 						</Tab>
 					</Menu>
-					<Menu label={'Auto Generated'} helpID={'auto'}>
-						<Tab label={'Route'}>
+					<Menu label={'Auto Generated'}>
+						<Tab label={'Route'} helpID={'9'}>
 							Auto Generated Route
 						</Tab>
 					</Menu>
 					<Menu label={'Theme'} icon={'opacity'}>
-						<Tab icon={'tab'} label={'Theme'} route={'/themetab'}>
-							<div>Click the button below continously to change the theme of the framework.</div>
-							<Button
-								label={'Change Theme'}
-								icon={'opacity'}
-								color={this.state.theme.menu.background}
-								onClick={this.changeTheme}
-							/>
+						<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
+							<div style={{ display: 'flex', flexFlow: 'column' }}>
+								<div>Click the button below continously to change the theme of the framework.</div>
+								<Button
+									label={'Change Theme'}
+									icon={'opacity'}
+									color={this.state.theme.menu.background}
+									onClick={this.changeTheme}
+								/>
+								<Link to={'/'}>Route Home</Link>
+								<Link to={'/child/overflow'}>Route Child</Link>
+								<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
+								<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
+							</div>
 						</Tab>
 					</Menu>
 					{/* 					
@@ -114,7 +150,7 @@ class App extends Component {
 					*/}
 
 				</MenuPanel>
-				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpID={this.state.helpID} />
+				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}
@@ -130,6 +166,7 @@ const RenderFooterLabel = () => {
 		<div>
 			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
 			{' '}{date.getFullYear()}
+			{/* {' Debug2 '}{GetHelpID()} */}
 		</div>
 	)
 }

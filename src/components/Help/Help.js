@@ -1,22 +1,58 @@
 import React, { Component } from 'react'
 // import { Icon } from 'odeum-ui'
-import { HelpDiv, Bold, Icon, HelpButton } from './HelpStyles'
+import { HelpDiv, Bold, Icon, HelpButton, HelpPopUp } from './HelpStyles'
+import { GetHelpID } from '../utils/HelpReducer'
 
 
-export default class Help extends Component {
 
-	HelpActive = () => {
-		alert(this.props.helpID)
+class Help extends Component {
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			openHelp: false
+		}
+	}
+	setHelpPopUpRef = (node) => {
+		this.node = node
 	}
 
+	renderHelp = () => {
+		var helpID = GetHelpID()
+		return <HelpPopUp innerRef={this.setHelpPopUpRef}>
+			<h1>
+				{helpID}
+			</h1>
+			<p>Description</p>
+		</HelpPopUp>
+	}
+	onClickOutsise = (e) => {
+		if (this.state.openHelp) {
+			if (!this.node.contains(e.target)) {
+				this.setState({ openHelp: false })
+				document.removeEventListener('click', this.onClickOutsise, false)
+			}
+		}
+	}
+	openHelp = () => {
+		document.addEventListener('click', this.onClickOutsise, false)
+		this.setState({ openHelp: !this.state.openHelp })
+	}
 	render() {
 		return (
 			<HelpDiv small={this.props.small}>
-				<HelpButton onClick={this.HelpActive}>
+				<HelpButton onClick={this.openHelp}>
 					<Icon icon={'help'} style={{ marginRight: "0px" }} />
-					{!this.props.small ? <Bold>Brug for Hjælp?</Bold> : null}
+					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
 				</HelpButton>
+				{this.state.openHelp && this.renderHelp()}
 			</HelpDiv>
 		)
 	}
 }
+
+Help.defaultProps = {
+	helpLabel: 'Need help?'
+}
+
+export default Help

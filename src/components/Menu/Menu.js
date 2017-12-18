@@ -4,14 +4,32 @@ import { Route, Switch } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
 import Workspace from 'components/Workspace/Workspace'
-import { convertLabelToRoute } from '../utils/Functions'
+import { convertLabelToRoute, isExact } from '../utils/Functions'
+import { SetHelpID } from '../utils/HelpReducer'
+
 class Menu extends Component {
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			activeTab: 0
+		}
+	}
+
+
+	componentWillMount = () => {
+		if (window.location.pathname.includes(this.props.route) && this.props.index !== undefined && this.props.activeMenu !== this.props.index) {
+			this.props.setActiveMenu(this.props.index)
+		}
+		if (this.props.helpID) {
+			SetHelpID(this.props.helpID)
+		}
+	}
 
 	//#region Label Converting for Menu
-	route = (child) => this.props.route ? this.props.route : convertLabelToRoute(this.props.label)
-
+	route = (child) => this.props.route !== undefined ? this.props.route : convertLabelToRoute(this.props.label)
 	childRoute = (child) => {
-		return child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
+		return child.props.route !== undefined ? child.props.route : convertLabelToRoute(child.props.label)
 	}
 
 	//#endregion
@@ -19,13 +37,27 @@ class Menu extends Component {
 	//#region RenderChildren
 
 	renderChildren = (children) => children.map((child, index) => {
-		return <Route key={index} path={this.route() + this.childRoute(child)} component={this.renderChild(child)} />
+		// console.log(child.props.exact, child.props.label)
+		return <Route key={index} path={this.route() + this.childRoute(child)}
+			exact={isExact(this.childRoute(child))}
+			component={this.renderChild(child)} />
 	})
 
 	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
 
 	//#endregion
+	setHelpID = (id) => {
 
+		console.log('Menu', id)
+		SetHelpID(id)
+
+	}
+	setActiveTab = (key) => {
+		//console.log('SetActiveTab', key)
+		this.setState({ activeTab: key })
+		if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
+			this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)
+	}
 	renderTabs = (children) => {
 		if (children[0].type === Tab)
 			return (
@@ -33,11 +65,14 @@ class Menu extends Component {
 					{!this.props.quicknav ? <TabList>
 						{children.map((child, index) => (
 							<Tab key={index}
-								helpID={child.props.helpID}
-								active={window.location.pathname.includes(this.childRoute(child)) ? true : false}
+								helpID={child.props.helpID ? child.props.helpID : undefined}
+								tabID={index}
+								exact={isExact(this.childRoute(child))}
 								label={child.props.label}
 								icon={child.props.icon}
-								route={this.route() + this.childRoute(child)} />
+								route={this.route() + this.childRoute(child)}
+								setActiveTab={this.setActiveTab}
+								activeTab={this.state.activeTab} />
 						))}
 					</TabList> : null}
 					<Switch>
@@ -45,24 +80,25 @@ class Menu extends Component {
 					</Switch>
 				</SceneDiv>
 			)
-		else
+		else {
 			return (
 				<SceneDiv>
 					{this.renderNoTabs(children)}
 				</SceneDiv>
 			)
+		}
 	}
 
 	renderNoTabs = (children) => {
 		return (
-			<Workspace helpID={this.props.helpID ? this.props.helpID : null}>
+			<Workspace noTab helpID={this.props.helpID ? this.props.helpID : null}>
 				{children}
 			</Workspace>
 		)
 	}
 
 	render() {
-		console.log(this.props.quicknav)
+		// console.log(this.props.label, this.state.activeTab)
 		return this.renderTabs(React.Children.toArray(this.props.children))
 	}
 }

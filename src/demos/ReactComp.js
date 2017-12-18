@@ -3,17 +3,24 @@ import { Button } from 'odeum-ui'
 
 // import Workspace from 'components/Workspace/Workspace'
 
+
 class ReactComp extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			showVideo: false
+			showVideo: false,
+			helpID: 100
 		}
 	}
 
 	switch = () => this.setState({ showVideo: !this.state.showVideo })
-
+	// componentWillMount = () => {
+	//   this.props.setHelpId(this.state.helpID)
+	// }
+	setHelp = () => {
+		// this.props.setHelpId(this.state.helpID)
+	}
 	render() {
 		return (
 			<div>
@@ -32,11 +39,13 @@ class ReactComp extends Component {
 						frameBorder="0"
 						allowFullScreen>
 					</iframe>}
-					
+
 				</div>
 			</div>
 		)
 	}
 }
-
+// mapDispatchToProps (helpID) {
+// 	setHelpId(helpID)
+// }
 export default ReactComp

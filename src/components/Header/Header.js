@@ -5,65 +5,61 @@ import { LogoDiv, LogoImg } from './HeaderStyles'
 import { ScreenSizes } from 'theme/media'
 import theme from 'theme/default'
 
-//TODO Check the logo dissapearing on resize 
-export default class Header extends Component {
+
+class Header extends Component {
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			quicknav: false,
+			logo: undefined
+		}
+	}
+
 	updateLogo = () => {
 		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
+		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
 	}
 	changeLogo = (logo) => {
-
-		this.setState({ logo: window.innerWidth >= ScreenSizes.tablet ? logo.default : logo.smallLogo })
-		console.log(logo.smallLogo)
+		this.setState({ logo: logo.default })
 	}
-	/*TODO: Default Logo always */
-	componentWillMount() {
-		if (this.props.logo !== undefined)
-			this.changeLogo(theme.logo)
-		else
-			this.changeLogo(this.props.logo)
+	componentWillMount = () => {
+		this.updateLogo()
 		window.addEventListener('resize', this.updateLogo)
-
 	}
 	componentWillUpdate = (nextProps, nextState) => {
-		if (this.props.logo !== nextProps.logo)
+		var nextLogo = nextProps.logo.default
+		if (nextLogo !== undefined && this.state.logo !== nextLogo)
 			this.changeLogo(nextProps.logo)
 	}
-
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.changeLogo)
 	}
-	renderNotification = () => {
-		return (
-			<div>NotiF</div>
-		)
-	}
+	renderNotification = () => (
+		<div>NotiF</div>
+	)
 
-	renderAvatar = () => {
-		return (
-			<div>Avatar</div>
-		)
-	}
+	renderAvatar = () => (
+		<div>Avatar</div>
+	)
 
-	renderLogo = (logo) => {
-		// console.log('renderLogo', logo)
-		return (
-			<LogoDiv to={'/'}>
-				<LogoImg src={logo} />
-			</LogoDiv>)
-	}
+	renderLogo = () => (
+		<LogoDiv to={'/'}>
+			<LogoImg src={this.state.logo} />
+		</LogoDiv>)
+
 
 	renderSearchBar = () => {
 		return (<div>Search</div>)
 	}
 
 	render() {
-		// console.log(this.props.logo)
 		const { search, notification, avatar } = this.props
-		const { logo } = this.state
+		// const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
-			<HeaderDiv>
-				{logo && renderLogo(logo)}
+			<HeaderDiv quicknav={this.state.quicknav}>
+				{renderLogo()}
 				{search && renderSearchBar()}
 				{avatar && renderAvatar()}
 				{notification && renderNotification()}
@@ -74,7 +70,7 @@ export default class Header extends Component {
 
 //TODO 
 Header.propTypes = {
-	logo: PropTypes.object || PropTypes.string,
+	logo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,
@@ -86,3 +82,4 @@ Header.defaultProps = {
 	avatar: false
 }
 
+export default Header

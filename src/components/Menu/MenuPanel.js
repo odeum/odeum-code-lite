@@ -6,7 +6,9 @@ import { MenuContainer } from './MenuStyles'
 import { Switch } from 'react-router-dom'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
-import { convertLabelToRoute, sizes } from '../utils/Functions'
+import { convertLabelToRoute, isExact } from '../utils/Functions'
+import { ScreenSizes as sizes } from '../../theme/media'
+import Tab from 'components/Tabs/Tab'
 
 class MenuPanel extends Component {
 	constructor(props) {
@@ -45,18 +47,22 @@ class MenuPanel extends Component {
 
 
 	//#region Routing + Get First Child Route 
-
+	//TODO
 	route = (child) => child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
-
+	//TODO
 	getFirstChildRoute = (child) => {
 		var children = React.Children.toArray(child.props.children)
-		if (children[0].props.route)
-			return children[0].props.route
-		else
-		if (children[0].props.label)
-			return convertLabelToRoute(children[0].props.label)
-		else
-			return '' 
+		if (children[0].type === Tab) {
+			if (children[0].props.route !== undefined)
+				return children[0].props.route
+			else {
+				if (children[0].props.label)
+					return convertLabelToRoute(children[0].props.label)
+				else
+					return ''
+			}
+		} else
+			return ''
 	}
 
 	convertChildLabelToRoute = (child, many) => {
@@ -82,7 +88,7 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
-	renderChild = (child) => ({ match }) => { return React.cloneElement(child, { quicknav: this.state.quicknav }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
@@ -102,7 +108,7 @@ class MenuPanel extends Component {
 			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
 				{children.map((child, i) => {
-					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : undefined} route={this.route(child)} component={this.renderChild(child)} />
+					return <Route key={i} path={this.route(child)} exact={isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 				})}
 				<Route path={'*'} component={NotFound} />
 			</Switch>

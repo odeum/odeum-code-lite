@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
 import {
-	QuickNavButton, QuickNavMenu, QuickNavContainer,
+	QuickNavButton, QuickNavMenu, QuickNavContainer, QuickNav,
 	Spacer, TabList, TabItem,
-	MenuItem, MenuList
+	MenuItem, MenuList, Link, Header, SubHeader
 } from './QuickNavigationStyles'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import Tab from '../Tabs/Tab'
 import { convertLabelToRoute } from '../utils/Functions'
-//TODO:
-//1. Generate Route from label
-//2. Generate label from route
-//3. Check for tabs => if no tabs => direct link else tabs
-//4. Remove tabs when screen is small
-//5. Generalize the function for label conversion in utils.js
-//6. Remove inline Styling
+import { Icon } from 'odeum-ui'
+import HeaderButton from './HeaderButton'
+import HelpPopUp from '../Help/HelpPopUp'
+import { SetHelpID } from '../utils/HelpReducer'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -22,49 +19,102 @@ export default class QuickNavigation extends Component {
 		this.state = {
 			quickNav: false,
 			showButton: true,
-			activeMenu: 0
+			showHelp: false,
+			activeMenu: 0,
+			activeTab: {
+				tab: 0,
+				menu: 0
+			}
 		}
 	}
+
+	helpClick = () => {
+		this.setState({ showHelp: !this.state.showHelp })
+	}
+	tabClick = (id, helpID) => (e) => {
+		// e.preventDefault()
+		SetHelpID(helpID)
+		var activeTab = { tab: parseInt(e.target.id, 10), menu: this.state.activeMenu }
+		this.setState({ quickNav: false, activeTab: activeTab })
+	}
+
 	menuClick = () => (e) => {
 		e.stopPropagation()
 	}
-	setActiveMenu = (index) => (e) => {
+
+	setActiveMenu = (index, closeNav) => (e) => {
 		e.preventDefault()
 		e.stopPropagation()
-		this.setState({ activeMenu: index })
+		this.setState({ activeMenu: index, quickNav: !closeNav })
 	}
-	openNav = () => {
+
+	openNav = (e) => {
+		e.stopPropagation()
 		this.setState({ quickNav: !this.state.quickNav })
+		if (this.state.showHelp === true)
+			this.setState({ showHelp: false })
 	}
+
+	activeTab = (tab, menu) => tab === this.state.activeTab.tab && menu === this.state.activeTab.menu ? 'true' : 'false'
+
 	renderMenuItem = (menu, index) => {
-		var route = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
-		// console.log('route:', route)
-		if (React.Children.toArray(menu.props.children)[0].type === Tab)
-			return <MenuItem key={index} onClick={this.setActiveMenu(index)}>{menu.props.label}</MenuItem>
-		else
-			return <MenuItem key={index} onClick={this.setActiveMenu(index)}><NavLink to={route}>{menu.props.label}</NavLink></MenuItem>
+		var icon = menu.props.icon ? menu.props.icon : 'menu'
+		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
+		// console.log(route)
+		if (route === '' || route === '/') {
+			return <MenuItem key={index} onClick={this.setActiveMenu(index, true)}>
+				<Link to={route}>
+					<Icon icon={'home'} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
+					{'Home'}
+				</Link>
+			</MenuItem >
+		}
+		else {
+			if (React.Children.toArray(menu.props.children)[0].type === Tab)
+
+				return (<MenuItem key={index} onClick={this.setActiveMenu(index, false)}>
+					<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
+					{menu.props.label}
+				</MenuItem>)
+			else
+				return <MenuItem key={index} onClick={this.setActiveMenu(index, true)}>
+					<Link to={route}>
+						<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
+						{menu.props.label}
+					</Link>
+				</MenuItem >
+		}
 	}
 	renderTabItem = (tab, menu, index) => {
-		// console.log('menu', menu.props)
-		// console.log('tab', tab.props)
-		var menuRoute = menu.props.route ? menu.props.route : convertLabelToRoute(menu.props.label)
-		var route = tab.props.route ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
-		return <TabItem key={index}><NavLink to={route}>{tab.props.label ? tab.props.label : tab.props.route}</NavLink></TabItem>
+		console.log(tab.props.helpID)
+		var menuRoute = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
+		var route = tab.props.route !== undefined ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
+		return <TabItem key={index} helpid={tab.props.helpID} activetab={this.activeTab(index, this.state.activeMenu)} id={index} to={route} onClick={this.tabClick(index, tab.props.helpID)}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
 	}
 	render() {
 		// console.log(this.props)
-		const { quickNav } = this.state
+		const { quickNav, showHelp } = this.state
 		return (
 
-			<div style={{ zIndex: '1', display: 'flex', flexFlow: 'row nowrap', alignItems: 'center', justifyContent: 'center' }}>
-				<QuickNavButton onClick={this.openNav}>Quick Navigation</QuickNavButton>
+			<QuickNav>
+				<HelpPopUp openHelp={showHelp} handleHelp={this.helpClick} />
+				<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 				<QuickNavContainer quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu onClick={this.menuClick()}>
-						<button onClick={this.openNav}>X</button>
+						<Header>
+							<SubHeader>
+								<HeaderButton icon={'help'} onClick={this.helpClick} />
+								<HeaderButton icon={'search'} />
+							</SubHeader>
+							<div style={{ alignSelf: 'center', justifyContent: 'center' }}>
+								Quick Navigation
+							</div>
+							<HeaderButton icon={'close'} onClick={this.openNav} />
+						</Header>
 						<Spacer />
 
-						<TabList>
-							{React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).map((tab, index) => 
+						<TabList tabs={React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).length}>
+							{React.Children.toArray(this.props.menus[this.state.activeMenu].props.children).map((tab, index) =>
 								tab.type === Tab ? this.renderTabItem(tab, this.props.menus[this.state.activeMenu], index) : undefined)}
 						</TabList>
 						<Spacer />
@@ -75,7 +125,7 @@ export default class QuickNavigation extends Component {
 						</MenuList>
 					</QuickNavMenu>
 				</QuickNavContainer>
-			</div >
+			</QuickNav >
 
 
 

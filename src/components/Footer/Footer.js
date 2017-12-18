@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { StyledFooter, Link } from 'components/Footer/FooterStyles'
 import Help from 'components/Help/Help'
 import { ScreenSizes } from 'theme/media'
-
 class Footer extends Component {
 	constructor(props) {
 		super(props)
@@ -14,6 +13,7 @@ class Footer extends Component {
 	}
 
 	componentWillMount() {
+
 		this.smallHelp()
 		window.addEventListener('resize', this.smallHelp)
 	}
@@ -23,10 +23,10 @@ class Footer extends Component {
 	}
 
 	smallHelp = () => {
-		if (window.innerWidth <= ScreenSizes.tablet) {
+		if (window.innerWidth < ScreenSizes.tablet) {
 			this.setState({ small: true })
 		}
-		else if (window.innerWidth > ScreenSizes.tablet) {
+		else if (window.innerWidth >= ScreenSizes.tablet) {
 			this.setState({ small: false })
 		}
 	}
@@ -37,10 +37,10 @@ class Footer extends Component {
 				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
 					<div style={{ display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center', alignItems: 'center' }}>
 						{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
-						&nbsp;| Debug: {this.props.helpID}
+						{/* &nbsp;| Debug: {this.props.helpID} */}
 					</div>
 				</Link>
-				<Help small={this.state.small} helpID={this.props.helpID} />
+				<Help small={this.state.small} helpID={this.props.helpID} helpLabel={this.props.helpLabel} />
 			</StyledFooter> : null
 		)
 	}

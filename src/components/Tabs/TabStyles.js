@@ -19,7 +19,7 @@ export const TabText = styled.div`
 	white-space: nowrap;
 `
 
-export const Link = styled(RouterLink)`
+export const Link = styled(RouterLink) `
 	text-decoration: none;
 	align-items: center;
 	justify-content: center;
@@ -32,18 +32,14 @@ export const Link = styled(RouterLink)`
 	padding-right: 20px;
 	flex-flow: row nowrap;
 	border-radius: 5px 5px 0px 0px;
-	color: ${props => props.selected ? '#fff' : '#000'};
-	background: ${props => props.theme.tab.unselected};
+	color: ${props => props.activetab === 'true' ? '#fff' : '#000'};
+	background: ${props =>  props.activetab === 'true' ? props.theme.tab.selected : props.theme.tab.unselected };
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;
 	transition: all 100ms ease-in-out;
 	&:hover{
 		background: ${props => props.theme.tab.hover};
 		color: white;
-	}
-	&.active{
-		background: ${props => props.theme.tab.selected};
-		color:white;
 	}
 `
 
@@ -52,6 +48,8 @@ export const SceneDiv = styled.div`
 	flex: 5;
 	flex-flow: column nowrap;
 	margin: 20px 20px 20px 20px;
+	overflow-y:auto;
+	-webkit-overflow-scrolling: touch;
 `
 
 export const TabIconDiv = styled.div`

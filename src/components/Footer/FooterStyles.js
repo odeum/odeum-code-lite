@@ -24,7 +24,7 @@ export const StyledFooter = styled.div`
 	user-select: none;
 	${media.giant`height:40px;`}
 	${media.desktop`height:40px;`}
-	${media.tablet`height:0px;`}
+	${media.tablet`height:30px;`}
 	${media.phone`height:0px;`}
 `
 
