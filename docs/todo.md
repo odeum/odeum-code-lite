@@ -3,7 +3,7 @@
 
 - [1. TODO for odeum-app](#1-todo-for-odeum-app)
 	- [Framework](#framework)
-	- [Workspace / Scene](#workspace-scene)
+	- [Workspace](#workspace)
 	- [QuickNav](#quicknav)
 	- [1.1. TODO:](#11-todo)
 		- [1.1.1. Foundation:](#111-foundation)
@@ -21,24 +21,23 @@
 - [x] Footer dissapears on Tablet size (portrait) (Ipad Air 2)
 
 
-## Workspace / Scene 
+## Workspace
 
 - [ ] Overflow + Components transformation for Responsiveness 
 	- [ ] CSS Wrap
-
+- [ ] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
 
 - [ ] Quick Navigation select first tab when only 1
 - [x] '/' route as Home
 - [x] Quick Navigation 'menu' icon default else from theme
-- [x] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
-- [x] Header Buttons
+- [ ] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
+- [ ] Header Buttons
 - [ ] Help Pop-up
-- [ ] Help Pop-up Styling
 - [ ] Close Button
-- [x] -webkit-overflow-scrolling: touch; from  iOS
-- [ ] Quick Navigation 'menu' icon default else from theme 
+- [ ] 
+
 
 ## 1.1. TODO:
 
@@ -53,14 +52,8 @@
 - [ ] Help Pop-over Styling
 - [x] Quick Navigation style object prop
 - [ ] Quick Navigation select first tab when only 1
-- [ ] Quick Navigation 'menu' icon default else from theme 
-<!--Not Possible from Theme, possible from props because of the Icon Component's and ThemeProvider's limitation, icon prop needs to be passed as a prop, the icon prop can't be set from styles and ThemeProvider can't be accessed from anywhere else, only from inside a styled-component's declaration (
-	styled.div`
-		background:${props=> props.theme}
-`
-	ThemeProvider passes theme props to all styled-components
-) -->
-- [xl] Function to open and close MenuPanel from code/state
+- [ ] Quick Navigation 'menu' icon default else from theme
+- [ ] Function to open and close MenuPanel from code/state
 - [ ] 404 - page not found component
 
 ### 1.1.2. Extension:

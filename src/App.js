@@ -9,7 +9,7 @@ import Page from 'components/Menu/Page'
 import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-
+import Login from 'components/Login/Login'
 /* Demo */
 
 import ReactComp from 'demos/ReactComp'
@@ -29,11 +29,14 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			theme: theme
+			theme: theme,
+			loggedIn: false
 		}
 
 	}
-
+	login = () => {
+		this.setState({ loggedIn: !this.state.loggedIn })
+	}
 	changeTheme = () => {
 		return this.state.theme === eplanTheme ?
 			this.setState({ theme: greenTheme }) :
@@ -51,70 +54,71 @@ class App extends Component {
 		return (
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
-				<MenuPanel>
-					<Page route={'/'} helpID={'root'}>
-						{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
-						{/* <SimpleDiv /> */}
-						<Flex />
-					</Page>
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
-						<Tabb />
-						<ReactComp />
-						<SimpleDiv />
-					</Menu>
-					<Menu route={'/form'} label={'Form'}>
-						<Tab route={''} label={'Test1'} helpID={'/Form'}>
+				{this.state.loggedIn ? 
+					<MenuPanel>
+						<Page route={'/'} helpID={'root'}>
+							{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
+							{/* <SimpleDiv /> */}
+							<Flex />
+						</Page>
+						<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 							<Tabb />
 							<ReactComp />
 							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-						</Tab>
-						<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-							<Flex />
-						</Tab>
-					</Menu>
-					<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
-						<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
-							<RouteDemo />
-						</Tab>
-					</Menu>
+						</Menu>
+						<Menu route={'/form'} label={'Form'}>
+							<Tab route={''} label={'Test1'} helpID={'/Form'}>
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+							</Tab>
+							<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+							</Tab>
+						</Menu>
+						<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
+							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
+								<RouteDemo />
+							</Tab>
+						</Menu>
 
-					<Protected isProtected={false}>
+						{/* 		<Protected isProtected={false}> */}
 						<Menu label={'Protected menu'} icon={'lock_outline'} route={'/children1'} >
 							<Tab label={'Overflow'} icon={'assignment'} helpID={'/ch/overflow'}>
 								<SimpleDiv />
@@ -126,35 +130,37 @@ class App extends Component {
 								<div>Hello Protected Workspace ... </div>
 							</Tab>
 						</Menu>
-					</Protected>
-
-					<Menu label={'Auto Generated'}>
-						<Tab label={'Route'} helpID={'9'}>
+						{/* </Protected>
+ */}
+						<Menu label={'Auto Generated'}>
+							<Tab label={'Route'} helpID={'9'}>
 							Auto Generated Route
-						</Tab>
-					</Menu>
-					<Menu label={'Theme'} icon={'opacity'}>
-						<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
-							<div style={{ display: 'flex', flexFlow: 'column' }}>
-								<div>Click the button below continously to change the theme of the framework.</div>
-								<Button
-									label={'Change Theme'}
-									icon={'opacity'}
-									color={this.state.theme.menu.background}
-									onClick={this.changeTheme}
-								/>
-								<Link to={'/'}>Route Home</Link>
-								<Link to={'/child/overflow'}>Route Child</Link>
-								<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
-								<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
-							</div>
-						</Tab>
-					</Menu>
-					{/* 					
-					Todo: Create defaultprops for Menu and Tab so they can be used without any props (label, icon, ...)
-					*/}
-
-				</MenuPanel>
+							</Tab>
+						</Menu>
+						<Menu label={'Theme'} icon={'opacity'}>
+							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
+								<div style={{ display: 'flex', flexFlow: 'column' }}>
+									<div>Click the button below continously to change the theme of the framework.</div>
+									<Button
+										label={'Change Theme'}
+										icon={'opacity'}
+										color={this.state.theme.menu.background}
+										onClick={this.changeTheme}
+									/>
+									<Link to={'/'}>Route Home</Link>
+									<Link to={'/child/overflow'}>Route Child</Link>
+									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
+									<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
+								</div>
+							</Tab>
+						</Menu></MenuPanel> : 
+					<MenuPanel>
+						<Page route={'/login'}>
+							<Login login={this.login}> Login</Login>
+						</Page>
+					</MenuPanel>
+				}
+				
 				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)

@@ -65,7 +65,7 @@ class MenuPanel extends Component {
 			return ''
 	}
 
-	convertChildLabelToRoute = (child, many) => {
+	convertChildLabelToRoute = (child) => {
 		var route = ''
 		var children = React.Children.toArray(child.props.children)
 		if (children[0].props.label)
