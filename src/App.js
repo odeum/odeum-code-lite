@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import AppContainer from 'components/AppContainer/AppContainer'
 import Header from 'components/Header/Header'
-import MenuPanel from 'components/Menu/MenuPanel'
+import MenuPanel from 'components/Menu/MenuPanel3'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
 import Page from 'components/Menu/Page'
+import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
 
@@ -112,17 +113,21 @@ class App extends Component {
 							<RouteDemo />
 						</Tab>
 					</Menu>
-					<Menu icon={'people'} route={'/children1'} label={'Menu with children'} >
-						<Tab icon={'assignment'} label={'Overflow'} helpID={'/ch/overflow'}>
-							<SimpleDiv />
-						</Tab>
-						<Tab icon={'assignment_turned_in'} label={'Lady Gaga'} route={'/react-component1'} helpID={7}>
-							<ReactComp />
-						</Tab>
-						<Tab icon={'visibility'} label={'Hello workspace'} route={'/workspace1'} helpID={8}>
-							<div>Hello Workspace ... </div>
-						</Tab>
-					</Menu>
+
+					<Protected isProtected={false}>
+						<Menu label={'Protected menu'} icon={'lock_outline'} route={'/children1'} >
+							<Tab label={'Overflow'} icon={'assignment'} helpID={'/ch/overflow'}>
+								<SimpleDiv />
+							</Tab>
+							<Tab label={'Lady Gaga'} icon={'assignment_turned_in'} route={'/react-component1'} helpID={7}>
+								<ReactComp />
+							</Tab>
+							<Tab label={'Hello workspace'} icon={'visibility'} route={'/workspace1'} helpID={8}>
+								<div>Hello Protected Workspace ... </div>
+							</Tab>
+						</Menu>
+					</Protected>
+
 					<Menu label={'Auto Generated'}>
 						<Tab label={'Route'} helpID={'9'}>
 							Auto Generated Route
