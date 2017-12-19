@@ -21,6 +21,7 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
+import { Redirect } from 'react-router-dom'
 
 /* End Import Demo */
 
@@ -30,7 +31,8 @@ class App extends Component {
 
 		this.state = {
 			theme: theme,
-			loggedIn: false
+			loggedIn: false,
+			redirected: false //temporary PoC, will change after a better solution "reveals itself"
 		}
 
 	}
@@ -49,13 +51,31 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
-
+	loginRender() {
+		if (!this.state.loggedIn)
+			return ( 					
+				<MenuPanel>
+					<Page route={'/'} exact={false}>
+			 <Redirect to={'/login'}/>
+					</Page>
+					<Page route={'/login'}>
+						<Login login={this.login}> Login</Login>
+					</Page>
+				</MenuPanel>)
+	}
+	redirectTo() {
+		if (!this.state.redirected)
+		{this.setState({ redirected: true })
+			return <Redirect to={'/'}/>}
+	}
 	render() {
+
 		return (
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
-				{this.state.loggedIn ? 
-					<MenuPanel>
+				{this.loginRender()}
+				{this.state.loggedIn && !this.state.redirected ? 
+				 <MenuPanel>
 						<Page route={'/'} helpID={'root'}>
 							{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
 							{/* <SimpleDiv /> */}
@@ -131,7 +151,7 @@ class App extends Component {
 							</Tab>
 						</Menu>
 						{/* </Protected>
- */}
+						*/}
 						<Menu label={'Auto Generated'}>
 							<Tab label={'Route'} helpID={'9'}>
 							Auto Generated Route
@@ -153,12 +173,9 @@ class App extends Component {
 									<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
 								</div>
 							</Tab>
-						</Menu></MenuPanel> : 
-					<MenuPanel>
-						<Page route={'/login'}>
-							<Login login={this.login}> Login</Login>
-						</Page>
-					</MenuPanel>
+						</Menu></MenuPanel> : <Redirect to={'/login'}/>}
+			
+
 				}
 				
 				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
