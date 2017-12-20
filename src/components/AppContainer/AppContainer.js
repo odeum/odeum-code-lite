@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { AppDiv } from './AppStyles'
 import { ThemeProvider } from "styled-components"
 import theme from 'theme/default'
-import { BrowserRouter as Router,/*  Route  */} from 'react-router-dom'
+import { BrowserRouter as Router, /*  Route  */} from 'react-router-dom'
 // import { Redirect } from 'react-router-dom'
 
 class AppContainer extends Component {
