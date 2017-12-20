@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Menu from './Menu'
-export default class Page extends Component {
+class Page extends Component {
 	render() {
 		return (
 			<Menu {...this.props}>
@@ -9,3 +9,5 @@ export default class Page extends Component {
 		)
 	}
 }
+
+export default Page 

@@ -12,7 +12,7 @@ class Header extends Component {
 
 		this.state = {
 			quicknav: false,
-			logo: undefined
+			logo: this.props.logo
 		}
 	}
 
@@ -67,9 +67,8 @@ class Header extends Component {
 	}
 }
 
-//TODO 
 Header.propTypes = {
-	logo: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+	logo: PropTypes.any,
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,
@@ -78,7 +77,8 @@ Header.propTypes = {
 Header.defaultProps = {
 	search: false,
 	notification: false,
-	avatar: false
+	avatar: false,
+	logo: theme.logo
 }
 
 export default Header

@@ -13,6 +13,16 @@ class Tab extends Component {
 			active: false
 		}
 	}
+
+	componentWillMount() {
+		this.setActive()
+	}
+
+	componentDidMount = () => {
+		if (this.state.active)
+			this.activate()
+	}
+
 	setActive = () => {
 		if (!this.props.exact) {
 			if (window.location.pathname.includes(this.props.route) && !this.state.active) {
@@ -25,18 +35,12 @@ class Tab extends Component {
 			}
 		}
 	}
-	componentWillMount() {
-		this.setActive()
-	}
-	componentDidMount = () => {
-		if (this.state.active)
-			this.activate()
-	}
 
 	activate = () => {
 		if (this.props.activeTab !== this.props.tabID)
 			this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
 	}
+
 	iconIsActive = () => this.state.active ? theme.icon.selected : theme.icon.default
 
 	render() {

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import theme from 'theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
 
 export const MenuDiv = styled.div`

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 import { MenuContainer } from './MenuStyles'
-import { Switch } from 'react-router-dom'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
@@ -29,8 +28,8 @@ class MenuPanel extends Component {
 	}
 
 	//#region Display quickNav or Menu 
+	
 	updateWindowSize = () => {
-		// console.log('MenuDiv', 'resized')s
 		if (window.innerWidth < sizes.tablet)
 			//QuickNav on
 			this.setState({
@@ -44,12 +43,10 @@ class MenuPanel extends Component {
 	}
 	//#endregion 
 
-
-
 	//#region Routing + Get First Child Route 
-	//TODO
+
 	route = (child) => child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
-	//TODO
+
 	getFirstChildRoute = (child) => {
 		var children = React.Children.toArray(child.props.children)
 		if (children[0].type === Tab) {
@@ -80,7 +77,6 @@ class MenuPanel extends Component {
 		this.setState({ quicknav: bool })
 	)
 	setActiveMenu = (key) => {
-		// console.log('ActiveMenu', key)
 		this.setState({ activeMenu: key })
 	}
 
@@ -89,13 +85,13 @@ class MenuPanel extends Component {
 	//#region Rendering
 
 	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
+
 	renderMenu = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					return (child.props.label ?
 						<MenuItem key={index}
-							SetHelpID={this.props.SetHelpID}
 							MenuID={index}
 							helpID={child.props.helpID}
 							active={this.state.activeMenu === (index) ? true : false}

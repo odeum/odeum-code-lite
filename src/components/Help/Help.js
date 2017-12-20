@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Icon } from 'odeum-ui'
+import PropTypes from 'prop-types'
 import { HelpDiv, Bold, Icon, HelpButton, HelpPopUp } from './HelpStyles'
 import { GetHelpID } from '../utils/HelpReducer'
 
@@ -12,7 +12,7 @@ class Help extends Component {
 		}
 	}
 	setHelpPopUpRef = (node) => {
-		  this.node = node 
+		this.node = node
 	}
 	renderHelp = () => {
 		var helpID = GetHelpID()
@@ -47,6 +47,11 @@ class Help extends Component {
 			</HelpDiv>
 		)
 	}
+}
+
+Help.propTypes = {
+	helpLabel: PropTypes.string,
+	small: PropTypes.bool
 }
 
 Help.defaultProps = {
