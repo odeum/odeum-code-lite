@@ -40,6 +40,10 @@ const theme = {
 		button: {
 			background: '#7c1313',
 			color: '#FFF'
+		},
+		tab: {
+			selected: '#EF5350',
+			unselected: '#000'
 		}
 	},
 	 logo: {

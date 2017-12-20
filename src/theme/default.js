@@ -39,13 +39,18 @@ const theme = {
 	},
 	quicknav: {
 		button: {
-			background: '#3B97D3',
+			background: '#216795',
+			unselected: '#E3E5E5',
 			color: '#FFF'
+		},
+		tab: {
+			selected: '#3B97D3',
+			unselected: '#000'
 		}
 	},
 	logo: {
 		margin: '5px',
-		height: '35px', 
+		height: '35px',
 		default: ODEUM_Logo,
 		bigLogo: ODEUM_Logo,
 		smallLogo: ODEUM_icon

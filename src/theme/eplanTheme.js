@@ -41,6 +41,10 @@ const eplanTheme = {
 			background: '#E98832',
 			color: '#F7F7F7'
 		},
+		tab: {
+			selected: '#F39C12',
+			unselected: '#000'
+		}
 
 	},
 	logo: {

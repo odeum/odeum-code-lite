@@ -42,6 +42,10 @@ const greenTheme = {
 		button: {
 			background: '#1B5E20',
 			color: '#FFF'
+		},
+		tab: {
+			selected: '#43A047',
+			unselected: '#000'
 		}
 	},
 	logo: {
