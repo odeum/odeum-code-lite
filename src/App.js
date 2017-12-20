@@ -74,7 +74,7 @@ class App extends Component {
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
 				{this.loginRender()}
-				{this.state.loggedIn && !this.state.redirected ? 
+				{this.state.loggedIn && !this.state.redirected ? this.redirectTo() : this.state.loggedIn && this.state.redirected ?
 				 <MenuPanel>
 						<Page route={'/'} helpID={'root'}>
 							{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
