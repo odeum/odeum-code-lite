@@ -75,7 +75,7 @@ class App extends Component {
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
 				
-				 <MenuPanel login={true} isLoggedIn={this.state.loggedIn}>
+				 <MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
 				 	<Menu route={'/login'} label={'Login'}>
 						<Login login={this.login}/>
 					 </Menu>

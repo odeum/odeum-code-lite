@@ -115,7 +115,7 @@ class MenuPanel extends Component {
 					else
 						return null
 				})}
-				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to='/login'/>} />
+				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to={this.props.redirectTo}/>} />
 			</Switch>
 		</MenuContainer>
 	}
@@ -164,7 +164,7 @@ class MenuPanel extends Component {
 					else {
 						var childs = React.Children.toArray(child.props.children)
 						return childs.map((child, proti) => {
-							return <Route key={proti+i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 						})
 						
 					}
