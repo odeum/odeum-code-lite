@@ -9,6 +9,7 @@ export const MenuDiv = styled.div`
 	overflow-x: hidden;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
+	
 `
 
 const BaseItem = styled.div`

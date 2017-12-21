@@ -5241,6 +5241,10 @@ react-redux@^5.0.6:
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
 
+react-render-visualizer@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-render-visualizer/-/react-render-visualizer-0.2.2.tgz#d2699ddaf02ac55cee1a8dd330ff1f7ea0887444"
+
 react-router-dom@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"

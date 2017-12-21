@@ -47,13 +47,13 @@ class MenuPanel extends Component {
 
 
 	//#region Routing + Get First Child Route 
-	//TODO
+
 	route = (child) => {
 		if (child.type.name === 'Protected') {
 			return child.children
 		} else return child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
 	}
-	//TODO
+
 	getFirstChildRoute = (child) => {
 		var children = React.Children.toArray(child.props.children)
 		if (children[0].type === Tab) {
@@ -69,7 +69,7 @@ class MenuPanel extends Component {
 			return ''
 	}
 
-	convertChildLabelToRoute = (child, many) => {
+	convertChildLabelToRoute = (child) => {
 		var route = ''
 		var children = React.Children.toArray(child.props.children)
 		if (children[0].props.label)

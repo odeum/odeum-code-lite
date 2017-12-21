@@ -10,7 +10,6 @@ import App from 'App'
 
 // import AppRouter from 'AppRouter'
 
-
 class AppRouter extends Component {
 	render() {
 		return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AppContainer from 'components/AppContainer/AppContainer'
 import Header from 'components/Header/Header'
-import MenuPanel from 'components/Menu/MenuPanel3'
+import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
@@ -22,6 +22,7 @@ import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
 import { Redirect } from 'react-router-dom'
+import Protected from 'components/Login/Protected'
 
 /* End Import Demo */
 
@@ -73,27 +74,22 @@ class App extends Component {
 		return (
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
-				{this.loginRender()}
-				{this.state.loggedIn && !this.state.redirected ? this.redirectTo() : this.state.loggedIn && this.state.redirected ?
-				 <MenuPanel>
-						<Page route={'/'} helpID={'root'}>
-							{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
-							{/* <SimpleDiv /> */}
-							<Flex />
-						</Page>
-						<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-						</Menu>
+				
+				 <MenuPanel login={true} isLoggedIn={this.state.loggedIn}>
+				 	<Menu route={'/login'} label={'Login'}>
+						<Login login={this.login}/>
+					 </Menu>
+					<Page route={'/'} helpID={'root'}>
+						<Flex />
+					</Page>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+						<Tabb />
+						<ReactComp />
+						<SimpleDiv />
+					</Menu>
+					<Protected>
 						<Menu route={'/form'} label={'Form'}>
 							<Tab route={''} label={'Test1'} helpID={'/Form'}>
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
 								<SimpleDiv />
 								<Flex />
 							</Tab>
@@ -102,56 +98,14 @@ class App extends Component {
 								<ReactComp />
 								<SimpleDiv />
 								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
 							</Tab>
 						</Menu>
+				
 						<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
 							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
 								<RouteDemo />
 							</Tab>
 						</Menu>
-
-						{/* 		<Protected isProtected={false}> */}
-						<Menu label={'Protected menu'} icon={'lock_outline'} route={'/children1'} >
-							<Tab label={'Overflow'} icon={'assignment'} helpID={'/ch/overflow'}>
-								<SimpleDiv />
-							</Tab>
-							<Tab label={'Lady Gaga'} icon={'assignment_turned_in'} route={'/react-component1'} helpID={7}>
-								<ReactComp />
-							</Tab>
-							<Tab label={'Hello workspace'} icon={'visibility'} route={'/workspace1'} helpID={8}>
-								<div>Hello Protected Workspace ... </div>
-							</Tab>
-						</Menu>
-						{/* </Protected>
-						*/}
 						<Menu label={'Auto Generated'}>
 							<Tab label={'Route'} helpID={'9'}>
 							Auto Generated Route
@@ -173,11 +127,9 @@ class App extends Component {
 									<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
 								</div>
 							</Tab>
-						</Menu></MenuPanel> : <Redirect to={'/login'}/>}
-			
-
-				}
-				
+						</Menu>
+					</Protected>
+				</MenuPanel>
 				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
@@ -201,3 +153,7 @@ const RenderFooterLabel = () => {
 
 export default App
 
+// if (process.env.NODE_ENV !== 'production') {
+// 	const { whyDidYouUpdate } = require('why-did-you-update')
+// 	whyDidYouUpdate(React)
+// }

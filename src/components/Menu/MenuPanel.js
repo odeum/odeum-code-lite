@@ -8,6 +8,8 @@ import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { ScreenSizes as sizes } from '../../theme/media'
 import Tab from 'components/Tabs/Tab'
+import { Redirect } from 'react-router-dom'
+import Protected from 'components/Login/Protected'
 
 class MenuPanel extends Component {
 	constructor(props) {
@@ -76,35 +78,96 @@ class MenuPanel extends Component {
 	switch = (bool) => (
 		this.setState({ quicknav: bool })
 	)
-	setActiveMenu = (key) => {
-		this.setState({ activeMenu: key })
+	setActiveMenu = (label, id) => {
+		console.log('Setting as active', label, id)
+		this.setState({ activeMenu: label })
 	}
 
 	//#endregion
 
 	//#region Rendering
 
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, index: index, activeMenu: this.state.activeMenu, route: this.route(child) }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child) }) }
 
-	renderMenu = (children) => {
+	renderPublic = (children) => {
 		return <MenuContainer quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
-					return (child.props.label ?
-						<MenuItem key={index}
-							MenuID={index}
-							helpID={child.props.helpID}
-							active={this.state.activeMenu === (index) ? true : false}
-							icon={child.props.icon}
-							label={child.props.label}
-							route={this.route(child) + this.getFirstChildRoute(child)}
-							onClick={this.setActiveMenu} /> : null
-					)
+					if (child.type === Protected)
+						return null
+					else
+						return (child.props.label ?
+							<MenuItem key={index}
+								MenuID={index}
+								helpID={child.props.helpID}
+								active={this.state.activeMenu === (index) ? true : false}
+								icon={child.props.icon}
+								label={child.props.label}
+								route={this.route(child) + this.getFirstChildRoute(child)}
+								onClick={this.setActiveMenu} /> : null
+						)
 				})}
 			</MenuDiv> : <QuickNavigation menus={children} />}
 			<Switch>
 				{children.map((child, i) => {
-					return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+					if (child.type !== Protected)
+						return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+					else
+						return null
+				})}
+				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to='/login'/>} />
+			</Switch>
+		</MenuContainer>
+	}
+	renderMenu = (children) => {
+		return <MenuContainer quicknav={this.state.quicknav}>
+			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
+				{children.map((child, index) => {
+					if (child.type !== Protected)
+					{
+						console.log('Child.type', child.type, child.props.label)
+						return (child.props.label ?
+							<MenuItem key={index}
+								MenuID={index}
+								helpID={child.props.helpID}
+								active={this.state.activeMenu === index ? true : false}
+								icon={child.props.icon}
+								label={child.props.label}
+								route={this.route(child) + this.getFirstChildRoute(child)}
+								onClick={this.setActiveMenu} /> : null
+						)}
+					else {
+						const childs = React.Children.toArray(child.props.children)
+						return childs.map((protchild, protindex) =>
+						{
+							return (protchild.props.label ?
+								<MenuItem key={protindex + index}
+									MenuID={protindex + index}
+									helpID={protchild.props.helpID}
+									active={this.state.activeMenu === protindex + index ? true : false}
+									icon={protchild.props.icon}
+									label={protchild.props.label}
+									route={this.route(protchild) + this.getFirstChildRoute(protchild)}
+									onClick={this.setActiveMenu}
+								/> : null
+							)
+						}
+						)
+						
+					}
+				})}
+			</MenuDiv> : <QuickNavigation menus={children} />}
+			<Switch>
+				{children.map((child, i) => {
+					if (child.type !== Protected)
+						return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+					else {
+						var childs = React.Children.toArray(child.props.children)
+						return childs.map((child, proti) => {
+							return <Route key={proti+i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+						})
+						
+					}
 				})}
 				<Route path={'*'} component={NotFound} />
 			</Switch>
@@ -112,10 +175,26 @@ class MenuPanel extends Component {
 	}
 
 	render() {
-		return this.renderMenu(React.Children.toArray(this.props.children))
+		const { login, isLoggedIn } = this.props
+		if (!login)
+		{
+			return this.renderMenu(React.Children.toArray(this.props.children))
+		}
+		else
+		{	
+			if (isLoggedIn)
+			{
+				return this.renderMenu(React.Children.toArray(this.props.children))
+			}
+			
+			else {
+				return this.renderPublic(React.Children.toArray(this.props.children))
+			}
+		}
 	}
 
 	//#endregion
 }
 
 export default MenuPanel
+
