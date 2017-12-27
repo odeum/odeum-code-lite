@@ -23,7 +23,7 @@ import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
 import { Redirect } from 'react-router-dom'
 import Protected from 'components/Login/Protected'
-
+import MinFo from 'theme/minforetning'
 /* End Import Demo */
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			theme: theme,
+			theme: MinFo,
 			loggedIn: false,
 			redirected: false //temporary PoC, will change after a better solution "reveals itself"
 		}

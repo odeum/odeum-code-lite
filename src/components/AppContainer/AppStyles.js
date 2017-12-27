@@ -1,18 +1,16 @@
 import styled from 'styled-components'
-
+const defaultArea = '"header header" "menupanel workspace" "footer footer"'
 export const AppDiv = styled.div`
 	display: grid;
-	grid-template-areas:
-    "menupanel header"
-    "menupanel workspace"
-    "footer footer";
-	grid-template-columns: max-content 1fr;
-	grid-template-rows: 80px auto 40px;
+	grid-template-areas: ${({ theme }) => theme.app ?  theme.app.gridArea ? theme.app.gridArea : defaultArea : defaultArea};
+	grid-template-columns: ${({ theme }) => theme.app ?  theme.app.gridTemplateColumns ? theme.app.gridTemplateColumns : "max-content 1fr" : "max-content 1fr" };
+	grid-template-rows: ${({ theme }) => theme.app ?  theme.app.gridTemplateRows ? theme.app.gridTemplateRows : '80px auto 40px' : '80px auto 40px'};
 	height: 100vh;
 	width: 100vw;
-	background-color: ${props => props.theme.workspace.background};	
+	background-color: ${({ theme }) => theme.workspace.background};	
 `
 
 export const Img = styled.img`
 	
 `
+

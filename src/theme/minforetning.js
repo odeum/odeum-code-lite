@@ -1,10 +1,10 @@
 import ODEUM_Logo from 'theme/logo.svg'
 import ODEUM_icon from 'theme/logo_icon.svg'
 
-const theme = {
+const MinFo = {
 	app: {
 		gridArea: 
-		'"menupanel header"' 
+		'"menupanel workspace"' 
 		+ '"menupanel workspace"' 
 		+ '"menupanel footer"',
 		gridTemplateRows: '80px auto 40px',
@@ -17,11 +17,11 @@ const theme = {
 	},
 
 	menu: {
-		background: '#3B97D3',
-		color: '#FFF',
-		selected: '#216795',
-		hover: '#81C1EA',
-		bottomBorder: '1px solid #3087bf'
+		background: '#8395ab',
+		color: '#b7c1cdff',
+		selected: '',
+		hover: '',
+		bottomBorder: 'none'
 	},
 
 	footer: {
@@ -35,15 +35,15 @@ const theme = {
 	},
 
 	tab: {
-		background: '#3B97D3',
+		background: '#8395ab',
 		color: '#FFF',
-		selected: '#3B97D3',
-		hover: '#81C1EA',
+		selected: '#b7c1cd',
+		hover: '#5E5E5E',
 		unselected: '#E3E5E5'
 	},
 	icon: {
-		default: '#34495D',
-		selected: '#FFF'
+		default: '#8395ab',
+		selected: '#8395ab'
 	},
 	quicknav: {
 		button: {
@@ -65,5 +65,5 @@ const theme = {
 	}
 }
 
-export default theme
+export default MinFo
 

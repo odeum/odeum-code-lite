@@ -120,7 +120,7 @@ class MenuPanel extends Component {
 		</React.Fragment>
 	}
 	renderMenu = (children) => {
-		return <React.Fragment quicknav={this.state.quicknav}>
+		return <React.Fragment>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					if (child.type !== Protected)
