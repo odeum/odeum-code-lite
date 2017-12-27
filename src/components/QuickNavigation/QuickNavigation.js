@@ -100,6 +100,9 @@ export default class QuickNavigation extends Component {
 	renderTabItem = (tab, menu, index) => {
 		var menuRoute = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
 		var route = tab.props.route !== undefined ? menuRoute + tab.props.route : menuRoute + convertLabelToRoute(tab.props.label)
+		// console.log(menu, menuRoute, menu.props.route)
+		// console.log('----')
+		// console.log(tab, tab.props.route, route)
 		return <TabItem key={index.protected ? index.index + index.protected : index} helpid={tab.props.helpID} activetab={this.activeTab(index, this.state.activeMenu)} id={index} to={route} onClick={this.tabClick(index, tab.props.helpID)}>{tab.props.label ? tab.props.label : tab.props.route}</TabItem>
 	}
 	renderProtectedTabs() {
@@ -110,13 +113,14 @@ export default class QuickNavigation extends Component {
 	}
 	renderTabs() {
 		if (this.state.activeMenu.protected !== undefined)
-		{	console.log('bing')
-			console.log(this.state.activeMenu)
-			var ProtectedMenus = this.props.menus[this.state.activeMenu.index]
-			console.log(ProtectedMenus)
-			console.log(ProtectedMenus.props.children[this.state.activeMenu.protected])
-			return React.Children.toArray(ProtectedMenus.props.children[this.state.activeMenu.protected]).map((tab, index) => {
-				 return this.renderTabItem(tab, ProtectedMenus.props.children[this.state.activeMenu.protected], { index: this.state.activeMenu.index, protected: index })
+		{	
+			// console.log('bing')
+			// console.log(this.state.activeMenu)
+			var ProtectedMenu = this.props.menus[this.state.activeMenu.index].props.children
+			// console.log(ProtectedMenus)
+			//  console.log(React.Children.toArray(ProtectedMenus.props.children[this.state.activeMenu.protected]))
+			return React.Children.toArray(ProtectedMenu[this.state.activeMenu.protected].props.children).map((tab, index) => {
+				 return this.renderTabItem(tab, ProtectedMenu[this.state.activeMenu.protected], { index: this.state.activeMenu.index, protected: index })
 			})
 			
 		}
