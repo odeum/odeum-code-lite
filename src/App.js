@@ -21,7 +21,6 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
-import { Redirect } from 'react-router-dom'
 import Protected from 'components/Login/Protected'
 import MinFo from 'theme/minforetning'
 /* End Import Demo */
@@ -52,23 +51,23 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
-	loginRender() {
-		if (!this.state.loggedIn)
-			return ( 					
-				<MenuPanel>
-					<Page route={'/'} exact={false}>
-			 <Redirect to={'/login'}/>
-					</Page>
-					<Page route={'/login'}>
-						<Login login={this.login}> Login</Login>
-					</Page>
-				</MenuPanel>)
-	}
-	redirectTo() {
-		if (!this.state.redirected)
-		{this.setState({ redirected: true })
-			return <Redirect to={'/'}/>}
-	}
+	// loginRender() {
+	// 	if (!this.state.loggedIn)
+	// 		return ( 					
+	// 			<MenuPanel>
+	// 				<Page route={'/'} exact={false}>
+	// 		 <Redirect to={'/login'}/>
+	// 				</Page>
+	// 				<Page route={'/login'}>
+	// 					<Login login={this.login}> Login</Login>
+	// 				</Page>
+	// 			</MenuPanel>)
+	// }
+	// redirectTo() {
+	// 	if (!this.state.redirected)
+	// 	{this.setState({ redirected: true })
+	// 		return <Redirect to={'/'}/>}
+	// }
 	render() {
 
 		return (
@@ -76,9 +75,14 @@ class App extends Component {
 				<Header logo={this.state.theme.logo} />
 				
 				 <MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
-				 	<Menu route={'/login'} label={'Login'}>
-						<Login login={this.login}/>
-					 </Menu>
+		
+					{Login({ isLoggedIn: this.state.loggedIn, login: this.login })}
+					
+					{/*
+					This does not work 	<Login isLoggedIn={this.state.loggedIn} login={this.login}/>
+					??? MenuPanel sees it as a full component rather than a functional one, what the hell React ???
+				 */}
+				 
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>

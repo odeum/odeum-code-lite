@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Menu from 'components/Menu/Menu'
+import { Redirect } from 'react-router-dom'
 
-export default class Login extends Component {
-	render() {
-		return (
-	  <div>
-				<button onClick={this.props.login}> Log me in</button>
-	  </div>
-		)
-	}
+
+const Login = ({ isLoggedIn, login }) => {
+	console.log(isLoggedIn, login)
+	return (
+	  isLoggedIn ?   <Menu route={'/login'}><Redirect to={'/'}/></Menu> : <Menu route={'/login'} label={'Login'}>
+		  				<button onClick={login}> Log me in</button>
+					 </Menu>
+	)
 }
+
+export default Login

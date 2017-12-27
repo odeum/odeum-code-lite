@@ -159,10 +159,14 @@ class MenuPanel extends Component {
 			<Switch>
 				{children.map((child, i) => {
 					if (child.type !== Protected)
+					{
+						console.log(child)
 						return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+					}					
 					else {
 						var childs = React.Children.toArray(child.props.children)
 						return childs.map((child, proti) => {
+							console.log(child)
 							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 						})
 						
