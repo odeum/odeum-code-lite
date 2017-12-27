@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
-import { MenuContainer } from './MenuStyles'
+// import { MenuContainer } from './MenuStyles'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
@@ -90,7 +90,7 @@ class MenuPanel extends Component {
 	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child) }) }
 
 	renderPublic = (children) => {
-		return <MenuContainer quicknav={this.state.quicknav}>
+		return <React.Fragment /* quicknav={this.state.quicknav} */>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					if (child.type === Protected)
@@ -117,15 +117,14 @@ class MenuPanel extends Component {
 				})}
 				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to={this.props.redirectTo}/>} />
 			</Switch>
-		</MenuContainer>
+		</React.Fragment>
 	}
 	renderMenu = (children) => {
-		return <MenuContainer quicknav={this.state.quicknav}>
+		return <React.Fragment quicknav={this.state.quicknav}>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
 					if (child.type !== Protected)
-					{
-						console.log('Child.type', child.type, child.props.label)
+					{ 
 						return (child.props.label ?
 							<MenuItem key={index}
 								MenuID={index}
@@ -171,7 +170,7 @@ class MenuPanel extends Component {
 				})}
 				<Route path={'*'} component={NotFound} />
 			</Switch>
-		</MenuContainer>
+		</React.Fragment>
 	}
 
 	render() {

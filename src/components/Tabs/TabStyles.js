@@ -44,6 +44,7 @@ export const Link = styled(RouterLink) `
 `
 
 export const SceneDiv = styled.div`
+	grid-area:workspace;
 	display: flex;
 	flex: 5;
 	flex-flow: column nowrap;

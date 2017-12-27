@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { NavLink as RouterLink } from 'react-router-dom'
 
 export const MenuDiv = styled.div`
+	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
 	display: flex;
 	flex: 1 0 auto;

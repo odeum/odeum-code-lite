@@ -6,10 +6,11 @@ import media from 'theme/media'
 import { Link as RouterLink } from 'react-router-dom'
 
 export const HeaderDiv = styled.div`
+	grid-area:header;
 	color: #333;
 	display: flex;
 	flex-flow: row nowrap;
-	width: 100vw;
+	/* width: 100vw; */
 	height: ${props => props.theme.header.height ? props.theme.header.height : '80px'};
 	align-items: center;
 	justify-content: ${props => props.quicknav ? 'center' : 'space-between'};
