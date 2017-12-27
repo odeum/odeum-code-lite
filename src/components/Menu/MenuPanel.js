@@ -107,7 +107,7 @@ class MenuPanel extends Component {
 								onClick={this.setActiveMenu} /> : null
 						)
 				})}
-			</MenuDiv> : <QuickNavigation menus={children} />}
+			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn}/>}
 			<Switch>
 				{children.map((child, i) => {
 					if (child.type !== Protected)
@@ -156,7 +156,7 @@ class MenuPanel extends Component {
 						
 					}
 				})}
-			</MenuDiv> : <QuickNavigation menus={children} />}
+			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn}/>}
 			<Switch>
 				{children.map((child, i) => {
 					if (child.type !== Protected)
@@ -175,7 +175,9 @@ class MenuPanel extends Component {
 	}
 
 	render() {
+		
 		const { login, isLoggedIn } = this.props
+		console.log(isLoggedIn)
 		if (!login)
 		{
 			return this.renderMenu(React.Children.toArray(this.props.children))

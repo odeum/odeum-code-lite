@@ -38,7 +38,7 @@ class App extends Component {
 
 	}
 	login = () => {
-		this.setState({ loggedIn: !this.state.loggedIn })
+		this.setState({ loggedIn: true })
 	}
 	changeTheme = () => {
 		return this.state.theme === eplanTheme ?
