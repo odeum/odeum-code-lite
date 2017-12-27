@@ -7,7 +7,7 @@ const MinFo = {
 		'"menupanel header"' 
 		+ '"menupanel workspace"' 
 		+ '"menupanel footer"',
-		gridTemplateRows: '80px auto 40px',
+		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
 	header: {

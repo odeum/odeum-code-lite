@@ -128,6 +128,9 @@ export const TabList = styled.div`
 //#region QuickNav Button, Overlay and Spacer
 
 export const QuickNav = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
 	z-index: 1; 
 	display: flex; 
 	flex-flow: row nowrap;
