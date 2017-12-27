@@ -4,7 +4,7 @@ import ODEUM_icon from 'theme/logo_icon.svg'
 const MinFo = {
 	app: {
 		gridArea: 
-		'"menupanel workspace"' 
+		'"menupanel header"' 
 		+ '"menupanel workspace"' 
 		+ '"menupanel footer"',
 		gridTemplateRows: '80px auto 40px',
