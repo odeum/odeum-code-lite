@@ -30,7 +30,7 @@ class MenuPanel extends Component {
 	}
 
 	//#region Display quickNav or Menu 
-	
+
 	updateWindowSize = () => {
 		if (window.innerWidth < sizes.tablet)
 			//QuickNav on
@@ -107,7 +107,7 @@ class MenuPanel extends Component {
 								onClick={this.setActiveMenu} /> : null
 						)
 				})}
-			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn}/>}
+			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
 				{children.map((child, i) => {
 					if (child.type !== Protected)
@@ -115,7 +115,7 @@ class MenuPanel extends Component {
 					else
 						return null
 				})}
-				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to={this.props.redirectTo}/>} />
+				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to={this.props.redirectTo} />} />
 			</Switch>
 		</React.Fragment>
 	}
@@ -123,8 +123,7 @@ class MenuPanel extends Component {
 		return <React.Fragment>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
 				{children.map((child, index) => {
-					if (child.type !== Protected)
-					{ 
+					if (child.type !== Protected) {
 						return (child.props.label ?
 							<MenuItem key={index}
 								MenuID={index}
@@ -134,11 +133,11 @@ class MenuPanel extends Component {
 								label={child.props.label}
 								route={this.route(child) + this.getFirstChildRoute(child)}
 								onClick={this.setActiveMenu} /> : null
-						)}
+						)
+					}
 					else {
 						const childs = React.Children.toArray(child.props.children)
-						return childs.map((protchild, protindex) =>
-						{
+						return childs.map((protchild, protindex) => {
 							return (protchild.props.label ?
 								<MenuItem key={protindex + index}
 									MenuID={protindex + index}
@@ -152,24 +151,21 @@ class MenuPanel extends Component {
 							)
 						}
 						)
-						
+
 					}
 				})}
-			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn}/>}
+			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
 				{children.map((child, i) => {
-					if (child.type !== Protected)
-					{
-						console.log(child)
+					if (child.type !== Protected) {
 						return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
-					}					
+					}
 					else {
 						var childs = React.Children.toArray(child.props.children)
 						return childs.map((child, proti) => {
-							console.log(child)
 							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 						})
-						
+
 					}
 				})}
 				<Route path={'*'} component={NotFound} />
@@ -178,20 +174,17 @@ class MenuPanel extends Component {
 	}
 
 	render() {
-		
+
 		const { login, isLoggedIn } = this.props
 		console.log(isLoggedIn)
-		if (!login)
-		{
+		if (!login) {
 			return this.renderMenu(React.Children.toArray(this.props.children))
 		}
-		else
-		{	
-			if (isLoggedIn)
-			{
+		else {
+			if (isLoggedIn) {
 				return this.renderMenu(React.Children.toArray(this.props.children))
 			}
-			
+
 			else {
 				return this.renderPublic(React.Children.toArray(this.props.children))
 			}

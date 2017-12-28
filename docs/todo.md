@@ -19,13 +19,28 @@
 - [x] error coding, use strict subchildren
 - [x] Margin on logo
 - [x] Footer dissapears on Tablet size (portrait) (Ipad Air 2)
+- [x] display:grid on Skeleton
+	-[x] QuickNavigation refactor to these changes
+- [x] Custom theme gridArea,templateColumns,templateRows
 
+## Menu Panel
+
+- [ ] One Method for rendering of the Switch/Routes
+- [ ] One Method for rendering MenuItems
+- [ ] bottomMenu item support 
+- [ ] Custom Header (for ex: profile picture)
+
+
+## Header
+
+- [ ] Custom Component as Header
+	- if(this.props.children) render custom children else renderDefault() (suggestion)
 
 ## Workspace
 
 - [ ] Overflow + Components transformation for Responsiveness 
 	- [ ] CSS Wrap
-- [ ] -webkit-overflow-scrolling: touch; from  iOS
+- [x] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
 
@@ -38,7 +53,15 @@
 - [ ] Close Button
 - [ ] 
 
+## Login
 
+- [ ] Login Component
+	- [x] Protected Routes
+	- [ ] Login Form
+	- [ ] Styling
+
+
+## MenuPanel
 ## 1.1. TODO:
 
 ### 1.1.1. Foundation:
