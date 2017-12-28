@@ -31,8 +31,7 @@ class App extends Component {
 
 		this.state = {
 			theme: MinFo,
-			loggedIn: false,
-			redirected: false //temporary PoC, will change after a better solution "reveals itself"
+			loggedIn: false
 		}
 
 	}
@@ -51,38 +50,18 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
-	// loginRender() {
-	// 	if (!this.state.loggedIn)
-	// 		return ( 					
-	// 			<MenuPanel>
-	// 				<Page route={'/'} exact={false}>
-	// 		 <Redirect to={'/login'}/>
-	// 				</Page>
-	// 				<Page route={'/login'}>
-	// 					<Login login={this.login}> Login</Login>
-	// 				</Page>
-	// 			</MenuPanel>)
-	// }
-	// redirectTo() {
-	// 	if (!this.state.redirected)
-	// 	{this.setState({ redirected: true })
-	// 		return <Redirect to={'/'}/>}
-	// }
 	render() {
 
 		return (
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} />
-				
+				{/* <Header logo={this.state.theme.logo}>
+					<div>Test</div>
+				</Header> */}
 				 <MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
 		
 					{Login({ isLoggedIn: this.state.loggedIn, login: this.login })}
 					
-					{/*
-					This does not work 	<Login isLoggedIn={this.state.loggedIn} login={this.login}/>
-					??? MenuPanel sees it as a full component rather than a functional one, what the hell React ???
-				 */}
-				 
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
