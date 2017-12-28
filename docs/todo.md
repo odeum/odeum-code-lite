@@ -22,6 +22,7 @@
 - [x] display:grid on Skeleton
 	-[x] QuickNavigation refactor to these changes
 - [x] Custom theme gridArea,templateColumns,templateRows
+- [x] Remove flex properties on skeleton components (MenuPanel, Header, Workspace/SceneDiv, Footer)
 
 ## Menu Panel
 
@@ -33,7 +34,7 @@
 
 ## Header
 
-- [ ] Custom Component as Header
+- [x] Custom Component as Header
 	- if(this.props.children) render custom children else renderDefault() (suggestion)
 
 ## Workspace
@@ -48,10 +49,10 @@
 - [x] '/' route as Home
 - [x] Quick Navigation 'menu' icon default else from theme
 - [ ] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
-- [ ] Header Buttons
-- [ ] Help Pop-up
-- [ ] Close Button
-- [ ] 
+- [x] Header Buttons
+- [x] Help Pop-up
+- [x] Close Button
+- [ ] Style Buttons 
 
 ## Login
 
