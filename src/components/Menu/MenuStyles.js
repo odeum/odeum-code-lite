@@ -4,13 +4,11 @@ import { NavLink as RouterLink } from 'react-router-dom'
 export const MenuDiv = styled.div`
 	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
-	display: flex;
-	flex: 1 0 auto;
-	flex-flow: column nowrap;
+	display: grid;
 	overflow-x: hidden;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
-	
+	grid-auto-rows: 50px;
 `
 
 const BaseItem = styled.div`

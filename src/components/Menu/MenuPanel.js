@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom'
 import Protected from 'components/Login/Protected'
 
 class MenuPanel extends Component {
+
 	constructor(props) {
 		super(props)
 
