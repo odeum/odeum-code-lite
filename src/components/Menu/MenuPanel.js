@@ -10,7 +10,6 @@ import { ScreenSizes as sizes } from '../../theme/media'
 import Tab from 'components/Tabs/Tab'
 import { Redirect } from 'react-router-dom'
 import Protected from 'components/Login/Protected'
-import { Bottom } from 'components/Menu/MenuStyles'
 
 class MenuPanel extends Component {
 
@@ -121,7 +120,24 @@ class MenuPanel extends Component {
 			}
 		})
 	}
-	renderTopMenuItems = (children) => {
+	renderBottomItems = (children) => {
+		return children.map((child, index) => {
+			if (child.type === Protected && child.props.bottom && !child.props.top)
+			{if (!this.props.isLoggedIn) {
+				return false
+			}
+				else {
+				const childs = React.Children.toArray(child.props.children)
+				return childs.map((protchild, protindex) => {
+					return protchild.props.bottom && !protchild.props.top ? protchild : null
+				})
+			}}
+			else
+				return child.props.bottom && !child.props.top ? child : null
+		})
+	}
+	
+	renderTopItems = (children) => {
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && child.props.top)
 			{if (!this.props.isLoggedIn) {
@@ -166,12 +182,12 @@ class MenuPanel extends Component {
 	renderMenu = (children) => {
 		return <React.Fragment>
 			{!this.state.quicknav ?
-				<MenuDiv quicknav={this.switch} top={this.renderTopMenuItems(children)}>
+				<MenuDiv 
+					quicknav={this.switch} 
+					top={this.renderTopItems(children)}
+					bottom={this.renderBottomItems(children)}>
 					{/* {this.renderTopMenuItems(children)} */}
 					{this.renderMenuItems(children)}
-					<Bottom>
-						{/* TODO */}
-					</Bottom>
 				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
 				{this.renderRoutes(children)}

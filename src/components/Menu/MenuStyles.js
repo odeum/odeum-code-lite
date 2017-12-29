@@ -13,9 +13,7 @@ export const MenuDiv = styled.div`
 	transition: max-width 300ms ease;
 	
 `
-export const Bottom = styled.div`
-	margin-top: auto;
-`
+
 const BaseItem = styled.div`
 	border-bottom: ${props => props.theme.menu.bottomBorder};
 	height: 50px;
@@ -28,6 +26,13 @@ export const MenuHeader = BaseItem.extend`
 	display: flex;
 	flex-flow:column;
 	height: auto;
+`
+export const MenuFooter = BaseItem.extend`
+display: flex;
+flex-flow:column;
+height: auto;
+margin-top:auto;
+/* margin-bottom: 30px; */
 `
 
 export const IconDiv = styled.div`

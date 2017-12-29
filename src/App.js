@@ -71,14 +71,14 @@ class App extends Component {
 					
 					*/}
 					<Flex top/>
-
+					<Flex bottom/>
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 					<Protected>
-						<Menu route={'/form'} label={'Form'} bottom>
+						<Menu route={'/form'} label={'Form'} >
 							<Tab route={''} label={'Test1'} helpID={'/Form'}>
 								<SimpleDiv />
 								<Flex />

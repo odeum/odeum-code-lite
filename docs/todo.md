@@ -32,11 +32,12 @@
 
 - [x] One Method for rendering of the Switch/Routes
 - [x] One Method for rendering MenuItems
-- [ ] bottomMenu/Top item support 
-	- [ ] pass prop boolean bottom/top to component that needs to be on the footer/header of the menu panel-> this will make things general and be used for normal components also
+- [xs] bottomMenu/Top **Component** support 
+	- [x] pass prop boolean bottom/top to component that needs to be on the footer/header of the menu panel
 		- [x] top prop
-		- [ ] bottom prop
+		- [x] bottom prop
 	- [ ] create styled components for top/bottom 
+- [ ] bottom/top **MenuItem**
 - [ ] Custom Header (for ex: profile picture)
 - [ ] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
 	- Protected Related, not from last refactor

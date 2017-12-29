@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MenuDiv as MenuCont, MenuHeader, IconDiv } from '../MenuStyles'
+import { MenuDiv as MenuCont, MenuHeader, IconDiv, MenuFooter } from '../MenuStyles'
 import { Icon } from 'odeum-ui'
 
 class MenuDiv extends Component {
@@ -25,6 +25,9 @@ class MenuDiv extends Component {
 					</IconDiv> : this.props.top}
 				</MenuHeader>
 				{this.props.children}
+				<MenuFooter>
+					{this.props.bottom ? this.props.bottom : null}
+				</MenuFooter>
 			</MenuCont>
 		)
 	}
