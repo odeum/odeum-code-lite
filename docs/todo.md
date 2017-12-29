@@ -3,8 +3,12 @@
 
 - [1. TODO for odeum-app](#1-todo-for-odeum-app)
 	- [Framework](#framework)
+	- [Menu Panel](#menu-panel)
+	- [Header](#header)
 	- [Workspace](#workspace)
 	- [QuickNav](#quicknav)
+	- [Login](#login)
+	- [MenuPanel](#menupanel)
 	- [1.1. TODO:](#11-todo)
 		- [1.1.1. Foundation:](#111-foundation)
 		- [1.1.2. Extension:](#112-extension)
@@ -26,11 +30,12 @@
 
 ## Menu Panel
 
-- [ ] One Method for rendering of the Switch/Routes
-- [ ] One Method for rendering MenuItems
+- [x] One Method for rendering of the Switch/Routes
+- [x] One Method for rendering MenuItems
 - [ ] bottomMenu item support 
 - [ ] Custom Header (for ex: profile picture)
-
+- [ ] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
+	- Protected Related, not from last refactor
 
 ## Header
 
@@ -48,11 +53,12 @@
 - [ ] Quick Navigation select first tab when only 1
 - [x] '/' route as Home
 - [x] Quick Navigation 'menu' icon default else from theme
-- [ ] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
+- [x] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
 - [x] Header Buttons
 - [x] Help Pop-up
 - [x] Close Button
 - [ ] Style Buttons 
+- [ ] Active Tab Highlight to accomodate 'Protected'
 
 ## Login
 

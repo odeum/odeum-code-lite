@@ -88,108 +88,74 @@ class MenuPanel extends Component {
 
 	//#region Rendering
 
+	renderMenuItem = (child, index) => {
+		return <MenuItem key={index}
+			MenuID={index}
+			helpID={child.props.helpID}
+			active={this.state.activeMenu === (index) ? true : false}
+			icon={child.props.icon}
+			label={child.props.label}
+			route={this.route(child) + this.getFirstChildRoute(child)}
+			onClick={this.setActiveMenu} />
+	}
+
+	renderRoutes = (children) => {
+		return children.map((child, i) => {
+			if (child.type !== Protected) {
+				return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+			}
+			else {
+				if (this.props.isLoggedIn) {
+					var childs = React.Children.toArray(child.props.children)
+					return childs.map((child, proti) => {
+						return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+					})}
+				else {
+					return null
+				}
+
+			}
+		})
+	}
+
+	renderMenuItems = (children) => {
+		return children.map((child, index) => {
+			if (child.type === Protected)
+			{if (!this.props.isLoggedIn) {
+				return null
+			}
+				else {
+				const childs = React.Children.toArray(child.props.children)
+				return childs.map((protchild, protindex) => {
+					return (protchild.props.label ?
+						this.renderMenuItem(protchild, protindex + index) : null
+					)
+				}
+				)
+			}}
+			else
+				return (child.props.label ?
+					this.renderMenuItem(child, index) : null
+				)
+		})
+	}
+	
 	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child) }) }
 
-	renderPublic = (children) => {
-		return <React.Fragment /* quicknav={this.state.quicknav} */>
-			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
-				{children.map((child, index) => {
-					if (child.type === Protected)
-						return null
-					else
-						return (child.props.label ?
-							<MenuItem key={index}
-								MenuID={index}
-								helpID={child.props.helpID}
-								active={this.state.activeMenu === (index) ? true : false}
-								icon={child.props.icon}
-								label={child.props.label}
-								route={this.route(child) + this.getFirstChildRoute(child)}
-								onClick={this.setActiveMenu} /> : null
-						)
-				})}
-			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
-			<Switch>
-				{children.map((child, i) => {
-					if (child.type !== Protected)
-						return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
-					else
-						return null
-				})}
-				<Route path={'*'} render={this.props.isLoggedIn ? () => NotFound : () => <Redirect to={this.props.redirectTo} />} />
-			</Switch>
-		</React.Fragment>
-	}
 	renderMenu = (children) => {
 		return <React.Fragment>
 			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
-				{children.map((child, index) => {
-					if (child.type !== Protected) {
-						return (child.props.label ?
-							<MenuItem key={index}
-								MenuID={index}
-								helpID={child.props.helpID}
-								active={this.state.activeMenu === index ? true : false}
-								icon={child.props.icon}
-								label={child.props.label}
-								route={this.route(child) + this.getFirstChildRoute(child)}
-								onClick={this.setActiveMenu} /> : null
-						)
-					}
-					else {
-						const childs = React.Children.toArray(child.props.children)
-						return childs.map((protchild, protindex) => {
-							return (protchild.props.label ?
-								<MenuItem key={protindex + index}
-									MenuID={protindex + index}
-									helpID={protchild.props.helpID}
-									active={this.state.activeMenu === protindex + index ? true : false}
-									icon={protchild.props.icon}
-									label={protchild.props.label}
-									route={this.route(protchild) + this.getFirstChildRoute(protchild)}
-									onClick={this.setActiveMenu}
-								/> : null
-							)
-						}
-						)
-
-					}
-				})}
+				{this.renderMenuItems(children)}
 			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
-				{children.map((child, i) => {
-					if (child.type !== Protected) {
-						return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
-					}
-					else {
-						var childs = React.Children.toArray(child.props.children)
-						return childs.map((child, proti) => {
-							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
-						})
-
-					}
-				})}
-				<Route path={'*'} component={NotFound} />
+				{this.renderRoutes(children)}
+				<Route path={'*'} render={this.props.isLoggedIn ? () => <NotFound/> : () => <Redirect to={this.props.redirectTo} />} />
 			</Switch>
 		</React.Fragment>
 	}
 
 	render() {
-
-		const { login, isLoggedIn } = this.props
-		console.log(isLoggedIn)
-		if (!login) {
-			return this.renderMenu(React.Children.toArray(this.props.children))
-		}
-		else {
-			if (isLoggedIn) {
-				return this.renderMenu(React.Children.toArray(this.props.children))
-			}
-
-			else {
-				return this.renderPublic(React.Children.toArray(this.props.children))
-			}
-		}
+		return this.renderMenu(React.Children.toArray(this.props.children))
 	}
 
 	//#endregion

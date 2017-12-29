@@ -22,7 +22,7 @@ import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
 import Protected from 'components/Login/Protected'
-import MinFo from 'theme/minforetning'
+// import MinFo from 'theme/minforetning'
 /* End Import Demo */
 
 class App extends Component {
@@ -30,7 +30,7 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			theme: MinFo,
+			theme: theme,
 			loggedIn: false
 		}
 
