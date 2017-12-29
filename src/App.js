@@ -61,17 +61,24 @@ class App extends Component {
 				 <MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
 		
 					{Login({ isLoggedIn: this.state.loggedIn, login: this.login })}
-					
+					{/* <Login isLoggedIn={this.state.loggedIn} login={this.login} top/> */}
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+					{/* 
+					
+					Any component passed the prop 'top' will be displayed above all menu items in the order they are placed
+					
+					*/}
+					<Flex top/>
+
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
 					<Protected>
-						<Menu route={'/form'} label={'Form'}>
+						<Menu route={'/form'} label={'Form'} bottom>
 							<Tab route={''} label={'Test1'} helpID={'/Form'}>
 								<SimpleDiv />
 								<Flex />

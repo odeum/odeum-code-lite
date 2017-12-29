@@ -10,6 +10,7 @@ import { ScreenSizes as sizes } from '../../theme/media'
 import Tab from 'components/Tabs/Tab'
 import { Redirect } from 'react-router-dom'
 import Protected from 'components/Login/Protected'
+import { Bottom } from 'components/Menu/MenuStyles'
 
 class MenuPanel extends Component {
 
@@ -101,14 +102,17 @@ class MenuPanel extends Component {
 
 	renderRoutes = (children) => {
 		return children.map((child, i) => {
-			if (child.type !== Protected) {
+			if (child.type !== Protected && !child.props.bottom && !child.props.top ) {
 				return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 			}
 			else {
 				if (this.props.isLoggedIn) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
-						return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+						if (!child.props.bottom && !child.props.top)
+							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+						else
+							return null
 					})}
 				else {
 					return null
@@ -117,26 +121,43 @@ class MenuPanel extends Component {
 			}
 		})
 	}
-
+	renderTopMenuItems = (children) => {
+		return children.map((child, index) => {
+			if (child.type === Protected && !child.props.bottom && child.props.top)
+			{if (!this.props.isLoggedIn) {
+				return false
+			}
+				else {
+				const childs = React.Children.toArray(child.props.children)
+				return childs.map((protchild, protindex) => {
+					return !protchild.props.bottom && protchild.props.top ? protchild : null
+				})
+			}}
+			else
+				return !child.props.bottom && child.props.top ? child : null
+		})
+	}
+	
 	renderMenuItems = (children) => {
 		return children.map((child, index) => {
-			if (child.type === Protected)
+			if (child.type === Protected && !child.props.bottom && !child.props.top)
 			{if (!this.props.isLoggedIn) {
 				return null
 			}
 				else {
 				const childs = React.Children.toArray(child.props.children)
 				return childs.map((protchild, protindex) => {
-					return (protchild.props.label ?
-						this.renderMenuItem(protchild, protindex + index) : null
-					)
+					if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
+						return this.renderMenuItem(protchild, protindex + index)
+					else return null
 				}
 				)
 			}}
 			else
-				return (child.props.label ?
-					this.renderMenuItem(child, index) : null
-				)
+			if (!child.props.bottom && !child.props.top && child.props.label)
+				return this.renderMenuItem(child, index)
+			else return null
+				
 		})
 	}
 	
@@ -144,9 +165,14 @@ class MenuPanel extends Component {
 
 	renderMenu = (children) => {
 		return <React.Fragment>
-			{!this.state.quicknav ? <MenuDiv quicknav={this.switch}>
-				{this.renderMenuItems(children)}
-			</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
+			{!this.state.quicknav ?
+				<MenuDiv quicknav={this.switch} top={this.renderTopMenuItems(children)}>
+					{/* {this.renderTopMenuItems(children)} */}
+					{this.renderMenuItems(children)}
+					<Bottom>
+						{/* TODO */}
+					</Bottom>
+				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
 				{this.renderRoutes(children)}
 				<Route path={'*'} render={this.props.isLoggedIn ? () => <NotFound/> : () => <Redirect to={this.props.redirectTo} />} />

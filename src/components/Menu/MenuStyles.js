@@ -4,13 +4,18 @@ import { NavLink as RouterLink } from 'react-router-dom'
 export const MenuDiv = styled.div`
 	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
-	display: grid;
+	/* display: grid; */
+	/* grid-auto-rows: 50px; */
+	display:flex;
+	flex-flow:column wrap;
 	overflow-x: hidden;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
-	grid-auto-rows: 50px;
+	
 `
-
+export const Bottom = styled.div`
+	margin-top: auto;
+`
 const BaseItem = styled.div`
 	border-bottom: ${props => props.theme.menu.bottomBorder};
 	height: 50px;
@@ -20,13 +25,15 @@ const BaseItem = styled.div`
 `
 
 export const MenuHeader = BaseItem.extend`
+	display: flex;
+	flex-flow:column;
+	height: auto;
 `
 
 export const IconDiv = styled.div`
 	width: 50; 
 	height: 100%; 
 	min-width: 50px; 
-	display: flex;
 	align-items: center;
 	justify-content: center;
 `
