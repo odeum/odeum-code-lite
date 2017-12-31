@@ -50,11 +50,15 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
+	renderHeader = () => {
+		return <div style={{ align: 'left' }}>Hello World ... </div>
+	}
+
 	render() {
 
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} />
+				<Header logo={this.state.theme.logo} render={this.renderHeader} />
 				{/* <Header logo={this.state.theme.logo}>
 					<div>Test</div>
 				</Header> */}
