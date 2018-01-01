@@ -63,13 +63,14 @@ class Header extends Component {
 		// 	</Header>
 		// else
 		return <HeaderDiv quicknav={this.state.quicknav}>
-			{this.props.children ? this.props.children : <React.Fragment>
-				{renderLogo()}
-				{render && render()}
-				{search && renderSearchBar()}
-				{avatar && renderAvatar()}
-				{notification && renderNotification()}
-			</React.Fragment>
+			{this.props.children ? this.props.children : 
+				<React.Fragment>
+					{renderLogo()}
+					{render && render()}
+					{search && renderSearchBar()}
+					{avatar && renderAvatar()}
+					{notification && renderNotification()}
+				</React.Fragment>
 			}
 		</HeaderDiv>
 

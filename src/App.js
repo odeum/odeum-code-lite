@@ -58,7 +58,7 @@ class App extends Component {
 
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} render={this.renderHeader} />
+				<Header logo={this.state.theme.logo} render={this.renderHeader} search avatar notification />
 				{/* <Header logo={this.state.theme.logo}>
 					<div>Test</div>
 				</Header> */}
