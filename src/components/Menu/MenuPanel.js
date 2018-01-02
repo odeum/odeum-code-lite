@@ -106,7 +106,7 @@ class MenuPanel extends Component {
 				return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 			}
 			else {
-				if (this.props.isLoggedIn !== false || this.props.isLoggedIn !== undefined) {
+				if (this.props.isLoggedIn !== false) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
 						if (!child.props.bottom && !child.props.top)
@@ -126,7 +126,7 @@ class MenuPanel extends Component {
 		var BottomItems = []
 		children.forEach((child, index) => {
 			if (child.type === Protected && child.props.bottom && !child.props.top) {
-				if (this.props.isLoggedIn !== false || this.props.isLoggedIn !== undefined) {
+				if (this.props.isLoggedIn !== false) {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
 						if (protchild.props.bottom && !protchild.props.top)
@@ -146,7 +146,7 @@ class MenuPanel extends Component {
 		var TopItems = []
 		children.forEach((child, index) => {
 			if (child.type === Protected && !child.props.bottom && child.props.top) {
-				if (this.props.isLoggedIn !== false || this.props.isLoggedIn !== undefined) {
+				if (this.props.isLoggedIn !== false) {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
 						if (!protchild.props.bottom && protchild.props.top)
@@ -184,7 +184,7 @@ class MenuPanel extends Component {
 	renderMenuItems = (children) => {
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
-				if (this.props.isLoggedIn === false || this.props.isLoggedIn === undefined) {
+				if (this.props.isLoggedIn === false) {
 					return null
 				}
 				else {
