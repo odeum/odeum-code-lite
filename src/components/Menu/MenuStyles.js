@@ -36,6 +36,7 @@ margin-top:auto;
 `
 
 export const IconDiv = styled.div`
+	display: flex;
 	width: 50; 
 	height: 100%; 
 	min-width: 50px; 
@@ -44,6 +45,7 @@ export const IconDiv = styled.div`
 `
 
 export const ArrowIconDiv = IconDiv.extend`
+	display: flex;
 	align-self: right;
 `
 export const MenuText = styled.div`

@@ -62,20 +62,16 @@ class App extends Component {
 				{/* <Header logo={this.state.theme.logo}>
 					<div>Test</div>
 				</Header> */}
-				 <MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
-		
-					{Login({ isLoggedIn: this.state.loggedIn, login: this.login })}
-					{/* <Login isLoggedIn={this.state.loggedIn} login={this.login} top/> */}
+				<MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
+
+					{Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })}
+
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
 					{/* 
-					
-					Any component passed the prop 'top' will be displayed above all menu items in the order they are placed
-					
-					*/}
-					<Flex top/>
-					<Flex bottom/>
+					<Flex top />
+					<Flex bottom /> */}
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
 						<Tabb />
 						<ReactComp />
@@ -94,7 +90,7 @@ class App extends Component {
 								<Flex />
 							</Tab>
 						</Menu>
-				
+
 						<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
 							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
 								<RouteDemo />
@@ -102,7 +98,7 @@ class App extends Component {
 						</Menu>
 						<Menu label={'Auto Generated'}>
 							<Tab label={'Route'} helpID={'9'}>
-							Auto Generated Route
+								Auto Generated Route
 							</Tab>
 						</Menu>
 						<Menu label={'Theme'} icon={'opacity'}>

@@ -68,9 +68,10 @@
 ## Login
 
 - [ ] Login Component
-	- [x] Protected Routes
-	- [ ] Login Form
-	- [ ] Styling
+- [x] Protected Routes
+- [ ] Login Form
+- [ ] Styling
+- [ ] Custom Login Form
 
 
 ## MenuPanel
