@@ -59,9 +59,9 @@ class App extends Component {
 		return (
 			<AppContainer theme={this.state.theme} >
 				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
-				<MenuPanel login={false} redirectTo={'/login'} /* isLoggedIn={this.state.loggedIn} */ >
+				<MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn} >
 
-					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })} */}
+					{Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })}
 
 					<Page route={'/'} helpID={'root'}>
 						<Flex />

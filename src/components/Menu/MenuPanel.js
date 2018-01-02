@@ -128,7 +128,7 @@ class MenuPanel extends Component {
 			if (child.type === Protected && child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn !== false || this.props.isLoggedIn !== undefined) {
 					const childs = React.Children.toArray(child.props.children)
-					childs.map((protchild, protindex) => {
+					childs.forEach((protchild, protindex) => {
 						if (protchild.props.bottom && !protchild.props.top)
 							BottomItems.push(protchild)
 					})
@@ -184,7 +184,7 @@ class MenuPanel extends Component {
 	renderMenuItems = (children) => {
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
-				if (this.props.isLoggedIn === false || this.props.isLoggedIn !== undefined) {
+				if (this.props.isLoggedIn === false || this.props.isLoggedIn === undefined) {
 					return null
 				}
 				else {
