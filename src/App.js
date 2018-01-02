@@ -58,19 +58,16 @@ class App extends Component {
 
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} render={this.renderHeader} search avatar notification />
-				{/* <Header logo={this.state.theme.logo}>
-					<div>Test</div>
-				</Header> */}
-				<MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
+				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
+				<MenuPanel login={false} redirectTo={'/login'} /* isLoggedIn={this.state.loggedIn} */ >
 
-					{Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })}
+					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })} */}
 
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
-					{/* 
-					<Flex top />
+					
+					{/* <ReactComp top />
 					<Flex bottom /> */}
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
 						<Tabb />
@@ -111,10 +108,12 @@ class App extends Component {
 										color={this.state.theme.menu.background}
 										onClick={this.changeTheme}
 									/>
-									<Link to={'/'}>Route Home</Link>
-									<Link to={'/child/overflow'}>Route Child</Link>
+									<Link to={'/home'}>Route Home</Link>
+									<Link to={'/404'}>404</Link>
 									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
-									<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
+									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
+									<Link to={'/form'}>Form</Link>
+									<Link to={'/form/test2'}>Form Tab 2</Link>
 								</div>
 							</Tab>
 						</Menu>
