@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
-import { ScreenSizes } from 'theme/media'
-import theme from 'theme/default'
+import { ScreenSizes } from '../../theme/media'
+import theme from '../../theme/default'
 
 
 class Header extends Component {
@@ -54,24 +54,21 @@ class Header extends Component {
 	}
 
 	render() {
-		const { search, notification, avatar } = this.props
+		const { render, search, notification, avatar } = this.props
 		// const { logo } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
-		// if (this.props.children !== null)
-		// 	return <Header quicknav={this.state.quicknav}>
-
-		// 	</Header>
-		// else
-		return <HeaderDiv quicknav={this.state.quicknav}>
-			{this.props.children ? this.props.children : <React.Fragment>
-				{renderLogo()}
-				{search && renderSearchBar()}
-				{avatar && renderAvatar()}
-				{notification && renderNotification()}
-			</React.Fragment>
-			}
-		</HeaderDiv>
-
+		return (
+			<HeaderDiv quicknav={this.state.quicknav}>
+				{this.props.children ? this.props.children : <React.Fragment>
+					{renderLogo()}
+					{render && render()}
+					{search && renderSearchBar()}
+					{avatar && renderAvatar()}
+					{notification && renderNotification()}
+				</React.Fragment>
+				}
+			</HeaderDiv>
+		)
 	}
 }
 

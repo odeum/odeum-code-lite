@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { HelpDiv, Bold, Icon, HelpButton, HelpPopUp } from './HelpStyles'
+import { HelpDiv, Bold, HelpIcon, HelpButton, HelpPopUp } from './HelpStyles'
 import { GetHelpID } from '../utils/HelpReducer'
-
-
 
 class Help extends Component {
 	constructor(props) {
@@ -42,7 +40,7 @@ class Help extends Component {
 		return (
 			<HelpDiv small={this.props.small}>
 				<HelpButton onClick={this.openHelp}>
-					<Icon icon={'help'} style={{ marginRight: "0px" }} />
+					<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
 					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
 				</HelpButton>
 				{this.state.openHelp && this.renderHelp()}

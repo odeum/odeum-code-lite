@@ -70,8 +70,8 @@ class App extends Component {
 					Any component passed the prop 'top' will be displayed above all menu items in the order they are placed
 					
 					*/}
-					<Flex top/>
-					<Flex bottom/>
+					{/* <Flex top/>
+					<Flex bottom/> */}
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
 						<Tabb />
 						<ReactComp />

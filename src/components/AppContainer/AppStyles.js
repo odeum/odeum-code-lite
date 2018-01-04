@@ -10,7 +10,3 @@ export const AppDiv = styled.div`
 	background-color: ${({ theme }) => theme.workspace.background};	
 `
 
-export const Img = styled.img`
-	
-`
-

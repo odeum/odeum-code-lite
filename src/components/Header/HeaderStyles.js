@@ -1,7 +1,5 @@
 
-// these sizes are arbitrary and you can set them to whatever you wish
 import styled from 'styled-components'
-// import theme from 'theme/default'
 import media from 'theme/media'
 import { Link as RouterLink } from 'react-router-dom'
 

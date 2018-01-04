@@ -15,11 +15,11 @@ export const MenuDiv = styled.div`
 `
 
 const BaseItem = styled.div`
+	display: flex;
+	align-items: center;
 	border-bottom: ${props => props.theme.menu.bottomBorder};
 	height: 50px;
 	width: 100%;
-	display: flex;
-	align-items: center;
 `
 
 export const MenuHeader = BaseItem.extend`

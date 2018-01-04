@@ -1,11 +1,11 @@
 import 'core-js/es6/map'
 import 'core-js/es6/set'
+import 'core-js/fn/string/includes'
 import React, { Component } from 'react'
 import { AppDiv } from './AppStyles'
-import { ThemeProvider } from "styled-components"
-import theme from 'theme/default'
-import { BrowserRouter as Router, /*  Route  */} from 'react-router-dom'
-// import { Redirect } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import theme from '../../theme/default'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 class AppContainer extends Component {
 

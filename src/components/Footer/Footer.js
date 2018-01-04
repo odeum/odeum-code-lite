@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyledFooter, Link } from 'components/Footer/FooterStyles'
-import Help from 'components/Help/Help'
-import { ScreenSizes } from 'theme/media'
+import { StyledFooter, Link } from './FooterStyles'
+import Help from '../Help/Help'
+import { ScreenSizes } from '../../theme/media'
 class Footer extends Component {
 	constructor(props) {
 		super(props)
