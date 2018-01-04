@@ -61,19 +61,26 @@ class App extends Component {
 				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
 				<MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn} >
 
-					{Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })}
+					{Login({ isLoggedIn: this.state.loggedIn, login: this.login })}
 
-					<Page route={'/'} helpID={'root'}>
+					<Menu route={'/'} helpID={'root'}>
 						<Flex />
-					</Page>
+					</Menu>
+					<Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
+						<SimpleDiv/>
+					</Menu>
+					<Flex top/>
+					<Menu route={'/bottom-menu-item'} label={'Bottom Menu Route'} bottom >
+						<ReactComp />
+					</Menu> 
+					<Flex bottom/>
 					
-					{/* <Flex top/>
-					<Flex bottom/> */}
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Menu>
+					
 					<Protected>
 						<Menu route={'/form'} label={'Form'} >
 							<Tab route={''} label={'Test1'} helpID={'/Form'}>

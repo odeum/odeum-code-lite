@@ -37,15 +37,16 @@
 		- [x] top prop
 		- [x] bottom prop
 	- [x] create styled components for top/bottom 
-- [ ] bottom/top **MenuItem**
+- [x] bottom/top **MenuItem**
 - [x] Custom Header (for ex: profile picture)
 - [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
-- [ ] Center Top MenuPanel
+- [x] Center Top MenuPanel
+- [ ] Custom menu Item Styling
 
 ## Header
 
 - [x] Custom Component as Header
-	- if(this.props.children) render custom children else renderDefault() (suggestion)
+	- Nice approach Christian :)
 
 ## Workspace
 
@@ -64,6 +65,8 @@
 - [x] Close Button
 - [ ] Style Buttons 
 - [ ] Active Tab Highlight to accomodate 'Protected'
+- [ ] Top/Bottom Menu Items
+- [ ] Login
 
 ## Login
 
