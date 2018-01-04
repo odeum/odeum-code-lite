@@ -42,10 +42,14 @@
 - [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
 - [x] Center Top MenuPanel
 - [ ] Custom menu Item Styling
+	- [ ] No Arrow Menu theme prop
+	- [ ] Text Hover Color Theme prop
+	- [ ] Font Size prop
 - [ ] Page Component is broken because type testing doesn't include Page in MenuPanel
 ```js
 if(type === Menu || type === Page)
 ``` 
+
 
 ## Header
 
