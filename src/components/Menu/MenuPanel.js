@@ -4,12 +4,12 @@ import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
 // import { MenuContainer } from './MenuStyles'
 import NotFound from '../AppContainer/NotFound'
-import QuickNavigation from 'components/QuickNavigation/QuickNavigation'
+import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { ScreenSizes as sizes } from '../../theme/media'
-import Tab from 'components/Tabs/Tab'
+import Tab from '../Tabs/Tab'
 import { Redirect } from 'react-router-dom'
-import Protected from 'components/Login/Protected'
+import Protected from '../Login/Protected'
 
 class MenuPanel extends Component {
 
@@ -159,25 +159,7 @@ class MenuPanel extends Component {
 					TopItems.push(child)
 			}
 
-		}
-		)
-		// children.map((child, index) => {
-		// 	if (child.type === Protected && !child.props.bottom && child.props.top) {
-		// 		if (this.props.isLoggedIn !== false || this.props.isLoggedIn !== undefined) {
-		// 			const childs = React.Children.toArray(child.props.children)
-		// 			return childs.map((protchild, protindex) => {
-		// 				if (!protchild.props.bottom && protchild.props.top)
-		// 					return TopItems.push(protchild)
-		// 			})
-		// 		}
-		// 	}
-		// 	else {
-		// 		if (!child.props.bottom && child.props.top)
-		// 			TopItems.push(child)
-		// 		return false
-		// 	}
-
-		// })
+		})
 		return TopItems
 	}
 

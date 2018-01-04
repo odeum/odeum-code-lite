@@ -1,5 +1,5 @@
 import ODEUM_Logo from 'theme/logo.svg'
-import ODEUM_icon from 'theme/logo_icon.svg'
+// import ODEUM_icon from 'theme/logo_icon.svg'
 
 const theme = {
 	app: {
@@ -59,9 +59,7 @@ const theme = {
 	logo: {
 		margin: '5px',
 		height: '35px',
-		default: ODEUM_Logo,
-		bigLogo: ODEUM_Logo,
-		smallLogo: ODEUM_icon
+		default: ODEUM_Logo
 	}
 }
 

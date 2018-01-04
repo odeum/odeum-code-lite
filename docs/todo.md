@@ -40,7 +40,7 @@
 - [ ] bottom/top **MenuItem**
 - [x] Custom Header (for ex: profile picture)
 - [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
-
+- [ ] Center Top MenuPanel
 
 ## Header
 
@@ -67,6 +67,7 @@
 
 ## Login
 
+- [ ] RedirectTo prop after Login is Done
 - [ ] Login Component
 - [x] Protected Routes
 - [ ] Login Form

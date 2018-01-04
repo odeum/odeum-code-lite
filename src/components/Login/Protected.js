@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class Protected extends Component {
+class Protected extends PureComponent {
 	// render() {
 	// 	if (this.props.isProtected === undefined) {
 	// 		return null

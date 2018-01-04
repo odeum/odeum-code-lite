@@ -1,5 +1,7 @@
 import styled from 'styled-components'
+
 const defaultArea = '"header header" "menupanel workspace" "footer footer"'
+
 export const AppDiv = styled.div`
 	display: grid;
 	grid-template-areas: ${({ theme }) => theme.app ?  theme.app.gridArea ? theme.app.gridArea : defaultArea : defaultArea};

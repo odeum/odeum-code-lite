@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import media from 'theme/media'
 // import theme from 'theme/default'
-import { Icon as DefaultIcon } from 'odeum-ui'
+import { Icon } from 'odeum-ui'
 
 export const HelpPopUp = styled.div`
 	background: white;
@@ -20,7 +20,7 @@ export const Bold = styled.b`
 	margin-left: 4px;
 `
 
-export const HelpIcon = styled(DefaultIcon) `
+export const HelpIcon = styled(Icon) `
 	&:hover{
 		background: ${props => props.theme.tab.hover};
 		color: white;

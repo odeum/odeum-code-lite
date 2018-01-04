@@ -16,8 +16,8 @@ export default class HelpPopup extends Component {
 
 	onClickOutsise = (e) => {
 		e.stopPropagation()
-		console.log('Clicked Outside')
-		console.log(e.target)
+		// console.log('Clicked Outside')
+		// console.log(e.target)
 		if (this.props.openHelp) {
 			if (this.node) {
 				if (!this.node.contains(e.target)) {

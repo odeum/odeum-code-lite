@@ -10,7 +10,7 @@ import { Icon } from 'odeum-ui'
 import HeaderButton from './HeaderButton'
 import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'
-import Protected from 'components/Login/Protected'
+import Protected from '../Login/Protected'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {

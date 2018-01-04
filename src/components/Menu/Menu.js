@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 import { TabList, SceneDiv } from '../Tabs/TabStyles'
 import Tab from '../Tabs/Tab'
-import Workspace from 'components/Workspace/Workspace'
+import Workspace from '../Workspace/Workspace'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
 import { SetHelpID } from '../utils/HelpReducer'
 
@@ -18,8 +18,6 @@ class Menu extends Component {
 
 
 	componentWillMount = () => {
-		// console.log(this.props)
-		// console.log(window.location.pathname.includes(this.props.route), this.props.MenuID, this.props.activeMenu !== this.props.index, this.props.activeMenu )
 		if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
 			this.props.setActiveMenu(this.props.MenuID)
 		}
@@ -108,7 +106,5 @@ Menu.propTypes = {
 	route: PropTypes.string,
 	icon: PropTypes.string,
 }
-
-
 
 export default Menu

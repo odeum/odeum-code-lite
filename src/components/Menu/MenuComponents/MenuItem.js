@@ -11,7 +11,6 @@ class MenuItem extends Component {
 		return match ? match[0] : null
 	}
 	componentWillMount() {
-		// console.log(this.props.label, this.props.MenuID)
 		this.setHelpID()
 		if (this.cutRoutes(window.location.pathname) === this.cutRoutes(this.props.route)) {
 			this.activate()
@@ -19,12 +18,11 @@ class MenuItem extends Component {
 	}
 	setHelpID = () => {
 		if (this.props.helpID) {
-			// console.log('MenuItem', this.props.label)
 			SetHelpID(this.props.helpID)
 		}
 	}
 	activate = () => {
-		this.props.onClick(this.props.MenuID, this.props.label)
+		this.props.onClick(this.props.MenuID)
 	}
 	render() {
 		return (
