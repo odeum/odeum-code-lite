@@ -5,6 +5,7 @@
 	- [Framework](#framework)
 	- [Menu Panel](#menu-panel)
 	- [Header](#header)
+	- [Footer](#footer)
 	- [Workspace](#workspace)
 	- [QuickNav](#quicknav)
 	- [Login](#login)
@@ -49,12 +50,18 @@
 ```js
 if(type === Menu || type === Page)
 ``` 
-
+- [ ] Mrgin Bottom on Top
+```css
+margin-bottom: auto;
+```
 
 ## Header
 
 - [x] Custom Component as Header
 	- Nice approach Christian :)
+## Footer
+
+- [ ] Help button? true/false
 
 ## Workspace
 

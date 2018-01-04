@@ -11,7 +11,6 @@ export const MenuDiv = styled.div`
 	overflow-x: hidden;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
-	
 `
 
 const BaseItem = styled.div`
@@ -22,12 +21,21 @@ const BaseItem = styled.div`
 	width: 100%;
 `
 
+export const DefaultHeader = BaseItem.extend`
+	display: flex;
+	flex-flow:column;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+`
+
 export const MenuHeader = BaseItem.extend`
 	display: flex;
 	flex-flow:column;
 	height: auto;
 	align-items: center;
 	justify-content: center;
+	margin-bottom: auto;
 `
 
 export const MenuFooter = BaseItem.extend`
@@ -61,6 +69,7 @@ export const MenuContainer = styled.div`
 	flex:1;
 	overflow-y: hidden;
 `
+
 export const Link = styled(RouterLink) `
 	border-bottom: ${props => props.theme.menu.bottomBorder};
 	text-decoration: none;
