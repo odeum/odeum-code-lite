@@ -50,26 +50,23 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
+	renderHeader = () => {
+		return <div style={{ align: 'left' }}>Hello World ... </div>
+	}
+
 	render() {
 
 		return (
 			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} />
-				{/* <Header logo={this.state.theme.logo}>
-					<div>Test</div>
-				</Header> */}
-				 <MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn}>
-		
-					{Login({ isLoggedIn: this.state.loggedIn, login: this.login })}
-					{/* <Login isLoggedIn={this.state.loggedIn} login={this.login} top/> */}
+				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
+				<MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn} >
+
+					{Login({ isLoggedIn: this.state.loggedIn, login: this.login, area: 'top', component: Flex })}
+
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
-					{/* 
 					
-					Any component passed the prop 'top' will be displayed above all menu items in the order they are placed
-					
-					*/}
 					{/* <Flex top/>
 					<Flex bottom/> */}
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'} >
@@ -90,7 +87,7 @@ class App extends Component {
 								<Flex />
 							</Tab>
 						</Menu>
-				
+
 						<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
 							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
 								<RouteDemo />
@@ -98,7 +95,7 @@ class App extends Component {
 						</Menu>
 						<Menu label={'Auto Generated'}>
 							<Tab label={'Route'} helpID={'9'}>
-							Auto Generated Route
+								Auto Generated Route
 							</Tab>
 						</Menu>
 						<Menu label={'Theme'} icon={'opacity'}>
@@ -111,10 +108,12 @@ class App extends Component {
 										color={this.state.theme.menu.background}
 										onClick={this.changeTheme}
 									/>
-									<Link to={'/'}>Route Home</Link>
-									<Link to={'/child/overflow'}>Route Child</Link>
+									<Link to={'/home'}>Route Home</Link>
+									<Link to={'/404'}>404</Link>
 									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
-									<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
+									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
+									<Link to={'/form'}>Form</Link>
+									<Link to={'/form/test2'}>Form Tab 2</Link>
 								</div>
 							</Tab>
 						</Menu>

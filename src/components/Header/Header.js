@@ -74,6 +74,7 @@ class Header extends Component {
 
 Header.propTypes = {
 	logo: PropTypes.any,
+	render: PropTypes.func,
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,

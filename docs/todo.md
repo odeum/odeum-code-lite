@@ -32,15 +32,15 @@
 
 - [x] One Method for rendering of the Switch/Routes
 - [x] One Method for rendering MenuItems
-- [xs] bottomMenu/Top **Component** support 
+- [x] bottomMenu/Top **Component** support 
 	- [x] pass prop boolean bottom/top to component that needs to be on the footer/header of the menu panel
 		- [x] top prop
 		- [x] bottom prop
-	- [ ] create styled components for top/bottom 
+	- [x] create styled components for top/bottom 
 - [ ] bottom/top **MenuItem**
-- [ ] Custom Header (for ex: profile picture)
-- [ ] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
-	- Protected Related, not from last refactor
+- [x] Custom Header (for ex: profile picture)
+- [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
+
 
 ## Header
 
@@ -68,9 +68,10 @@
 ## Login
 
 - [ ] Login Component
-	- [x] Protected Routes
-	- [ ] Login Form
-	- [ ] Styling
+- [x] Protected Routes
+- [ ] Login Form
+- [ ] Styling
+- [ ] Custom Login Form
 
 
 ## MenuPanel

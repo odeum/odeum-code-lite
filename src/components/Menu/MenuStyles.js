@@ -18,7 +18,7 @@ const BaseItem = styled.div`
 	display: flex;
 	align-items: center;
 	border-bottom: ${props => props.theme.menu.bottomBorder};
-	height: 50px;
+	height: 40px;
 	width: 100%;
 `
 
@@ -26,6 +26,7 @@ export const MenuHeader = BaseItem.extend`
 	display: flex;
 	flex-flow:column;
 	height: auto;
+	align-items: left;
 `
 export const MenuFooter = BaseItem.extend`
 display: flex;
@@ -36,15 +37,18 @@ margin-top:auto;
 `
 
 export const IconDiv = styled.div`
+	display: flex;
 	width: 50; 
-	height: 100%; 
-	min-width: 50px; 
+	height: 50px;
+	min-width: 50px;
 	align-items: center;
 	justify-content: center;
 `
 
 export const ArrowIconDiv = IconDiv.extend`
+	display: flex;
 	align-self: right;
+	justify-content: center;
 `
 export const MenuText = styled.div`
 	width: 100%;

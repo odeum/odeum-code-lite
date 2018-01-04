@@ -80,7 +80,7 @@ class MenuPanel extends Component {
 		this.setState({ quicknav: bool })
 	)
 	setActiveMenu = (label, id) => {
-		console.log('Setting as active', label, id)
+		// console.log('Setting as active', label, id)
 		this.setState({ activeMenu: label })
 	}
 
@@ -89,6 +89,7 @@ class MenuPanel extends Component {
 	//#region Rendering
 
 	renderMenuItem = (child, index) => {
+		// console.log(child.props.label, index)
 		return <MenuItem key={index}
 			MenuID={index}
 			helpID={child.props.helpID}
@@ -101,18 +102,19 @@ class MenuPanel extends Component {
 
 	renderRoutes = (children) => {
 		return children.map((child, i) => {
-			if (child.type !== Protected && !child.props.bottom && !child.props.top ) {
+			if (child.type !== Protected && !child.props.bottom && !child.props.top) {
 				return <Route key={i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
 			}
 			else {
-				if (this.props.isLoggedIn) {
+				if (this.props.isLoggedIn !== false) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
 						if (!child.props.bottom && !child.props.top)
-							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i)} />
+							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i + proti)} />
 						else
 							return null
-					})}
+					})
+				}
 				else {
 					return null
 				}
@@ -121,69 +123,96 @@ class MenuPanel extends Component {
 		})
 	}
 	renderBottomItems = (children) => {
-		return children.map((child, index) => {
-			if (child.type === Protected && child.props.bottom && !child.props.top)
-			{if (!this.props.isLoggedIn) {
-				return false
+		var BottomItems = []
+		children.forEach((child, index) => {
+			if (child.type === Protected && child.props.bottom && !child.props.top) {
+				if (this.props.isLoggedIn !== false) {
+					const childs = React.Children.toArray(child.props.children)
+					childs.forEach((protchild, protindex) => {
+						if (protchild.props.bottom && !protchild.props.top)
+							BottomItems.push(protchild)
+					})
+				}
 			}
-				else {
-				const childs = React.Children.toArray(child.props.children)
-				return childs.map((protchild, protindex) => {
-					return protchild.props.bottom && !protchild.props.top ? protchild : null
-				})
-			}}
-			else
-				return child.props.bottom && !child.props.top ? child : null
+			else {
+				if (child.props.bottom && !child.props.top)
+					BottomItems.push(child)
+			}
 		})
+		return BottomItems
 	}
-	
+
 	renderTopItems = (children) => {
-		return children.map((child, index) => {
-			if (child.type === Protected && !child.props.bottom && child.props.top)
-			{if (!this.props.isLoggedIn) {
-				return false
+		var TopItems = []
+		children.forEach((child, index) => {
+			if (child.type === Protected && !child.props.bottom && child.props.top) {
+				if (this.props.isLoggedIn !== false) {
+					const childs = React.Children.toArray(child.props.children)
+					childs.forEach((protchild, protindex) => {
+						if (!protchild.props.bottom && protchild.props.top)
+							TopItems.push(protchild)
+					})
+				}
 			}
-				else {
-				const childs = React.Children.toArray(child.props.children)
-				return childs.map((protchild, protindex) => {
-					return !protchild.props.bottom && protchild.props.top ? protchild : null
-				})
-			}}
-			else
-				return !child.props.bottom && child.props.top ? child : null
-		})
+			else {
+				if (!child.props.bottom && child.props.top)
+					TopItems.push(child)
+			}
+
+		}
+		)
+		// children.map((child, index) => {
+		// 	if (child.type === Protected && !child.props.bottom && child.props.top) {
+		// 		if (this.props.isLoggedIn !== false || this.props.isLoggedIn !== undefined) {
+		// 			const childs = React.Children.toArray(child.props.children)
+		// 			return childs.map((protchild, protindex) => {
+		// 				if (!protchild.props.bottom && protchild.props.top)
+		// 					return TopItems.push(protchild)
+		// 			})
+		// 		}
+		// 	}
+		// 	else {
+		// 		if (!child.props.bottom && child.props.top)
+		// 			TopItems.push(child)
+		// 		return false
+		// 	}
+
+		// })
+		return TopItems
 	}
-	
+
 	renderMenuItems = (children) => {
 		return children.map((child, index) => {
-			if (child.type === Protected && !child.props.bottom && !child.props.top)
-			{if (!this.props.isLoggedIn) {
-				return null
-			}
-				else {
-				const childs = React.Children.toArray(child.props.children)
-				return childs.map((protchild, protindex) => {
-					if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
-						return this.renderMenuItem(protchild, protindex + index)
-					else return null
+			if (child.type === Protected && !child.props.bottom && !child.props.top) {
+				if (this.props.isLoggedIn === false) {
+					return null
 				}
-				)
-			}}
-			else
-			if (!child.props.bottom && !child.props.top && child.props.label)
-				return this.renderMenuItem(child, index)
-			else return null
-				
+				else {
+					const childs = React.Children.toArray(child.props.children)
+					return childs.map((protchild, protindex) => {
+						if (!protchild.props.bottom && protchild.props.label && !protchild.props.top)
+							return this.renderMenuItem(protchild, protindex + index)
+						else return null
+					}
+					)
+				}
+			}
+			else {
+				if (!child.props.bottom && !child.props.top && child.props.label)
+					return this.renderMenuItem(child, index)
+				else return null
+			}
+
 		})
 	}
-	
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child) }) }
+
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
 
 	renderMenu = (children) => {
 		return <React.Fragment>
 			{!this.state.quicknav ?
-				<MenuDiv 
-					quicknav={this.switch} 
+				<MenuDiv
+					quicknav={this.switch}
 					top={this.renderTopItems(children)}
 					bottom={this.renderBottomItems(children)}>
 					{/* {this.renderTopMenuItems(children)} */}
@@ -191,7 +220,7 @@ class MenuPanel extends Component {
 				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
 				{this.renderRoutes(children)}
-				<Route path={'*'} render={this.props.isLoggedIn ? () => <NotFound/> : () => <Redirect to={this.props.redirectTo} />} />
+				<Route path={'*'} render={this.props.isLoggedIn ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />} />
 			</Switch>
 		</React.Fragment>
 	}

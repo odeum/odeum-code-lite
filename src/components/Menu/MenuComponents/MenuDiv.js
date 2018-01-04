@@ -15,11 +15,12 @@ class MenuDiv extends Component {
 	)
 
 	render() {
-		console.log(this.props.top)
+		console.log('Top', this.props.top)
+		console.log('Bottom', this.props.bottom)
 		return (
 			<MenuCont achordeon={this.state.achordeon}>
 				<MenuHeader>
-					{this.props.top === undefined ? <IconDiv onClick={this.switch}
+					{this.props.top.length === 0 ? <IconDiv onClick={this.switch}
 						style={{ cursor: 'pointer' }}>
 						<Icon icon={'menu'} iconSize={20} color={'white'} style={{ marginRight: '0px' }} />
 					</IconDiv> : this.props.top}

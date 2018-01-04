@@ -18,8 +18,10 @@ class Menu extends Component {
 
 
 	componentWillMount = () => {
-		if (window.location.pathname.includes(this.props.route) && this.props.index !== undefined && this.props.activeMenu !== this.props.index) {
-			this.props.setActiveMenu(this.props.index)
+		// console.log(this.props)
+		// console.log(window.location.pathname.includes(this.props.route), this.props.MenuID, this.props.activeMenu !== this.props.index, this.props.activeMenu )
+		if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
+			this.props.setActiveMenu(this.props.MenuID)
 		}
 		this.setHelpID()
 	}
