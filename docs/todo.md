@@ -42,6 +42,10 @@
 - [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
 - [x] Center Top MenuPanel
 - [ ] Custom menu Item Styling
+- [ ] Page Component is broken because type testing doesn't include Page in MenuPanel
+```js
+if(type === Menu || type === Page)
+``` 
 
 ## Header
 
@@ -66,7 +70,7 @@
 - [ ] Style Buttons 
 - [ ] Active Tab Highlight to accomodate 'Protected'
 - [ ] Top/Bottom Menu Items
-- [ ] Login
+- [ ] Login Form
 
 ## Login
 
