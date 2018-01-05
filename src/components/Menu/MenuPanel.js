@@ -179,6 +179,7 @@ class MenuPanel extends Component {
 	}
 
 	renderMenuItems = (children) => {
+		console.log(children)
 		return children.map((child, index) => {
 			if (child.type === Protected && !child.props.bottom && !child.props.top) {
 				if (this.props.isLoggedIn === false) {

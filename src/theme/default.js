@@ -60,6 +60,17 @@ const theme = {
 		margin: '5px',
 		height: '35px',
 		default: ODEUM_Logo
+	},
+	input: {
+		color: '#2C3E50',
+		background: '#ECF0F1',
+		focusColor: '#13A085',
+		borderRadius: '4px'
+	},
+	button: {
+		background: 'lime',
+		color: 'white',
+		height: '30px'
 	}
 }
 
