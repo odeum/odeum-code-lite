@@ -68,9 +68,9 @@ const theme = {
 		borderRadius: '4px'
 	},
 	button: {
-		background: '#3B97D3',
+		background: 'lime',
 		color: 'white',
-		height: '35px'
+		height: '30px'
 	}
 }
 
