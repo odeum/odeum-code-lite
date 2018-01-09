@@ -127,16 +127,19 @@ class MenuPanel extends Component {
 	}
 	renderBottomItems = (children) => {
 		var BottomItems = []
+		console.log(children)
 		children.forEach((child, index) => {
-			if (child.type === Protected && child.props.bottom && !child.props.top) {
+			if (child.type === Protected) {
 				if (this.props.isLoggedIn !== false) {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
 						if (protchild.props.bottom && !protchild.props.top)
+						{
 							if (protchild.type !== Menu && protchild !== Page)
 								BottomItems.push(protchild)
 							else 
 								BottomItems.push(this.renderMenuItem(protchild, index + protindex))
+						}
 					})
 				}
 			}
@@ -155,7 +158,7 @@ class MenuPanel extends Component {
 	renderTopItems = (children) => {
 		var TopItems = []
 		children.forEach((child, index) => {
-			if (child.type === Protected && !child.props.bottom && child.props.top) {
+			if (child.type === Protected) {
 				if (this.props.isLoggedIn !== false) {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {

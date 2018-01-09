@@ -86,9 +86,28 @@ class App extends Component {
 						<ReactComp />
 						<SimpleDiv />
 					</Page>
+
 					
 					<Protected>
-											
+						<Menu label={'Theme'} icon={'opacity'} bottom>
+							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
+								<div style={{ display: 'flex', flexFlow: 'column' }}>
+									<div>Click the button below continously to change the theme of the framework.</div>
+									<Button
+										label={'Change Theme'}
+										icon={'opacity'}
+										color={this.state.theme.menu.background}
+										onClick={this.changeTheme}
+									/>
+									<Link to={'/home'}>Route Home</Link>
+									<Link to={'/404'}>404</Link>
+									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
+									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
+									<Link to={'/form'}>Form</Link>
+									<Link to={'/form/test2'}>Form Tab 2</Link>
+								</div>
+							</Tab>
+						</Menu>			
 						<Page route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
 							<Tabb />
 							<ReactComp />
@@ -118,25 +137,6 @@ class App extends Component {
 						</Menu>
 
 					</Protected>
-					<Menu label={'Theme'} icon={'opacity'} bottom>
-						<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
-							<div style={{ display: 'flex', flexFlow: 'column' }}>
-								<div>Click the button below continously to change the theme of the framework.</div>
-								<Button
-									label={'Change Theme'}
-									icon={'opacity'}
-									color={this.state.theme.menu.background}
-									onClick={this.changeTheme}
-								/>
-								<Link to={'/home'}>Route Home</Link>
-								<Link to={'/404'}>404</Link>
-								<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
-								<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
-								<Link to={'/form'}>Form</Link>
-								<Link to={'/form/test2'}>Form Tab 2</Link>
-							</div>
-						</Tab>
-					</Menu>
 					<Flex bottom/>
 				</MenuPanel>
 				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
