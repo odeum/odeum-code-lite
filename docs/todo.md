@@ -9,6 +9,7 @@
 	- [Workspace](#workspace)
 	- [QuickNav](#quicknav)
 	- [Login](#login)
+	- [Internet Explorer Compatibility](#internet-explorer-compatibility)
 	- [MenuPanel](#menupanel)
 	- [1.1. TODO:](#11-todo)
 		- [1.1.1. Foundation:](#111-foundation)
@@ -42,15 +43,15 @@
 - [x] Custom Header (for ex: profile picture)
 - [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
 - [x] Center Top MenuPanel
-- [ ] Custom menu Item Styling
-	- [ ] No Arrow Menu theme prop
-	- [ ] Text Hover Color Theme prop
-	- [ ] Font Size prop
-- [ ] Page Component is broken because type testing doesn't include Page in MenuPanel
+- [x] Custom menu Item Styling
+	- [x] No Arrow Menu
+	- [x] Text Hover Color Theme prop
+	- [x] Font Size prop
+- [x] Page Component is broken because type testing doesn't include Page in MenuPanel
 ```js
 if(type === Menu || type === Page)
 ``` 
-- [ ] Mrgin Bottom on Top
+- [x] Margin Bottom on Top
 ```css
 margin-bottom: auto;
 ```
@@ -61,7 +62,7 @@ margin-bottom: auto;
 	- Nice approach Christian :)
 ## Footer
 
-- [ ] Help button? true/false
+- [x] Help button? true/false
 
 ## Workspace
 
@@ -81,17 +82,25 @@ margin-bottom: auto;
 - [ ] Style Buttons 
 - [ ] Active Tab Highlight to accomodate 'Protected'
 - [ ] Top/Bottom Menu Items
+	- suggestions on how do we do this?
 - [ ] Login Form
 
 ## Login
 
-- [ ] RedirectTo prop after Login is Done
+- [x] RedirectTo prop after Login is Done
 - [ ] Login Component
+	- [ ] Validation
+	- [ ] Error display
 - [x] Protected Routes
-- [ ] Login Form
+- [x] Login Form
 - [ ] Styling
-- [ ] Custom Login Form
+- [x] Custom Login Form
 
+## Internet Explorer Compatibility
+
+- [ ] Theme prop IE
+- [ ] column & row setup function
+- [ ] vendor prefix
 
 ## MenuPanel
 ## 1.1. TODO:

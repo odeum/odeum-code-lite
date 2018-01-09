@@ -5,7 +5,7 @@ import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
-// import Page from 'components/Menu/Page'
+import Page from 'components/Menu/Page'
 // import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
@@ -73,39 +73,40 @@ class App extends Component {
 
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 					
-					<Menu route={'/'} helpID={'root'}>
+					<Page route={'/'} helpID={'root'}>
 						<Flex />
-					</Menu>
-					<Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
+					</Page>
+					<Page route={'/top-menu-item'} label={'Top Menu Route'} top>
 						<SimpleDiv/>
-					</Menu>
+					</Page>
 					<Flex top/>
-					<Menu route={'/bottom-menu-item'} label={'Bottom Menu Route'} bottom >
-						<ReactComp />
-					</Menu> 
-					<Flex bottom/>
 					
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+					<Page route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
-					</Menu>
+					</Page>
 					
 					<Protected>
-						<Menu route={'/form'} label={'Form'} >
+											
+						<Page route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+						</Page>
+						<Menu label={'Menu with 2 tabs'} >
 							<Tab route={''} label={'Test1'} helpID={'/Form'}>
 								<SimpleDiv />
 								<Flex />
 							</Tab>
-							<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
+							<Tab route={'/tab2'} label={'Test2'} helpID={'Test2'}>
 								<Tabb />
 								<ReactComp />
 								<SimpleDiv />
 								<Flex />
 							</Tab>
 						</Menu>
-
-						<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
+						<Menu icon={'people'} route={'/child'} label={'Menu w/ nested route'} >
 							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
 								<RouteDemo />
 							</Tab>
@@ -115,26 +116,28 @@ class App extends Component {
 								Auto Generated Route
 							</Tab>
 						</Menu>
-						<Menu label={'Theme'} icon={'opacity'}>
-							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
-								<div style={{ display: 'flex', flexFlow: 'column' }}>
-									<div>Click the button below continously to change the theme of the framework.</div>
-									<Button
-										label={'Change Theme'}
-										icon={'opacity'}
-										color={this.state.theme.menu.background}
-										onClick={this.changeTheme}
-									/>
-									<Link to={'/home'}>Route Home</Link>
-									<Link to={'/404'}>404</Link>
-									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
-									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
-									<Link to={'/form'}>Form</Link>
-									<Link to={'/form/test2'}>Form Tab 2</Link>
-								</div>
-							</Tab>
-						</Menu>
+
 					</Protected>
+					<Menu label={'Theme'} icon={'opacity'} bottom>
+						<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
+							<div style={{ display: 'flex', flexFlow: 'column' }}>
+								<div>Click the button below continously to change the theme of the framework.</div>
+								<Button
+									label={'Change Theme'}
+									icon={'opacity'}
+									color={this.state.theme.menu.background}
+									onClick={this.changeTheme}
+								/>
+								<Link to={'/home'}>Route Home</Link>
+								<Link to={'/404'}>404</Link>
+								<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
+								<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
+								<Link to={'/form'}>Form</Link>
+								<Link to={'/form/test2'}>Form Tab 2</Link>
+							</div>
+						</Tab>
+					</Menu>
+					<Flex bottom/>
 				</MenuPanel>
 				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
