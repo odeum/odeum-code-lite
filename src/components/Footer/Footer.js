@@ -32,6 +32,7 @@ class Footer extends Component {
 	}
 
 	render() {
+		const { help } = this.props
 		return (
 			!this.state.small ? <StyledFooter>
 				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
@@ -40,7 +41,7 @@ class Footer extends Component {
 						{/* &nbsp;| Debug: {this.props.helpID} */}
 					</div>
 				</Link>
-				<Help small={this.state.small} helpID={this.props.helpID} helpLabel={this.props.helpLabel} />
+				{help ?	<Help small={this.state.small} helpID={this.props.helpID} helpLabel={this.props.helpLabel} /> : null}
 			</StyledFooter> : null
 		)
 	}

@@ -131,7 +131,7 @@ class App extends Component {
 						</Menu>
 					</Protected>
 				</MenuPanel>
-				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
+				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}
