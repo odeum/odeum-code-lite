@@ -61,6 +61,7 @@ export const ArrowIconDiv = IconDiv.extend`
 	justify-content: center;
 `
 export const MenuText = styled.div`
+	font-size: ${p => p.theme.menu.fontSize ? p.theme.menu.fontSize : '1em'};
 	width: 100%;
 `
 export const MenuContainer = styled.div`
@@ -85,7 +86,8 @@ export const Link = styled(RouterLink) `
 	justify-content: space-between;
 	background: ${(props) => props.activemenu === 'true' ? props.theme.menu.selected : props.theme.menu.unselected};
 	&:hover{
-		background: ${props => props.theme.menu.hover}
+		background: ${props => props.theme.menu.hover};
+		color: ${p => p.theme.menu.textHover ? p.theme.menu.textHover : 'inherit'};
 	}
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;

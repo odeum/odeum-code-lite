@@ -21,7 +21,9 @@ const theme = {
 		color: '#FFF',
 		selected: '#216795',
 		hover: '#81C1EA',
-		border: '1px solid #3087bf'
+		border: '1px solid #3087bf',
+		textHover: '#000',
+		fontSize: '1em'
 	},
 
 	footer: {
