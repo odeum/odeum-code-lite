@@ -5,6 +5,7 @@ import {
 	MenuItem, MenuList, Link, Header, SubHeader
 } from './QuickNavigationStyles'
 import Tab from '../Tabs/Tab'
+import Menu from '../Menu/Menu'
 import { convertLabelToRoute } from '../utils/Functions'
 import { Icon } from 'odeum-ui'
 import HeaderButton from './HeaderButton'
@@ -70,7 +71,8 @@ export default class QuickNavigation extends Component {
 	}
 	renderMenuItem = (menu, index) => {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
-		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
+		if (menu.type === Menu)
+		{	var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)}
 		// console.log(route)
 		if (route === '' || route === '/') {
 			return <MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
@@ -81,19 +83,22 @@ export default class QuickNavigation extends Component {
 			</MenuItem >
 		}
 		else {
-			if (React.Children.toArray(menu.props.children)[0].type === Tab)
-
-				return (<MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, false)}>
-					<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
-					{menu.props.label}
-				</MenuItem>)
-			else
-				return <MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
-					<Link to={route}>
+			// console.log(menu)
+			if (menu.type === Menu)
+			{
+				if (React.Children.toArray(menu.props.children)[0].type === Tab)
+					return (<MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, false)}>
 						<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 						{menu.props.label}
-					</Link>
-				</MenuItem >
+					</MenuItem>)
+				else
+					return <MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
+						<Link to={route}>
+							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
+							{menu.props.label}
+						</Link>
+					</MenuItem >
+			}
 		}
 	}
 
