@@ -62,7 +62,12 @@ class App extends Component {
 				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
 				{/* <Flex/> */}
 				{/* </Header> */}
-				<MenuPanel login={true} redirectTo={'/login'} isLoggedIn={this.state.loggedIn} >
+				<MenuPanel 
+					login={true} 
+					redirectTo={'/login'} 
+					isLoggedIn={this.state.loggedIn} 
+					Arrows={false}>
+					
 					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
 					{/* {Login(this.state.loggedIn, this.login)} */}
 

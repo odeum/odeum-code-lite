@@ -71,7 +71,9 @@ export const MenuContainer = styled.div`
 `
 
 export const Link = styled(RouterLink) `
-	border-bottom: ${props => props.theme.menu.bottomBorder};
+	border-bottom: ${props => props.theme.menu.border};
+	border-top: ${props => props.theme.menu.border};
+	margin: -1px 0 0 -1px;
 	text-decoration: none;
 	outline: 0;
 	color: ${props => props.theme.menu.color};
