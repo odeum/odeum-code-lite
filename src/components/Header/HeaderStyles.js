@@ -1,7 +1,8 @@
 
 import styled from 'styled-components'
-import media from 'theme/media'
+import media from '../../theme/media'
 import { Link as RouterLink } from 'react-router-dom'
+import { rowColCalc, spanCalc } from '../utils/Functions'
 
 export const HeaderDiv = styled.div`
 	grid-area:header;
@@ -19,6 +20,10 @@ export const HeaderDiv = styled.div`
 	${media.desktop`height:80px;`}
 	${media.tablet`height:60px;`}
 	${media.phone`height:60px;`}
+	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'column')};
+	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'row')};
+	-ms-grid-column-span: ${p => spanCalc(p.theme.app.gridArea, 'header', 'column')};
+	-ms-grid-row-span: ${p => spanCalc(p.theme.app.gridArea, 'header', 'row')};
 `
 
 export const LogoDiv = styled(RouterLink)`

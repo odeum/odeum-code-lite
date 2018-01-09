@@ -4,7 +4,7 @@ import ODEUM_Logo from 'theme/logo.svg'
 const theme = {
 	app: {
 		gridArea: 
-		'"menupanel header"' 
+		'"header header"' 
 		+ '"menupanel workspace"' 
 		+ '"menupanel footer"',
 		gridTemplateRows: 'auto 1fr auto',

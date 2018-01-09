@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import media from '../../theme/media'
+import { rowColCalc, spanCalc } from '../utils/Functions'
 
 export const Bold = styled.b`
 	font-weight: 600;
@@ -26,6 +27,10 @@ export const StyledFooter = styled.div`
 	${media.desktop`height:40px;`}
 	${media.tablet`height:30px;`}
 	${media.phone`height:0px;`}
+	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'column')};
+	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'row')};
+	-ms-grid-column-span: ${p => spanCalc(p.theme.app.gridArea, 'footer', 'column')};
+	-ms-grid-row-span: ${p => spanCalc(p.theme.app.gridArea, 'footer', 'row')};
 `
 
 export const Link = styled.a`
