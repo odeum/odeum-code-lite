@@ -33,7 +33,6 @@ export default class QuickNavigation extends Component {
 		this.setState({ showHelp: !this.state.showHelp })
 	}
 	tabClick = (id, helpID) => (e) => {
-		// e.preventDefault()
 		SetHelpID(helpID)
 		var activeTab = { tab: parseInt(e.target.id, 10), menu: this.state.activeMenu }
 		this.setState({ quickNav: false, activeTab: activeTab })
@@ -73,7 +72,6 @@ export default class QuickNavigation extends Component {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		if (menu.type === Menu)
 		{	var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)}
-		// console.log(route)
 		if (route === '' || route === '/') {
 			return <MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
 				<Link to={route}>
@@ -83,7 +81,6 @@ export default class QuickNavigation extends Component {
 			</MenuItem >
 		}
 		else {
-			// console.log(menu)
 			if (menu.type === Menu)
 			{
 				if (React.Children.toArray(menu.props.children)[0].type === Tab)

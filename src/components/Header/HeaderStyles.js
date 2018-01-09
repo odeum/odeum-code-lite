@@ -11,7 +11,7 @@ export const HeaderDiv = styled.div`
 	/* width: 100vw; */
 	height: ${props => props.theme.header.height ? props.theme.header.height : '80px'};
 	align-items: center;
-	justify-content: ${props => props.quicknav && 'center'};
+	justify-content: ${props =>  props.quicknav && 'center' };
 	/* justify-content: ${props => props.quicknav ? 'center' : 'space-between'}; */
 	background-color: ${props => props.theme.header.background};
 	color: ${props => props.theme.header.color};
