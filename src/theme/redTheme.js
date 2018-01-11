@@ -1,5 +1,4 @@
-import ODEUM_Logo from 'theme/logo_red.svg'
-import ODEUM_icon from 'theme/logo_icon.svg'
+import redLogo from 'theme/logo_red.svg'
 
 const theme = {
 	app: {
@@ -11,6 +10,7 @@ const theme = {
 		gridTemplateColumns: 'auto 1fr'
 	},
 	header: {
+		height: '80px',
 		background: '#7c1313',
 		color: '#FFEBEE'
 	},
@@ -20,7 +20,9 @@ const theme = {
 		color: '#FFEBEE',
 		selected: '#EF5350',
 		hover: '#F44336',
-		bottomBorder: '1px solid #CF7840'
+		border: '1px solid #CF7840',
+		textHover: '#FFEBEE',
+		fontSize: '1em'
 	},
 
 	footer: {
@@ -55,9 +57,9 @@ const theme = {
 		}
 	},
 	 logo: {
-		 default: ODEUM_Logo,
-		 bigLogo: ODEUM_Logo,
-		 smallLogo: ODEUM_icon
+		margin: '5px',
+		height: '35px',
+		default: redLogo
 	 }
 }
 

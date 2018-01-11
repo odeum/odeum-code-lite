@@ -1,6 +1,4 @@
-// import ODEUM_icon from 'theme/logo_icon.svg'
-// Small Icon not used anymore
-import logoGreen from 'theme/logo_green.svg'
+import greenLogo from 'theme/logo_green.svg'
 
 const greenTheme = {
 	app: {
@@ -22,7 +20,9 @@ const greenTheme = {
 		color: '#E8F5E9',
 		selected: '#1B5E20',
 		hover: '#66BB6A',
-		bottomBorder: '1px solid #1B5E20'
+		border: '1px solid #1B5E20',
+		textHover: '#E8F5E9',
+		fontSize: '1em'
 	},
 
 	footer: {
@@ -57,10 +57,9 @@ const greenTheme = {
 		}
 	},
 	logo: {
+		margin: '5px',
 		height: '35px',
-		default: logoGreen,
-		bigLogo: logoGreen,
-		//  smallLogo: ODEUM_icon
+		default: greenLogo
 	}
 }
 

@@ -1,5 +1,4 @@
 import ODEUM_Logo from 'theme/logo.svg'
-// import ODEUM_icon from 'theme/logo_icon.svg'
 
 const theme = {
 	app: {

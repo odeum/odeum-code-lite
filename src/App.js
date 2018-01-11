@@ -76,10 +76,11 @@ class App extends Component {
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
+					{/* <Flex top/> */}
 					<Page route={'/top-menu-item'} label={'Top Menu Route'} top>
 						<SimpleDiv/>
 					</Page>
-					<Flex top/>
+					
 					
 					<Page route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
@@ -137,7 +138,7 @@ class App extends Component {
 						</Menu>
 
 					</Protected>
-					<Flex bottom/>
+					{/* <Flex bottom/> */}
 				</MenuPanel>
 				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>

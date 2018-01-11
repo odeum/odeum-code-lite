@@ -1,4 +1,3 @@
-import ODEUM_icon from 'theme/logo_icon.svg'
 import eplanLogo from 'theme/eplanTheme_logo.svg'
 
 const eplanTheme = {
@@ -11,6 +10,7 @@ const eplanTheme = {
 		gridTemplateColumns: 'auto 1fr'
 	},
 	header: {
+		height: '80px',
 		background: '#E98832',
 		color: '#FFF'
 	},
@@ -20,7 +20,9 @@ const eplanTheme = {
 		color: '#fff',
 		selected: '#F8BB31',
 		hover: '#FFA726',
-		bottomBorder: '1px solid #EF6C00'
+		border: '1px solid #EF6C00',
+		textHover: '#fff',
+		fontSize: '1em'
 	},
 
 	footer: {
@@ -56,9 +58,9 @@ const eplanTheme = {
 
 	},
 	logo: {
-		default: eplanLogo,
-		bigLogo: eplanLogo,
-		smallLogo: ODEUM_icon
+		margin: '5px',
+		height: '35px',
+		default: eplanLogo
 	}
 }
 
