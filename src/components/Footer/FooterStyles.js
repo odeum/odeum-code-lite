@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import media from '../../theme/media'
-import { rowColCalc, spanCalc } from '../utils/Functions'
+import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
 export const Bold = styled.b`
 	font-weight: 600;
@@ -29,8 +29,8 @@ export const StyledFooter = styled.div`
 	${media.phone`height:0px;`}
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'row')};
-	-ms-grid-column-span: ${p => spanCalc(p.theme.app.gridArea, 'footer', 'column')};
-	-ms-grid-row-span: ${p => spanCalc(p.theme.app.gridArea, 'footer', 'row')};
+	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'footer', 'column'); return x > 1 ? x : 'none'} };
+	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'footer'); return y > 1 ? y : 'none'}};
 `
 
 export const Link = styled.a`

@@ -6,9 +6,10 @@ const theme = {
 		gridArea: 
 		'"header header"' 
 		+ '"menupanel workspace"' 
-		+ '"menupanel footer"',
+		+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
-		gridTemplateColumns: 'auto 1fr'
+		gridTemplateColumns: 'auto 1fr',
+		ie: true
 	},
 	header: {
 		height: '80px',
@@ -70,7 +71,7 @@ const theme = {
 		borderRadius: '4px'
 	},
 	button: {
-		background: 'lime',
+		background: '#216795',
 		color: 'white',
 		height: '30px'
 	}

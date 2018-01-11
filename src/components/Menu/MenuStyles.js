@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink as RouterLink } from 'react-router-dom'
-import { rowColCalc, spanCalc } from '../utils/Functions'
+import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
 export const MenuDiv = styled.div`
 	grid-area:menupanel;
@@ -14,8 +14,8 @@ export const MenuDiv = styled.div`
 	transition: max-width 300ms ease;
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
-	-ms-grid-column-span: ${p => spanCalc(p.theme.app.gridArea, 'menupanel', 'column')};
-	-ms-grid-row-span: ${p => spanCalc(p.theme.app.gridArea, 'menupanel', 'row')};
+	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none'}};
+	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'menupanel'); return y > 1 ? y : 'none'}};
 `
 
 const BaseItem = styled.div`

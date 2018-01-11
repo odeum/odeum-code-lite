@@ -59,7 +59,7 @@ margin-bottom: auto;
 ## Header
 
 - [x] Custom Component as Header
-	- Nice approach Christian :)
+
 ## Footer
 
 - [x] Help button? true/false
@@ -98,9 +98,9 @@ margin-bottom: auto;
 
 ## Internet Explorer Compatibility
 
-- [ ] Theme prop IE
-- [ ] column & row setup function
-- [ ] vendor prefix
+- [x] Theme prop IE
+- [x] column & row setup function
+- [x] vendor prefix
 
 ## MenuPanel
 ## 1.1. TODO:

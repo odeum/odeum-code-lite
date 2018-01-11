@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 // import theme from 'theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
-import { rowColCalc, spanCalc } from '../utils/Functions'
+import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
 export const TabList = styled.div`
 	flex: 1;
@@ -53,8 +53,8 @@ export const SceneDiv = styled.div`
 	-webkit-overflow-scrolling: touch;
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'row')};
-	-ms-grid-column-span: ${p => spanCalc(p.theme.app.gridArea, 'workspace', 'column')};
-	-ms-grid-row-span: ${p => spanCalc(p.theme.app.gridArea, 'workspace', 'row')};
+	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'workspace', 'column'); return x > 1 ? x : 'none'}};
+	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'workspace'); return  y > 1 ? y : 'none'}};
 `
 
 export const TabIconDiv = styled.div`
