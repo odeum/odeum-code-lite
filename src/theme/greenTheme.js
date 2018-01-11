@@ -3,6 +3,14 @@
 import logoGreen from 'theme/logo_green.svg'
 
 const greenTheme = {
+	app: {
+		gridArea: 
+		'"header header"' 
+		+ '"menupanel workspace"' 
+		+ '"footer footer"',
+		gridTemplateRows: 'auto 1fr auto',
+		gridTemplateColumns: 'auto 1fr'
+	},
 	header: {
 		height: '80px',
 		background: '#1B5E20',

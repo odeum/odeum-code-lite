@@ -2,6 +2,14 @@ import ODEUM_Logo from 'theme/logo_red.svg'
 import ODEUM_icon from 'theme/logo_icon.svg'
 
 const theme = {
+	app: {
+		gridArea: 
+		'"header header"' 
+		+ '"menupanel workspace"' 
+		+ '"footer footer"',
+		gridTemplateRows: 'auto 1fr auto',
+		gridTemplateColumns: 'auto 1fr'
+	},
 	header: {
 		background: '#7c1313',
 		color: '#FFEBEE'

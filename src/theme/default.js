@@ -8,8 +8,7 @@ const theme = {
 		+ '"menupanel workspace"' 
 		+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
-		gridTemplateColumns: 'auto 1fr',
-		ie: true
+		gridTemplateColumns: 'auto 1fr'
 	},
 	header: {
 		height: '80px',

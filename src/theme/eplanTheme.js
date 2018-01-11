@@ -2,6 +2,14 @@ import ODEUM_icon from 'theme/logo_icon.svg'
 import eplanLogo from 'theme/eplanTheme_logo.svg'
 
 const eplanTheme = {
+	app: {
+		gridArea: 
+		'"header header"' 
+		+ '"menupanel workspace"' 
+		+ '"footer footer"',
+		gridTemplateRows: 'auto 1fr auto',
+		gridTemplateColumns: 'auto 1fr'
+	},
 	header: {
 		background: '#E98832',
 		color: '#FFF'
