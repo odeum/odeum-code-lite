@@ -87,9 +87,7 @@ class App extends Component {
 						<ReactComp />
 						<SimpleDiv />
 					</Page>
-					<Menu icon={'drafts'} label={'I have help'}>
-						<ReactComp/>
-					</Menu>
+
 					
 					<Protected>
 						<Menu label={'Theme'} icon={'opacity'} bottom>
@@ -138,7 +136,9 @@ class App extends Component {
 								Auto Generated Route
 							</Tab>
 						</Menu>
-
+						<Menu icon={'drafts'} label={'I have help'}>
+							<ReactComp/>
+						</Menu>
 					</Protected>
 					{/* <Flex bottom/> */}
 				</MenuPanel>

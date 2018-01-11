@@ -82,6 +82,7 @@ margin-bottom: auto;
 - [ ] Style Buttons 
 - [ ] Active Tab Highlight to accomodate 'Protected'
 - [ ] Active Menu Highlight to accomodate 'Protected'
+- [x] Menu with no tabs
 - [ ] Top/Bottom Menu Items
 	- currently they are rendered as MenuItems the ones are actual MenuItems
 	- How do we handle Components that aren't MenuItems?
