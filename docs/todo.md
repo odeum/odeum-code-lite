@@ -81,24 +81,27 @@ margin-bottom: auto;
 - [x] Close Button
 - [ ] Style Buttons 
 - [ ] Active Tab Highlight to accomodate 'Protected'
+- [ ] Active Menu Highlight to accomodate 'Protected'
 - [ ] Top/Bottom Menu Items
-	- suggestions on how do we do this?
+	- currently they are rendered as MenuItems the ones are actual MenuItems
+	- How do we handle Components that aren't MenuItems?
 - [ ] Login Form
 
 ## Login
 
 - [x] RedirectTo prop after Login is Done
-- [ ] Login Component
+- [x] Login Component
+	- [x] Rudimentary Form
 	- [ ] Validation
 	- [ ] Error display
+	- [ ] Styling
 - [x] Protected Routes
-- [x] Login Form
-- [ ] Styling
 - [x] Custom Login Form
 
 ## Internet Explorer Compatibility
 
-- [x] Theme prop IE
+- [ ] ~~Theme prop IE~~
+	- removed - redundant
 - [x] column & row setup function
 - [x] vendor prefix
 
@@ -107,7 +110,7 @@ margin-bottom: auto;
 
 ### 1.1.1. Foundation:
 - [x] Custom themes available for integration through AppContainer + (test with custom theme)
-- [x] Ommit exact prop when using: <Menu route={'/'} exact>. We can check whether route is set to only '/' and add "exact" automatically
+- [x] Ommit exact prop when using: ```<Menu route={'/'} exact>```. We can check whether route is set to only '/' and add "exact" automatically
 - [x] Help label prop? Language ... 
 - [x] Page component that basically wraps the functionality of <Menu> to create a page with a route and no label
 - [x] Help Redux functions (functional approach)
