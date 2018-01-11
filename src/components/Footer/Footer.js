@@ -32,16 +32,16 @@ class Footer extends Component {
 	}
 
 	render() {
-		const { help } = this.props
+		const { help, labelLink, label, target, helpID, helpLabel } = this.props
 		return (
 			!this.state.small ? <StyledFooter>
-				<Link href={this.props.labelLink ? this.props.labelLink : this.defaultProps.labelLink} target={this.props.target}>
+				<Link href={labelLink ? labelLink : this.defaultProps.labelLink} target={target}>
 					<div style={{ display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center', alignItems: 'center' }}>
-						{this.props.label ? <this.props.label /> : <this.defaultProps.label />}
+						{label ? <this.props.label /> : <this.defaultProps.label />}
 						{/* &nbsp;| Debug: {this.props.helpID} */}
 					</div>
 				</Link>
-				{help ?	<Help small={this.state.small} helpID={this.props.helpID} helpLabel={this.props.helpLabel} /> : null}
+				{help ?	<Help small={this.state.small} helpID={helpID} helpLabel={helpLabel} /> : null}
 			</StyledFooter> : null
 		)
 	}

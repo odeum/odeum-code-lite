@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import theme from 'theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
 import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
@@ -51,6 +50,8 @@ export const SceneDiv = styled.div`
 	margin: 20px 20px 20px 20px;
 	overflow-y:auto;
 	-webkit-overflow-scrolling: touch;
+
+	/* IE11 Support */
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'row')};
 	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'workspace', 'column'); return x > 1 ? x : 'none'}};

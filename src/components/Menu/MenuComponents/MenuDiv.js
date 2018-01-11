@@ -15,11 +15,8 @@ class MenuDiv extends Component {
 	)
 
 	render() {
-		// console.log('Top', this.props.top)
-		// console.log('Bottom', this.props.bottom)
 		return (
 			<MenuCont achordeon={this.state.achordeon}>
-				
 				{this.props.top.length === 0 ? <DefaultHeader>
 					<IconDiv onClick={this.switch}
 						style={{ cursor: 'pointer', alignSelf: 'left' }}>

@@ -20,6 +20,8 @@ export const HeaderDiv = styled.div`
 	${media.desktop`height:80px;`}
 	${media.tablet`height:60px;`}
 	${media.phone`height:60px;`}
+
+	/* IE Support */
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'row')};
 	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'header', 'column');return x > 1 ? x : 'none'}};

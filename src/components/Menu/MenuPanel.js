@@ -99,8 +99,8 @@ class MenuPanel extends Component {
 			icon={child.props.icon}
 			label={child.props.label}
 			route={this.route(child) + this.getFirstChildRoute(child)}
-			onClick={this.setActiveMenu} 
-			arrow={this.props.Arrows}/>
+			onClick={this.setActiveMenu}
+			arrow={this.props.Arrows} />
 	}
 
 	renderRoutes = (children) => {
@@ -127,7 +127,6 @@ class MenuPanel extends Component {
 	}
 	renderBottomItems = (children) => {
 		var BottomItems = []
-		console.log(children)
 		children.forEach((child, index) => {
 			if (child.type === Protected) {
 				if (this.props.isLoggedIn !== false) {
@@ -236,4 +235,3 @@ class MenuPanel extends Component {
 }
 
 export default MenuPanel
-

@@ -27,6 +27,8 @@ export const StyledFooter = styled.div`
 	${media.desktop`height:40px;`}
 	${media.tablet`height:30px;`}
 	${media.phone`height:0px;`}
+
+	/* IE Support */
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'row')};
 	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'footer', 'column'); return x > 1 ? x : 'none'} };

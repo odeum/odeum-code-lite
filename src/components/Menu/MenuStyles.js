@@ -5,13 +5,13 @@ import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 export const MenuDiv = styled.div`
 	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
-	/* display: grid; */
-	/* grid-auto-rows: 50px; */
 	display:flex;
 	flex-flow:column wrap;
 	overflow-x: hidden;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
+
+	/*IE11 Support*/
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
 	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none'}};
@@ -44,11 +44,10 @@ export const MenuHeader = BaseItem.extend`
 `
 
 export const MenuFooter = BaseItem.extend`
-display: flex;
-flex-flow:column;
-height: auto;
-margin-top:auto;
-/* margin-bottom: 30px; */
+	display: flex;
+	flex-flow:column;
+	height: auto;
+	margin-top:auto;
 `
 
 export const IconDiv = styled.div`
@@ -65,10 +64,12 @@ export const ArrowIconDiv = IconDiv.extend`
 	align-self: right;
 	justify-content: center;
 `
+
 export const MenuText = styled.div`
-	font-size: ${p => p.theme.menu.fontSize ? p.theme.menu.fontSize : '1em'};
+	font-size: ${p => p.theme.menu.fontSize ? p.theme.menu.fontSize : 'inherit'};
 	width: 100%;
 `
+
 export const MenuContainer = styled.div`
 	display:flex;
 	flex-flow: ${props => props.quicknav ? 'column nowrap'  : 'row nowrap' };
