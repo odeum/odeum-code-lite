@@ -31,7 +31,10 @@
 - [x] Remove flex properties on skeleton components (MenuPanel, Header, Workspace/SceneDiv, Footer)
 
 ## Menu Panel
-
+- [ ] Redirect to Login / to 404 
+- [ ] Theme Prop Arrows true/false
+	- [ ] refactor Arrows to arrows
+	- [ ] theme prop
 - [x] One Method for rendering of the Switch/Routes
 - [x] One Method for rendering MenuItems
 - [x] bottomMenu/Top **Component** support 
@@ -63,6 +66,8 @@ margin-bottom: auto;
 ## Footer
 
 - [x] Help button? true/false
+- [ ] label color
+- [ ] default footer without a mandatory component to be passed
 
 ## Workspace
 

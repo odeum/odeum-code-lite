@@ -58,7 +58,7 @@ class App extends Component {
 	render() {
 
 		return (
-			<AppContainer theme={this.state.theme} >
+			<AppContainer theme={this.state.theme}>
 				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
 				{/* <Flex/> */}
 				{/* </Header> */}
@@ -80,7 +80,6 @@ class App extends Component {
 					<Page route={'/top-menu-item'} label={'Top Menu Route'} top>
 						<SimpleDiv/>
 					</Page>
-					
 					
 					<Page route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
