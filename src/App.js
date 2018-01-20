@@ -32,7 +32,8 @@ class App extends Component {
 
 		this.state = {
 			theme: theme,
-			loggedIn: false
+			loggedIn: false,
+
 		}
 
 	}
@@ -56,16 +57,16 @@ class App extends Component {
 	}
 
 	render() {
-
+		console.log(this.state.theme)
 		return (
 			<AppContainer theme={this.state.theme}>
 				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
 				{/* <Flex/> */}
 				{/* </Header> */}
 				<MenuPanel 
-					login={true} 
-					redirectTo={'/login'} 
-					isLoggedIn={this.state.loggedIn} 
+					login={false} 
+					// redirectTo={'/login'} 
+					// isLoggedIn={this.state.loggedIn} 
 					Arrows={false}>
 					
 					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}

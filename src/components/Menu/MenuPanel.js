@@ -222,7 +222,10 @@ class MenuPanel extends Component {
 				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn} />}
 			<Switch>
 				{this.renderRoutes(children)}
-				<Route path={'*'} render={this.props.isLoggedIn ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />} />
+				<Route path={'*'} 
+					render={this.props.login === true ? 
+						(this.props.isLoggedIn === true ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />) 
+						: () => <NotFound/>} />
 			</Switch>
 		</React.Fragment>
 	}

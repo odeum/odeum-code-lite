@@ -23,30 +23,30 @@ const theme = {
 		selected: '#216795',
 		hover: '#81C1EA',
 		border: '1px solid #3087bf',
-		textHover: '#000',
+		textHover: '#FFF',
 		fontSize: 'inherit'
 	},
 
 	footer: {
 		background: '#F7F7F7',
-		color: '#5E5E5E'
+		color: '#5E5E5E' //not used
 	},
 
 	workspace: {
 		background: '#ECF0F1',
-		color: '#000'
+		color: '#000' //not used
 	},
 
 	tab: {
-		background: '#3B97D3',
+		background: '#3B97D3', //not used
 		color: '#FFF',
 		selected: '#3B97D3',
 		hover: '#81C1EA',
 		unselected: '#E3E5E5'
 	},
 	icon: {
-		default: '#34495D',
-		selected: '#FFF'
+		default: '#34495D', //not used
+		selected: '#FFF' //not used
 	},
 	quicknav: {
 		button: {
