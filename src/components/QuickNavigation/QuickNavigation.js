@@ -70,11 +70,14 @@ export default class QuickNavigation extends Component {
 		}
 		else return this.renderMenuItem(menu, index)
 	}
-
+	indexGen = (index) => {
+		return index.protected !== undefined ? index.index + index.protected : index
+	}
 	renderMenuItem = (menu, index) => {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
 		const { activeMenu } = this.state
+		const { indexGen } = this
 		if (menu.type === Menu) {
 			if (menu.props.children.props !== undefined) {
 				if (menu.props.children.props.label !== undefined) {
@@ -87,9 +90,10 @@ export default class QuickNavigation extends Component {
 		}
 		if (route === '' || route === '/') {
 
-			return <MenuItem key={index.protected !== undefined ? index.index + index.protected : index}
-				index={index.protected !== undefined ? index.index + index.protected : index}
-				activeMenu={activeMenu.protected !== undefined  ? activeMenu.protected + activeMenu.index : activeMenu} onClick={this.setActiveMenu(index, true)}>
+			return <MenuItem key={indexGen(index)}
+				index={indexGen(index)}
+				activeMenu={indexGen(activeMenu)}
+				onClick={this.setActiveMenu(index, true)}>
 				<Link to={route}>
 					<Icon icon={'home'} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 					{'Home'}
@@ -100,10 +104,9 @@ export default class QuickNavigation extends Component {
 			if (menu.type === Menu || menu.type === Page) {
 				if (React.Children.toArray(menu.props.children)[0].type === Tab)
 					if (React.Children.toArray(menu.props.children).length <= 1) {
-						console.log(menu.props.label, index)
-						return (<MenuItem key={index.protected !== undefined  ? index.index + index.protected : index}
-							index={index.protected !== undefined  ? index.index + index.protected : index}
-							activeMenu={activeMenu.protected !== undefined ? activeMenu.protected + activeMenu.index : activeMenu}
+						return (<MenuItem key={indexGen(index)}
+							index={indexGen(index)}
+							activeMenu={indexGen(activeMenu)}
 							onClick={this.setActiveMenu(index, true)}>
 							<Link to={route}>
 								<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
@@ -112,20 +115,18 @@ export default class QuickNavigation extends Component {
 						</MenuItem>)
 					}
 					else {
-						console.log(menu.props.label, index)
-						return (<MenuItem key={index.protected !== undefined  ? index.index + index.protected : index}
-							index={index.protected !== undefined ? index.index + index.protected : index}
-							activeMenu={activeMenu.protected !== undefined ? activeMenu.protected + activeMenu.index : activeMenu}
+						return (<MenuItem key={indexGen(index)}
+							index={indexGen(index)}
+							activeMenu={indexGen(activeMenu)}
 							onClick={this.setActiveMenu(index, false)}>
 							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 							{menu.props.label}
 						</MenuItem>)
 					}
 				else {
-					console.log(menu.props.label, index)
-					return <MenuItem key={index.protected !== undefined ? index.index + index.protected : index}
-						index={index.protected !== undefined ? index.index + index.protected : index}
-						activeMenu={activeMenu.protected !== undefined ? activeMenu.protected + activeMenu.index : activeMenu}
+					return <MenuItem key={indexGen(index)}
+						index={indexGen(index)}
+						activeMenu={indexGen(activeMenu)}
 						onClick={this.setActiveMenu(index, true)}>
 						<Link to={route}>
 							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
