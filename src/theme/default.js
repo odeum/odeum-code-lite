@@ -29,7 +29,7 @@ const theme = {
 
 	footer: {
 		background: '#F7F7F7',
-		color: '#5E5E5E' //not used
+		color: '#000000'
 	},
 
 	workspace: {

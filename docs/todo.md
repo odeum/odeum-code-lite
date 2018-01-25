@@ -31,7 +31,7 @@
 - [x] Remove flex properties on skeleton components (MenuPanel, Header, Workspace/SceneDiv, Footer)
 ## Theme
 
-- [ ] Footer Color
+- [x] Footer Color
 - [x] Workspace Color
 - [ ] Tab Color
 - [ ] QuickNav 
