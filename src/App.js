@@ -9,7 +9,7 @@ import Page from 'components/Menu/Page'
 // import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-import /* Login, */ { LoginWithComponent } from 'components/Login/Login'
+// import /* Login, */ { LoginWithComponent } from 'components/Login/Login'
 /* Demo */
 
 import ReactComp from 'demos/ReactComp'
@@ -22,7 +22,7 @@ import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
 import Protected from 'components/Login/Protected'
-import CustomLoginForm from 'demos/CustomLoginForm'
+// import CustomLoginForm from 'demos/CustomLoginForm'
 // import MinFo from 'theme/minforetning'
 /* End Import Demo */
 
@@ -89,7 +89,7 @@ class App extends Component {
 					</Page>
 
 					
-					<Protected>
+					{/* <Protected> */}
 						<Menu label={'Theme'} icon={'opacity'} bottom>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
 								<div style={{ display: 'flex', flexFlow: 'column' }}>
@@ -139,7 +139,7 @@ class App extends Component {
 						<Menu icon={'drafts'} label={'I have help'}>
 							<ReactComp/>
 						</Menu>
-					</Protected>
+					{/* </Protected> */}
 					{/* <Flex bottom/> */}
 				</MenuPanel>
 				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
