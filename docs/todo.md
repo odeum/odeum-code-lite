@@ -32,7 +32,7 @@
 ## Theme
 
 - [ ] Footer Color
-- [ ] Workspace Color
+- [x] Workspace Color
 - [ ] Tab Color
 - [ ] QuickNav 
 	<!-- - [ ]Hover Tab Text Color -->

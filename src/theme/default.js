@@ -34,11 +34,10 @@ const theme = {
 
 	workspace: {
 		background: '#ECF0F1',
-		color: '#000' //not used
+		color: '#000'
 	},
 
 	tab: {
-		background: '#3B97D3', //not used
 		color: '#FFF',
 		selected: '#3B97D3',
 		hover: '#81C1EA',
