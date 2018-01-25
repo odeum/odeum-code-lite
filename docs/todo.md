@@ -33,7 +33,7 @@
 
 - [x] Footer Color
 - [x] Workspace Color
-- [ ] Tab Color
+- [x] Tab Text Active/Inactive Color
 - [ ] QuickNav 
 	<!-- - [ ]Hover Tab Text Color -->
 	- [ ] Menu Item text color
