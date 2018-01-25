@@ -89,7 +89,7 @@ class App extends Component {
 					</Page>
 
 					
-					{/* <Protected> */}
+					<Protected>
 						<Menu label={'Theme'} icon={'opacity'} bottom>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
 								<div style={{ display: 'flex', flexFlow: 'column' }}>
@@ -139,10 +139,10 @@ class App extends Component {
 						<Menu icon={'drafts'} label={'I have help'}>
 							<ReactComp/>
 						</Menu>
-					{/* </Protected> */}
+					</Protected>
 					{/* <Flex bottom/> */}
 				</MenuPanel>
-				<Footer help={false} /* label={RenderFooterLabel} labelLink={handleLink()} */ helpLabel={'Brug for Hjaelp?'} />
+				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}
