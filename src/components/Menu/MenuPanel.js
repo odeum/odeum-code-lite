@@ -236,5 +236,7 @@ class MenuPanel extends Component {
 
 	//#endregion
 }
-
+MenuPanel.defaultProps = {
+	login: false
+}
 export default MenuPanel

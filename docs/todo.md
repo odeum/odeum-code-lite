@@ -29,12 +29,20 @@
 	-[x] QuickNavigation refactor to these changes
 - [x] Custom theme gridArea,templateColumns,templateRows
 - [x] Remove flex properties on skeleton components (MenuPanel, Header, Workspace/SceneDiv, Footer)
+## Theme
 
+- [ ] Footer Color
+- [ ] Workspace Color
+- [ ] Tab Color
+- [ ] QuickNav 
+	<!-- - [ ]Hover Tab Text Color -->
+	- [ ] Menu Item text color
 ## Menu Panel
+- [ ] default prop login={false}
 - [ ] Redirect to Login / to 404 
 - [ ] Theme Prop Arrows true/false
 	- [ ] refactor Arrows to arrows
-	- [ ] theme prop
+	- [ ] ? theme prop ?
 - [x] One Method for rendering of the Switch/Routes
 - [x] One Method for rendering MenuItems
 - [x] bottomMenu/Top **Component** support 
@@ -76,8 +84,9 @@ margin-bottom: auto;
 - [x] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
-
-- [ ] Quick Navigation select first tab when only 1
+- [ ] Login true/false
+- [x] Quick Navigation select first tab when only 1
+	- needs more testing
 - [x] '/' route as Home
 - [x] Quick Navigation 'menu' icon default else from theme
 - [x] Tab Styling in connection with the theme (Red Theme -> Red Active Text)
