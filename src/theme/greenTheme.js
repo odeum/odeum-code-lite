@@ -9,6 +9,7 @@ const greenTheme = {
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
+
 	header: {
 		height: '80px',
 		background: '#1B5E20',
@@ -42,18 +43,27 @@ const greenTheme = {
 		hover: '#66BB6A',
 		unselected: '#A5D6A7'
 	},
+
 	icon: {
 		default: '#34495D',
 		selected: '#E8F5E9'
 	},
+
 	quicknav: {
 		button: {
 			background: '#1B5E20',
-			color: '#FFF'
+			color: '#FFF',
+			unselected: '#E3E5E5',
+		},
+		menu:{
+			background: '#1B5E20',
+			color: '#FFF',
+			unselected: '#E3E5E5',
 		},
 		tab: {
 			selected: '#43A047',
-			unselected: '#000'
+			unselected: '#000',
+			
 		}
 	},
 	logo: {

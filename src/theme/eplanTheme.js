@@ -49,7 +49,13 @@ const eplanTheme = {
 	quicknav: {
 		button: {
 			background: '#E98832',
-			color: '#F7F7F7'
+			color: '#F7F7F7',
+			unselected: '#E3E5E5',
+		},
+		menu:{
+			background: '#E98832',
+			color: '#F7F7F7',
+			unselected: '#E3E5E5',
 		},
 		tab: {
 			selected: '#F39C12',

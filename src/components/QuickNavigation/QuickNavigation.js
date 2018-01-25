@@ -71,18 +71,15 @@ export default class QuickNavigation extends Component {
 	}
 
 	renderMenuItem = (menu, index) => {
-		// console.log(menu, 'menu')
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
-
 		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
-
 		if (menu.type === Menu) {
 			if (menu.props.children.props !== undefined) {
 				if (menu.props.children.props.label !== undefined) {
 
 					var childRoute = menu.props.children.props.route ? menu.props.children.props.route : convertLabelToRoute(menu.props.children.props.label)
 					route = route + childRoute
-					console.log(menu.props.children.props)
+					// console.log(menu.props.children.props)
 				}
 			}
 		}
@@ -95,7 +92,7 @@ export default class QuickNavigation extends Component {
 			</MenuItem >
 		}
 		else {
-			console.log('hit')
+			// console.log('hit')
 			if (menu.type === Menu) {
 				if (React.Children.toArray(menu.props.children)[0].type === Tab)
 					if (React.Children.toArray(menu.props.children).length <= 1)

@@ -9,6 +9,7 @@ const theme = {
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
+
 	header: {
 		height: '80px',
 		background: '#7c1313',
@@ -49,6 +50,12 @@ const theme = {
 	quicknav: {
 		button: {
 			background: '#7c1313',
+			unselected: '#E3E5E5',
+			color: '#FFF'
+		},
+		menu: {
+			background: '#7c1313',
+			unselected: '#E3E5E5',
 			color: '#FFF'
 		},
 		tab: {
