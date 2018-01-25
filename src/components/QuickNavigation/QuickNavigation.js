@@ -12,6 +12,7 @@ import HeaderButton from './HeaderButton'
 import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
+import Page from 'components/Menu/Page'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -73,6 +74,7 @@ export default class QuickNavigation extends Component {
 	renderMenuItem = (menu, index) => {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
+		const { activeMenu } = this.state
 		if (menu.type === Menu) {
 			if (menu.props.children.props !== undefined) {
 				if (menu.props.children.props.label !== undefined) {
@@ -84,7 +86,10 @@ export default class QuickNavigation extends Component {
 			}
 		}
 		if (route === '' || route === '/') {
-			return <MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
+
+			return <MenuItem key={index.protected !== undefined ? index.index + index.protected : index}
+				index={index.protected !== undefined ? index.index + index.protected : index}
+				activeMenu={activeMenu.protected !== undefined  ? activeMenu.protected + activeMenu.index : activeMenu} onClick={this.setActiveMenu(index, true)}>
 				<Link to={route}>
 					<Icon icon={'home'} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 					{'Home'}
@@ -92,29 +97,42 @@ export default class QuickNavigation extends Component {
 			</MenuItem >
 		}
 		else {
-			// console.log('hit')
-			if (menu.type === Menu) {
+			if (menu.type === Menu || menu.type === Page) {
 				if (React.Children.toArray(menu.props.children)[0].type === Tab)
-					if (React.Children.toArray(menu.props.children).length <= 1)
-						return (<MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
-								<Link to={route}>
-							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
-							{menu.props.label}
+					if (React.Children.toArray(menu.props.children).length <= 1) {
+						console.log(menu.props.label, index)
+						return (<MenuItem key={index.protected !== undefined  ? index.index + index.protected : index}
+							index={index.protected !== undefined  ? index.index + index.protected : index}
+							activeMenu={activeMenu.protected !== undefined ? activeMenu.protected + activeMenu.index : activeMenu}
+							onClick={this.setActiveMenu(index, true)}>
+							<Link to={route}>
+								<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
+								{menu.props.label}
 							</Link>
 						</MenuItem>)
+					}
 					else {
-						return (<MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, false)}>
+						console.log(menu.props.label, index)
+						return (<MenuItem key={index.protected !== undefined  ? index.index + index.protected : index}
+							index={index.protected !== undefined ? index.index + index.protected : index}
+							activeMenu={activeMenu.protected !== undefined ? activeMenu.protected + activeMenu.index : activeMenu}
+							onClick={this.setActiveMenu(index, false)}>
 							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 							{menu.props.label}
 						</MenuItem>)
 					}
-				else
-					return <MenuItem key={index.protected ? index.index + index.protected : index} onClick={this.setActiveMenu(index, true)}>
+				else {
+					console.log(menu.props.label, index)
+					return <MenuItem key={index.protected !== undefined ? index.index + index.protected : index}
+						index={index.protected !== undefined ? index.index + index.protected : index}
+						activeMenu={activeMenu.protected !== undefined ? activeMenu.protected + activeMenu.index : activeMenu}
+						onClick={this.setActiveMenu(index, true)}>
 						<Link to={route}>
 							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 							{menu.props.label}
 						</Link>
 					</MenuItem >
+				}
 			}
 		}
 	}

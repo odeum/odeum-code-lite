@@ -6,10 +6,10 @@ import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
 import Page from 'components/Menu/Page'
-// import Protected from 'components/Login/Protected'
+import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-// import /* Login, */ { LoginWithComponent } from 'components/Login/Login'
+import /* Login, */ { LoginWithComponent } from 'components/Login/Login'
 /* Demo */
 
 import ReactComp from 'demos/ReactComp'
@@ -21,8 +21,7 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
-import Protected from 'components/Login/Protected'
-// import CustomLoginForm from 'demos/CustomLoginForm'
+import CustomLoginForm from 'demos/CustomLoginForm'
 // import MinFo from 'theme/minforetning'
 /* End Import Demo */
 
@@ -63,13 +62,13 @@ class App extends Component {
 				{/* <Flex/> */}
 				{/* </Header> */}
 				<MenuPanel 
-					// login={true} 
-					// redirectTo={'/login'} 
-					// isLoggedIn={this.state.loggedIn} 
-					// arrows={false}
+					login={true} 
+					redirectTo={'/login'} 
+					isLoggedIn={this.state.loggedIn} 
+					arrows={false}
 					>
 					
-					{/* {LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)} */}
+					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
 					{/* {Login(this.state.loggedIn, this.login)} */}
 
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
@@ -89,8 +88,8 @@ class App extends Component {
 					</Page>
 
 					
-					{/* <Protected> */}
-						<Menu label={'Theme'} icon={'opacity'} bottom>
+					<Protected>
+						<Menu label={'Theme'} icon={'opacity'}>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
 								<div style={{ display: 'flex', flexFlow: 'column' }}>
 									<div>Click the button below continously to change the theme of the framework.</div>
@@ -139,7 +138,7 @@ class App extends Component {
 						<Menu icon={'drafts'} label={'I have help'}>
 							<ReactComp/>
 						</Menu>
-					{/* </Protected> */}
+					</Protected>
 					{/* <Flex bottom/> */}
 				</MenuPanel>
 				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />

@@ -40,9 +40,9 @@ export const Link = styled(NavLink) `
 //#region Menu Button & List
 
 export const MenuItem = styled.div`
-    background:${props => props.theme.quicknav.menu.unselected};
+    background:${(props) => props.index === props.activeMenu ? props.theme.quicknav.menu.color:props.theme.quicknav.menu.unselected};
     /* if Active, change background */
-    color: ${props => props.theme.quicknav.menu.color};
+    color: ${props => props.index === props.activeMenu ? props.theme.quicknav.menu.unselected : props.theme.quicknav.menu.color};
     height:50px;
     display: flex;
 	flex-flow: column;
