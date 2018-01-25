@@ -40,8 +40,9 @@ export const Link = styled(NavLink) `
 //#region Menu Button & List
 
 export const MenuItem = styled.div`
-    background:${props => props.theme.quicknav.button.unselected};
-    color: ${props => props.theme.quicknav.button.background};
+    background:${props => props.theme.quicknav.menu.unselected};
+    /* if Active, change background */
+    color: ${props => props.theme.quicknav.menu.color};
     height:50px;
     display: flex;
 	flex-flow: column;
@@ -92,9 +93,9 @@ export const TabItem = styled(NavLink)`
     padding:0px 15px;
     height: 20px;
     color:${props => props.activetab === 'true' ? props.theme.quicknav.tab.selected : props.theme.quicknav.tab.unselected};
-    &:hover{
+    /* &:hover{
         color: royalblue;
-    }
+    } */
     cursor:pointer;
     display: flex;
     align-items:center;

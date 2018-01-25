@@ -69,7 +69,7 @@ class App extends Component {
 					// arrows={false}
 					>
 					
-					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
+					{/* {LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)} */}
 					{/* {Login(this.state.loggedIn, this.login)} */}
 
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
@@ -89,7 +89,7 @@ class App extends Component {
 					</Page>
 
 					
-					<Protected>
+					{/* <Protected> */}
 						<Menu label={'Theme'} icon={'opacity'} bottom>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
 								<div style={{ display: 'flex', flexFlow: 'column' }}>
@@ -139,7 +139,7 @@ class App extends Component {
 						<Menu icon={'drafts'} label={'I have help'}>
 							<ReactComp/>
 						</Menu>
-					</Protected>
+					{/* </Protected> */}
 					{/* <Flex bottom/> */}
 				</MenuPanel>
 				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />

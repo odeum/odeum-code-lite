@@ -54,6 +54,11 @@ const theme = {
 			unselected: '#E3E5E5',
 			color: '#FFF'
 		},
+		menu:{
+			background: '#216795',
+			unselected: '#E3E5E5',
+			color: '#216795'
+		},
 		tab: {
 			selected: '#3B97D3',
 			unselected: '#000'

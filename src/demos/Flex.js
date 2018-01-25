@@ -8,7 +8,7 @@ export default class Flex extends Component {
 					display: 'flex', 
 					flex: 7, 
 					background: 'inherit', 
-					color: 'white', 
+					color: 'black', 
 					alignItems: 'center', 
 					justifyContent: 'center', 
 					border: '1px solid #3087bf',

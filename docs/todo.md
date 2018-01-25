@@ -34,9 +34,10 @@
 - [x] Footer Color
 - [x] Workspace Color
 - [x] Tab Text Active/Inactive Color
-- [ ] QuickNav 
+- [x] QuickNav 
 	<!-- - [ ]Hover Tab Text Color -->
-	- [ ] Menu Item text color
+	- [x] Menu Item text color
+	
 ## Menu Panel
 
 - [x] Redirect to Login / to 404 
