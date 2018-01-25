@@ -100,7 +100,7 @@ class MenuPanel extends Component {
 			label={child.props.label}
 			route={this.route(child) + this.getFirstChildRoute(child)}
 			onClick={this.setActiveMenu}
-			arrow={this.props.Arrows} />
+			arrow={this.props.arrows} />
 	}
 
 	renderRoutes = (children) => {

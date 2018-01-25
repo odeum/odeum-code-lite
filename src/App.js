@@ -66,7 +66,8 @@ class App extends Component {
 					// login={true} 
 					// redirectTo={'/login'} 
 					// isLoggedIn={this.state.loggedIn} 
-					Arrows={true}>
+					// arrows={false}
+					>
 					
 					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
 					{/* {Login(this.state.loggedIn, this.login)} */}

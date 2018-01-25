@@ -38,11 +38,9 @@
 	<!-- - [ ]Hover Tab Text Color -->
 	- [ ] Menu Item text color
 ## Menu Panel
-- [ ] default prop login={false}
-- [ ] Redirect to Login / to 404 
-- [ ] Theme Prop Arrows true/false
-	- [ ] refactor Arrows to arrows
-	- [ ] ? theme prop ?
+
+- [x] Redirect to Login / to 404 
+- [x] refactor Arrows to arrows
 - [x] One Method for rendering of the Switch/Routes
 - [x] One Method for rendering MenuItems
 - [x] bottomMenu/Top **Component** support 
