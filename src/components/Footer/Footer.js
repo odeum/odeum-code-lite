@@ -37,7 +37,7 @@ class Footer extends Component {
 			!this.state.small ? <StyledFooter>
 				<Link href={labelLink ? labelLink : this.defaultProps.labelLink} target={target}>
 					<div style={{ display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center', alignItems: 'center' }}>
-						{label ? <this.props.label /> : <this.defaultProps.label />}
+						{label ? <this.props.label /> : <Footer.defaultProps.label/>}
 						{/* &nbsp;| Debug: {this.props.helpID} */}
 					</div>
 				</Link>
@@ -53,10 +53,11 @@ Footer.propTypes = {
 	target: PropTypes.string,
 	debug: PropTypes.string
 }
+var date = new Date()
 
 Footer.defaultProps = {
-	label: <div>
-		<b>ODEUM Code Lite </b> v1.0.0 © Copyright
+	label: ()=><div>
+		<b>ODEUM Code Lite </b> v1.0.0 © Copyright {' '}{date.getFullYear()}
 	</div>,
 	labelLink: '/',
 	target: '',

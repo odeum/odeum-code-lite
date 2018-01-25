@@ -73,8 +73,8 @@ margin-bottom: auto;
 ## Footer
 
 - [x] Help button? true/false
-- [ ] label color
-- [ ] default footer without a mandatory component to be passed
+- [x] label color
+- [x] default footer without a mandatory component to be passed
 
 ## Workspace
 
@@ -83,6 +83,7 @@ margin-bottom: auto;
 - [x] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
+
 - [ ] Login true/false
 - [x] Quick Navigation select first tab when only 1
 	- needs more testing
@@ -99,7 +100,7 @@ margin-bottom: auto;
 - [ ] Top/Bottom Menu Items
 	- currently they are rendered as MenuItems the ones are actual MenuItems
 	- How do we handle Components that aren't MenuItems?
-- [ ] Login Form
+- [ ] [Login Form](#login)
 
 ## Login
 
