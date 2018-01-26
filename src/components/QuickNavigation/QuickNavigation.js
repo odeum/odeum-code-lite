@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {
 	QuickNavButton, QuickNavMenu, QuickNavContainer, QuickNav,
 	Spacer, TabList, TabItem,
-	MenuItem, MenuList, Link, Header, SubHeader
+	MenuItem, MenuList, Link, Header, SubHeader, QuickNavButtonHidden
 } from './QuickNavigationStyles'
 import Tab from '../Tabs/Tab'
 import Menu from '../Menu/Menu'
@@ -13,12 +13,14 @@ import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
 import Page from 'components/Menu/Page'
+import SwipeEvents from 'components/QuickNavigation/SwipeEvents';
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
+			quickButton: true,
 			quickNav: false,
 			showButton: true,
 			showHelp: false,
@@ -29,7 +31,31 @@ export default class QuickNavigation extends Component {
 			}
 		}
 	}
+	toggleFullScreen = () => {
+		var doc = window.document;
+		var docEl = doc.getElementById('root');
 
+		var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+		// var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+		if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+			requestFullScreen.call(docEl);
+		}
+		// else {
+		//   cancelFullScreen.call(doc);
+		// }
+	}
+
+	componentWillMount = () => {
+		window.scrollTo(0,10);
+	}
+
+	showQuickNavButton = () => {
+		this.setState({ quickButton: true })
+	}
+	hideQuickNavButton = () => {
+		this.setState({ quickButton: false })
+	}
 	helpClick = () => {
 		this.setState({ showHelp: !this.state.showHelp })
 	}
@@ -161,12 +187,16 @@ export default class QuickNavigation extends Component {
 
 	render() {
 		// console.log(this.props)
-		const { quickNav, showHelp } = this.state
+		const { quickButton, quickNav, showHelp } = this.state
 		return (
-
-			<QuickNav>
+			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
+				{/* <QuickNav> */}
 				<HelpPopUp openHelp={showHelp} handleHelp={this.helpClick} />
-				<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
+				{quickButton ?
+					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
+					: <QuickNavButtonHidden></QuickNavButtonHidden>
+				}
+				{/* <SwipeEvents onSwiping={() => console.log('Swiping')} quickNav={quickNav} onClick={this.openNav}> */}
 				<QuickNavContainer quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu onClick={this.menuClick()}>
 						<Header>
@@ -192,7 +222,8 @@ export default class QuickNavigation extends Component {
 						</MenuList>
 					</QuickNavMenu>
 				</QuickNavContainer>
-			</QuickNav >
+				{/* </QuickNav > */}
+			</SwipeEvents>
 		)
 	}
 }

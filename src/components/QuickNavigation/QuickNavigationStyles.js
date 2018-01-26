@@ -40,7 +40,7 @@ export const Link = styled(NavLink) `
 //#region Menu Button & List
 
 export const MenuItem = styled.div`
-    background:${(props) => props.index === props.activeMenu ? props.theme.quicknav.menu.color:props.theme.quicknav.menu.unselected};
+    background:${(props) => props.index === props.activeMenu ? props.theme.quicknav.menu.color : props.theme.quicknav.menu.unselected};
     /* if Active, change background */
     color: ${props => props.index === props.activeMenu ? props.theme.quicknav.menu.unselected : props.theme.quicknav.menu.color};
     height:50px;
@@ -87,7 +87,7 @@ export const MenuList = styled.div`
 
 //#region Tab Text & List
 
-export const TabItem = styled(NavLink)`
+export const TabItem = styled(NavLink) `
     text-decoration: none;
     min-width: auto;
     padding:0px 15px;
@@ -129,6 +129,7 @@ export const TabList = styled.div`
 //#region QuickNav Button, Overlay and Spacer
 
 export const QuickNav = styled.div`
+    background:red;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -155,6 +156,21 @@ export const QuickNavButton = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`
+export const QuickNavButtonHidden = styled.div`
+    border: none;
+    border-radius: 15px;
+    padding: 30px 100vw;
+    position:fixed;
+    bottom: 0%;
+    align-self:center;
+    cursor: pointer;
+    &:hover{
+        background: ${props => props.theme.tab.hover}
+}
+display: flex;
+align-items: center;
+justify-content: center;
 `
 export const QuickNavMenu = styled.div`
     display:grid;

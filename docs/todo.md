@@ -84,6 +84,8 @@ margin-bottom: auto;
 
 ## QuickNav
 
+- [x] Hide/Show QuickNav button
+	- [ ] Animation
 - [ ] Login true/false
 - [x] Quick Navigation select first tab when only 1
 	- needs more testing
