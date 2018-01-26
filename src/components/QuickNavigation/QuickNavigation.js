@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-	QuickNavButton, QuickNavMenu, QuickNavContainer, QuickNav,
+	QuickNavButton, QuickNavMenu, QuickNavContainer,
 	Spacer, TabList, TabItem,
 	MenuItem, MenuList, Link, Header, SubHeader, QuickNavButtonHidden
 } from './QuickNavigationStyles'

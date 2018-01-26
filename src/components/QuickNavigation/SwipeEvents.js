@@ -55,15 +55,15 @@ class SwipeEvents extends Component {
 
     getCurrentPosition = (touch) => {
         return {
-            x: parseInt(touch.screenX),
-            y: parseInt(touch.screenY)
+            x: parseInt(touch.screenX, 10),
+            y: parseInt(touch.screenY, 10)
         }
     }
 
     getDelta = (touch) => {
         return {
-            x: parseInt(touch.screenX) - this.state.originalX,
-            y: parseInt(touch.screenY) - this.state.originalY
+            x: parseInt(touch.screenX, 10) - this.state.originalX,
+            y: parseInt(touch.screenY, 10) - this.state.originalY
         }
     }
 
@@ -104,7 +104,7 @@ SwipeEvents.defaultProps = {
 }
 
 SwipeEvents.propTypes = {
-    children: PropTypes.element.isRequired || PropTypes.array.isRequired,
+    children: PropTypes.any.isRequired,
     onSwiping: PropTypes.func,
     onSwiped: PropTypes.func,
     onSwipedUp: PropTypes.func,
