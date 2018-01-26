@@ -219,7 +219,7 @@ class MenuPanel extends Component {
 					bottom={this.renderBottomItems(children)}>
 					{/* {this.renderTopMenuItems(children)} */}
 					{this.renderMenuItems(children)}
-				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn ? this.props.isLoggedIn : true} />}
+				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} />}
 			<Switch>
 				{this.renderRoutes(children)}
 				<Route path={'*'} 

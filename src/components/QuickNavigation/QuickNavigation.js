@@ -47,7 +47,6 @@ export default class QuickNavigation extends Component {
 	}
 
 	componentWillMount = () => {
-		window.scrollTo(0,10);
 	}
 
 	showQuickNavButton = () => {
@@ -103,23 +102,26 @@ export default class QuickNavigation extends Component {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
 		const { activeMenu } = this.state
-		const { indexGen } = this
+		const { indexGen, setActiveMenu } = this
 		if (menu.type === Menu) {
 			if (menu.props.children.props !== undefined) {
 				if (menu.props.children.props.label !== undefined) {
-
 					var childRoute = menu.props.children.props.route ? menu.props.children.props.route : convertLabelToRoute(menu.props.children.props.label)
 					route = route + childRoute
-					// console.log(menu.props.children.props)
 				}
 			}
 		}
+		// console.log(this.props.loggedIn, menu.props.label)
+		if (this.props.loggedIn && menu.props.route === '/login') // Get the route to login as a prop from the redirectTo prop from menupanel
+			{
+				// console.log(this.props.loggedIn, menu)
+				return null //Temporary
+			}
 		if (route === '' || route === '/') {
-
 			return <MenuItem key={indexGen(index)}
 				index={indexGen(index)}
 				activeMenu={indexGen(activeMenu)}
-				onClick={this.setActiveMenu(index, true)}>
+				onClick={setActiveMenu(index, true)}>
 				<Link to={route}>
 					<Icon icon={'home'} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 					{'Home'}
@@ -128,32 +130,20 @@ export default class QuickNavigation extends Component {
 		}
 		else {
 			if (menu.type === Menu || menu.type === Page) {
-				if (React.Children.toArray(menu.props.children)[0].type === Tab)
-					if (React.Children.toArray(menu.props.children).length <= 1) {
-						return (<MenuItem key={indexGen(index)}
-							index={indexGen(index)}
-							activeMenu={indexGen(activeMenu)}
-							onClick={this.setActiveMenu(index, true)}>
-							<Link to={route}>
-								<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
-								{menu.props.label}
-							</Link>
-						</MenuItem>)
-					}
-					else {
-						return (<MenuItem key={indexGen(index)}
-							index={indexGen(index)}
-							activeMenu={indexGen(activeMenu)}
-							onClick={this.setActiveMenu(index, false)}>
-							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
-							{menu.props.label}
-						</MenuItem>)
-					}
+				if (React.Children.toArray(menu.props.children)[0].type === Tab && React.Children.toArray(menu.props.children).length > 1)
+					return (<MenuItem key={indexGen(index)}
+						index={indexGen(index)}
+						activeMenu={indexGen(activeMenu)}
+						onClick={setActiveMenu(index, false)}>
+						<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
+						{menu.props.label}
+					</MenuItem>)
+
 				else {
 					return <MenuItem key={indexGen(index)}
 						index={indexGen(index)}
 						activeMenu={indexGen(activeMenu)}
-						onClick={this.setActiveMenu(index, true)}>
+						onClick={setActiveMenu(index, true)}>
 						<Link to={route}>
 							<Icon icon={icon} iconSize={28} style={{ marginBottom: '4px', color: 'inherit' }} />
 							{menu.props.label}
