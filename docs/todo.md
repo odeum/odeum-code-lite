@@ -18,7 +18,13 @@
 <!-- /TOC -->
 
 ## Framework
-
+- [ ] Update Demo Theme Tab Colors
+- [ ] Store theme on localStorage
+- [ ] Load Theme from localStorage and the preffered one
+- [ ] Store isLoggedin state as a cookie
+	- [ ] Expire after 15 mins
+	- [ ] Refresh every 10 mins		
+- [ ] Set Global VW/VH
 - [x] MenuPanel Check for Menu subchild
 - [x] If not Menu don't render
 - [x] error coding, use strict subchildren
@@ -28,6 +34,7 @@
 	- [x] QuickNavigation refactor to these changes
 - [x] Custom theme gridArea,templateColumns,templateRows
 - [x] Remove flex properties on skeleton components (MenuPanel, Header, Workspace/SceneDiv, Footer)
+
 ## Theme
 
 - [x] Footer Color
@@ -83,7 +90,10 @@ margin-bottom: auto;
 - [x] -webkit-overflow-scrolling: touch; from  iOS
 
 ## QuickNav
-
+- [ ] Active Menu onEnter
+- [ ] Notfication that the button dissapeared
+<!-- Or something like that -->
+- [ ] Remove border onClick on QuickNav Button
 - [x] Hide/Show QuickNav button
 	- [ ] Animation
 - [ ] Login true/false
