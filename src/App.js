@@ -58,36 +58,34 @@ class App extends Component {
 	render() {
 		return (
 			<AppContainer theme={this.state.theme}>
-				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
+				<Header logo={this.state.theme.logo} render={this.renderHeader} />
 				{/* <Flex/> */}
 				{/* </Header> */}
-				<MenuPanel 
-					login={true} 
-					redirectTo={'/login'} 
-					isLoggedIn={this.state.loggedIn} 
+				<MenuPanel
+					login={true}
+					redirectTo={'/login'}
+					isLoggedIn={this.state.loggedIn}
 					arrows={false}
-					>
-					
-					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
+				>
+					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
 					{/* {Login(this.state.loggedIn, this.login)} */}
-
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
-					
+
 					<Page route={'/'} helpID={'root'}>
 						<Flex />
 					</Page>
 					{/* <Flex top/> */}
 					<Page route={'/top-menu-item'} label={'Top Menu Route'} top>
-						<SimpleDiv/>
+						<SimpleDiv />
 					</Page>
-					
+
 					<Page route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
 					</Page>
 
-					
+
 					<Protected>
 						<Menu label={'Theme'} icon={'opacity'}>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
@@ -107,7 +105,7 @@ class App extends Component {
 									<Link to={'/form/test2'}>Form Tab 2</Link>
 								</div>
 							</Tab>
-						</Menu>			
+						</Menu>
 						<Page route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
 							<Tabb />
 							<ReactComp />
@@ -136,7 +134,7 @@ class App extends Component {
 							</Tab>
 						</Menu>
 						<Menu icon={'drafts'} label={'I have help'}>
-							<ReactComp/>
+							<ReactComp />
 						</Menu>
 					</Protected>
 					{/* <Flex bottom/> */}
@@ -166,5 +164,5 @@ export default App
 
 // if (process.env.NODE_ENV !== 'production') {
 // 	const { whyDidYouUpdate } = require('why-did-you-update')
-// 	whyDidYouUpdate(React)
+// 	whyDidYouUpdate(React, { groupByComponent: true, collapseComponentGroups: true })
 // }

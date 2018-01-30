@@ -1,6 +1,6 @@
 {
   "name": "odeum-code-lite",
-  "version": "0.1.2",
+  "version": "0.2.15",
   "private": false,
   "description": "A scaled down ODEUM Code getting-started quickly framework",
   "author": "Christian Broberg",
@@ -19,7 +19,7 @@
     "javascript"
   ],
   "dependencies": {
-    "odeum-ui": "^0.1.43",
+    "odeum-ui": "^0.1.44",
     "polished": "^1.9.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",

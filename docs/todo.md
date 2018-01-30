@@ -17,6 +17,18 @@
 
 <!-- /TOC -->
 
+## Performance
+- [ ] Re-renders
+	- [x] Header
+	- [x] Footer
+	- [ ] Icon from odeum-ui
+		- needs more than PureComponent
+	- [x] MenuItem
+	- [ ] QuickNav
+	- [ ] Routes & ThemeProvider
+		- These might not be doable as it is internal to react-router / styled-components
+	- [ ] MenuPanel
+
 ## Framework
 - [ ] Update Demo Theme Tab Colors
 - [ ] Store theme on localStorage
