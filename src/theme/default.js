@@ -2,10 +2,10 @@ import ODEUM_Logo from 'theme/logo.svg'
 
 const theme = {
 	app: {
-		gridArea: 
-		'"header header"' 
-		+ '"menupanel workspace"' 
-		+ '"footer footer"',
+		gridArea:
+			'"header header"'
+			+ '"menupanel workspace"'
+			+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr',
 		width: '100vw',
@@ -54,7 +54,7 @@ const theme = {
 			unselected: '#E3E5E5',
 			color: '#FFF'
 		},
-		menu:{
+		menu: {
 			background: '#216795',
 			unselected: '#E3E5E5',
 			color: '#216795'

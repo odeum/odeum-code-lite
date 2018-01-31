@@ -2,10 +2,10 @@ import eplanLogo from 'theme/eplanTheme_logo.svg'
 
 const eplanTheme = {
 	app: {
-		gridArea: 
-		'"header header"' 
-		+ '"menupanel workspace"' 
-		+ '"footer footer"',
+		gridArea:
+			'"header header"'
+			+ '"menupanel workspace"'
+			+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
@@ -36,7 +36,7 @@ const eplanTheme = {
 	},
 
 	tab: {
-		background: '#F39C12',
+		activeColor: '#fff',
 		color: '#000',
 		selected: '#F39C12',
 		hover: '#FFA726',
@@ -52,7 +52,7 @@ const eplanTheme = {
 			color: '#F7F7F7',
 			unselected: '#E3E5E5',
 		},
-		menu:{
+		menu: {
 			background: '#E98832',
 			color: '#F7F7F7',
 			unselected: '#E3E5E5',

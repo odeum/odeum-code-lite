@@ -2,10 +2,10 @@ import greenLogo from 'theme/logo_green.svg'
 
 const greenTheme = {
 	app: {
-		gridArea: 
-		'"header header"' 
-		+ '"menupanel workspace"' 
-		+ '"footer footer"',
+		gridArea:
+			'"header header"'
+			+ '"menupanel workspace"'
+			+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
@@ -37,8 +37,8 @@ const greenTheme = {
 	},
 
 	tab: {
-		background: '#A5D6A7',
-		color: '#fff',
+		color: '#000',
+		activeColor: '#fff',
 		selected: '#43A047',
 		hover: '#66BB6A',
 		unselected: '#A5D6A7'
@@ -55,7 +55,7 @@ const greenTheme = {
 			color: '#FFF',
 			unselected: '#E3E5E5',
 		},
-		menu:{
+		menu: {
 			background: '#1B5E20',
 			color: '#FFF',
 			unselected: '#E3E5E5',
@@ -63,7 +63,7 @@ const greenTheme = {
 		tab: {
 			selected: '#43A047',
 			unselected: '#000',
-			
+
 		}
 	},
 	logo: {
