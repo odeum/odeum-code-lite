@@ -1,18 +1,8 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { GetHelpID } from '../utils/HelpReducer'
 import { HelpPopUp } from './HelpStyles'
 
-export default class HelpPopup extends Component {
-	componentWillUpdate = (nextProps, nextState) => {
-		// if (nextProps.openHelp === true)
-		// document.addEventListener('click', this.onClickOutsise, false)
-		// else
-		// document.removeEventListener('click', this.onClickOutsise, false)
-	}
-
-	componentWillUnmount = () => {
-		// document.removeEventListener('click', this.onClickOutsise, false)
-	}
+export default class HelpPopup extends PureComponent {
 
 	onClickOutsise = (e) => {
 		e.stopPropagation()

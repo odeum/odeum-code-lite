@@ -11,7 +11,7 @@ class Header extends Component {
 		super(props)
 
 		this.state = {
-			quicknav: false,
+			quicknav: false
 		}
 	}
 	shouldComponentUpdate = (nextProps) => {

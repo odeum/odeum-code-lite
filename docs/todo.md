@@ -18,16 +18,20 @@
 <!-- /TOC -->
 
 ## Performance
+
 - [ ] Re-renders
 	- [x] Header
 	- [x] Footer
-	- [ ] Icon from odeum-ui
+	- [x] Icon from odeum-ui
 		- needs more than PureComponent
+		- Moved Icon inside Odeum-Code-lite
+			-Temporary
+			-Fixed the rerendering, will be moved back to odeum-ui
 	- [x] MenuItem
-	- [ ] QuickNav
+	- [x] QuickNav
 	- [ ] Routes & ThemeProvider
 		- These might not be doable as it is internal to react-router / styled-components
-	- [ ] MenuPanel
+	- [x] MenuPanel
 
 ## Framework
 - [ ] Update Demo Theme Tab Colors
