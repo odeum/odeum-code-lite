@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { HeaderDiv } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
@@ -6,31 +6,27 @@ import { ScreenSizes } from '../../theme/media'
 import theme from '../../theme/default'
 
 
-class Header extends PureComponent {
+class Header extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
 			quicknav: false,
-			logo: this.props.logo
 		}
 	}
-
+	shouldComponentUpdate = (nextProps) => {
+		if (nextProps.logo.default !== this.props.logo.default) {
+			return true
+		}
+		else
+			return false
+	}
 	quickNav = () => {
 		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
-		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
-	}
-	changeLogo = (logo) => {
-		this.setState({ logo: logo.default })
 	}
 	componentWillMount = () => {
 		this.quickNav()
 		window.addEventListener('resize', this.quickNav)
-	}
-	componentWillUpdate = (nextProps, nextState) => {
-		var nextLogo = nextProps.logo.default
-		if (nextLogo !== undefined && this.state.logo !== nextLogo)
-			this.quickNav(nextProps.logo)
 	}
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.quickNav)
@@ -45,7 +41,7 @@ class Header extends PureComponent {
 
 	renderLogo = () => (
 		<LogoDiv to={'/'}>
-			<LogoImg src={this.state.logo} />
+			<LogoImg src={this.props.logo.default} />
 		</LogoDiv>)
 
 
