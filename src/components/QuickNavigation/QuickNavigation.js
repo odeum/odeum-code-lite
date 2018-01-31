@@ -7,7 +7,7 @@ import {
 import Tab from '../Tabs/Tab'
 import Menu from '../Menu/Menu'
 import { convertLabelToRoute } from '../utils/Functions'
-import Icon from '../utils/Icon/Icon'
+import { Icon } from 'odeum-ui'
 import HeaderButton from './HeaderButton'
 import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'

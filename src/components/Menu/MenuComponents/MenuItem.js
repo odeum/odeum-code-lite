@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { IconDiv, ArrowIconDiv, Link, MenuText } from '../MenuStyles'
 import PropTypes from 'prop-types'
-import Icon  from '../../utils/Icon/Icon'
+import { Icon } from 'odeum-ui'
 import { SetHelpID } from '../../utils/HelpReducer'
 
 class MenuItem extends PureComponent {

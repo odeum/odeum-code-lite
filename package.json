@@ -19,7 +19,7 @@
     "javascript"
   ],
   "dependencies": {
-    "odeum-ui": "^0.1.44",
+    "odeum-ui": "^0.1.45",
     "polished": "^1.9.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",

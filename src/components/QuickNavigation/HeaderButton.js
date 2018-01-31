@@ -1,5 +1,5 @@
 import { RoundButton } from './QuickNavigationStyles'
-import Icon from '../utils/Icon/Icon'
+import { Icon } from 'odeum-ui'
 import React from 'react'
 
 const HeaderButton = ({ icon, onClick }) => {
