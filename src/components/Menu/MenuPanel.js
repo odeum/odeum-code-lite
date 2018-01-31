@@ -28,6 +28,7 @@ class MenuPanel extends Component {
 		this.updateWindowSize()
 		window.addEventListener('resize', this.updateWindowSize)
 	}
+	
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.updateWindowSize)
 	}
@@ -112,7 +113,7 @@ class MenuPanel extends Component {
 				if (this.props.isLoggedIn !== false) {
 					var childs = React.Children.toArray(child.props.children)
 					return childs.map((child, proti) => {
-						if (child.type === Menu || child.type === Page) {	
+						if (child.type === Menu || child.type === Page) {
 							return <Route key={proti + i} path={this.route(child)} exact={child.props.exact ? child.props.exact : isExact(this.route(child))} route={this.route(child)} component={this.renderChild(child, i + proti)} />
 						}
 						else return null
@@ -132,11 +133,10 @@ class MenuPanel extends Component {
 				if (this.props.isLoggedIn !== false) {
 					const childs = React.Children.toArray(child.props.children)
 					childs.forEach((protchild, protindex) => {
-						if (protchild.props.bottom && !protchild.props.top)
-						{
+						if (protchild.props.bottom && !protchild.props.top) {
 							if (protchild.type !== Menu && protchild !== Page)
 								BottomItems.push(protchild)
-							else 
+							else
 								BottomItems.push(this.renderMenuItem(protchild, index + protindex))
 						}
 					})
@@ -146,9 +146,9 @@ class MenuPanel extends Component {
 				if (child.props.bottom && !child.props.top)
 					if (child.type !== Menu && child.type !== Page)
 						BottomItems.push(child)
-					else 
+					else
 						BottomItems.push(this.renderMenuItem(child, index))
-					
+
 			}
 		})
 		return BottomItems
@@ -164,7 +164,7 @@ class MenuPanel extends Component {
 						if (!protchild.props.bottom && protchild.props.top)
 							if (protchild.type !== Menu && protchild !== Page)
 								TopItems.push(protchild)
-							else 
+							else
 								TopItems.push(this.renderMenuItem(protchild, index + protindex))
 
 					})
@@ -222,10 +222,10 @@ class MenuPanel extends Component {
 				</MenuDiv> : <QuickNavigation menus={children} loggedIn={this.props.isLoggedIn !== undefined ? this.props.isLoggedIn : true} />}
 			<Switch>
 				{this.renderRoutes(children)}
-				<Route path={'*'} 
-					render={this.props.login === true ? 
-						(this.props.isLoggedIn === true ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />) 
-						: () => <NotFound/>} />
+				<Route path={'*'}
+					render={this.props.login === true ?
+						(this.props.isLoggedIn === true ? () => <NotFound /> : () => <Redirect to={this.props.redirectTo} />)
+						: () => <NotFound />} />
 			</Switch>
 		</React.Fragment>
 	}
