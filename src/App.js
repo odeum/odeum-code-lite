@@ -101,8 +101,8 @@ class App extends Component {
 									<Link to={'/404'}>404</Link>
 									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
 									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
-									<Link to={'/form'}>Form</Link>
-									<Link to={'/form/test2'}>Form Tab 2</Link>
+									<Link to={'/top-menu-item'}>Top Menu Item</Link>
+									<Link to={'/menu-with-2-tabs/tab2'}>Menu with Tabs - Tab 2</Link>
 								</div>
 							</Tab>
 						</Menu>

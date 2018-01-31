@@ -34,13 +34,13 @@
 	- [x] MenuPanel
 
 ## Framework
-- [ ] Update Demo Theme Tab Colors
+- [x] Update Demo Theme Tab Colors
 - [ ] Store theme on localStorage
 - [ ] Load Theme from localStorage and the preffered one
 - [ ] Store isLoggedin state as a cookie
 	- [ ] Expire after 15 mins
 	- [ ] Refresh every 10 mins		
-- [ ] Set Global VW/VH
+- [x] Set Global VW/VH
 - [x] MenuPanel Check for Menu subchild
 - [x] If not Menu don't render
 - [x] error coding, use strict subchildren
