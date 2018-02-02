@@ -12,8 +12,8 @@ import HeaderButton from './HeaderButton'
 import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
-import Page from 'components/Menu/Page'
-import SwipeEvents from 'components/QuickNavigation/SwipeEvents'
+import Page from '../Menu/Page'
+import SwipeEvents from './SwipeEvents'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -31,19 +31,6 @@ export default class QuickNavigation extends Component {
 			}
 		}
 	}
-	// toggleFullScreen = () => {
-	// 	var doc = window.document
-	// 	var docEl = doc.getElementById('root')
-	// 	var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-	// 	// var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-	// 	if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-	// 		requestFullScreen.call(docEl)
-	// 	}
-	// 	// else {
-	// 	//   cancelFullScreen.call(doc);
-	// 	// }
-	// }
 
 	componentWillMount = () => {
 	}

@@ -4,7 +4,6 @@ import { StyledFooter, Link } from './FooterStyles'
 import Help from '../Help/Help'
 import { ScreenSizes } from '../../theme/media'
 
-
 class Footer extends PureComponent {
 	constructor(props) {
 		super(props)
@@ -15,7 +14,6 @@ class Footer extends PureComponent {
 	}
 
 	componentWillMount() {
-
 		this.smallHelp()
 		window.addEventListener('resize', this.smallHelp)
 	}

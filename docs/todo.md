@@ -18,7 +18,8 @@
 <!-- /TOC -->
 
 ## Performance
-
+- Tab
+	-refactor activate() to shouldComponentUpdate()
 - [ ] Re-renders
 	- [x] Header
 	- [x] Footer

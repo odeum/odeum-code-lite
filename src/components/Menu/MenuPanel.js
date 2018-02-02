@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import MenuItem from './MenuComponents/MenuItem'
 import MenuDiv from "./MenuComponents/MenuDiv"
-// import { MenuContainer } from './MenuStyles'
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
 import { convertLabelToRoute, isExact } from '../utils/Functions'
@@ -11,7 +10,7 @@ import Tab from '../Tabs/Tab'
 import { Redirect } from 'react-router-dom'
 import Protected from '../Login/Protected'
 import Menu from './Menu'
-import Page from 'components/Menu/Page'
+import Page from './Page'
 
 class MenuPanel extends Component {
 
@@ -28,7 +27,7 @@ class MenuPanel extends Component {
 		this.updateWindowSize()
 		window.addEventListener('resize', this.updateWindowSize)
 	}
-	
+
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.updateWindowSize)
 	}
@@ -83,7 +82,6 @@ class MenuPanel extends Component {
 		this.setState({ quicknav: bool })
 	)
 	setActiveMenu = (label, id) => {
-		// console.log('Setting as active', label, id)
 		this.setState({ activeMenu: label })
 	}
 
@@ -92,7 +90,6 @@ class MenuPanel extends Component {
 	//#region Rendering
 
 	renderMenuItem = (child, index) => {
-		// console.log(child.props.label, index)
 		return <MenuItem key={index}
 			MenuID={index}
 			helpID={child.props.helpID}
