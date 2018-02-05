@@ -6,6 +6,13 @@ export const Bold = styled.b`
 	font-weight: 600;
 `
 export const StyledFooter = styled.div`
+
+	/* IE Support */
+	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'column')};
+	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'row')};
+	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'footer', 'column'); return x > 1 ? x : 'none'} };
+	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'footer'); return y > 1 ? y : 'none'}};
+	
 	grid-area: footer;
 	display: flex;
 	flex-flow: row nowrap;
@@ -27,14 +34,11 @@ export const StyledFooter = styled.div`
 	${media.desktop`height:40px;`}
 	${media.tablet`height:30px;`}
 	${media.phone`height:0px;`}
-
-	/* IE Support */
-	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'column')};
-	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'row')};
-	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'footer', 'column'); return x > 1 ? x : 'none'} };
-	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'footer'); return y > 1 ? y : 'none'}};
 `
-
+/* ${media.giant`height:40px;`}
+	${media.desktop`height:40px;`}
+	${media.tablet`height:30px;`}
+	${media.phone`height:0px;`} */
 export const Link = styled.a`
 	text-decoration: none;
 	align-items: center;

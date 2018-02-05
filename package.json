@@ -29,12 +29,15 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
     "redux": "^3.7.2",
-    "styled-components": "^3.1.4",
+    "styled-components": "3.0.0",
     "styled-theming": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-ssl": "HTTPS=true react-scripts start",
     "build": "react-scripts build && cp ./build/index.html ./build/200.html",
+    "bs":"yarn build && serve -s ./build",
+    "bssl":"yarn build && serve -s -ssl ./build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku": "git push heroku master && heroku ps:scale web=1 && heroku open"

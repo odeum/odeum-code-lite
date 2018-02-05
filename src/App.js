@@ -5,7 +5,7 @@ import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
-import Page from 'components/Menu/Page'
+// import Page from 'components/Menu/Page'
 import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
@@ -31,7 +31,7 @@ class App extends Component {
 
 		this.state = {
 			theme: theme,
-			loggedIn: true,
+			loggedIn: false,
 
 		}
 
@@ -71,19 +71,19 @@ class App extends Component {
 					{/* {Login(this.state.loggedIn, this.login)} */}
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 
-					<Page route={'/'} helpID={'root'}>
+					<Menu route={'/'} helpID={'root'}>
 						<Flex />
-					</Page>
+					</Menu>
 					{/* <Flex top/> */}
-					<Page route={'/top-menu-item'} label={'Top Menu Route'} top>
+					<Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
 						<SimpleDiv />
-					</Page>
+					</Menu>
 
-					<Page route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
-					</Page>
+					</Menu>
 
 
 					<Protected>
@@ -106,11 +106,11 @@ class App extends Component {
 								</div>
 							</Tab>
 						</Menu>
-						<Page route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
+						<Menu route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
 							<Tabb />
 							<ReactComp />
 							<SimpleDiv />
-						</Page>
+						</Menu>
 						<Menu label={'Menu with 2 tabs'} >
 							<Tab route={'/tab1'} label={'Test1'} helpID={'/Form'}>
 								<SimpleDiv />
