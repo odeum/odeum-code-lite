@@ -31,7 +31,7 @@ class App extends Component {
 
 		this.state = {
 			theme: theme,
-			loggedIn: false,
+			loggedIn: true,
 
 		}
 
@@ -112,7 +112,7 @@ class App extends Component {
 							<SimpleDiv />
 						</Page>
 						<Menu label={'Menu with 2 tabs'} >
-							<Tab route={''} label={'Test1'} helpID={'/Form'}>
+							<Tab route={'/tab1'} label={'Test1'} helpID={'/Form'}>
 								<SimpleDiv />
 								<Flex />
 							</Tab>

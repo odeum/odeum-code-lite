@@ -18,9 +18,25 @@
 <!-- /TOC -->
 
 ## Performance
-- Tab
-	-refactor activate() to shouldComponentUpdate()
-- [ ] Re-renders
+- [ ] Move QuickNav functions to utilities and call them in each component (windowEventListener on size)
+- [ ] Refactoring - The "good code" way
+	- [ ] Break MenuPanel
+		- [ ] Rename MenuPanel to *TheAreaBetweenHeaderAndFooter* 
+			- *insert a friendly name*
+		- [ ] Rename MenuDiv to BlueMenuPanel
+		- [ ] Create a MenuRouteGenerator.js and move menu routing creation here
+		- [ ] Create MenuItemGenerator.js and move MenuItem creation here
+		- [ ] Rename children to friendlier names with vars
+			- if it affects performance not doable
+	- [ ] Menu.js
+		- [ ] Break it in multiple Components
+	- [ ] Tabs
+		- [ ] 2 SetActive/Activate functions, rename or use the hammer and break them
+- [x] Tab
+	- [x] ~~refactor activate() to shouldComponentUpdate()~~
+		- Completely removed activate() - not related to activation, related to help 
+		- Tabs do not rerender
+- [x] Re-renders
 	- [x] Header
 	- [x] Footer
 	- [x] Icon from odeum-ui
@@ -30,11 +46,19 @@
 			-Fixed the rerendering, will be moved back to odeum-ui
 	- [x] MenuItem
 	- [x] QuickNav
-	- [ ] Routes & ThemeProvider
-		- These might not be doable as it is internal to react-router / styled-components
+	- [x] ~~Routes & ThemeProvider~~
+		- These are not doable as it is internal to react-router / styled-components
+		- and forcing a route to not re-render might lead to cases where the URL Bar shows a changed address but the page is the same
 	- [x] MenuPanel
 
 ## Framework
+- [ ] Use withTheme() decorator from 'styled-components' for Icon from 'odeum-ui' and do not import theme directly  
+	- [ ] Tabs
+	- [ ] MenuItems
+	- [ ] QuickNav MenuItems
+	- [ ] QuickNav Button
+- [ ] Tabs Help functions were handled by Menu.js
+	- Functions removed from Menu.js, need to be readded inside Tabs inside setTabActive()
 - [x] Update Demo Theme Tab Colors
 - [ ] Store theme on localStorage
 - [ ] Load Theme from localStorage and the preffered one
