@@ -44,12 +44,10 @@ export const Link = styled(RouterLink) `
 `
 
 export const SceneDiv = styled.div`
-	/* IE11 Support */
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'row')};
 	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'workspace', 'column'); return x > 1 ? x : 'none' }};
 	-ms-grid-row-span: ${p => { var y = spanRowCalc(p.theme.app.gridArea, 'workspace'); return y > 1 ? y : 'none' }};
-	
 	grid-area:workspace;
 	display: flex;
 	flex-flow: column nowrap;

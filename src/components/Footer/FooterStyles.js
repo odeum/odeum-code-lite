@@ -7,7 +7,6 @@ export const Bold = styled.b`
 `
 export const StyledFooter = styled.div`
 
-	/* IE Support */
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'footer', 'row')};
 	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'footer', 'column'); return x > 1 ? x : 'none'} };
@@ -18,7 +17,6 @@ export const StyledFooter = styled.div`
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: center;
-	/* width: 100vw; */
 	height:40px;
 	background: ${props => props.theme.footer.background};
 	color: ${props => props.theme.footer.color};
@@ -35,10 +33,7 @@ export const StyledFooter = styled.div`
 	${media.tablet`height:30px;`}
 	${media.phone`height:0px;`}
 `
-/* ${media.giant`height:40px;`}
-	${media.desktop`height:40px;`}
-	${media.tablet`height:30px;`}
-	${media.phone`height:0px;`} */
+
 export const Link = styled.a`
 	text-decoration: none;
 	align-items: center;
