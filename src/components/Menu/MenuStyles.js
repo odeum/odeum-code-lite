@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { NavLink as RouterLink } from 'react-router-dom'
 import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
-export const MenuDiv = styled.div`
+export const BlueMenuContainer = styled.div`
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
 	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none'}};

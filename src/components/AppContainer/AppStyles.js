@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const defaultArea = '"header header" "menupanel workspace" "footer footer"'
 
-export const AppDiv = styled.div`
+export const RootContainer = styled.div`
 	display: -ms-grid;
 	-ms-grid-columns: ${({ theme }) => theme.app ?  theme.app.gridTemplateColumns ? theme.app.gridTemplateColumns : "max-content 1fr" : "max-content 1fr" };
 	-ms-grid-rows: ${({ theme }) => theme.app ?  theme.app.gridTemplateRows ? theme.app.gridTemplateRows : 'auto 1fr auto' : 'auto 1fr auto'};

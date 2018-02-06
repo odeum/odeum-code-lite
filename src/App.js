@@ -9,7 +9,7 @@ import Footer from 'components/Footer/Footer'
 import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-import /* Login, */ { LoginWithComponent } from 'components/Login/Login'
+import /* Login, */ { loginCustomForm } from 'components/Login/Login'
 /* Demo */
 
 import ReactComp from 'demos/ReactComp'
@@ -67,7 +67,7 @@ class App extends Component {
 					isLoggedIn={this.state.loggedIn}
 					arrows={false}
 				>
-					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
+					{loginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
 					{/* {Login(this.state.loggedIn, this.login)} */}
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 

@@ -4,16 +4,13 @@ import { HelpPopUp } from './HelpStyles'
 
 export default class HelpPopup extends PureComponent {
 
-	onClickOutsise = (e) => {
+	onClickOutside = (e) => {
 		e.stopPropagation()
-		// console.log('Clicked Outside')
-		// console.log(e.target)
 		if (this.props.openHelp) {
 			if (this.node) {
 				if (!this.node.contains(e.target)) {
-					// this.setState({ openHelp: false })
 					this.props.handleHelp()
-					document.removeEventListener('click', this.onClickOutsise, false)
+					document.removeEventListener('click', this.onClickOutside, false)
 				}
 			}
 		}

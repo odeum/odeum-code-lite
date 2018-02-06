@@ -3,7 +3,7 @@ import media from '../../theme/media'
 import { Link as RouterLink } from 'react-router-dom'
 import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
-export const HeaderDiv = styled.div`
+export const HeaderContainer = styled.div`
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'header', 'row')};
 	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'header', 'column'); return x > 1 ? x : 'none' }};
@@ -15,7 +15,7 @@ export const HeaderDiv = styled.div`
 	flex-flow: row nowrap;
 	height: ${props => props.theme.header.height ? props.theme.header.height : '80px'};
 	align-items: center;
-	justify-content: ${props => props.quicknav && 'center'};
+	justify-content: ${props => props.SmallScreen ? 'center' : ''};
 	background-color: ${props => props.theme.header.background};
 	color: ${props => props.theme.header.color};
 	${media.giant`height:80px;`}

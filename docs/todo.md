@@ -16,6 +16,11 @@
 		- [1.1.3. Advanced](#113-advanced)
 
 <!-- /TOC -->
+## Save the User
+- [ ] Fallback theme
+	- if the theme provided by the user is missing keys, provide them from the default theme and console.warn in development that the theme provided is incomplete
+- [ ] remove static theme fallbacks (the ``` #fff```)
+	- ``` background: ${p => p.theme? p.theme.background : '#fff' } ```
 
 ## Performance
 - [ ] Move QuickNav functions to utilities and call them in each component (windowEventListener on size)
@@ -23,15 +28,14 @@
 	- [ ] Break MenuPanel
 		- [ ] Rename MenuPanel to *TheAreaBetweenHeaderAndFooter* 
 			- *insert a friendly name*
-		- [ ] Rename MenuDiv to BlueMenuPanel
-		- [ ] Create a MenuRouteGenerator.js and move menu routing creation here
-		- [ ] Create MenuItemGenerator.js and move MenuItem creation here
+		- [x] Rename MenuDiv to BlueMenuPanel
 		- [ ] Rename children to friendlier names with vars
 			- if it affects performance not doable
 	- [ ] Menu.js
 		- [ ] Break it in multiple Components
-	- [ ] Tabs
-		- [ ] 2 SetActive/Activate functions, rename or use the hammer and break them
+	- [x] Tabs
+		- [x] 2 SetActive/Activate functions, rename or use the hammer and break them
+			- *used the **HAMMER***
 - [x] Tab
 	- [x] ~~refactor activate() to shouldComponentUpdate()~~
 		- Completely removed activate() - not related to activation, related to help 

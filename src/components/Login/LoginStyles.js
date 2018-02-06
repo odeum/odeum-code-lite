@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { transparentize, darken, rgba } from 'polished'
 
-export const LoginDiv = styled.div`
+export const LoginContainer = styled.div`
 	width: 100%;
 	display: flex;
 	flex-flow: column;	
