@@ -13,6 +13,4 @@ export const RootContainer = styled.div`
 	height: ${({ theme }) => theme.app ? theme.app.height ? theme.app.height : '100vh' : '100vh'};
 	width:  ${({ theme }) => theme.app ? theme.app.width ? theme.app.width : '100vw' : '100vw'};
 	background-color: ${({ theme }) => theme.workspace.background};	
-
-
 `

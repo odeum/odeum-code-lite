@@ -9,7 +9,7 @@ import Footer from 'components/Footer/Footer'
 import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-import /* Login, */ { loginCustomForm } from 'components/Login/Login'
+import /* Login, */ { LoginCustomForm } from 'components/Login/Login'
 /* Demo */
 
 import ReactComp from 'demos/ReactComp'
@@ -67,17 +67,17 @@ class App extends Component {
 					isLoggedIn={this.state.loggedIn}
 					arrows={false}
 				>
-					{loginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
-					{/* {Login(this.state.loggedIn, this.login)} */}
+					{LoginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}}
+					{/* 	{Login(this.state.loggedIn, this.login)} */}
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 
 					<Menu route={'/'} helpID={'root'}>
 						<Flex />
 					</Menu>
 					{/* <Flex top/> */}
-					<Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
+					{/* <Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
 						<SimpleDiv />
-					</Menu>
+					</Menu> */}
 
 					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
@@ -139,7 +139,7 @@ class App extends Component {
 					</Protected>
 					{/* <Flex bottom/> */}
 				</MenuPanel>
-				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
+				<Footer help={true} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}
