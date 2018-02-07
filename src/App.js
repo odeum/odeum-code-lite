@@ -66,7 +66,7 @@ class App extends Component {
 					redirectTo={'/login'} 
 					isLoggedIn={this.state.loggedIn} 
 					arrows={false}
-					>
+				>
 					
 					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
 					{/* {Login(this.state.loggedIn, this.login)} */}
@@ -141,7 +141,7 @@ class App extends Component {
 					</Protected>
 					{/* <Flex bottom/> */}
 				</MenuPanel>
-				<Footer help={false} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
+				<Footer help={true} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
 			</AppContainer>
 		)
 	}

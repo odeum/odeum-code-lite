@@ -56,7 +56,7 @@ Footer.propTypes = {
 var date = new Date()
 
 Footer.defaultProps = {
-	label: ()=><div>
+	label: () => <div>
 		<b>ODEUM Code Lite </b> v1.0.0 © Copyright {' '}{date.getFullYear()}
 	</div>,
 	labelLink: '/',
