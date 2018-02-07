@@ -1,47 +1,43 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { StyledFooter, Link } from './FooterStyles'
 import Help from '../Help/Help'
 import { ScreenSizes } from '../../theme/media'
-class Footer extends Component {
+
+class Footer extends PureComponent {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			small: false
+			SmallScreen: false
 		}
 	}
 
 	componentWillMount() {
-
-		this.smallHelp()
-		window.addEventListener('resize', this.smallHelp)
+		this.OnSmallScreen()
+		window.addEventListener('resize', this.OnSmallScreen)
 	}
 
 	componentWillUnmount = () => {
-		window.removeEventListener('resize', this.smallHelp)
+		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 
-	smallHelp = () => {
-		if (window.innerWidth < ScreenSizes.tablet) {
-			this.setState({ small: true })
-		}
-		else if (window.innerWidth >= ScreenSizes.tablet) {
-			this.setState({ small: false })
-		}
+	OnSmallScreen = () => {
+		this.setState({ SmallScreen: window.innerWidth < ScreenSizes.tablet ? true : false })
 	}
 
 	render() {
 		const { help, labelLink, label, target, helpID, helpLabel } = this.props
+		const { SmallScreen } = this.state
 		return (
-			!this.state.small ? <StyledFooter>
+			!SmallScreen ? <StyledFooter>
 				<Link href={labelLink ? labelLink : this.defaultProps.labelLink} target={target}>
 					<div style={{ display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center', alignItems: 'center' }}>
-						{label ? <this.props.label /> : <Footer.defaultProps.label/>}
+						{label ? <this.props.label /> : <Footer.defaultProps.label />}
 						{/* &nbsp;| Debug: {this.props.helpID} */}
 					</div>
 				</Link>
-				{help ?	<Help small={this.state.small} helpID={helpID} helpLabel={helpLabel} /> : null}
+				{help ? <Help small={SmallScreen} helpID={helpID} helpLabel={helpLabel} /> : null}
 			</StyledFooter> : null
 		)
 	}

@@ -62,7 +62,7 @@ class Help extends Component {
 			})
 	}
 
-	componentWillMount() { //delete this
+	componentWillMount() {
 		this.setState({ helpObj: obj })
 	}
 
@@ -70,13 +70,13 @@ class Help extends Component {
 		if (this.state.openHelp) {
 			if (!this.node.contains(e.target)) {
 				this.setState({ openHelp: false })
-				document.removeEventListener('click', this.onClickOutsise, false)
+				document.removeEventListener('click', this.onClickOutside, false)
 			}
 		}
 	}
 
 	openHelp = () => {
-		document.addEventListener('click', this.onClickOutsise, false)
+		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
 	}
 

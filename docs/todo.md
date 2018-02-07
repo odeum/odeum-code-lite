@@ -16,15 +16,60 @@
 		- [1.1.3. Advanced](#113-advanced)
 
 <!-- /TOC -->
+## Save the User
+- [ ] Fallback theme
+	- if the theme provided by the user is missing keys, provide them from the default theme and console.warn in development that the theme provided is incomplete
+- [ ] remove static theme fallbacks (the ``` #fff```)
+	- ``` background: ${p => p.theme? p.theme.background : '#fff' } ```
+
+## Performance
+- [ ] Move QuickNav functions to utilities and call them in each component (windowEventListener on size)
+- [ ] Refactoring - The "good code" way
+	- [ ] Break MenuPanel
+		- [ ] Rename MenuPanel to *TheAreaBetweenHeaderAndFooter* 
+			- *insert a friendly name*
+		- [x] Rename MenuDiv to BlueMenuPanel
+		- [ ] Rename children to friendlier names with vars
+			- if it affects performance not doable
+	- [ ] Menu.js
+		- [ ] Break it in multiple Components
+	- [x] Tabs
+		- [x] 2 SetActive/Activate functions, rename or use the hammer and break them
+			- *used the **HAMMER***
+- [x] Tab
+	- [x] ~~refactor activate() to shouldComponentUpdate()~~
+		- Completely removed activate() - not related to activation, related to help 
+		- Tabs do not rerender
+- [x] Re-renders
+	- [x] Header
+	- [x] Footer
+	- [x] Icon from odeum-ui
+		- needs more than PureComponent
+		- Moved Icon inside Odeum-Code-lite
+			-Temporary
+			-Fixed the rerendering, will be moved back to odeum-ui
+	- [x] MenuItem
+	- [x] QuickNav
+	- [x] ~~Routes & ThemeProvider~~
+		- These are not doable as it is internal to react-router / styled-components
+		- and forcing a route to not re-render might lead to cases where the URL Bar shows a changed address but the page is the same
+	- [x] MenuPanel
 
 ## Framework
-- [ ] Update Demo Theme Tab Colors
+- [ ] Use withTheme() decorator from 'styled-components' for Icon from 'odeum-ui' and do not import theme directly  
+	- [ ] Tabs
+	- [ ] MenuItems
+	- [ ] QuickNav MenuItems
+	- [ ] QuickNav Button
+- [ ] Tabs Help functions were handled by Menu.js
+	- Functions removed from Menu.js, need to be readded inside Tabs inside setTabActive()
+- [x] Update Demo Theme Tab Colors
 - [ ] Store theme on localStorage
 - [ ] Load Theme from localStorage and the preffered one
 - [ ] Store isLoggedin state as a cookie
 	- [ ] Expire after 15 mins
 	- [ ] Refresh every 10 mins		
-- [ ] Set Global VW/VH
+- [x] Set Global VW/VH
 - [x] MenuPanel Check for Menu subchild
 - [x] If not Menu don't render
 - [x] error coding, use strict subchildren

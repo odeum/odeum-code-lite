@@ -12,8 +12,8 @@ import HeaderButton from './HeaderButton'
 import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
-import Page from 'components/Menu/Page'
-import SwipeEvents from 'components/QuickNavigation/SwipeEvents';
+import Page from '../Menu/Page'
+import SwipeEvents from './SwipeEvents'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -30,20 +30,6 @@ export default class QuickNavigation extends Component {
 				menu: 0
 			}
 		}
-	}
-	toggleFullScreen = () => {
-		var doc = window.document;
-		var docEl = doc.getElementById('root');
-
-		var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-		// var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-		if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-			requestFullScreen.call(docEl);
-		}
-		// else {
-		//   cancelFullScreen.call(doc);
-		// }
 	}
 
 	componentWillMount = () => {
@@ -113,10 +99,10 @@ export default class QuickNavigation extends Component {
 		}
 		// console.log(this.props.loggedIn, menu.props.label)
 		if (this.props.loggedIn && menu.props.route === '/login') // Get the route to login as a prop from the redirectTo prop from menupanel
-			{
-				// console.log(this.props.loggedIn, menu)
-				return null //Temporary
-			}
+		{
+			// console.log(this.props.loggedIn, menu)
+			return null //Temporary
+		}
 		if (route === '' || route === '/') {
 			return <MenuItem key={indexGen(index)}
 				index={indexGen(index)}

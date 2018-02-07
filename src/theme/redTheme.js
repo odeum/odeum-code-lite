@@ -2,10 +2,10 @@ import redLogo from 'theme/logo_red.svg'
 
 const theme = {
 	app: {
-		gridArea: 
-		'"header header"' 
-		+ '"menupanel workspace"' 
-		+ '"footer footer"',
+		gridArea:
+			'"header header"'
+			+ '"menupanel workspace"'
+			+ '"footer footer"',
 		gridTemplateRows: 'auto 1fr auto',
 		gridTemplateColumns: 'auto 1fr'
 	},
@@ -37,8 +37,8 @@ const theme = {
 	},
 
 	tab: {
-		background: '#C4682C',
-		color: '#fff',
+		color: '#000',
+		activeColor: '#FFF',
 		selected: '#EF5350',
 		hover: '#F44336',
 		unselected: '#FFCDD2'
@@ -63,11 +63,11 @@ const theme = {
 			unselected: '#000'
 		}
 	},
-	 logo: {
+	logo: {
 		margin: '5px',
 		height: '35px',
 		default: redLogo
-	 }
+	}
 }
 
 export default theme

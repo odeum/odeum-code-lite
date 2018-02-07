@@ -5,11 +5,11 @@ import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
-import Page from 'components/Menu/Page'
+// import Page from 'components/Menu/Page'
 import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-import /* Login, */ { LoginWithComponent } from 'components/Login/Login'
+import /* Login, */ { loginCustomForm } from 'components/Login/Login'
 /* Demo */
 
 import ReactComp from 'demos/ReactComp'
@@ -58,36 +58,34 @@ class App extends Component {
 	render() {
 		return (
 			<AppContainer theme={this.state.theme}>
-				<Header logo={this.state.theme.logo} render={this.renderHeader}/>
+				<Header logo={this.state.theme.logo} render={this.renderHeader} />
 				{/* <Flex/> */}
 				{/* </Header> */}
-				<MenuPanel 
-					login={true} 
-					redirectTo={'/login'} 
-					isLoggedIn={this.state.loggedIn} 
+				<MenuPanel
+					login={true}
+					redirectTo={'/login'}
+					isLoggedIn={this.state.loggedIn}
 					arrows={false}
 				>
-					
-					{LoginWithComponent(this.state.loggedIn, () => <CustomLoginForm login={this.login}/>)}
+					{loginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
 					{/* {Login(this.state.loggedIn, this.login)} */}
-
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
-					
-					<Page route={'/'} helpID={'root'}>
+
+					<Menu route={'/'} helpID={'root'}>
 						<Flex />
-					</Page>
+					</Menu>
 					{/* <Flex top/> */}
-					<Page route={'/top-menu-item'} label={'Top Menu Route'} top>
-						<SimpleDiv/>
-					</Page>
-					
-					<Page route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+					<Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
+						<SimpleDiv />
+					</Menu>
+
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
-					</Page>
+					</Menu>
 
-					
+
 					<Protected>
 						<Menu label={'Theme'} icon={'opacity'}>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
@@ -103,18 +101,18 @@ class App extends Component {
 									<Link to={'/404'}>404</Link>
 									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
 									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
-									<Link to={'/form'}>Form</Link>
-									<Link to={'/form/test2'}>Form Tab 2</Link>
+									<Link to={'/top-menu-item'}>Top Menu Item</Link>
+									<Link to={'/menu-with-2-tabs/tab2'}>Menu with Tabs - Tab 2</Link>
 								</div>
 							</Tab>
-						</Menu>			
-						<Page route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
+						</Menu>
+						<Menu route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
 							<Tabb />
 							<ReactComp />
 							<SimpleDiv />
-						</Page>
+						</Menu>
 						<Menu label={'Menu with 2 tabs'} >
-							<Tab route={''} label={'Test1'} helpID={'/Form'}>
+							<Tab route={'/tab1'} label={'Test1'} helpID={'/Form'}>
 								<SimpleDiv />
 								<Flex />
 							</Tab>
@@ -136,7 +134,7 @@ class App extends Component {
 							</Tab>
 						</Menu>
 						<Menu icon={'drafts'} label={'I have help'}>
-							<ReactComp/>
+							<ReactComp />
 						</Menu>
 					</Protected>
 					{/* <Flex bottom/> */}
@@ -166,5 +164,5 @@ export default App
 
 // if (process.env.NODE_ENV !== 'production') {
 // 	const { whyDidYouUpdate } = require('why-did-you-update')
-// 	whyDidYouUpdate(React)
+// 	whyDidYouUpdate(React, { groupByComponent: true, collapseComponentGroups: true })
 // }

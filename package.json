@@ -1,6 +1,6 @@
 {
   "name": "odeum-code-lite",
-  "version": "0.1.2",
+  "version": "0.2.19",
   "private": false,
   "description": "A scaled down ODEUM Code getting-started quickly framework",
   "author": "Christian Broberg",
@@ -20,26 +20,32 @@
   ],
   "dependencies": {
     "apisauce": "^0.14.3",
-    "odeum-ui": "^0.1.43",
+    "odeum-ui": "^0.1.45",
     "polished": "^1.9.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7",
     "react-redux": "^5.0.6",
-    "react-render-visualizer": "^0.2.2",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0",
+    "react-scripts": "^1.1.0",
     "redux": "^3.7.2",
-    "styled-components": "^3.1.4",
+    "styled-components": "^3.1.6",
     "styled-theming": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-ssl": "HTTPS=true react-scripts start",
     "build": "react-scripts build && cp ./build/index.html ./build/200.html",
+    "bs": "yarn build && serve -s ./build",
+    "bssl": "yarn build && serve -s -ssl ./build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku": "git push heroku master && heroku ps:scale web=1 && heroku open",
+    "clean": "rm -rf ./build"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.5.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
     "why-did-you-update": "^0.1.0"
   }
