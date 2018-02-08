@@ -62,7 +62,7 @@ class Help extends Component {
 			})
 	}
 
-	componentWillMount() { //Delete when the API is implemented, only used to used a prepared object to test.
+	componentWillMount() { //Delete when the API is implemented, only used to consume a prepared object instead of connecting to the api that doesn't exist
 		this.setState({ helpObj: obj })
 	}
 
@@ -78,7 +78,7 @@ class Help extends Component {
 	openHelp = () => {
 		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
-	}
+	}	
 
 	render() {
 		return (
