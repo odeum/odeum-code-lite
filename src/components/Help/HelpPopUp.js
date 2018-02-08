@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp } from './HelpStyles'
+import { HelpPopUp, HelpOverlay } from './HelpStyles'
 
 export default class HelpPopup extends PureComponent {
 
@@ -19,14 +19,19 @@ export default class HelpPopup extends PureComponent {
 		this.node = node
 	}
 	render() {
+		const { helpObj } = this.props
 		const helpID = GetHelpID()
 		return this.props.openHelp ?
-			<HelpPopUp innerRef={this.setHelpPopUpRef}>
-				<h1>
-					{helpID}
-				</h1>
-				<p>Description</p>
-			</HelpPopUp>
+			<HelpOverlay>
+
+				<HelpPopUp innerRef={this.props.innerRef}>
+					<div style={{ display: 'flex', flexFlow: 'column' }}>
+						<h1>{helpID}</h1>
+						<h2>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h2>
+						<p>{helpObj ? helpObj.locale_content['en'].help_description : ''}</p>
+					</div>
+				</HelpPopUp>
+			</HelpOverlay>
 			: null
 
 

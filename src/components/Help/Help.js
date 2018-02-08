@@ -1,33 +1,42 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { HelpDiv, Bold, HelpIcon, HelpButton, HelpPopUp } from './HelpStyles'
+import { HelpDiv, Bold, HelpIcon, HelpButton } from './HelpStyles'
 import { GetHelpID } from '../utils/HelpReducer'
-import { create } from 'apisauce'
+// import { create } from 'apisauce'
+import HelpPopup from './HelpPopUp'
+import { GetHelpItem } from './HelpData'
 
-const api = create({
-	baseURL: `https://jsonplaceholder.typicode.com/`,
-})
-const obj = {
-	app_id: 1,
-	help_id: 1234,
-	locale_content: {
-		'en': {
-			help_title: 'This is the title of the help entry',
-			help_description: 'This is the description of the help entry',
-			help_content:
-				[
-					{ type: 'text', title: '', description: '' },
-					{ type: 'image', title: '', description: '', url: '' },
-					{ type: 'image', title: '', description: '', url: '' },
-					{ type: 'video', title: '', description: '', url: '' },
-					{ type: 'link', title: '', description: '', url: '' },
-					{ type: 'svg', title: '', description: '', url: '' },
-					{ type: 'pdf', title: '', description: '', url: '' },
-					{ type: 'document', title: '', description: '', url: '' },
-				]
-		}
-	}
-}
+// const api = create({
+// 	baseURL: `https://jsonplaceholder.typicode.com/`,
+// })
+
+/* 
+	Best practice is to split them in specific roles(Biggest advantage is debugging), so:
+	  - HelpData will contain the functions to speak with the server
+	  - Help will act as a controller/container 
+	  - HelpPopup will be a presentational/GUI related component
+*/
+// const obj = {
+// 	app_id: 1,
+// 	help_id: 1234,
+// 	locale_content: {
+// 		'en': {
+// 			help_title: 'This is the title of the help entry',
+// 			help_description: 'This is the description of the help entry',
+// 			help_content:
+// 				[
+// 					{ type: 'text', title: '', description: '' },
+// 					{ type: 'image', title: '', description: '', url: '' },
+// 					{ type: 'image', title: '', description: '', url: '' },
+// 					{ type: 'video', title: '', description: '', url: '' },
+// 					{ type: 'link', title: '', description: '', url: '' },
+// 					{ type: 'svg', title: '', description: '', url: '' },
+// 					{ type: 'pdf', title: '', description: '', url: '' },
+// 					{ type: 'document', title: '', description: '', url: '' },
+// 				]
+// 		}
+// 	}
+// }
 
 class Help extends Component {
 	constructor(props) {
@@ -41,37 +50,31 @@ class Help extends Component {
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
-
-	renderHelp = () => {
-		const { helpObj } = this.state
-		var helpID = GetHelpID()
-		//this.getHelpData(helpID)
-		return <HelpPopUp innerRef={this.setHelpPopUpRef}>
-			<div style={{ display: 'flex', flexFlow: 'column' }}>
-				<h1>{helpID}</h1>
-				<h2>{ helpObj ? helpObj.locale_content['en'].help_title : `Loading...` }</h2>
-				<p>{helpObj ? helpObj.locale_content['en'].help_description : '' }</p>
-			</div>
-		</HelpPopUp>
+	getHelpItem = async (helpID) => {
+		var data = await GetHelpItem(helpID) // async/await the stuff / or make a Promise
+		return data
 	}
+	
 
 	getHelpData = (helpID) => {
-		api.get('/photos/8')
-			.then((response) => {
-				this.setState({ helpObj: response.data })
-			})
+		// api.get('/photos/8')
+		// 	.then((response) => {
+		// 		this.setState({ helpObj: response.data })
+		// 	})
 	}
 
-	componentWillMount() { //Delete when the API is implemented, only used to used a prepared object to test.
-		this.setState({ helpObj: obj })
+	componentWillMount = async () => { //Delete when the API is implemented, only used to used a prepared object to test.
+		var data = await this.getHelpItem(GetHelpID())
+		this.setState({ helpObj: data })
 	}
 
 	onClickOutside = (e) => {
 		if (this.state.openHelp) {
-			if (!this.node.contains(e.target)) {
-				this.setState({ openHelp: false })
-				document.removeEventListener('click', this.onClickOutside, false)
-			}
+			if (this.node !== null && this.node !== undefined)
+				if (!this.node.contains(e.target)) {
+					this.setState({ openHelp: false })
+					document.removeEventListener('click', this.onClickOutside, false)
+				}
 		}
 	}
 
@@ -79,7 +82,27 @@ class Help extends Component {
 		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
 	}
+	//#region Rendering 
+	renderHelp = () => {
+		// const { helpObj } = this.state
+		// var helpID = GetHelpID()
+		// this.getHelpData(helpID)
 
+
+		/* 
+			data - the object returned
+			this.getHelpItem - the helper function for calling the server 
+			GetHelpID() - returns the current set ID/Label from redux store
+		*/
+
+		return <HelpPopup
+			helpID={GetHelpID()}
+			innerRef={this.setHelpPopUpRef}
+			helpObj={this.state.helpObj}
+			openHelp={this.state.openHelp}>
+		</HelpPopup>
+
+	}
 	render() {
 		return (
 			<HelpDiv small={this.props.small}>
@@ -91,6 +114,7 @@ class Help extends Component {
 			</HelpDiv>
 		)
 	}
+	//#endregion
 }
 
 Help.propTypes = {

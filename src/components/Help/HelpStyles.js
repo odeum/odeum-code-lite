@@ -3,16 +3,29 @@ import media from 'theme/media'
 // import theme from 'theme/default'
 import { Icon } from 'odeum-ui'
 
+
+export const HelpOverlay = styled.div`
+	background: #00000033;
+	z-index: 98;
+	height: 100vh;
+	width: 100vw;
+	position:fixed;
+	top:0%;
+	left:0%;
+`
 export const HelpPopUp = styled.div`
 	background: white;
-	border: 1px solid #3f3f3f;
+	border: 3px solid ${props => props.theme.menu.background};
 	z-index: 99;
-	height: 90vh;
-	width: 90vw;
+	height: 40vh;
+	width: 25vw;
 	position: fixed;
-    left: 50%;
-	top: 5%;
-    transform: translate(-50%, 0);
+    /* left: 50%;
+	top: 30%; */
+	left: calc(50% - 12.5vw);
+	top: 10%;
+	cursor: auto;
+	border-radius: 5px;
 `
 
 export const Bold = styled.b`
