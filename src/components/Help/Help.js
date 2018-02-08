@@ -62,11 +62,11 @@ class Help extends Component {
 			})
 	}
 
-	componentWillMount() {
+	componentWillMount() { //Delete when the API is implemented, only used to used a prepared object to test.
 		this.setState({ helpObj: obj })
 	}
 
-	onClickOutsise = (e) => {
+	onClickOutside = (e) => {
 		if (this.state.openHelp) {
 			if (!this.node.contains(e.target)) {
 				this.setState({ openHelp: false })
