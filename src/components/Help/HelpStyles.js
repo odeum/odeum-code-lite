@@ -1,18 +1,41 @@
 import styled from 'styled-components'
 import media from 'theme/media'
 // import theme from 'theme/default'
-import { Icon } from 'odeum-ui'
+import {
+	Icon
+} from 'odeum-ui'
 
 
 export const HelpOverlay = styled.div`
-	background: #00000033;
+	background: #00000022;
 	z-index: 98;
 	height: 100vh;
 	width: 100vw;
 	position:fixed;
 	top:0%;
 	left:0%;
+	cursor: auto;
+	&.fade-enter  {
+		opacity: 0.01;
+  		transition: opacity 300ms ease-in;
+	}
+	&.fade-enter-active.fade-enter  {
+		opacity: 1;
+	}
+		
+	&.fade-leave {
+		opacity: 1;
+  		transition: opacity 300ms ease-in;
+  	}
+		
+	&.fade-leave.fade-leave-active {
+		opacity: 0.01;
+		transition: opacity 300ms ease-in;
+	}
+
+
 `
+
 export const HelpPopUp = styled.div`
 	background: white;
 	border: 3px solid ${props => props.theme.menu.background};
@@ -26,6 +49,7 @@ export const HelpPopUp = styled.div`
 	top: 10%;
 	cursor: auto;
 	border-radius: 5px;
+
 `
 
 export const Bold = styled.b`

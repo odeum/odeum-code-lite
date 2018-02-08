@@ -54,7 +54,7 @@ class Help extends Component {
 		var data = await GetHelpItem(helpID) // async/await the stuff / or make a Promise
 		return data
 	}
-	
+
 
 	getHelpData = (helpID) => {
 		// api.get('/photos/8')
@@ -110,7 +110,7 @@ class Help extends Component {
 					<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
 					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
 				</HelpButton>
-				{this.state.openHelp && this.renderHelp()}
+				{this.renderHelp()}
 			</HelpDiv>
 		)
 	}
