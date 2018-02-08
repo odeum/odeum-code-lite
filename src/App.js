@@ -67,7 +67,7 @@ class App extends Component {
 					isLoggedIn={this.state.loggedIn}
 					arrows={false}
 				>
-					{LoginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}}
+					{LoginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
 					{/* 	{Login(this.state.loggedIn, this.login)} */}
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 
