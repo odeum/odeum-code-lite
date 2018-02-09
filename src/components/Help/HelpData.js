@@ -1,8 +1,8 @@
-import { create } from 'apisauce'
+// import { create } from 'apisauce'
 
-const api = create({
-	baseURL: `https://jsonplaceholder.typicode.com/`,
-})
+// const api = create({
+// 	baseURL: `https://jsonplaceholder.typicode.com/`,
+// })
 
 
 export const GetHelpItem = async (helpID) => {
