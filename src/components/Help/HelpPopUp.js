@@ -23,7 +23,6 @@ export default class HelpPopup extends PureComponent {
 	render() {
 
 		const { helpObj } = this.props
-		// const helpID = GetHelpID()
 
 		return <Transition in={this.props.openHelp} timeout={300}>
 			{state => {
@@ -33,7 +32,6 @@ export default class HelpPopup extends PureComponent {
 						<HelpPopUpFAQ>
 							<HelpPopUpText>Frequently Asked Questions </HelpPopUpText>
 						</HelpPopUpFAQ>
-						<h1>{helpID}</h1>
 						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
 						{helpObj ? helpObj.locale_content['en'].help_description : ''}
 						<HelpPopUpDivSplitLine/>
