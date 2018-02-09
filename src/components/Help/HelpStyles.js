@@ -57,25 +57,22 @@ export const HelpPopUpDivSplitLine = styled.div`
 `
 
 export const HelpPopUp = styled.div`
-	background: #00000011;
+	background:  #ffffff;
 	z-index: 99;
 	height: 40vh;
 	width: 25vw;
-	position: fixed;
-    /* left: 50%;
-	top: 30%; */
-	left: calc(75% - 2vw);
-	top: 55%;
+	position: absolute;
+	bottom: 150%;
+	right: 30%;
 	cursor: auto;
 	border-radius: 5px;
 	transition: all 300ms ease;
+	overflow: auto;
 `
 
 export const HeaderDivider = styled.div`
     position:absolute;
     left:50%;
-    top:10%;
-    bottom:10%;
     border-left:1px solid white;
 `
 
