@@ -5,6 +5,13 @@ import {
 	Icon
 } from 'odeum-ui'
 
+export const transitionStyles = {
+	entering: { visibility: '', opacity: 1 },
+	entered: { opacity: 1 },
+	exiting: { opacity: 0 },
+	exited: { opacity: 0, visibility: 'hidden' }
+}
+
 export const HelpOverlay = styled.div`
 	z-index: 98;
 	height: 100vh;
@@ -13,25 +20,7 @@ export const HelpOverlay = styled.div`
 	top:0%;
 	left:0%;
 	cursor: auto;
-	&.fade-enter  {
-		opacity: 0.01;
-  		transition: opacity 300ms ease-in;
-	}
-	&.fade-enter-active.fade-enter  {
-		opacity: 1;
-	}
-		
-	&.fade-leave {
-		opacity: 1;
-  		transition: opacity 300ms ease-in;
-  	}
-		
-	&.fade-leave.fade-leave-active {
-		opacity: 0.01;
-		transition: opacity 300ms ease-in;
-	}
-
-
+	transition: all 300ms ease;
 `
 
 export const HelpPopUp = styled.div`
@@ -45,38 +34,8 @@ export const HelpPopUp = styled.div`
 	left: calc(75% - 2vw);
 	top: 55%;
 	cursor: auto;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
-
-`
-
-export const HelpPopUpFAQ = styled.div`
-	//border-top-left-radius: 15px;
-	background:	#435C72;
-	height: 200%;
-`
-export const HelpPopUpText = styled.div`
-	text-align: center;
-	vertical-align: middle;
-	color: white;
-	line-height: 200%;
-	font-family: 'Arial Black'
-`
-
-export const HelpPopUpDivSplitLine = styled.div`
-	width: 500px;
-	float: left;
-	border-right: 1px solid gray;
-`
-
-export const DivWrapper = styled.div`
-	display: flex;
-  	flex-wrap: wrap;
-`
-
-export const SplitMoreInfoDiv = styled.div`
-	flex: 0 0 50%;
-	padding: 10px;
+	border-radius: 5px;
+	transition: all 300ms ease;
 `
 
 export const HeaderDivider = styled.div`

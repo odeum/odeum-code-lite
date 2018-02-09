@@ -6,13 +6,11 @@ const api = create({
 
 
 export const GetHelpItem = async (helpID) => {
-	var data = await api.get('/photos/8')
-		.then((response) => {
-			if (response.ok)
-				console.log(response.data)
-			return response.data
-		})
-	console.log(data)
+	// var data = await api.get('/photos/8')
+	// 	.then((response) => {
+	// 		if (response.ok)
+	// 			return response.data
+	// 	})
 	return obj
 }
 
