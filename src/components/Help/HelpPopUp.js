@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
-import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp, HelpOverlay, transitionStyles, HelpPopUpFAQ, HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, SplitMoreInfoDiv } from './HelpStyles'
+// import { GetHelpID } from '../utils/HelpReducer'
+import { HelpPopUp, transitionStyles, HelpPopUpFAQ, HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, SplitMoreInfoDiv } from './HelpStyles'
 import { Transition } from 'react-transition-group'
 
 export default class HelpPopup extends PureComponent {
@@ -23,7 +23,7 @@ export default class HelpPopup extends PureComponent {
 	render() {
 
 		const { helpObj } = this.props
-		const helpID = GetHelpID()
+		// const helpID = GetHelpID()
 
 		return <Transition in={this.props.openHelp} timeout={300}>
 			{state => {

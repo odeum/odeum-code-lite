@@ -24,18 +24,16 @@ export const HelpOverlay = styled.div`
 `
 
 export const HelpPopUpFAQ = styled.div`
-	//border-top-left-radius: 15px;
 	background:	#435C72;
-	height: 200%;
 `
 
 export const HelpPopUpText = styled.div`
 	text-align: center;
 	vertical-align: middle;
 	color: white;
-	line-height: 200%;
-	font-family: 'Arial Black'
-`
+	font-family: 'Arial Black';
+	padding: 5px;
+	`
 
 export const DivWrapper = styled.div`
 	display: flex;
@@ -57,7 +55,8 @@ export const HelpPopUpDivSplitLine = styled.div`
 `
 
 export const HelpPopUp = styled.div`
-	background:  #ffffff;
+	background: #e3e3e3; /* dirty gray */
+	border-radius: 4px;
 	z-index: 99;
 	height: 40vh;
 	width: 25vw;
