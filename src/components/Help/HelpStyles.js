@@ -23,6 +23,39 @@ export const HelpOverlay = styled.div`
 	transition: all 300ms ease;
 `
 
+export const HelpPopUpFAQ = styled.div`
+	//border-top-left-radius: 15px;
+	background:	#435C72;
+	height: 200%;
+`
+
+export const HelpPopUpText = styled.div`
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	line-height: 200%;
+	font-family: 'Arial Black'
+`
+
+export const DivWrapper = styled.div`
+	display: flex;
+  	flex-wrap: wrap;
+`
+
+export const SplitMoreInfoDiv = styled.div`
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100%;
+	flex: 0 0 50%;
+	padding: 10px;
+`
+
+export const HelpPopUpDivSplitLine = styled.div`
+	width: 500px;
+	float: left;
+	border-right: 1px solid gray;
+`
+
 export const HelpPopUp = styled.div`
 	background: #00000011;
 	z-index: 99;
