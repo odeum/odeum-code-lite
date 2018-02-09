@@ -28,7 +28,7 @@ export default class HelpPopup extends PureComponent {
 			{state => {
 				console.log(state)
 				return <HelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
-					<div style={{ display: 'flex', flexFlow: 'column' }}>
+					<div style={{ display: 'flex', flexFlow: 'column', 'font-size': '0.8vw' }}>
 						<HelpPopUpFAQ>
 							<HelpPopUpText>Frequently Asked Questions </HelpPopUpText>
 						</HelpPopUpFAQ>

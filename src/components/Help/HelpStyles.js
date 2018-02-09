@@ -33,6 +33,7 @@ export const HelpPopUpText = styled.div`
 	color: white;
 	font-family: 'Arial Black';
 	padding: 5px;
+	font-size: 0.8vw
 	`
 
 export const DivWrapper = styled.div`
