@@ -5,9 +5,7 @@ import {
 	Icon
 } from 'odeum-ui'
 
-
 export const HelpOverlay = styled.div`
-	background: #00000022;
 	z-index: 98;
 	height: 100vh;
 	width: 100vw;
@@ -37,19 +35,56 @@ export const HelpOverlay = styled.div`
 `
 
 export const HelpPopUp = styled.div`
-	background: white;
-	border: 3px solid ${props => props.theme.menu.background};
+	background: #00000011;
 	z-index: 99;
 	height: 40vh;
 	width: 25vw;
 	position: fixed;
     /* left: 50%;
 	top: 30%; */
-	left: calc(50% - 12.5vw);
-	top: 10%;
+	left: calc(75% - 2vw);
+	top: 55%;
 	cursor: auto;
-	border-radius: 5px;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
 
+`
+
+export const HelpPopUpFAQ = styled.div`
+	//border-top-left-radius: 15px;
+	background:	#435C72;
+	height: 200%;
+`
+export const HelpPopUpText = styled.div`
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	line-height: 200%;
+	font-family: 'Arial Black'
+`
+
+export const HelpPopUpDivSplitLine = styled.div`
+	width: 500px;
+	float: left;
+	border-right: 1px solid gray;
+`
+
+export const DivWrapper = styled.div`
+	display: flex;
+  	flex-wrap: wrap;
+`
+
+export const SplitMoreInfoDiv = styled.div`
+	flex: 0 0 50%;
+	padding: 10px;
+`
+
+export const HeaderDivider = styled.div`
+    position:absolute;
+    left:50%;
+    top:10%;
+    bottom:10%;
+    border-left:1px solid white;
 `
 
 export const Bold = styled.b`

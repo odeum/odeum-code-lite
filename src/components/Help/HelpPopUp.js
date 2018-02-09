@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp, HelpOverlay } from './HelpStyles'
+import { HelpPopUp, HelpPopUpFAQ, HelpOverlay, HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, SplitMoreInfoDiv, HeaderDivider } from './HelpStyles'
 import CSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class HelpPopup extends PureComponent {
@@ -28,9 +28,19 @@ export default class HelpPopup extends PureComponent {
 			popup = <HelpOverlay className={'fade'}>
 				<HelpPopUp openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
 					<div style={{ display: 'flex', flexFlow: 'column' }}>
-						<h1>{helpID}</h1>
-						<h2>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h2>
-						<p>{helpObj ? helpObj.locale_content['en'].help_description : ''}</p>
+						<HelpPopUpFAQ>
+							<HelpPopUpText>Frequently Asked Questions </HelpPopUpText>
+						</HelpPopUpFAQ>
+						<h1>helpID</h1>
+						<HelpPopUpDivSplitLine></HelpPopUpDivSplitLine>
+						<HelpPopUpFAQ>
+							<HelpPopUpText>Are you still missing answers?</HelpPopUpText>
+						</HelpPopUpFAQ>
+						<DivWrapper>
+							<SplitMoreInfoDiv>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</SplitMoreInfoDiv>
+							<HeaderDivider/>
+							<SplitMoreInfoDiv>{helpObj ? helpObj.locale_content['en'].help_description : ''}</SplitMoreInfoDiv>
+						</DivWrapper>
 					</div>
 				</HelpPopUp>
 			</HelpOverlay>
