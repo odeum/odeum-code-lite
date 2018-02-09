@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp, HelpOverlay } from './HelpStyles'
-import CSSTransitionGroup from 'react-addons-css-transition-group'
+import { HelpPopUp, HelpOverlay, transitionStyles } from './HelpStyles'
+import { Transition } from 'react-transition-group'
 
 export default class HelpPopup extends PureComponent {
 
@@ -21,35 +21,23 @@ export default class HelpPopup extends PureComponent {
 	}
 
 	render() {
-		var popup
+
 		const { helpObj } = this.props
 		const helpID = GetHelpID()
-		if (this.props.openHelp) {
-			popup = <HelpOverlay className={'fade'}>
-				<HelpPopUp openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
-					<div style={{ display: 'flex', flexFlow: 'column' }}>
-						<h1>{helpID}</h1>
-						<h2>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h2>
-						<p>{helpObj ? helpObj.locale_content['en'].help_description : ''}</p>
-					</div>
-				</HelpPopUp>
-			</HelpOverlay>
-		}
 
-
-		return <CSSTransitionGroup
-			transitionName="fade"
-			transitionAppear={true}
-			transitionAppearTimeout={500}
-			transitionEnterTimeout={500}
-			transitionLeaveTimeout={1500}
-		>
-			{popup}
-		</CSSTransitionGroup>
-
-
-
-
-
+		return <Transition in={this.props.openHelp} timeout={300}>
+			{state => {
+				console.log(state)
+				return <HelpOverlay style={{ ...transitionStyles[state] }}>
+					<HelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
+						<div style={{ display: 'flex', flexFlow: 'column' }}>
+							<h1>{helpID}</h1>
+							<h2>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h2>
+							<p>{helpObj ? helpObj.locale_content['en'].help_description : ''}</p>
+						</div>
+					</HelpPopUp>
+				</HelpOverlay>
+			}}
+		</Transition>
 	}
 }

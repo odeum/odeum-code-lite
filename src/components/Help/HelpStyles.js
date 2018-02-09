@@ -5,6 +5,12 @@ import {
 	Icon
 } from 'odeum-ui'
 
+export const transitionStyles = {
+	entering: { visibility: '', opacity: 1 },
+	entered: { opacity: 1 },
+	exiting: { opacity: 0 },
+	exited: { opacity: 0, visibility: 'hidden' }
+}
 
 export const HelpOverlay = styled.div`
 	background: #00000022;
@@ -15,25 +21,7 @@ export const HelpOverlay = styled.div`
 	top:0%;
 	left:0%;
 	cursor: auto;
-	&.fade-enter  {
-		opacity: 0.01;
-  		transition: opacity 300ms ease-in;
-	}
-	&.fade-enter-active.fade-enter  {
-		opacity: 1;
-	}
-		
-	&.fade-leave {
-		opacity: 1;
-  		transition: opacity 300ms ease-in;
-  	}
-		
-	&.fade-leave.fade-leave-active {
-		opacity: 0.01;
-		transition: opacity 300ms ease-in;
-	}
-
-
+	transition: all 300ms ease;
 `
 
 export const HelpPopUp = styled.div`
@@ -49,6 +37,7 @@ export const HelpPopUp = styled.div`
 	top: 10%;
 	cursor: auto;
 	border-radius: 5px;
+	transition: all 300ms ease;
 
 `
 

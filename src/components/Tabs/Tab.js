@@ -35,7 +35,7 @@ class Tab extends Component {
 	// 		this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
 	// }
 
-	iconIsActive = () => this.state.active ? this.props.theme.icon.selected :  this.props.theme.icon.default
+	iconIsActive = () => this.state.active ? this.props.theme.icon.selected : this.props.theme.icon.default
 
 	render() {
 		const { route, icon, label } = this.props

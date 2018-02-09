@@ -62,20 +62,21 @@ class Menu extends Component {
 		if (children[0].type === Tab)
 			return (
 				<SceneDiv>
-					{!this.props.quicknav ? <TabList>
-						{children.map((child, index) => (
-							<Tab key={index}
-								helpID={child.props.helpID ? child.props.helpID : undefined}
-								tabID={index}
-								exact={isExact(this.childRoute(child))}
-								label={child.props.label}
-								icon={child.props.icon}
-								route={this.route() + this.childRoute(child)}
-							// setActiveTab={this.setActiveTab}
-							// activeTab={this.state.activeTab} 
-							/>
-						))}
-					</TabList> : null}
+					{!this.props.quicknav ?
+						<TabList>
+							{children.map((child, index) => (
+								<Tab key={index}
+									helpID={child.props.helpID ? child.props.helpID : undefined}
+									tabID={index}
+									exact={isExact(this.childRoute(child))}
+									label={child.props.label}
+									icon={child.props.icon}
+									route={this.route() + this.childRoute(child)}
+								// setActiveTab={this.setActiveTab}
+								// activeTab={this.state.activeTab} 
+								/>
+							))}
+						</TabList> : null}
 					<Switch>
 						{this.renderChildren(children)}
 					</Switch>

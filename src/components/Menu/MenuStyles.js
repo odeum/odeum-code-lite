@@ -5,9 +5,9 @@ import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 export const BlueMenuContainer = styled.div`
 	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
 	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
-	-ms-grid-column-span: ${p => {var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none'}};
-	-ms-grid-row-span: ${p => {var y = spanRowCalc(p.theme.app.gridArea, 'menupanel'); return y > 1 ? y : 'none'}};
-
+	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none' }};
+	-ms-grid-row-span: ${p => { var y = spanRowCalc(p.theme.app.gridArea, 'menupanel'); return y > 1 ? y : 'none' }};
+	overflow:hidden;
 	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
 	display:flex;
@@ -70,7 +70,7 @@ export const MenuText = styled.div`
 
 export const MenuContainer = styled.div`
 	display:flex;
-	flex-flow: ${props => props.quicknav ? 'column nowrap'  : 'row nowrap' };
+	flex-flow: ${props => props.quicknav ? 'column nowrap' : 'row nowrap'};
 	flex:1;
 	overflow-y: hidden;
 `
