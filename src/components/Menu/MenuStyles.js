@@ -14,7 +14,6 @@ export const BlueMenuContainer = styled.div`
 	flex-flow:column wrap;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
-	overflow: hidden;
 `
 
 const BaseItem = styled.div`
