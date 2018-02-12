@@ -11,7 +11,7 @@ import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
 import /* Login, */ { LoginCustomForm } from 'components/Login/Login'
 /* Demo */
-
+import Editor from './demos/Help/Editor'
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
 import RouteDemo from 'demos/RouteDemo'
@@ -85,7 +85,14 @@ class App extends Component {
 						<SimpleDiv />
 					</Menu>
 
-
+					<Menu route={'/help-editor'} label={'Help'} icon={'help'}>
+						<Tab route={''}>
+							Empty
+						</Tab>
+						<Tab label={'Add Article'} route={'/new-help-article'}>
+							<Editor />
+						</Tab>
+					</Menu>
 					<Protected>
 						<Menu label={'Theme'} icon={'opacity'}>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
@@ -162,7 +169,7 @@ const RenderFooterLabel = () => {
 
 export default App
 
-// if (process.env.NODE_ENV !== 'production') {
-// 	const { whyDidYouUpdate } = require('why-did-you-update')
-// 	whyDidYouUpdate(React, { groupByComponent: true, collapseComponentGroups: true })
-// }
+if (process.env.NODE_ENV !== 'production') {
+	const { whyDidYouUpdate } = require('why-did-you-update')
+	whyDidYouUpdate(React, { groupByComponent: true, collapseComponentGroups: true })
+}

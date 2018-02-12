@@ -16,6 +16,12 @@ class Menu extends Component {
 		}
 	}
 
+	// shouldComponentUpdate(nextState) {
+	// 	if (this.state.activeTab !== nextState.activeTab)
+	// 		return true
+	// 	else
+	// 		return false
+	// }
 
 	componentWillMount = () => {
 		if (window.location.pathname.includes(this.props.route) && this.props.MenuID !== undefined && this.props.activeMenu !== this.props.MenuID) {
@@ -73,7 +79,7 @@ class Menu extends Component {
 									icon={child.props.icon}
 									route={this.route() + this.childRoute(child)}
 								// setActiveTab={this.setActiveTab}
-								// activeTab={this.state.activeTab} 
+								// activeTab={this.state.activeTab}
 								/>
 							))}
 						</TabList> : null}

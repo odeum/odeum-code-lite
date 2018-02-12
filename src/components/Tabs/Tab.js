@@ -21,11 +21,14 @@ class Tab extends Component {
 		if (!this.props.exact) {
 			if (window.location.pathname.includes(this.props.route) && !this.state.active) {
 				this.setState({ active: true })
+				// this.props.setActiveTab(this.props.tabID)
 			}
 		}
 		else {
 			if (window.location.pathname === this.props.route && !this.state.active) {
 				this.setState({ active: true })
+				// this.props.setActiveTab(this.props.tabID)
+
 			}
 		}
 	}

@@ -23,6 +23,7 @@ class MenuPanel extends Component {
 			activeMenu: 0
 		}
 	}
+
 	componentWillMount = () => {
 		this.OnSmallScreen()
 		window.addEventListener('resize', this.OnSmallScreen)
@@ -32,16 +33,23 @@ class MenuPanel extends Component {
 		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 
-	//#region Display quickNav or Menu 
+	//#region Display quickNav or Menu
 
+	//Avoid Rerendering on Window resize
 	OnSmallScreen = () => {
-		this.setState({ SmallScreen: window.innerWidth < ScreenSizes.tablet ? true : false })
+		if (window.innerWidth < ScreenSizes.tablet) {
+			this.setState({ SmallScreen: true })
+		}
+		else {
+			if (window.innerWidth >= ScreenSizes.tablet && this.state.SmallScreen === true)
+				this.setState({ SmallScreen: false })
+		}
 
 
 	}
-	//#endregion 
+	//#endregion
 
-	//#region Routing + Get First Child Route 
+	//#region Routing + Get First Child Route
 
 	route = (child) => child.props.route ? child.props.route : convertLabelToRoute(child.props.label)
 

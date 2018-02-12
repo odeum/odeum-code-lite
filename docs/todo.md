@@ -33,16 +33,19 @@
 			- if it affects performance not doable
 	- [ ] Menu.js
 		- [ ] Break it in multiple Components
+		- [x] OnSmallScreen was causing extra useless rerendering
 	- [x] Tabs
 		- [x] 2 SetActive/Activate functions, rename or use the hammer and break them
 			- *used the **HAMMER***
 - [x] Tab
 	- [x] ~~refactor activate() to shouldComponentUpdate()~~
-		- Completely removed activate() - not related to activation, related to help 
+		- Completely removed activate() - not related to activation, related to help
 		- Tabs do not rerender
 - [x] Re-renders
 	- [x] Header
+		- [x] OnSmallScreen was causing extra useless rerendering
 	- [x] Footer
+		- [x] OnSmallScreen was causing extra useless rerendering
 	- [x] Icon from odeum-ui
 		- needs more than PureComponent
 		- Moved Icon inside Odeum-Code-lite
@@ -56,8 +59,8 @@
 	- [x] MenuPanel
 
 ## Framework
-- [ ] Use withTheme() decorator from 'styled-components' for Icon from 'odeum-ui' and do not import theme directly  
-	- [ ] Tabs
+- [ ] Use withTheme() decorator from 'styled-components' for Icon from 'odeum-ui' and do not import theme directly
+	- [x] Tabs
 	- [ ] MenuItems
 	- [ ] QuickNav MenuItems
 	- [ ] QuickNav Button
@@ -65,10 +68,7 @@
 	- Functions removed from Menu.js, need to be readded inside Tabs inside setTabActive()
 - [x] Update Demo Theme Tab Colors
 - [ ] Store theme on localStorage
-- [ ] Load Theme from localStorage and the preffered one
-- [ ] Store isLoggedin state as a cookie
-	- [ ] Expire after 15 mins
-	- [ ] Refresh every 10 mins		
+- [ ] Load Theme from localStorage and the prefered one
 - [x] Set Global VW/VH
 - [x] MenuPanel Check for Menu subchild
 - [x] If not Menu don't render
@@ -85,22 +85,23 @@
 - [x] Footer Color
 - [x] Workspace Color
 - [x] Tab Text Active/Inactive Color
-- [x] QuickNav 
-	- [x] ~~Hover Tab Text Color~~ 
+- [x] QuickNav
+	- [x] ~~Hover Tab Text Color~~
 		- Redundant, you can't really *hover* on a phone
 	- [x] Menu Item text color
-	
+- [ ] Rename selected/unselected to active/inactive and more *user friendly* aliases
+
 ## Menu Panel
 
-- [x] Redirect to Login / to 404 
+- [x] Redirect to Login / to 404
 - [x] refactor Arrows to arrows
 - [x] One Method for rendering of the Switch/Routes
 - [x] One Method for rendering MenuItems
-- [x] bottomMenu/Top **Component** support 
+- [x] bottomMenu/Top **Component** support
 	- [x] pass prop boolean bottom/top to component that needs to be on the footer/header of the menu panel
 		- [x] top prop
 		- [x] bottom prop
-	- [x] create styled components for top/bottom 
+	- [x] create styled components for top/bottom
 - [x] bottom/top **MenuItem**
 - [x] Custom Header (for ex: profile picture)
 - [x] Setting active menu item coming from another internal link(go to theme Menu item -> click on any link)
@@ -112,7 +113,7 @@
 - [x] Page Component is broken because type testing doesn't include Page in MenuPanel
 ```js
 if(type === Menu || type === Page)
-``` 
+```
 - [x] Margin Bottom on Top
 ```css
 margin-bottom: auto;
@@ -130,7 +131,7 @@ margin-bottom: auto;
 
 ## Workspace
 
-- [ ] Overflow + Components transformation for Responsiveness 
+- [ ] Overflow + Components transformation for Responsiveness
 	- [ ] CSS Wrap
 - [x] -webkit-overflow-scrolling: touch; from  iOS
 
@@ -150,7 +151,7 @@ margin-bottom: auto;
 - [x] Header Buttons
 - [x] Help Pop-up
 - [x] Close Button
-- [ ] Style Buttons 
+- [ ] Style Buttons
 - [ ] Active Tab Highlight to accomodate 'Protected'
 - [x] Active Menu Highlight to accomodate 'Protected'
 - [x] Menu with no tabs
@@ -182,10 +183,10 @@ margin-bottom: auto;
 
 ### 1.1.1. Foundation
 - [x] Custom themes available for integration through AppContainer + (test with custom theme)
-- [x] Ommit exact prop when using: 
+- [x] Ommit exact prop when using:
  	- ```<Menu route={'/'} exact>```
    <!-- - We can check whether route is set to only '/' and add "exact" automatically -->
-- [x] Help label prop? Language ... 
+- [x] Help label prop? Language ...
 - [x] Page component that basically wraps the functionality of ```<Menu>``` to create a page with a route and no label
 - [x] Help Redux functions (functional approach)
 - [x] Help pop-over menu (draft edition), show content from a static object helpItems = { 0: 'Help 0', 1: 'Help 1', ... 10: 'Help 10' }
@@ -199,7 +200,7 @@ margin-bottom: auto;
 
 ### 1.1.2. Extension
 - Form component
-- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes. 
+- Login component that composes the actual app login process and stores the login state. Login component is wrapping the main route component (<AppRouter />) to easily distinct between public and private routes.
 - Responsive API for component builders
 - Search
 - Notifications
