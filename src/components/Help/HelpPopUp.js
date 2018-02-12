@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 // import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp, transitionStyles, HelpPopUpFAQ, HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, SplitMoreInfoDiv } from './HelpStyles'
+import { HelpPopUp, transitionStyles, HelpPopUpFAQ, HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, SplitMoreInfoDiv, VerticalDivider, HorizontalDivider, Question, QuestionDescriptionTextStyle } from './HelpStyles'
 import { Transition } from 'react-transition-group'
 
 export default class HelpPopup extends PureComponent {
@@ -26,30 +26,41 @@ export default class HelpPopup extends PureComponent {
 
 		return <Transition in={this.props.openHelp} timeout={300}>
 			{state => {
-				console.log(state)
 				return <HelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
-					<div style={{ display: 'flex', flexFlow: 'column', 'font-size': '0.8vw' }}>
+					<div style={{ display: 'flex', flexFlow: 'column', 'fontSize': '0.8vw' }}>
 						<HelpPopUpFAQ>
 							<HelpPopUpText>Frequently Asked Questions </HelpPopUpText>
 						</HelpPopUpFAQ>
-						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
-						{helpObj ? helpObj.locale_content['en'].help_description : ''}
+						<div style={{ 'textAlign': 'left' }}>
+							<Question>
+								<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
+								<QuestionDescriptionTextStyle>{helpObj ? helpObj.locale_content['en'].help_description : ''}</QuestionDescriptionTextStyle>
+							</Question>
+							<HorizontalDivider/>
+							<Question>
+								<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
+								<QuestionDescriptionTextStyle>Lorem ipsum dolor sit amet, vis elitr doctus similique id, te moderatius appellantur mea. Libris mucius explicari ea quo. Timeam voluptua cu mel. Ei fastidii interesset nam. Vix partem mentitum id.</QuestionDescriptionTextStyle>
+							</Question>
+						</div>
 						<HelpPopUpDivSplitLine/>
-						<div style={{ 'word-wrap': 'break-word', 'padding-top': '10%' }}>
+						<div style={{ 'wordWrap': 'break-word', 'paddingTop': 'auto' }}>
 							<HelpPopUpFAQ>
 								<HelpPopUpText>Are you still missing answers?</HelpPopUpText>
 							</HelpPopUpFAQ>
 							<DivWrapper>
 								<SplitMoreInfoDiv>
-									<a url="http://www.google.dk">
+									<a href="http://www.google.dk">
 										<h3>More answers</h3>
-										<p>See the rest of the FAQ</p>
 									</a>
+									<p>See the rest of the FAQ</p>
 								</SplitMoreInfoDiv>
+								<VerticalDivider />
 								<SplitMoreInfoDiv>
-									<h3>Contact Odeum support</h3>
-									<p>Number: 88 88 88 88</p>
-									<p>Email: support@odeum.dk</p>
+									<h3>Contact Odeum support</h3>									
+									<div style={{ 'lineHeight': '3px' }}>
+										<p>Number: 88 88 88 88</p>
+										<p>Email: support@odeum.dk</p>
+									</div>
 								</SplitMoreInfoDiv>
 							</DivWrapper>
 						</div>

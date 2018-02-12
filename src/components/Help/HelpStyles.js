@@ -38,18 +38,20 @@ export const HelpPopUpText = styled.div`
 
 export const DivWrapper = styled.div`
 	display: flex;
-  	flex-wrap: wrap;
+	flex-wrap: wrap;
 `
 
 export const SplitMoreInfoDiv = styled.div`
 	text-align: center;
 	vertical-align: middle;
-	line-height: 100%;
 	flex: 0 0 50%;
-	padding: 10px;
+	padding: 20px;
+	line-height: 12px;
+	justify-content: center;
 `
 
 export const HelpPopUpDivSplitLine = styled.div`
+	margin-top: 15px;
 	width: 500px;
 	float: left;
 	border-right: 1px solid gray;
@@ -70,10 +72,32 @@ export const HelpPopUp = styled.div`
 	overflow: auto;
 `
 
-export const HeaderDivider = styled.div`
+export const VerticalDivider = styled.div`
     position:absolute;
     left:50%;
-    border-left:1px solid white;
+    top: 70%;
+    bottom: 3%;
+	border-left:1px solid white;
+`
+
+export const HorizontalDivider = styled.div`
+	margin-top: 10px;
+	position:absolute;
+    top:auto;
+    left: 5%;
+    right: 5%;
+	border-top:1px solid white;
+`
+
+export const Question = styled.div`
+	padding-top: 10px;
+	padding-left: 3%;
+	padding-right: 3%;
+	word-wrap: 'normal';
+`
+
+export const QuestionDescriptionTextStyle = styled.div`
+	margin-top: -0.9vw;
 `
 
 export const Bold = styled.b`
