@@ -1,6 +1,9 @@
 # TODO for odeum-app
 <!-- TOC -->
+
 - [TODO for odeum-app](#todo-for-odeum-app)
+	- [Save the User](#save-the-user)
+	- [Performance](#performance)
 	- [Framework](#framework)
 	- [Theme](#theme)
 	- [Menu Panel](#menu-panel)
@@ -9,6 +12,7 @@
 	- [Workspace](#workspace)
 	- [QuickNav](#quicknav)
 	- [Login](#login)
+	- [Editor](#editor)
 	- [Internet Explorer Compatibility](#internet-explorer-compatibility)
 	- [Future:](#future)
 		- [1.1.1. Foundation](#111-foundation)
@@ -171,6 +175,21 @@ margin-bottom: auto;
 	- [ ] Styling
 - [x] Protected Routes
 - [x] Custom Login Form
+
+## Editor
+The follwing icons from Material Design should be used for editor button panel:
+Add these to library:
+- Bold:			format_bold
+- Italic:		format_italic
+- Underlined:	format_underlined
+- Blockquote:	format_quote
+- UL:			format_list_bulleted
+- OL:			format_list_numbered
+- Header:		text_format / title
+
+Existing:
+- Code:			code
+
 
 ## Internet Explorer Compatibility
 
