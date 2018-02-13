@@ -50,14 +50,14 @@ export default class HelpPopup extends PureComponent {
 							<DivWrapper>
 								<SplitMoreInfoDiv>
 									<a href="http://www.google.dk">
-										<h3>More answers</h3>
+										<h3 style={{ 'fontSize': '13px' }}>More answers</h3>
 									</a>
-									<p>See the rest of the FAQ</p>
+									<p style={{ 'marginTop': '-5px' }}>See the rest of the FAQ</p>
 								</SplitMoreInfoDiv>
 								<VerticalDivider />
 								<SplitMoreInfoDiv>
-									<h3>Contact Odeum support</h3>									
-									<div style={{ }}>
+									<h3 style={{ 'fontSize': '13px' }}>Contact Odeum support</h3>									
+									<div style={{ 'marginTop': '-5px' }}>
 										<p>Number: 88 88 88 88</p>
 										<p style={{ 'marginTop': '-10px' }}>Email: support@odeum.dk</p>
 									</div>
