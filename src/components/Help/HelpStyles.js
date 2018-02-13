@@ -73,10 +73,12 @@ export const HelpPopUp = styled.div`
 `
 
 export const VerticalDivider = styled.div`
-    position:absolute;
+	position:absolute;
     left:50%;
-    top: 70%;
-    bottom: 3%;
+    top: calc(70%-3vw);
+	bottom: auto;
+	padding-bottom: 5vw;
+	margin-top:5%;
 	border-left:1px solid white;
 `
 
