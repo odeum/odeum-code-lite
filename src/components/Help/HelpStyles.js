@@ -20,7 +20,6 @@ export const HelpOverlay = styled.div`
 	top:0%;
 	left:0%;
 	cursor: auto;
-	transition: all 300ms ease;
 `
 
 export const HelpPopUpFAQ = styled.div`
@@ -70,6 +69,17 @@ export const HelpPopUp = styled.div`
 	border-radius: 5px;
 	transition: all 300ms ease;
 	overflow: auto;
+		&::after {
+			position: static;
+			margin-left: 80%;
+			margin-top: -100px;
+			width: 200%;fa
+			height: 0;
+			content:'';
+			border-left: 15px solid transparent;
+			border-right: 15px solid transparent;
+			border-top: 15px solid #2C3E50;
+	}
 `
 
 export const VerticalDivider = styled.div`

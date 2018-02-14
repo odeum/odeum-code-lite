@@ -9,11 +9,11 @@ import Menu from '../Menu/Menu'
 import { convertLabelToRoute } from '../utils/Functions'
 import { Icon } from 'odeum-ui'
 import HeaderButton from './HeaderButton'
-import HelpPopUp from '../Help/HelpPopUp'
 import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
 import Page from '../Menu/Page'
 import SwipeEvents from './SwipeEvents'
+import QuickHelpPopup from './QuickHelp'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -164,10 +164,11 @@ export default class QuickNavigation extends Component {
 	render() {
 		// console.log(this.props)
 		const { quickButton, quickNav, showHelp } = this.state
+		console.log(showHelp)
 		return (
 			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
 				{/* <QuickNav> */}
-				<HelpPopUp openHelp={showHelp} handleHelp={this.helpClick} />
+				<QuickHelpPopup openHelp={showHelp} handleHelp={this.helpClick} />
 				{quickButton ?
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>

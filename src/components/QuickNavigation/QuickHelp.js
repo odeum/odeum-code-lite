@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react'
-// import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp, transitionStyles, HelpPopUpFAQ, 
+import { QuickHelpPopUp, transitionStyles, HelpPopUpFAQ, 
 	HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, 
-	SplitMoreInfoDiv, VerticalDivider, HorizontalDivider, 
-	Question, QuestionDescriptionTextStyle } from './HelpStyles'
+	SplitMoreInfoDiv, 
+	Question, QuestionDescriptionTextStyle } from './QuickHelpStyles'
 import { Transition } from 'react-transition-group'
 
-export default class HelpPopup extends PureComponent {
+export default class QuickHelpPopup extends PureComponent {
 
 	onClickOutside = (e) => {
 		e.stopPropagation()
@@ -19,13 +18,14 @@ export default class HelpPopup extends PureComponent {
 			}
 		}
 	}
+
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
 
 	renderDescription() {
 		const { helpObj } = this.props
-		
+
 		return (
 			<div>
 				<HelpPopUpFAQ>
@@ -34,9 +34,9 @@ export default class HelpPopup extends PureComponent {
 				<div style={{ 'textAlign': 'left' }}>
 					<Question>
 						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
+						{console.log(helpObj)}
 						<QuestionDescriptionTextStyle>{helpObj ? helpObj.locale_content['en'].help_description : ''}</QuestionDescriptionTextStyle>
 					</Question>
-					<HorizontalDivider />
 					<Question>
 						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
 						<QuestionDescriptionTextStyle>Lorem ipsum dolor sit amet, vis elitr doctus similique id, te moderatius appellantur mea. Libris mucius explicari ea quo. Timeam voluptua cu mel. Ei fastidii interesset nam. Vix partem mentitum id.</QuestionDescriptionTextStyle>
@@ -55,16 +55,15 @@ export default class HelpPopup extends PureComponent {
 				<DivWrapper>
 					<SplitMoreInfoDiv>
 						<a href="http://www.google.dk">
-							<h3 style={{ 'fontSize': '0.75vw' }}>More answers</h3>
+							<h3 style={{ 'fontSize': '3vw' }}>More answers</h3>
 						</a>
-						<p style={{ 'marginTop': '-5px' }}>See the rest of the FAQ</p>
+						<p style={{ 'marginTop': '-8px' }}>See the rest of the FAQ</p>
 					</SplitMoreInfoDiv>
-					<VerticalDivider />
 					<SplitMoreInfoDiv>
-						<h3 style={{ 'fontSize': '0.75vw' }}>Contact Odeum support</h3>
-						<div style={{ 'marginTop': '-5px' }}>
+						<h3 style={{ 'fontSize': '3vw' }}>Contact Odeum support</h3>
+						<div style={{ 'marginTop': '-3px' }}>
 							<p>Number: 88 88 88 88</p>
-							<p style={{ 'marginTop': '-10px' }}>Email: support@odeum.dk</p>
+							<p style={{ 'marginTop': '-8px' }}>Email: support@odeum.dk</p>
 						</div>
 					</SplitMoreInfoDiv>
 				</DivWrapper>
@@ -73,19 +72,18 @@ export default class HelpPopup extends PureComponent {
 	}
 
 	render() {
-
 		return <Transition in={this.props.openHelp} timeout={300}>
 			{state => {
-				return <HelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
-					<div style={{ display: 'flex', flexFlow: 'column', 'fontSize': '0.8vw' }}>
+				return <QuickHelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
+					<div style={{ display: 'flex', flexFlow: 'column', 'fontSize': '3.5vw' }}>
 						{this.renderDescription()}
-						<HelpPopUpDivSplitLine/>
+						<HelpPopUpDivSplitLine />
 						<div style={{ 'wordWrap': 'break-word', 'paddingTop': 'auto' }}>
 							{this.renderMoreInfo()}
 						</div>
 					</div>
-				</HelpPopUp>
+				</QuickHelpPopUp>
 			}}
 		</Transition>
 	}
-}
+} 
