@@ -14,6 +14,8 @@ import Protected from '../Login/Protected'
 import Page from '../Menu/Page'
 import SwipeEvents from './SwipeEvents'
 import QuickHelpPopup from './QuickHelp'
+import { GetHelpID } from '../utils/HelpReducer'
+import { GetHelpItem } from '../Help/HelpData'
 
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -28,11 +30,19 @@ export default class QuickNavigation extends Component {
 			activeTab: {
 				tab: 0,
 				menu: 0
-			}
+			},
+			helpObj: null
 		}
 	}
 
-	componentWillMount = () => {
+	getHelpItem = async (helpID) => {
+		var data = await GetHelpItem(helpID)
+		return data
+	}
+
+	componentWillMount = async () => {
+		var data = await this.getHelpItem(GetHelpID())
+		this.setState({ helpObj: data })
 	}
 
 	showQuickNavButton = () => {
@@ -163,12 +173,11 @@ export default class QuickNavigation extends Component {
 
 	render() {
 		// console.log(this.props)
-		const { quickButton, quickNav, showHelp } = this.state
-		console.log(showHelp)
+		const { quickButton, quickNav, showHelp, helpObj } = this.state
 		return (
 			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
 				{/* <QuickNav> */}
-				<QuickHelpPopup openHelp={showHelp} handleHelp={this.helpClick} />
+				<QuickHelpPopup openHelp={showHelp} handleHelp={this.helpClick} helpObj={helpObj} />
 				{quickButton ?
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>
@@ -184,7 +193,7 @@ export default class QuickNavigation extends Component {
 							<div style={{ alignSelf: 'center', justifyContent: 'center' }}>
 								Quick Navigation
 							</div>
-							<HeaderButton icon={'close'} onClick={this.openNav} />
+							<HeaderButton icon={'close'} onClick={this.openNav} />	
 						</Header>
 						<Spacer />
 
