@@ -74,7 +74,7 @@ export default class QuickHelpPopup extends PureComponent {
 		return <Transition in={this.props.openHelp} timeout={300}>
 			{state => {
 				return <QuickHelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
-					<div style={{ display: 'flex', flexFlow: 'column', 'fontSize': '3.5vw' }}>
+					<div style={{ 'display': 'flex', 'flexFlow': 'column', 'fontSize': '3.5vw' }}>
 						{this.renderDescription()}
 						<HelpPopUpDivSplitLine />
 						<div style={{ 'wordWrap': 'break-word', 'paddingTop': 'auto' }}>
