@@ -32,7 +32,7 @@ export const HelpPopUpText = styled.div`
 	color: white;
 	font-family: 'Arial Black';
 	padding: 5px;
-	font-size: 0.8vw;
+	font-size: 0.9em;
 	`
 
 export const DivWrapper = styled.div`
@@ -168,7 +168,7 @@ export const HelpButton = styled.div`
 `
 
 export const DescriptionTitle = styled.h3`
-	font-size: 0.85vw;
+	font-size: 1em;
 `
 
 export const DescriptionTextStyle = styled.p`
@@ -178,7 +178,7 @@ export const DescriptionTextStyle = styled.p`
 export const MoreInfoDivStyle = styled.div`
 	display: flex;
 	flex-flow: column;
-	font-size: 0.8vw;
+	font-size: 1em;
 `
 
 export const ContactSupportDivStyle = styled.div`
