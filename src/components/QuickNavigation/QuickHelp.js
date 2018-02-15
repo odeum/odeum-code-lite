@@ -34,7 +34,6 @@ export default class QuickHelpPopup extends PureComponent {
 				<div style={{ 'textAlign': 'left' }}>
 					<Question>
 						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
-						{console.log(helpObj)}
 						<QuestionDescriptionTextStyle>{helpObj ? helpObj.locale_content['en'].help_description : ''}</QuestionDescriptionTextStyle>
 					</Question>
 					<Question>

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const QuickHelpPopUp = styled.div`
     background: white;
     border: 1px solid #cbc8c8;
-    margin-top: -9vw;
+    margin-top: -13vw;
     top: auto;
     height: 100vw;
     width: 90vw;

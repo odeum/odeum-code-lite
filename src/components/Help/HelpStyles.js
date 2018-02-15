@@ -57,7 +57,9 @@ export const HelpPopUpDivSplitLine = styled.div`
 `
 
 export const HelpPopUp = styled.div`
-	background: #e3e3e3; /* dirty gray */
+	//background: #e3e3e3; /* dirty gray */
+	background: white;
+    border: 1px solid #cbc8c8;
 	border-radius: 4px;
 	z-index: 99;
 	height: 40vh;
@@ -89,7 +91,7 @@ export const VerticalDivider = styled.div`
 	bottom: auto;
 	padding-bottom: 5vw;
 	margin-top:5%;
-	border-left:1px solid white;
+	border-left:1px solid #e3e3e3;
 `
 
 export const HorizontalDivider = styled.div`
@@ -98,7 +100,7 @@ export const HorizontalDivider = styled.div`
     top:auto;
     left: 5%;
     right: 5%;
-	border-top:1px solid white;
+	border-top:1px solid #e3e3e3;
 `
 
 export const Question = styled.div`
