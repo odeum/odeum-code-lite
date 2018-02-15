@@ -70,7 +70,7 @@ export const HelpPopUp = styled.div`
 	cursor: auto;
 	border-radius: 5px;
 	transition: all 300ms ease;
-	overflow: auto;
+	/*overflow: auto;
 		&::after {
 			position: static;
 			margin-left: 80%;
@@ -81,7 +81,7 @@ export const HelpPopUp = styled.div`
 			border-left: 15px solid transparent;
 			border-right: 15px solid transparent;
 			border-top: 15px solid #2C3E50;
-	}
+	}*/
 `
 
 export const VerticalDivider = styled.div`
@@ -165,4 +165,31 @@ export const HelpButton = styled.div`
 	${media.desktop`height:30px;`}
 	${media.tablet`height:20px;`}
 	${media.phone`height:10px;`}
+`
+
+export const DescriptionTitle = styled.h3`
+	font-size: 0.85vw;
+`
+
+export const DescriptionTextStyle = styled.p`
+	margin-top: -10px;
+`
+
+export const MoreInfoDivStyle = styled.div`
+	display: flex;
+	flex-flow: column;
+	font-size: 0.8vw;
+`
+
+export const ContactSupportDivStyle = styled.div`
+	margin-top: -5px;
+`
+
+export const ContactSupportDiv = styled.div`
+	word-wrap: break-word;
+	padding-top: auto;
+`
+
+export const DescriptionDivStyle = styled.div`
+	text-align: left;
 `
