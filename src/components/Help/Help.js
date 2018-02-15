@@ -83,16 +83,16 @@ class Help extends Component {
 		document.addEventListener('click', this.onClickOutside, false)
 		this.setState({ openHelp: !this.state.openHelp })
 	}
-	//#region Rendering 
+	//#region Rendering
 	renderHelp = () => {
 		// const { helpObj } = this.state
 		// var helpID = GetHelpID()
 		// this.getHelpData(helpID)
 
 
-		/* 
+		/*
 			data - the object returned
-			this.getHelpItem - the helper function for calling the server 
+			this.getHelpItem - the helper function for calling the server
 			GetHelpID() - returns the current set ID/Label from redux store
 		*/
 

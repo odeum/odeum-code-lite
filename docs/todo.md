@@ -30,7 +30,7 @@
 - [ ] Move QuickNav functions to utilities and call them in each component (windowEventListener on size)
 - [ ] Refactoring - The "good code" way
 	- [ ] Break MenuPanel
-		- [ ] Rename MenuPanel to *TheAreaBetweenHeaderAndFooter* 
+		- [ ] Rename MenuPanel to *TheAreaBetweenHeaderAndFooter*
 			- *insert a friendly name*
 		- [x] Rename MenuDiv to BlueMenuPanel
 		- [ ] Rename children to friendlier names with vars

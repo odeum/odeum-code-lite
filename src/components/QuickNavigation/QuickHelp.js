@@ -77,7 +77,7 @@ export default class QuickHelpPopup extends PureComponent {
 					<div style={{ display: 'flex', flexFlow: 'column', 'fontSize': '3.5vw' }}>
 						{this.renderDescription()}
 						<HelpPopUpDivSplitLine />
-						<div style={{ 'wordWrap': 'break-word', 'paddingTop': 'auto' }}>
+						<div style={{ wordWrap: 'break-word', paddingTop: 'auto' }}>
 							{this.renderMoreInfo()}
 						</div>
 					</div>
@@ -85,4 +85,4 @@ export default class QuickHelpPopup extends PureComponent {
 			}}
 		</Transition>
 	}
-} 
+}
