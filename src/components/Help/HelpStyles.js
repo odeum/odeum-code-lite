@@ -32,7 +32,7 @@ export const HelpPopUpText = styled.div`
 	color: white;
 	font-family: 'Arial Black';
 	padding: 5px;
-	font-size: 0.8vw
+	font-size: 0.8vw;
 	`
 
 export const DivWrapper = styled.div`
@@ -70,8 +70,8 @@ export const HelpPopUp = styled.div`
 	cursor: auto;
 	border-radius: 5px;
 	transition: all 300ms ease;
-	/*overflow: auto;
-		&::after {
+	overflow: auto;
+		/*&::after {
 			position: static;
 			margin-left: 80%;
 			margin-top: -100px;
