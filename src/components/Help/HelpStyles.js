@@ -70,8 +70,8 @@ export const HelpPopUp = styled.div`
 	cursor: auto;
 	border-radius: 5px;
 	transition: all 300ms ease;
-	/*overflow: auto;
-		&::after {
+	overflow: auto;
+		/*&::after {
 			position: static;
 			margin-left: 80%;
 			margin-top: -100px;

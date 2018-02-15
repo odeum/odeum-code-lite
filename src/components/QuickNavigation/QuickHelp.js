@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import { QuickHelpPopUp, transitionStyles, HelpPopUpFAQ, 
 	HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, 
-	SplitMoreInfoDiv, 
-	Question, QuestionDescriptionTextStyle } from './QuickHelpStyles'
+	SplitMoreInfoDiv, Question, QuestionDescriptionTextStyle, DescriptionTitle,
+	DescriptionTextStyle, ContactSupportDivStyle, MoreInfoDivStyle,
+	ContactSupportDiv, DescriptionDivStyle } from './QuickHelpStyles'
 import { Transition } from 'react-transition-group'
 
 export default class QuickHelpPopup extends PureComponent {
@@ -31,7 +32,7 @@ export default class QuickHelpPopup extends PureComponent {
 				<HelpPopUpFAQ>
 					<HelpPopUpText>Frequently Asked Questions </HelpPopUpText>
 				</HelpPopUpFAQ>
-				<div style={{ 'textAlign': 'left' }}>
+				<DescriptionDivStyle>
 					<Question>
 						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
 						<QuestionDescriptionTextStyle>{helpObj ? helpObj.locale_content['en'].help_description : ''}</QuestionDescriptionTextStyle>
@@ -40,7 +41,7 @@ export default class QuickHelpPopup extends PureComponent {
 						<h3>{helpObj ? helpObj.locale_content['en'].help_title : `Loading...`}</h3>
 						<QuestionDescriptionTextStyle>Lorem ipsum dolor sit amet, vis elitr doctus similique id, te moderatius appellantur mea. Libris mucius explicari ea quo. Timeam voluptua cu mel. Ei fastidii interesset nam. Vix partem mentitum id.</QuestionDescriptionTextStyle>
 					</Question>
-				</div>
+				</DescriptionDivStyle>
 			</div>
 		)
 	}
@@ -54,16 +55,16 @@ export default class QuickHelpPopup extends PureComponent {
 				<DivWrapper>
 					<SplitMoreInfoDiv>
 						<a href="http://www.google.dk">
-							<h3 style={{ 'fontSize': '3vw' }}>More answers</h3>
+							<DescriptionTitle>More answers</DescriptionTitle>
 						</a>
-						<p style={{ 'marginTop': '-8px' }}>See the rest of the FAQ</p>
+						<DescriptionTextStyle>See the rest of the FAQ</DescriptionTextStyle>
 					</SplitMoreInfoDiv>
 					<SplitMoreInfoDiv>
-						<h3 style={{ 'fontSize': '3vw' }}>Contact Odeum support</h3>
-						<div style={{ 'marginTop': '-3px' }}>
+						<DescriptionTitle>Contact Odeum support</DescriptionTitle>
+						<ContactSupportDivStyle>
 							<p>Number: 88 88 88 88</p>
-							<p style={{ 'marginTop': '-8px' }}>Email: support@odeum.dk</p>
-						</div>
+							<DescriptionTextStyle>Email: support@odeum.dk</DescriptionTextStyle>
+						</ContactSupportDivStyle>
 					</SplitMoreInfoDiv>
 				</DivWrapper>
 			</div>
@@ -74,13 +75,13 @@ export default class QuickHelpPopup extends PureComponent {
 		return <Transition in={this.props.openHelp} timeout={300}>
 			{state => {
 				return <QuickHelpPopUp style={{ ...transitionStyles[state] }} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
-					<div style={{ 'display': 'flex', 'flexFlow': 'column', 'fontSize': '3.5vw' }}>
+					<MoreInfoDivStyle>
 						{this.renderDescription()}
 						<HelpPopUpDivSplitLine />
-						<div style={{ 'wordWrap': 'break-word', 'paddingTop': 'auto' }}>
+						<ContactSupportDiv>
 							{this.renderMoreInfo()}
-						</div>
-					</div>
+						</ContactSupportDiv>
+					</MoreInfoDivStyle>
 				</QuickHelpPopUp>
 			}}
 		</Transition>

@@ -63,3 +63,30 @@ export const Question = styled.div`
 export const QuestionDescriptionTextStyle = styled.div`
 	margin-top: -4.2vw;
 `
+
+export const DescriptionTitle = styled.h3`
+	font-size: 3vw;
+`
+
+export const DescriptionTextStyle = styled.p`
+	margin-top: -8px;
+`
+
+export const MoreInfoDivStyle = styled.div`
+	display: flex;
+	flex-flow: column;
+	font-size: 3.5vw;
+`
+
+export const ContactSupportDivStyle = styled.div`
+	margin-top: -3px;
+`
+
+export const ContactSupportDiv = styled.div`
+	word-wrap: break-word;
+	padding-top: auto;
+`
+
+export const DescriptionDivStyle = styled.div`
+	text-align: left;
+`
