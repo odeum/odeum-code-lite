@@ -50,7 +50,7 @@ export const MenuFooter = BaseItem.extend`
 
 export const IconDiv = styled.div`
 	display: flex;
-	width: 50; 
+	width: 50;
 	height: 50px;
 	min-width: 50px;
 	align-items: center;
@@ -66,6 +66,7 @@ export const ArrowIconDiv = IconDiv.extend`
 export const MenuText = styled.div`
 	font-size: ${p => p.theme.menu.fontSize ? p.theme.menu.fontSize : 'inherit'};
 	width: 100%;
+	margin-left: 2px;
 `
 
 export const MenuContainer = styled.div`
