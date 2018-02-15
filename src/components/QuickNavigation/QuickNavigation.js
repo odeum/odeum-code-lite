@@ -42,7 +42,7 @@ export default class QuickNavigation extends Component {
 		this.setState({ quickButton: false })
 	}
 	helpClick = () => {
-		this.setState({ showHelp: !this.state.showHelp })
+		this.setState({ quickNav: false, howHelp: !this.state.showHelp })
 	}
 
 	tabClick = (id, helpID) => (e) => {

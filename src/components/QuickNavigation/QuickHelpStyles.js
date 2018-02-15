@@ -10,7 +10,9 @@ export const QuickHelpPopUp = styled.div`
 	position: absolute;
     border-radius: 5px;
     overflow: auto;
+	z-index: 999;
 `
+//z-index - the height of the element, the higher = overlays over other elements
 
 export const transitionStyles = {
 	entering: { visibility: '', opacity: 1 },
@@ -29,9 +31,9 @@ export const HelpPopUpText = styled.div`
 	color: white;
 	font-family: 'Arial Black';
 	padding: 5px;
-	font-size: 3vw
+	font-size: 3vw;
 `
-    
+
 export const HelpPopUpDivSplitLine = styled.div`
 	margin-top: 15px;
 	width: 500px;
@@ -57,7 +59,7 @@ export const Question = styled.div`
 	padding-top: 10px;
 	padding-left: 3%;
 	padding-right: 3%;
-	word-wrap: 'normal';
+	word-wrap: normal;
 `
 
 export const QuestionDescriptionTextStyle = styled.div`

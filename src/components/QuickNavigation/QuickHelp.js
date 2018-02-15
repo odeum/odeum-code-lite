@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
-import { QuickHelpPopUp, transitionStyles, HelpPopUpFAQ, 
-	HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper, 
-	SplitMoreInfoDiv, 
+import { QuickHelpPopUp, transitionStyles, HelpPopUpFAQ,
+	HelpPopUpText, HelpPopUpDivSplitLine, DivWrapper,
+	SplitMoreInfoDiv,
 	Question, QuestionDescriptionTextStyle } from './QuickHelpStyles'
 import { Transition } from 'react-transition-group'
 
