@@ -64,6 +64,7 @@ export const HelpPopUp = styled.div`
 	z-index: 99;
 	height: 40vh;
 	width: 25vw;
+	min-width: 330px;
 	position: absolute;
 	bottom: 150%;
 	right: 30%;
@@ -111,7 +112,7 @@ export const Question = styled.div`
 `
 
 export const QuestionDescriptionTextStyle = styled.div`
-	margin-top: -0.9vw;
+	margin-top: -1%;
 `
 
 export const Bold = styled.b`
@@ -186,7 +187,6 @@ export const ContactSupportDivStyle = styled.div`
 `
 
 export const ContactSupportDiv = styled.div`
-	word-wrap: break-word;
 	padding-top: auto;
 `
 
