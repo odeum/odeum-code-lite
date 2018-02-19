@@ -25,9 +25,7 @@ export default class HelpPopup extends PureComponent {
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
-
-
-
+	
 	render() {
 		const { helpObj } = this.props
 
