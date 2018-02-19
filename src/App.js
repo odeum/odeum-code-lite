@@ -22,6 +22,7 @@ import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
 import CustomLoginForm from 'demos/CustomLoginForm'
+import { SetAppID } from 'components/utils/HelpReducer'
 // import MinFo from 'theme/minforetning'
 /* End Import Demo */
 
@@ -37,6 +38,7 @@ class App extends Component {
 
 	}
 	componentWillMount = () => {
+		SetAppID('odeum-code-lite')
 		var loginStorage = localStorage.getItem('loggedIn') === 'true' ? true : false
 		this.setState({ loggedIn: loginStorage })
 	}
