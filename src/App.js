@@ -87,7 +87,6 @@ class App extends Component {
 
 					<Menu route={'/help-editor'} label={'Help'} icon={'help'}>
 						<Tab route={''}>
-							Empty
 						</Tab>
 						<Tab label={'Add Article'} route={'/new-help-article'}>
 							<Editor />

@@ -22,38 +22,14 @@ export const HelpOverlay = styled.div`
 	cursor: auto;
 `
 
-export const HelpPopUpFAQ = styled.div`
+export const HelpPopUpTitleText = styled.div`
 	background:	#435C72;
-`
-
-export const HelpPopUpText = styled.div`
 	text-align: center;
 	vertical-align: middle;
 	color: white;
 	font-family: 'Arial Black';
 	padding: 5px;
 	font-size: 0.9em;
-	`
-
-export const DivWrapper = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-`
-
-export const SplitMoreInfoDiv = styled.div`
-	text-align: center;
-	vertical-align: middle;
-	flex: 0 0 50%;
-	padding: 20px;
-	line-height: 12px;
-	justify-content: center;
-`
-
-export const HelpPopUpDivSplitLine = styled.div`
-	margin-top: 15px;
-	width: 500px;
-	float: left;
-	border-right: 1px solid gray;
 `
 
 export const HelpPopUp = styled.div`
@@ -90,13 +66,14 @@ export const VerticalDivider = styled.div`
     left:50%;
     top: calc(70%-3vw);
 	bottom: auto;
+	margin-top: 5%;
 	padding-bottom: 5vw;
-	margin-top:5%;
 	border-left:1px solid #e3e3e3;
 `
 
 export const HorizontalDivider = styled.div`
-	margin-top: 10px;
+	overflow: hidden;
+	margin-top: 16%;
 	position:absolute;
     top:auto;
     left: 5%;
@@ -104,15 +81,12 @@ export const HorizontalDivider = styled.div`
 	border-top:1px solid #e3e3e3;
 `
 
-export const Question = styled.div`
-	padding-top: 10px;
-	padding-left: 3%;
+export const QuestionDescriptionTextStyle = styled.div`
+	margin-top: -10px;
+	margin-bottom : 5%;
+	padding-left: 1%;
 	padding-right: 3%;
 	word-wrap: 'normal';
-`
-
-export const QuestionDescriptionTextStyle = styled.div`
-	margin-top: -1%;
 `
 
 export const Bold = styled.b`
@@ -168,28 +142,14 @@ export const HelpButton = styled.div`
 	${media.phone`height:10px;`}
 `
 
-export const DescriptionTitle = styled.h3`
-	font-size: 1em;
-`
-
-export const DescriptionTextStyle = styled.p`
-	margin-top: -10px;
-`
-
-export const MoreInfoDivStyle = styled.div`
-	display: flex;
-	flex-flow: column;
-	font-size: 1em;
-`
-
-export const ContactSupportDivStyle = styled.div`
-	margin-top: -5px;
-`
-
-export const ContactSupportDiv = styled.div`
-	padding-top: auto;
-`
-
 export const DescriptionDivStyle = styled.div`
-	text-align: left;
+	display: flex;
+	flex-flow: ${p => p.orientation};
+	text-align: ${p => p.alignment};
+	padding: auto;
+
+`
+
+export const HelpComponentItem = styled.div`
+	flex: 1;
 `
