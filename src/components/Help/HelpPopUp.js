@@ -50,7 +50,8 @@ export default class HelpPopup extends PureComponent {
 						help_title="More answers"
 						help_description={"See the rest of the FAQ"}
 						help_title2={"Contact Odeum support"}
-						help_description2={"Number: 88 88 88 88\nEmail: support@odeum.dk"}>
+						help_description2={"Number: 88 88 88 88\nEmail: support@odeum.dk"}
+						link={'/i-have-help/'}>
 					</HelpComponent>
 				</HelpPopUp>
 			}}
@@ -70,7 +71,7 @@ const HelpComponent = (props) => {
 				{props.orientation === 'row' ? <VerticalDivider /> : <HorizontalDivider />}
 				<HelpComponentItem orientation={props.orientation}>
 					<Title>{props.help_title2}</Title>
-					<Link to={'http://localhost:3000/help/'}>{props.help_description2}</Link>
+					{props.link ? <Link to={props.link}>{props.help_description2}</Link> : props.help_description2}
 				</HelpComponentItem>
 			</DescriptionDivStyle>
 		</React.Fragment>

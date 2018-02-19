@@ -36,7 +36,12 @@ class App extends Component {
 		}
 
 	}
+	componentWillMount = () => {
+		this.setState({ loggedIn: localStorage.getItem('loggedIn') })
+	}
+
 	login = (username, password) => {
+		localStorage.setItem('loggedIn', true)
 		this.setState({ loggedIn: true })
 	}
 	changeTheme = () => {
