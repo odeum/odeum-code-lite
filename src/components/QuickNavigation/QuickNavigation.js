@@ -14,7 +14,7 @@ import Protected from '../Login/Protected'
 import Page from '../Menu/Page'
 import SwipeEvents from './SwipeEvents'
 // import QuickHelpPopup from './QuickHelp'
-import { GetHelpID } from '../utils/HelpReducer'
+// import { GetHelpID } from '../utils/HelpReducer'
 import Help from '../Help/Help'
 export default class QuickNavigation extends Component {
 	constructor(props) {
@@ -30,7 +30,6 @@ export default class QuickNavigation extends Component {
 				tab: 0,
 				menu: 0
 			},
-			helpObj: null
 		}
 	}
 
@@ -40,8 +39,8 @@ export default class QuickNavigation extends Component {
 	// }
 
 	componentWillMount = async () => {
-		var data = await this.getHelpItem(GetHelpID())
-		this.setState({ helpObj: data })
+		// var data = await this.getHelpItem(GetHelpID())
+		// this.setState({ helpObj: data })
 	}
 
 	showQuickNavButton = () => {
@@ -183,7 +182,6 @@ export default class QuickNavigation extends Component {
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>
 				}
-				{/* <SwipeEvents onSwiping={() => console.log('Swiping')} quickNav={quickNav} onClick={this.openNav}> */}
 				<QuickNavContainer helpOpen={showHelp} quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu quickNav={quickNav} onClick={this.menuClick()}>
 						<Header>

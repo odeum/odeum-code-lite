@@ -6,6 +6,7 @@ import {
 	DescriptionDivStyle, HelpComponentItem, Title
 } from './HelpStyles'
 import { Transition } from 'react-transition-group'
+import { Link } from 'react-router-dom'
 
 export default class HelpPopup extends PureComponent {
 
@@ -69,7 +70,7 @@ const HelpComponent = (props) => {
 				{props.orientation === 'row' ? <VerticalDivider /> : <HorizontalDivider />}
 				<HelpComponentItem orientation={props.orientation}>
 					<Title>{props.help_title2}</Title>
-					{props.help_description2}
+					<Link to={'http://localhost:3000/help/'}>{props.help_description2}</Link>
 				</HelpComponentItem>
 			</DescriptionDivStyle>
 		</React.Fragment>

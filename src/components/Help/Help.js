@@ -91,7 +91,7 @@ class Help extends Component {
 			helpID={GetHelpID()}
 			innerRef={this.setHelpPopUpRef}
 			helpObj={this.state.helpObj}
-			openHelp={this.props.showHelp}>
+			openHelp={this.props.showHelp ? this.props.showHelp : this.state.openHelp}>
 		</HelpPopup>
 
 	}
@@ -99,7 +99,7 @@ class Help extends Component {
 		const { small } = this.props
 		console.log(small)
 		return (
-			small !== undefined ? <React.Fragment>{this.renderHelp()}</React.Fragment>
+			small ? <React.Fragment>{this.renderHelp()}</React.Fragment>
 				:
 				<HelpDiv>
 					<HelpButton onClick={this.openHelp}>
