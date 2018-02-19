@@ -46,5 +46,8 @@ export const GetHelpID = () => {
 
 export const SetAppID = (id) => {
 	store.dispatch(setApp(id))
-	console.log(store.getState())
+}
+
+export const GetAppID = (id) => {
+	return store.getState().app_id
 }
