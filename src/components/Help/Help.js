@@ -85,35 +85,29 @@ class Help extends Component {
 	}
 	//#region Rendering
 	renderHelp = () => {
-		// const { helpObj } = this.state
-		// var helpID = GetHelpID()
-		// this.getHelpData(helpID)
-
-
-		/*
-			data - the object returned
-			this.getHelpItem - the helper function for calling the server
-			GetHelpID() - returns the current set ID/Label from redux store
-		*/
 
 		return <HelpPopup
 			small={this.props.small}
 			helpID={GetHelpID()}
 			innerRef={this.setHelpPopUpRef}
 			helpObj={this.state.helpObj}
-			openHelp={this.state.openHelp}>
+			openHelp={this.props.showHelp}>
 		</HelpPopup>
 
 	}
 	render() {
+		const { small } = this.props
+		console.log(small)
 		return (
-			<HelpDiv small={this.props.small}>
-				<HelpButton onClick={this.openHelp}>
-					<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
-					{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
-				</HelpButton>
-				{this.renderHelp()}
-			</HelpDiv>
+			small !== undefined ? <React.Fragment>{this.renderHelp()}</React.Fragment>
+				:
+				<HelpDiv>
+					<HelpButton onClick={this.openHelp}>
+						<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
+						{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
+					</HelpButton>
+					{this.renderHelp()}
+				</HelpDiv>
 		)
 	}
 	//#endregion

@@ -37,8 +37,8 @@ export const HelpPopUp = styled.div`
 	border-radius: 5px;
 	z-index: 4;
 	height: ${p => p.small ? '80vh' : '40vh'};
-	width: 25vw;
-	min-width: 330px;
+	width: ${p => p.small ? '95vw' : '25vw'};
+	min-width: ${p => p.small ? '0' : '330px'};
 	position: absolute;
 	bottom: ${p => p.small ? '' : '150%'};
 	right: ${p => p.small ? '' : '30%'};
@@ -90,7 +90,7 @@ export const HelpDiv = styled.div`
 	border-left: 1px solid #aaa;
 	height: 30px;
 	align-items: center;
-	width: ${props => props.small ? '30px' : '130px'};
+	width: 130px;
 	justify-content: center;
 	${media.giant`height:30px;`}
 	${media.desktop`height:30px;`}
