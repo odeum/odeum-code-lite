@@ -58,7 +58,6 @@ class Menu extends Component {
 	//#endregion
 
 	// setActiveTab = (key) => {
-	// 	console.log('setActiveTab', key)
 	// 	this.setState({ activeTab: key })
 	// 	if (React.Children.toArray(this.props.children)[key].props.helpID !== undefined)
 	// 		this.setHelpID(React.Children.toArray(this.props.children)[key].props.helpID)

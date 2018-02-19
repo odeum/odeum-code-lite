@@ -5,15 +5,13 @@ export function spanRowCalc(grid, gridName) {
 		var grids = grid.split('"')
 		grids = grids.filter(c => c.length > 0)
 		grids.forEach((child, i) => {
-			// console.log(child)
 			if (child.includes(gridName))
 				rows = rows + 1
 		})
-		// console.log('rows', rows)
 		return rows
 	}
 	catch (ex) {
-		console.log('CSS Grid Theme props are wrong')
+		console.error('CSS Grid Theme props are wrong')
 	}
 }
 
@@ -39,7 +37,7 @@ export function spanCalc(grid, gridName, pos) {
 			return r
 	}
 	catch (ex) {
-		console.log('CSS Grid Theme props are wrong')
+		console.error('CSS Grid Theme props are wrong')
 	}
 }
 export function rowColCalc(grid, gridName, pos) {
@@ -64,7 +62,7 @@ export function rowColCalc(grid, gridName, pos) {
 			return r
 	}
 	catch (ex) {
-		console.log('CSS Grid Theme props are wrong')
+		console.error('CSS Grid Theme props are wrong')
 	}
 }
 export const convertLabelToRoute = (label) => {
@@ -76,6 +74,6 @@ export const convertLabelToRoute = (label) => {
 export const isExact = (route) => {
 	if (route === "" || route === "/")
 		return true
-	else 
+	else
 		return false
 }

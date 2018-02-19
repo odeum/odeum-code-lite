@@ -97,7 +97,6 @@ class Help extends Component {
 	}
 	render() {
 		const { small } = this.props
-		console.log(small)
 		return (
 			small ? <React.Fragment>{this.renderHelp()}</React.Fragment>
 				:

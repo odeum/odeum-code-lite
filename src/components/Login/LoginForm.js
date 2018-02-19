@@ -11,14 +11,12 @@ export default class LoginDefaultForm extends Component {
 	  }
 	}
 	handleChange = (e) => {
-		// console.log(e.target.name, e.target.value)
 		this.setState({ [e.target.name]: e.target.value })
 	}
 	submit = () => {
 		this.props.login(this.state.username, this.state.password)
 	}
 	render() {
-		// const { login } = this.props
 		return (
 			<LoginContainer>
 				<Input name={'username'} onChange={this.handleChange} placeholder={'user'} style={{ marginBottom: '5px' }}/>

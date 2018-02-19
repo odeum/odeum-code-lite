@@ -33,7 +33,6 @@ class Tab extends Component {
 		}
 	}
 	// activate = () => {
-	// 	console.log('activate')
 	// 	if (this.props.activeTab !== this.props.tabID)
 	// 		this.props.setActiveTab(this.props.tabID ? this.props.tabID : 0)
 	// }

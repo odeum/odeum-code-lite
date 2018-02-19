@@ -4,14 +4,13 @@ import { Input, LoginContainer, Button } from '../components/Login/LoginStyles'
 export default class CustomLoginForm extends Component {
 	constructor(props) {
 	  super(props)
-	
+
 	  this.state = {
 		 username: '',
 		 password: ''
 	  }
 	}
 	handleChange = (e) => {
-		// console.log(e.target.name, e.target.value)
 		this.setState({ [e.target.name]: e.target.value })
 	}
 	submit = () => {
