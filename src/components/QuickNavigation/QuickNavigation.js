@@ -13,10 +13,10 @@ import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
 import Page from '../Menu/Page'
 import SwipeEvents from './SwipeEvents'
-import QuickHelpPopup from './QuickHelp'
+// import QuickHelpPopup from './QuickHelp'
 import { GetHelpID } from '../utils/HelpReducer'
 import { GetHelpItem } from '../Help/HelpData'
-
+import HelpPopup from '../Help/HelpPopUp'
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
@@ -180,7 +180,7 @@ export default class QuickNavigation extends Component {
 		return (
 			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
 				{/* <QuickNav> */}
-				<QuickHelpPopup openHelp={showHelp} handleHelp={this.helpClick} helpObj={helpObj} />
+				<HelpPopup openHelp={showHelp} handleHelp={this.helpClick} helpObj={helpObj} small={true}/>
 				{quickButton ?
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>

@@ -13,7 +13,7 @@ export const transitionStyles = {
 }
 
 export const HelpOverlay = styled.div`
-	z-index: 98;
+	z-index: 3;
 	height: 100vh;
 	width: 100vw;
 	position:fixed;
@@ -27,67 +27,46 @@ export const HelpPopUpTitleText = styled.div`
 	text-align: center;
 	vertical-align: middle;
 	color: white;
-	font-family: 'Arial Black';
 	padding: 5px;
 	font-size: 0.9em;
 `
 
 export const HelpPopUp = styled.div`
-	//background: #e3e3e3; /* dirty gray */
 	background: white;
     border: 1px solid #cbc8c8;
-	border-radius: 4px;
-	z-index: 99;
-	height: 40vh;
+	border-radius: 5px;
+	z-index: 4;
+	height: ${p => p.small ? '80vh' : '40vh'};
 	width: 25vw;
 	min-width: 330px;
 	position: absolute;
-	bottom: 150%;
-	right: 30%;
+	bottom: ${p => p.small ? '' : '150%'};
+	right: ${p => p.small ? '' : '30%'};
 	cursor: auto;
-	border-radius: 5px;
 	transition: all 300ms ease;
 	overflow: auto;
-		/*&::after {
-			position: static;
-			margin-left: 80%;
-			margin-top: -100px;
-			width: 200%;fa
-			height: 0;
-			content:'';
-			border-left: 15px solid transparent;
-			border-right: 15px solid transparent;
-			border-top: 15px solid #2C3E50;
-	}*/
+	display: flex;
+	flex-flow: column;
 `
-
+export const Title = styled.div`
+font-weight: 700;
+font-size: 17px;
+`
 export const VerticalDivider = styled.div`
-	position:absolute;
-    left:50%;
-    top: calc(70%-3vw);
-	bottom: auto;
-	margin-top: 5%;
-	padding-bottom: 5vw;
-	border-left:1px solid #e3e3e3;
+	background: #e3e3e3;
+	width: 1px;
+	height: 100%;
+	margin: 0px 10px;
+
 `
 
 export const HorizontalDivider = styled.div`
-	overflow: hidden;
-	margin-top: 16%;
-	position:absolute;
-    top:auto;
-    left: 5%;
-    right: 5%;
-	border-top:1px solid #e3e3e3;
+	background: #e3e3e3;
+	width: 100%;
+	height: 1px;
+	margin: 10px;
 `
 
-export const QuestionDescriptionTextStyle = styled.div`
-	margin-top: -10px;
-	margin-bottom : 5%;
-	padding-left: 1%;
-	padding-right: 3%;
-	word-wrap: 'normal';
-`
 
 export const Bold = styled.b`
 	font-size: 12px;
@@ -146,10 +125,13 @@ export const DescriptionDivStyle = styled.div`
 	display: flex;
 	flex-flow: ${p => p.orientation};
 	text-align: ${p => p.alignment};
-	padding: auto;
-
+	margin: 10px;
+	align-items:left;
+	flex: ${p => p.orientation !== 'row' ? 2 : 1};
 `
 
 export const HelpComponentItem = styled.div`
-	flex: 1;
+display: flex;
+flex-flow: column wrap;
+${p => p.orientation === "row" ? 'flex:1;' : ''}
 `

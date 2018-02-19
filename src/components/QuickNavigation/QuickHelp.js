@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 // import { GetHelpID } from '../utils/HelpReducer'
 import { QuickHelpPopUp } from './QuickHelpStyles'
-import { transitionStyles, HelpPopUpTitleText, QuestionDescriptionTextStyle, 
+import { transitionStyles, HelpPopUpTitleText,
 	DescriptionDivStyle, HelpComponentItem, VerticalDivider,
 	HorizontalDivider } from '../Help/HelpStyles'
 import { Transition } from 'react-transition-group'
@@ -32,12 +32,12 @@ export default class HelpPopup extends PureComponent {
 					<DescriptionDivStyle orientation={props.orientation} alignment={props.alignment}>
 						<HelpComponentItem>
 							<h3>{props.help_title}</h3>
-							<QuestionDescriptionTextStyle>{props.help_description}</QuestionDescriptionTextStyle>
+							{props.help_description}
 						</HelpComponentItem>
 						{props.orientation === 'row' ? <VerticalDivider /> : <HorizontalDivider />}
 						<HelpComponentItem>
 							<h3>{props.help_title2}</h3>
-							<QuestionDescriptionTextStyle>{props.help_description2}</QuestionDescriptionTextStyle>
+							{props.help_description2}
 						</HelpComponentItem>
 					</DescriptionDivStyle>
 				</div>

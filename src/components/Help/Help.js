@@ -5,7 +5,7 @@ import { GetHelpID } from '../utils/HelpReducer'
 // import { create } from 'apisauce'
 import HelpPopup from './HelpPopUp'
 import { GetHelpItem } from './HelpData'
-import QuickHelpPopup from '../QuickNavigation/QuickHelp'
+// import QuickHelpPopup from '../QuickNavigation/QuickHelp'
 
 // const api = create({
 // 	baseURL: `https://jsonplaceholder.typicode.com/`,
@@ -96,18 +96,13 @@ class Help extends Component {
 			GetHelpID() - returns the current set ID/Label from redux store
 		*/
 
-		return (!this.props.small) ? <HelpPopup
+		return <HelpPopup
+			small={this.props.small}
 			helpID={GetHelpID()}
 			innerRef={this.setHelpPopUpRef}
 			helpObj={this.state.helpObj}
 			openHelp={this.state.openHelp}>
-		</HelpPopup> :
-			<QuickHelpPopup
-				helpID={GetHelpID()}
-				innerRef={this.setHelpPopUpRef}
-				helpObj={this.state.helpObj}
-				openHelp={this.state.openHelp}>
-			</QuickHelpPopup>
+		</HelpPopup>
 
 	}
 	render() {
