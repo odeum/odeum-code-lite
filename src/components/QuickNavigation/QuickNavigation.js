@@ -14,9 +14,8 @@ import Protected from '../Login/Protected'
 import Page from '../Menu/Page'
 import SwipeEvents from './SwipeEvents'
 // import QuickHelpPopup from './QuickHelp'
-import { GetHelpID } from '../utils/HelpReducer'
-import { GetHelpItem } from '../Help/HelpData'
-import HelpPopup from '../Help/HelpPopUp'
+// import { GetHelpID } from '../utils/HelpReducer'
+import Help from '../Help/Help'
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
@@ -31,18 +30,17 @@ export default class QuickNavigation extends Component {
 				tab: 0,
 				menu: 0
 			},
-			helpObj: null
 		}
 	}
 
-	getHelpItem = async (helpID) => {
-		var data = await GetHelpItem(helpID)
-		return data
-	}
+	// getHelpItem = async (helpID) => {
+	// 	var data = await GetHelpItem(helpID)
+	// 	return data
+	// }
 
 	componentWillMount = async () => {
-		var data = await this.getHelpItem(GetHelpID())
-		this.setState({ helpObj: data })
+		// var data = await this.getHelpItem(GetHelpID())
+		// this.setState({ helpObj: data })
 	}
 
 	showQuickNavButton = () => {
@@ -52,7 +50,7 @@ export default class QuickNavigation extends Component {
 		this.setState({ quickButton: false })
 	}
 	helpClick = () => {
-		this.setState({ showHelp: !this.state.showHelp, quickNav: false })
+		this.setState({ showHelp: true, quickNav: false })
 	}
 	openNav = (e) => {
 		e.stopPropagation()
@@ -80,7 +78,6 @@ export default class QuickNavigation extends Component {
 		this.setState({ activeMenu: index, quickNav: !closeNav })
 	}
 
-
 	activeTab = (tab, menu) => tab === this.state.activeTab.tab && menu === this.state.activeTab.menu ? 'true' : 'false'
 
 	renderProtectedMenu = (menu, index) => {
@@ -94,9 +91,11 @@ export default class QuickNavigation extends Component {
 		}
 		else return this.renderMenuItem(menu, index)
 	}
+
 	indexGen = (index) => {
 		return index.protected !== undefined ? index.index + index.protected : index
 	}
+
 	renderMenuItem = (menu, index) => {
 		var icon = menu.props.icon ? menu.props.icon : 'menu'
 		var route = menu.props.route !== undefined ? menu.props.route : convertLabelToRoute(menu.props.label)
@@ -110,12 +109,10 @@ export default class QuickNavigation extends Component {
 				}
 			}
 		}
-		// console.log(this.props.loggedIn, menu.props.label)
-		if (this.props.loggedIn && menu.props.route === '/login') // Get the route to login as a prop from the redirectTo prop from menupanel
-		{
-			// console.log(this.props.loggedIn, menu)
-			return null //Temporary
-		}
+		// if (this.props.loggedIn && menu.props.route === '/login') // Get the route to login as a prop from the redirectTo prop from menupanel
+		// {
+		// 	return null //Temporary
+		// }
 		if (route === '' || route === '/') {
 			return <MenuItem key={indexGen(index)}
 				index={indexGen(index)}
@@ -176,16 +173,15 @@ export default class QuickNavigation extends Component {
 
 	render() {
 		// console.log(this.props)
-		const { quickButton, quickNav, showHelp, helpObj } = this.state
+		const { quickButton, quickNav, showHelp } = this.state
 		return (
 			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
-				{/* <QuickNav> */}
-				<HelpPopup openHelp={showHelp} handleHelp={this.helpClick} helpObj={helpObj} small={true}/>
+				{/* Let help component handle the 'help' stuff */}
+				<Help showHelp={showHelp} small={true} />
 				{quickButton ?
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>
 				}
-				{/* <SwipeEvents onSwiping={() => console.log('Swiping')} quickNav={quickNav} onClick={this.openNav}> */}
 				<QuickNavContainer helpOpen={showHelp} quickNav={quickNav} onClick={this.openNav}>
 					<QuickNavMenu quickNav={quickNav} onClick={this.menuClick()}>
 						<Header>

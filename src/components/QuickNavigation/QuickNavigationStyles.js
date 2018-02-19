@@ -175,7 +175,7 @@ export const QuickNavMenu = styled.div`
     max-height: 210px;
     border-radius: 5px;
     border: 1px solid #cbc8c8;
-    padding: 5px;
+    padding:${p => p.quickNav ? '5px' : '0px'};
     transition: 100ms all ease;
 `
 export const QuickNavContainer = styled.div`
