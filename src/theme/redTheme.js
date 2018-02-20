@@ -33,7 +33,7 @@ const theme = {
 
 	workspace: {
 		background: '#FFEBEE',
-		color: '#fff'
+		color: '#000'
 	},
 
 	tab: {
