@@ -105,10 +105,10 @@ export default class QuickNavigation extends Component {
 				}
 			}
 		}
-		// if (this.props.loggedIn && menu.props.route === '/login') // Get the route to login as a prop from the redirectTo prop from menupanel
-		// {
-		// 	return null //Temporary
-		// }
+		if (this.props.loggedIn && menu.props.route === this.props.RedirectTo)
+		{
+			return null //Temporary, should return Logout
+		}
 		if (route === '' || route === '/') {
 			return <MenuItem key={indexGen(index)}
 				index={indexGen(index)}

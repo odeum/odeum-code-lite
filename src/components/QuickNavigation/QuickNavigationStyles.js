@@ -120,7 +120,6 @@ export const TabList = styled.div`
 //#region QuickNav Button, Overlay and Spacer
 
 export const QuickNav = styled.div`
-    background:red;
 	position: absolute;
 	top: 50%;
 	left: 50%;
