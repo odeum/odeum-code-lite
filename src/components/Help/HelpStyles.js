@@ -23,7 +23,7 @@ export const HelpOverlay = styled.div`
 `
 
 export const HelpPopUpTitleText = styled.div`
-	background:	#435C72;
+	background:	${p => p.theme.header.background};
 	text-align: center;
 	vertical-align: middle;
 	color: white;
@@ -49,8 +49,9 @@ export const HelpPopUp = styled.div`
 	flex-flow: column;
 `
 export const Title = styled.div`
-font-weight: 700;
-font-size: 17px;
+	font-weight: 700;
+	font-size: 17px;
+	color: ${p => p.theme.workspace.color};
 `
 export const VerticalDivider = styled.div`
 	background: #e3e3e3;
@@ -131,7 +132,8 @@ export const DescriptionDivStyle = styled.div`
 `
 
 export const HelpComponentItem = styled.div`
-display: flex;
-flex-flow: column wrap;
-${p => p.orientation === "row" ? 'flex:1;' : ''}
+	display: flex;
+	flex-flow: column wrap;
+	${p => p.orientation === "row" ? 'flex:1;' : ''}
+	color: ${p => p.theme.workspace.color};
 `
