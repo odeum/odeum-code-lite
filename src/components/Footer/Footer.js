@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StyledFooter, Link } from './FooterStyles'
 import Help from '../Help/Help'
 import { ScreenSizes } from '../../theme/media'
-
+import packageJSOn from '../../../package.json'
 class Footer extends PureComponent {
 	constructor(props) {
 		super(props)
@@ -59,7 +59,7 @@ var date = new Date()
 
 Footer.defaultProps = {
 	label: () => <div>
-		<b>ODEUM Code Lite </b> v1.0.0 © Copyright {' '}{date.getFullYear()}
+		<b>ODEUM Code Lite </b> v{packageJSOn.version} © Copyright {' '}{date.getFullYear()}
 	</div>,
 	labelLink: '/',
 	target: '',

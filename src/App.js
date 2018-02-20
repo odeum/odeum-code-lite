@@ -153,26 +153,26 @@ class App extends Component {
 					</Protected>
 					{/* <Flex bottom/> */}
 				</MenuPanel>
-				<Footer help={true} label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
+				<Footer help={true} /* label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'}  */ />
 			</AppContainer>
 		)
 	}
 }
 
-const handleLink = () => {
-	return '/children_menu/workspace'
-}
+// const handleLink = () => {
+// 	return '/children_menu/workspace'
+// }
 
-const RenderFooterLabel = () => {
-	const date = new Date()
-	return (
-		<div>
-			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
-			{' '}{date.getFullYear()}
-			{/* {' Debug2 '}{GetHelpID()} */}
-		</div>
-	)
-}
+// const RenderFooterLabel = () => {
+// 	const date = new Date()
+// 	return (
+// 		<div>
+// 			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
+// 			{' '}{date.getFullYear()}
+// 			{/* {' Debug2 '}{GetHelpID()} */}
+// 		</div>
+// 	)
+// }
 
 export default App
 
