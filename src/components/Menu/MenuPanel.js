@@ -33,7 +33,7 @@ class MenuPanel extends Component {
 		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 
-	//#region Display quickNav or Menu
+	//#region Display SmallScreen or Menu
 
 	//Avoid Rerendering on Window resize
 	OnSmallScreen = () => {
@@ -80,7 +80,7 @@ class MenuPanel extends Component {
 	//#region State Management
 
 	switch = (bool) => (
-		this.setState({ quicknav: bool })
+		this.setState({ SmallScreen: bool })
 	)
 	setActiveMenu = (label, id) => {
 		this.setState({ activeMenu: label })
@@ -206,7 +206,7 @@ class MenuPanel extends Component {
 		})
 	}
 
-	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, quicknav: this.state.quicknav, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
+	renderChild = (child, index) => ({ match }) => { return React.cloneElement(child, { ...child.props, SmallScreen: this.state.SmallScreen, setActiveMenu: this.setActiveMenu, activeMenu: this.state.activeMenu, route: this.route(child), MenuID: index }) }
 
 	renderMenu = (children) => {
 		const { SmallScreen } = this.state

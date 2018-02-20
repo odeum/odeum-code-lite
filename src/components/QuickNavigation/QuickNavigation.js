@@ -22,7 +22,7 @@ export default class QuickNavigation extends Component {
 
 		this.state = {
 			quickButton: true,
-			quickNav: false,
+			SmallScreen: false,
 			showButton: true,
 			showHelp: false,
 			activeMenu: 0,
@@ -38,10 +38,6 @@ export default class QuickNavigation extends Component {
 	// 	return data
 	// }
 
-	componentWillMount = async () => {
-		// var data = await this.getHelpItem(GetHelpID())
-		// this.setState({ helpObj: data })
-	}
 
 	showQuickNavButton = () => {
 		this.setState({ quickButton: true })
@@ -50,14 +46,14 @@ export default class QuickNavigation extends Component {
 		this.setState({ quickButton: false })
 	}
 	helpClick = () => {
-		this.setState({ showHelp: true, quickNav: false })
+		this.setState({ showHelp: true, SmallScreen: false })
 	}
 	openNav = (e) => {
 		e.stopPropagation()
 		if (this.state.showHelp === true)
-			this.setState({ quickNav: false, showHelp: false })
+			this.setState({ SmallScreen: false, showHelp: false })
 		else
-			this.setState({ quickNav: !this.state.quickNav })
+			this.setState({ SmallScreen: !this.state.SmallScreen })
 		// if (this.state.showHelp === true)
 		// 	this.setState({ showHelp: false })
 	}
@@ -65,7 +61,7 @@ export default class QuickNavigation extends Component {
 	tabClick = (id, helpID) => (e) => {
 		SetHelpID(helpID)
 		var activeTab = { tab: parseInt(e.target.id, 10), menu: this.state.activeMenu }
-		this.setState({ quickNav: false, activeTab: activeTab })
+		this.setState({ SmallScreen: false, activeTab: activeTab })
 	}
 
 	menuClick = () => (e) => {
@@ -75,7 +71,7 @@ export default class QuickNavigation extends Component {
 	setActiveMenu = (index, closeNav) => (e) => {
 		e.preventDefault()
 		e.stopPropagation()
-		this.setState({ activeMenu: index, quickNav: !closeNav })
+		this.setState({ activeMenu: index, SmallScreen: !closeNav })
 	}
 
 	activeTab = (tab, menu) => tab === this.state.activeTab.tab && menu === this.state.activeTab.menu ? 'true' : 'false'
@@ -169,7 +165,7 @@ export default class QuickNavigation extends Component {
 	}
 
 	render() {
-		const { quickButton, quickNav, showHelp } = this.state
+		const { quickButton, SmallScreen, showHelp } = this.state
 		return (
 			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
 				{/* Let help component handle the 'help' stuff */}
@@ -178,8 +174,8 @@ export default class QuickNavigation extends Component {
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>
 				}
-				<QuickNavContainer helpOpen={showHelp} quickNav={quickNav} onClick={this.openNav}>
-					<QuickNavMenu quickNav={quickNav} onClick={this.menuClick()}>
+				<QuickNavContainer helpOpen={showHelp} SmallScreen={SmallScreen} onClick={this.openNav}>
+					<QuickNavMenu SmallScreen={SmallScreen} onClick={this.menuClick()}>
 						<Header>
 							<SubHeader>
 								<HeaderButton icon={'help'} onClick={this.helpClick} />

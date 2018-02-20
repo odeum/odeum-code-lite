@@ -67,7 +67,7 @@ class Menu extends Component {
 		if (children[0].type === Tab)
 			return (
 				<SceneDiv>
-					{!this.props.quicknav ?
+					{!this.props.SmallScreen ?
 						<TabList>
 							{children.map((child, index) => (
 								<Tab key={index}
