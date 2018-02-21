@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Icon } from 'odeum-ui'
+
+/*Styles */
 import {
 	QuickNavButton, QuickNavMenu, QuickNavContainer,
 	Spacer, TabList, TabItem,
 	MenuItem, MenuList, Link, Header, SubHeader, QuickNavButtonHidden
 } from './QuickNavigationStyles'
+
+/*Components */
 import Tab from '../Tabs/Tab'
 import Menu from '../Menu/Menu'
-import { convertLabelToRoute } from '../utils/Functions'
-import { Icon } from 'odeum-ui'
 import HeaderButton from './HeaderButton'
-import { SetHelpID } from '../utils/HelpReducer'
 import Protected from '../Login/Protected'
 import Page from '../Menu/Page'
-import SwipeEvents from './SwipeEvents'
-// import QuickHelpPopup from './QuickHelp'
-// import { GetHelpID } from '../utils/HelpReducer'
 import Help from '../Help/Help'
+
+/*Utils */
+// import { GetHelpID } from '../utils/HelpReducer'
+import SwipeEvents from './SwipeEvents'
+import { SetHelpID } from '../utils/HelpReducer'
+import { convertLabelToRoute } from '../utils/Functions'
+
 export default class QuickNavigation extends Component {
 	constructor(props) {
 		super(props)
@@ -169,7 +176,7 @@ export default class QuickNavigation extends Component {
 		return (
 			<SwipeEvents onSwipedUp={this.showQuickNavButton} onSwipedDown={this.hideQuickNavButton}>
 				{/* Let help component handle the 'help' stuff */}
-				<Help showHelp={showHelp} small={true} />
+				<Help showHelp={showHelp} SmallScreen={true} />
 				{quickButton ?
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
 					: <QuickNavButtonHidden></QuickNavButtonHidden>
@@ -203,4 +210,10 @@ export default class QuickNavigation extends Component {
 			</SwipeEvents>
 		)
 	}
+}
+
+QuickNavigation.propTypes = {
+	menus: PropTypes.oneOfType([PropTypes.node, PropTypes.array, PropTypes.element]),
+	loggedIn: PropTypes.bool,
+	RedirectTo: PropTypes.string
 }

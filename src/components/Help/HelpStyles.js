@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import media from 'theme/media'
-// import theme from 'theme/default'
-import {
-	Icon
-} from 'odeum-ui'
+import { Icon } from 'odeum-ui'
+
+import media from '../../theme/media'
 
 export const transitionStyles = {
 	entering: { visibility: '', opacity: 1 },
@@ -36,23 +34,25 @@ export const HelpPopUp = styled.div`
     border: 1px solid #cbc8c8;
 	border-radius: 5px;
 	z-index: 4;
-	height: ${p => p.small ? '80vh' : '40vh'};
-	width: ${p => p.small ? '95vw' : '25vw'};
-	min-width: ${p => p.small ? '0' : '330px'};
+	height: ${p => p.SmallScreen ? '80vh' : '40vh'};
+	width: ${p => p.SmallScreen ? '95vw' : '25vw'};
+	min-width: ${p => p.SmallScreen ? '0' : '330px'};
 	position: absolute;
-	bottom: ${p => p.small ? '' : '150%'};
-	right: ${p => p.small ? '' : '30%'};
+	bottom: ${p => p.SmallScreen ? '' : '150%'};
+	right: ${p => p.SmallScreen ? '' : '30%'};
 	cursor: auto;
 	transition: all 300ms ease;
 	overflow: auto;
 	display: flex;
 	flex-flow: column;
 `
+
 export const Title = styled.div`
 	font-weight: 700;
 	font-size: 17px;
 	color: ${p => p.theme.workspace.color};
 `
+
 export const VerticalDivider = styled.div`
 	background: #e3e3e3;
 	width: 1px;
@@ -67,7 +67,6 @@ export const HorizontalDivider = styled.div`
 	height: 1px;
 	margin: 10px;
 `
-
 
 export const Bold = styled.b`
 	font-size: 12px;

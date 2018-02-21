@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import { QuickNav } from './QuickNavigationStyles'
 
 class SwipeEvents extends Component {
