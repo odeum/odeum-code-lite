@@ -80,14 +80,21 @@ class Help extends Component {
 	}
 
 	openHelp = () => {
-		document.addEventListener('click', this.onClickOutside, false)
-		this.setState({ openHelp: !this.state.openHelp })
+		if (!this.state.openHelp) {
+			document.addEventListener('click', this.onClickOutside, false)
+			this.setState({ openHelp: true })
+		}
+		if (this.state.openHelp) {
+			document.removeEventListener('click', this.onClickOutside, false)
+			this.setState({ openHelp: false })
+		}
 	}
+
 	//#region Rendering
 	renderHelp = () => {
 
 		return <HelpPopup
-			small={this.props.small}
+			SmallScreen={this.props.SmallScreen}
 			helpID={GetHelpID()}
 			innerRef={this.setHelpPopUpRef}
 			helpObj={this.state.helpObj}
@@ -96,14 +103,14 @@ class Help extends Component {
 
 	}
 	render() {
-		const { small } = this.props
+		const { SmallScreen } = this.props
 		return (
-			small ? <React.Fragment>{this.renderHelp()}</React.Fragment>
+			SmallScreen ? <React.Fragment>{this.renderHelp()}</React.Fragment>
 				:
 				<HelpDiv>
 					<HelpButton onClick={this.openHelp}>
 						<HelpIcon icon={'help'} style={{ marginRight: "0px" }} />
-						{!this.props.small ? <Bold>{this.props.helpLabel}</Bold> : null}
+						{!this.props.SmallScreen ? <Bold>{this.props.helpLabel}</Bold> : null}
 					</HelpButton>
 					{this.renderHelp()}
 				</HelpDiv>
@@ -114,7 +121,7 @@ class Help extends Component {
 
 Help.propTypes = {
 	helpLabel: PropTypes.string,
-	small: PropTypes.bool
+	SmallScreen: PropTypes.bool
 }
 
 Help.defaultProps = {
