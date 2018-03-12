@@ -17,6 +17,12 @@ import { ThemeProvider } from 'styled-components'
 
 import DefaultTheme from '../../theme/default'
 
+/**
+ * @augments {Component<{theme:object,style:object>}
+ * @extends {Component}
+ * @prop {theme, style} - Custom theme and Custom style on the Root Container
+ */
+
 class AppContainer extends Component {
 
 	render() {

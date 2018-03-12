@@ -2,6 +2,11 @@ import { createStore } from 'redux'
 
 const SET_HELP_ID = 'SetHelpID'
 const APP_ID = 'APP_ID'
+/**
+ * @param {any} helpID
+ * @private REDUX Action
+ * @description Set the HelpID internal
+ */
 
 const setHelp = (helpID) => ({
 	type: SET_HELP_ID,
@@ -17,6 +22,13 @@ const initialState = {
 	app_id: '',
 	helpID: 0
 }
+/**
+ * @param {any} [state=initialState] 
+ * @param {any} action 
+ * @returns {state}
+ * @description Help Reducers
+ */
+
 const HelpReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case APP_ID:
@@ -34,6 +46,9 @@ const HelpReducer = (state = initialState, action) => {
 	}
 }
 
+/**
+ * @description Redux Store
+ */
 const store = createStore(HelpReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 export const SetHelpID = (id) => {
