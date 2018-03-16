@@ -22,6 +22,7 @@ import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
 import CustomLoginForm from 'demos/CustomLoginForm'
+import CurrentWeather from 'demos/CurrentWeather'
 import { SetAppID } from 'components/utils/HelpReducer'
 // import MinFo from 'theme/minforetning'
 /* End Import Demo */
@@ -149,6 +150,9 @@ class App extends Component {
 						</Menu>
 						<Menu icon={'drafts'} label={'I have help'}>
 							<ReactComp />
+						</Menu>
+						<Menu label={'Weather'} icon='people'>
+							<CurrentWeather/>
 						</Menu>
 					</Protected>
 					{/* <Flex bottom/> */}
