@@ -43,7 +43,7 @@ class Footer extends PureComponent {
 						{/* &nbsp;| Debug: {this.props.helpID} */}
 					</div>
 				</Link>
-				{help ? <Help small={SmallScreen} helpID={helpID} helpLabel={helpLabel} /> : null}
+				{help ? <Help SmallScreen={SmallScreen} helpID={helpID} helpLabel={helpLabel} /> : null}
 			</StyledFooter> : null
 		)
 	}
@@ -55,12 +55,15 @@ Footer.propTypes = {
 	target: PropTypes.string,
 	debug: PropTypes.string
 }
-var date = new Date()
 
 Footer.defaultProps = {
-	label: () => <div>
-		<b>ODEUM Code Lite </b> v{packageJSOn.version} © Copyright {' '}{date.getFullYear()}
-	</div>,
+	label: () => {
+		var date = new Date()
+		return < div >
+			<b>ODEUM Code Lite </b> v{packageJSOn.version} © Copyright {' '}{date.getFullYear()
+			}
+		</div>
+	},
 	labelLink: '/',
 	target: '',
 	debug: ''

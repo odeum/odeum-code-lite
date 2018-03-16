@@ -8,7 +8,7 @@ import 'core-js/fn/string/includes'
 
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
-
+import PropTypes from 'prop-types'
 // Styling
 import { RootContainer } from './AppStyles'
 import { ThemeProvider } from 'styled-components'
@@ -24,7 +24,7 @@ class AppContainer extends Component {
 		let CustomStyles = this.props.style
 		return (
 			<Router>
-				<ThemeProvider theme={CustomTheme ? CustomTheme : DefaultTheme} >
+				<ThemeProvider theme={CustomTheme} >
 					<RootContainer style={CustomStyles ? CustomStyles : undefined}>
 						{this.props.children}
 					</RootContainer>
@@ -33,5 +33,11 @@ class AppContainer extends Component {
 		)
 	}
 }
-
+AppContainer.propTypes = {
+	theme: PropTypes.object,
+	style: PropTypes.object
+}
+AppContainer.defaultProps = {
+	theme: DefaultTheme
+}
 export default AppContainer

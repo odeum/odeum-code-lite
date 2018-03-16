@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
+/* Components */
 import MenuItem from './MenuComponents/MenuItem'
 import BlueMenuPanel from "./MenuComponents/BlueMenuPanel"
 import NotFound from '../AppContainer/NotFound'
 import QuickNavigation from '../QuickNavigation/QuickNavigation'
-import { convertLabelToRoute, isExact } from '../utils/Functions'
-import { ScreenSizes } from '../../theme/media'
 import Tab from '../Tabs/Tab'
-import { Redirect } from 'react-router-dom'
 import Protected from '../Login/Protected'
 import Menu from './Menu'
 import Page from './Page'
+
+/* Utils */
+import { convertLabelToRoute, isExact } from '../utils/Functions'
+import { ScreenSizes } from '../../theme/media'
 
 class MenuPanel extends Component {
 
@@ -233,6 +238,11 @@ class MenuPanel extends Component {
 	}
 
 	//#endregion
+}
+MenuPanel.propTypes = {
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.array, PropTypes.element]),
+	login: PropTypes.bool,
+	isLoggedIn: PropTypes.bool
 }
 MenuPanel.defaultProps = {
 	login: false
