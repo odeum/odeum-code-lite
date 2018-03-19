@@ -6,7 +6,7 @@ const api = create({
 
 export const GetWeather = async (parameter) => {
 	var data
-	if (typeof (parameter) === 'object') {
+	if (typeof (parameter) === 'object' && parameter) {
 		await api.get('weather?lat=' + parameter.lat + '&lon=' + parameter.lon + '&appid=cbabea7dfe88ded04409be196b518dab')
 			.then((res) => {
 				if (res.ok) {
@@ -21,5 +21,7 @@ export const GetWeather = async (parameter) => {
 				}
 			})
 	}
-	if (data) return data
+	if (data) {
+		return data
+	}
 }
