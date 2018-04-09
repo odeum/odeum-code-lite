@@ -14,8 +14,6 @@ export const WeatherChart = (props) => {
 		})
 		return 0
 	})
-	
-	console.log(weatherArray)
 
 	return (
 		<BarChart width={600} height={300} data={weatherArray}
@@ -37,14 +35,14 @@ export const WeatherChart = (props) => {
 }
 
 const CustomTooltip = (props) => {
-	let icon, temperature
-	if (props.active === true) {
+	let icon = '01d', temperature
+	if (props.payload && props.active === true) {
 		icon = props.payload[0].payload.icon
 		temperature = props.payload[0].payload.temp
 	}
 	const imgLink = 'http://openweathermap.org/img/w/' + icon + '.png'
 	return (	
-		<div className="custom-tooltip" style={{ 'backgroundColor': 'rgba(255, 255, 255, 0.8)', 'padding': '10px' }}>
+		<div className="custom-tooltip" style={{ 'backgroundColor': 'rgba(255, 255, 255, 0.8)', 'padding': '10px', 'border': '1px solid #f5f5f5' }}>
 			<img src={imgLink} alt='WeatherCode'/>
 			<p className="description">{`${temperature} °C`}</p>
 		</div>
