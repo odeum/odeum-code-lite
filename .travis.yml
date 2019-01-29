@@ -1,15 +1,14 @@
 language: node_js
 node_js:
     - stable
-
+cache: npm
 notifications:
     email: true
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
-script:
-  - yarn
-  - yarn build
-  - cp ./build/index.html ./build/200.html
+script: 
+  - "npm run-script build"
+  - "cp ./build/index.html ./build/200.html"
 
 deploy:
   provider: surge
