@@ -1,8 +1,17 @@
-import ODEUM_Logo from 'theme/logo_red.svg'
-import ODEUM_icon from 'theme/logo_icon.svg'
+import redLogo from 'theme/logo_red.svg'
 
 const theme = {
+	app: {
+		gridArea:
+			'"header header"'
+			+ '"menupanel workspace"'
+			+ '"footer footer"',
+		gridTemplateRows: 'auto 1fr auto',
+		gridTemplateColumns: 'auto 1fr'
+	},
+
 	header: {
+		height: '80px',
 		background: '#7c1313',
 		color: '#FFEBEE'
 	},
@@ -12,7 +21,9 @@ const theme = {
 		color: '#FFEBEE',
 		selected: '#EF5350',
 		hover: '#F44336',
-		bottomBorder: '1px solid #CF7840'
+		border: '1px solid #CF7840',
+		textHover: '#FFEBEE',
+		fontSize: '1em'
 	},
 
 	footer: {
@@ -22,12 +33,12 @@ const theme = {
 
 	workspace: {
 		background: '#FFEBEE',
-		color: '#fff'
+		color: '#000'
 	},
 
 	tab: {
-		background: '#C4682C',
-		color: '#fff',
+		color: '#000',
+		activeColor: '#FFF',
 		selected: '#EF5350',
 		hover: '#F44336',
 		unselected: '#FFCDD2'
@@ -39,6 +50,12 @@ const theme = {
 	quicknav: {
 		button: {
 			background: '#7c1313',
+			unselected: '#E3E5E5',
+			color: '#FFF'
+		},
+		menu: {
+			background: '#7c1313',
+			unselected: '#E3E5E5',
 			color: '#FFF'
 		},
 		tab: {
@@ -46,11 +63,11 @@ const theme = {
 			unselected: '#000'
 		}
 	},
-	 logo: {
-		 default: ODEUM_Logo,
-		 bigLogo: ODEUM_Logo,
-		 smallLogo: ODEUM_icon
-	 }
+	logo: {
+		margin: '5px',
+		height: '35px',
+		default: redLogo
+	}
 }
 
 export default theme

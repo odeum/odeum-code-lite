@@ -1,47 +1,62 @@
-import React, { Component } from 'react'
-import { GetHelpID } from '../utils/HelpReducer'
-import { HelpPopUp } from './HelpStyles'
+import React, { PureComponent } from 'react'
+import PropTypes from "prop-types"
+import { Transition } from 'react-transition-group'
 
-export default class HelpPopup extends Component {
-	componentWillUpdate = (nextProps, nextState) => {
-		// if (nextProps.openHelp === true)
-		// document.addEventListener('click', this.onClickOutsise, false)
-		// else
-		// document.removeEventListener('click', this.onClickOutsise, false)
-	}
+// import { GetHelpID } from '../utils/HelpReducer'
+import { HelpPopUp, transitionStyles } from './HelpStyles'
+import { HelpSection } from './HelpSection'
 
-	componentWillUnmount = () => {
-		// document.removeEventListener('click', this.onClickOutsise, false)
-	}
+export default class HelpPopup extends PureComponent {
 
-	onClickOutsise = (e) => {
-		e.stopPropagation()
-		console.log('Clicked Outside')
-		console.log(e.target)
-		if (this.props.openHelp) {
-			if (this.node) {
-				if (!this.node.contains(e.target)) {
-					// this.setState({ openHelp: false })
-					this.props.handleHelp()
-					document.removeEventListener('click', this.onClickOutsise, false)
-				}
-			}
-		}
-	}
+	// onClickOutside = (e) => {
+	// 	e.stopPropagation()
+	// 	if (this.props.openHelp) {
+	// 		if (this.node) {
+	// 			if (!this.node.contains(e.target)) {
+	// 				this.props.handleHelp()
+	// 				document.removeEventListener('click', this.onClickOutside, false)
+	// 			}
+	// 		}
+	// 	}
+	// }
+
 	setHelpPopUpRef = (node) => {
 		this.node = node
 	}
+
 	render() {
-		const helpID = GetHelpID()
-		return this.props.openHelp ?
-			<HelpPopUp innerRef={this.setHelpPopUpRef}>
-				<h1>
-					{helpID}
-				</h1>
-				<p>Description</p>
-			</HelpPopUp>
-			: null
+		const { helpObj } = this.props
 
-
+		return <Transition in={this.props.openHelp} timeout={300}>
+			{state => {
+				return <HelpPopUp style={{ ...transitionStyles[state] }} SmallScreen={this.props.SmallScreen} openHelp={this.props.openHelp} innerRef={this.props.innerRef} >
+					<HelpSection
+						orientation='column'
+						titleText='Frequently Asked Questions'
+						alignment='left'
+						help_title={helpObj ? helpObj.locale_content['en'].help_title : "Loading..."}
+						help_description={helpObj ? helpObj.locale_content['en'].help_description : "Loading..."}
+						help_title2={helpObj ? helpObj.locale_content['en'].help_title : "Loading..."}
+						help_description2={"Lorem ipsum dolor sit amet, vis elitr doctus similique id, te moderatius appellantur mea. Libris mucius explicari ea quo. Timeam voluptua cu mel. Ei fastidii interesset nam. Vix partem mentitum id.Lorem ipsum dolor sit amet, vis elitr doctus similique id, te moderatius appellantur mea. Libris mucius explicari ea quo. Timeam voluptua cu mel. Ei fastidii interesset nam. Vix partem mentitum id."}>
+					</HelpSection>
+					<HelpSection
+						orientation='row'
+						titleText='Are you still missing answers?'
+						alignment='center'
+						help_title="More answers"
+						help_description={"See the rest of the FAQ"}
+						help_title2={"Contact Odeum support"}
+						help_description2={"Number: 88 88 88 88\nEmail: support@odeum.dk"}
+						link={'/i-have-help/'}>
+					</HelpSection>
+				</HelpPopUp>
+			}}
+		</Transition>
 	}
+}
+HelpPopup.propTypes = {
+	helpObj: PropTypes.object.isRequired
+}
+HelpPopup.defaultProps = {
+
 }

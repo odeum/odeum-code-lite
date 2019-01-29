@@ -1,27 +1,12 @@
-import 'core-js/es6/map'
-import 'core-js/es6/set'
-import React, { Component } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-// import { render } from 'react-dom'
-// import { BrowserRouter as Router, Route } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 import App from 'App'
 
-// import AppRouter from 'AppRouter'
-
-
-class AppRouter extends Component {
-	render() {
-		return (
-			<App/>
-		)
-	}
-}
-export default AppRouter
 
 ReactDOM.render(
-	<AppRouter />,
+	<App />,
 	document.getElementById('root')
 )
 

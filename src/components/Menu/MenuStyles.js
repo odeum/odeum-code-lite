@@ -1,50 +1,85 @@
 import styled from 'styled-components'
 import { NavLink as RouterLink } from 'react-router-dom'
+import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
-export const MenuDiv = styled.div`
+export const BlueMenuContainer = styled.div`
+	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'column')};
+	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'menupanel', 'row')};
+	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'menupanel', 'column'); return x > 1 ? x : 'none' }};
+	-ms-grid-row-span: ${p => { var y = spanRowCalc(p.theme.app.gridArea, 'menupanel'); return y > 1 ? y : 'none' }};
+	overflow:hidden;
+	grid-area:menupanel;
 	background-color: ${props => props.theme.menu.background};
-	display: flex;
-	flex: 1 0 auto;
-	flex-flow: column nowrap;
-	overflow-x: hidden;
+	display:flex;
+	flex-flow:column wrap;
 	max-width: ${props => props.achordeon ? '250px;' : '50px'};
 	transition: max-width 300ms ease;
 `
 
 const BaseItem = styled.div`
-	border-bottom: ${props => props.theme.menu.bottomBorder};
-	height: 50px;
-	width: 100%;
 	display: flex;
 	align-items: center;
+	border-bottom: ${props => props.theme.menu.bottomBorder};
+	height: 40px;
+	width: 100%;
+`
+
+export const DefaultHeader = BaseItem.extend`
+	display: flex;
+	flex-flow:column;
+	height: auto;
+	align-items: center;
+	justify-content: center;
 `
 
 export const MenuHeader = BaseItem.extend`
+	display: flex;
+	flex-flow:column;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: auto;
+`
+
+export const MenuFooter = BaseItem.extend`
+	display: flex;
+	flex-flow:column;
+	height: auto;
+	margin-top:auto;
 `
 
 export const IconDiv = styled.div`
-	width: 50; 
-	height: 100%; 
-	min-width: 50px; 
 	display: flex;
+	width: 50;
+	height: 50px;
+	min-width: 50px;
 	align-items: center;
 	justify-content: center;
 `
 
 export const ArrowIconDiv = IconDiv.extend`
+	display: flex;
 	align-self: right;
+	justify-content: center;
 `
+
 export const MenuText = styled.div`
+	font-size: ${p => p.theme.menu.fontSize ? p.theme.menu.fontSize : 'inherit'};
 	width: 100%;
+	margin-left: 2px;
 `
+
 export const MenuContainer = styled.div`
 	display:flex;
-	flex-flow: ${props => props.quicknav ? 'column nowrap'  : 'row nowrap' };
+	flex-flow: ${props => props.quicknav ? 'column nowrap' : 'row nowrap'};
 	flex:1;
 	overflow-y: hidden;
 `
+
 export const Link = styled(RouterLink) `
-	border-bottom: ${props => props.theme.menu.bottomBorder};
+	border-bottom: ${props => props.theme.menu.border};
+	border-top: ${props => props.theme.menu.border};
+	margin: -1px 0 0 -1px;
 	text-decoration: none;
 	outline: 0;
 	color: ${props => props.theme.menu.color};
@@ -56,7 +91,8 @@ export const Link = styled(RouterLink) `
 	justify-content: space-between;
 	background: ${(props) => props.activemenu === 'true' ? props.theme.menu.selected : props.theme.menu.unselected};
 	&:hover{
-		background: ${props => props.theme.menu.hover}
+		background: ${props => props.theme.menu.hover};
+		color: ${p => p.theme.menu.textHover ? p.theme.menu.textHover : 'inherit'};
 	}
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;

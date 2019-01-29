@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { WorkspaceDiv } from './WorkspaceStyles'
 import { SetHelpID } from '../utils/HelpReducer'
 
@@ -19,5 +20,7 @@ class Workspace extends Component {
 	}
 }
 
+Workspace.propTypes = {
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.array, PropTypes.element])
+}
 export default Workspace
-

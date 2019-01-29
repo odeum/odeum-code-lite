@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { HeaderDiv } from './HeaderStyles'
+import { HeaderContainer } from './HeaderStyles'
 import { LogoDiv, LogoImg } from './HeaderStyles'
-import { ScreenSizes } from 'theme/media'
-import theme from 'theme/default'
+import { ScreenSizes } from '../../theme/media'
+import theme from '../../theme/default'
 
 
 class Header extends Component {
@@ -11,29 +11,32 @@ class Header extends Component {
 		super(props)
 
 		this.state = {
-			quicknav: false,
-			logo: this.props.logo
+			SmallScreen: false
 		}
 	}
-
-	updateLogo = () => {
-		this.changeLogo(this.props.logo ? this.props.logo : theme.logo)
-		this.setState({ quicknav: window.innerWidth < ScreenSizes.tablet ? true : false })
+	shouldComponentUpdate = (nextProps, nextState) => {
+		if ((nextProps.logo.default !== this.props.logo.default) ||
+			(this.state.SmallScreen !== nextState.SmallScreen)) {
+			return true
+		}
+		else
+			return false
 	}
-	changeLogo = (logo) => {
-		this.setState({ logo: logo.default })
+	OnSmallScreen = () => {
+		if (window.innerWidth < ScreenSizes.tablet) {
+			this.setState({ SmallScreen: true })
+		}
+		else {
+			if (window.innerWidth >= ScreenSizes.tablet && this.state.SmallScreen === true)
+				this.setState({ SmallScreen: false })
+		}
 	}
 	componentWillMount = () => {
-		this.updateLogo()
-		window.addEventListener('resize', this.updateLogo)
-	}
-	componentWillUpdate = (nextProps, nextState) => {
-		var nextLogo = nextProps.logo.default
-		if (nextLogo !== undefined && this.state.logo !== nextLogo)
-			this.changeLogo(nextProps.logo)
+		this.OnSmallScreen()
+		window.addEventListener('resize', this.OnSmallScreen)
 	}
 	componentWillUnmount = () => {
-		window.removeEventListener('resize', this.changeLogo)
+		window.removeEventListener('resize', this.OnSmallScreen)
 	}
 	renderNotification = () => (
 		<div>NotiF</div>
@@ -45,7 +48,7 @@ class Header extends Component {
 
 	renderLogo = () => (
 		<LogoDiv to={'/'}>
-			<LogoImg src={this.state.logo} />
+			<LogoImg src={this.props.logo.default} />
 		</LogoDiv>)
 
 
@@ -54,22 +57,27 @@ class Header extends Component {
 	}
 
 	render() {
-		const { search, notification, avatar } = this.props
-		// const { logo } = this.state
+		const { render, search, notification, avatar, children } = this.props
+		const { SmallScreen } = this.state
 		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
 		return (
-			<HeaderDiv quicknav={this.state.quicknav}>
-				{renderLogo()}
-				{search && renderSearchBar()}
-				{avatar && renderAvatar()}
-				{notification && renderNotification()}
-			</HeaderDiv>
+			<HeaderContainer SmallScreen={SmallScreen}>
+				{children ? children : <React.Fragment>
+					{renderLogo()}
+					{render && render()}
+					{search && renderSearchBar()}
+					{avatar && renderAvatar()}
+					{notification && renderNotification()}
+				</React.Fragment>
+				}
+			</HeaderContainer>
 		)
 	}
 }
 
 Header.propTypes = {
 	logo: PropTypes.any,
+	render: PropTypes.func,
 	search: PropTypes.bool,
 	notification: PropTypes.bool,
 	avatar: PropTypes.bool,

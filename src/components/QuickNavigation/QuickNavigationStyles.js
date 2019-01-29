@@ -40,8 +40,8 @@ export const Link = styled(NavLink) `
 //#region Menu Button & List
 
 export const MenuItem = styled.div`
-    background:${props => props.theme.quicknav.button.unselected};
-    color: ${props => props.theme.quicknav.button.background};
+    background:${(props) => props.index === props.activeMenu ? props.theme.quicknav.menu.color : props.theme.quicknav.menu.unselected};
+    color: ${props => props.index === props.activeMenu ? props.theme.quicknav.menu.unselected : props.theme.quicknav.menu.color};
     height:50px;
     display: flex;
 	flex-flow: column;
@@ -55,7 +55,6 @@ export const MenuItem = styled.div`
         margin-left:1px;
     }
 	&:hover{
-		/* background: rgba(59,151,211,0.8); */
 		border: 10px;
 		border-color: rgba(59,151,211,0.3);
 		box-shadow: 0 0 0 3px rgba(59,151,211,0.3);
@@ -86,15 +85,12 @@ export const MenuList = styled.div`
 
 //#region Tab Text & List
 
-export const TabItem = styled(NavLink)`
+export const TabItem = styled(NavLink) `
     text-decoration: none;
     min-width: auto;
     padding:0px 15px;
     height: 20px;
     color:${props => props.activetab === 'true' ? props.theme.quicknav.tab.selected : props.theme.quicknav.tab.unselected};
-    &:hover{
-        color: royalblue;
-    }
     cursor:pointer;
     display: flex;
     align-items:center;
@@ -107,9 +103,6 @@ export const TabList = styled.div`
 	grid-auto-columns: auto;
 	align-content: center;
 	grid-auto-flow: column;
-    /* flex-flow: column wrap;
-    align-items:center;
-    justify-content:center; */
     height: 25px;
     max-height:50px;
     margin: 0;
@@ -120,7 +113,6 @@ export const TabList = styled.div`
     width:90vw;
 	white-space: nowrap;
 	overflow-y:hidden;
-
 `
 
 //#endregion
@@ -128,10 +120,13 @@ export const TabList = styled.div`
 //#region QuickNav Button, Overlay and Spacer
 
 export const QuickNav = styled.div`
-	z-index: 1; 
-	display: flex; 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	display: flex;
 	flex-flow: row nowrap;
-	align-items: center; 
+	align-items: center;
 	justify-content: center;
 `
 
@@ -146,11 +141,26 @@ export const QuickNavButton = styled.div`
     align-self:center;
     cursor: pointer;
     &:hover{
-        background: ${props => props.theme.tab.hover}
+        background: ${props => props.theme.tab.hover};
     }
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`
+export const QuickNavButtonHidden = styled.div`
+    border: none;
+    border-radius: 15px;
+    padding: 30px 100vw;
+    position:fixed;
+    bottom: 0%;
+    align-self:center;
+    cursor: pointer;
+    &:hover{
+        background: ${props => props.theme.tab.hover};
+}
+display: flex;
+align-items: center;
+justify-content: center;
 `
 export const QuickNavMenu = styled.div`
     display:grid;
@@ -160,11 +170,12 @@ export const QuickNavMenu = styled.div`
     align-items:center;
     flex-flow:column wrap;
     background:white;
-    height:100%;
+    height:${p => p.SmallScreen ? '100%' : '0%'};
     max-height: 210px;
     border-radius: 5px;
     border: 1px solid #cbc8c8;
-    padding: 5px;
+    padding:${p => p.SmallScreen ? '5px' : '0px'};
+    transition: 100ms all ease;
 `
 export const QuickNavContainer = styled.div`
     display:flex;
@@ -173,7 +184,8 @@ export const QuickNavContainer = styled.div`
     flex-flow: column nowrap;
     color:black;
     width: 100vw;
-    height: ${props => props.quickNav ? '100vh' : '0px'};
+    height: ${props => props.SmallScreen && !props.helpOpen ? '100vh' :
+		props.helpOpen && !props.SmallScreen ? '100vh' : '0px'};
     overflow: hidden;
     position:fixed;
     z-index:2;

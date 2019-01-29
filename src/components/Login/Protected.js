@@ -1,16 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class Protected extends Component {
+class Protected extends PureComponent {
+
 	render() {
-		if (this.props.isProtected === undefined) {
-			return null
-		} else { 
-			console.log(this.props.children)
-			return (
-				<div>
-					{!this.props.isProtected ? this.props.children : null}										
-				</div>
-			)}
+		return (
+			<React.Fragment>
+				{this.props.children}
+			</React.Fragment>
+		)
 	}
 }
 

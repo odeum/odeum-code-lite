@@ -1,8 +1,16 @@
-import ODEUM_icon from 'theme/logo_icon.svg'
 import eplanLogo from 'theme/eplanTheme_logo.svg'
 
 const eplanTheme = {
+	app: {
+		gridArea:
+			'"header header"'
+			+ '"menupanel workspace"'
+			+ '"footer footer"',
+		gridTemplateRows: 'auto 1fr auto',
+		gridTemplateColumns: 'auto 1fr'
+	},
 	header: {
+		height: '80px',
 		background: '#E98832',
 		color: '#FFF'
 	},
@@ -12,7 +20,9 @@ const eplanTheme = {
 		color: '#fff',
 		selected: '#F8BB31',
 		hover: '#FFA726',
-		bottomBorder: '1px solid #EF6C00'
+		border: '1px solid #EF6C00',
+		textHover: '#fff',
+		fontSize: '1em'
 	},
 
 	footer: {
@@ -26,7 +36,7 @@ const eplanTheme = {
 	},
 
 	tab: {
-		background: '#F39C12',
+		activeColor: '#fff',
 		color: '#000',
 		selected: '#F39C12',
 		hover: '#FFA726',
@@ -39,7 +49,13 @@ const eplanTheme = {
 	quicknav: {
 		button: {
 			background: '#E98832',
-			color: '#F7F7F7'
+			color: '#F7F7F7',
+			unselected: '#E3E5E5',
+		},
+		menu: {
+			background: '#E98832',
+			color: '#F7F7F7',
+			unselected: '#E3E5E5',
 		},
 		tab: {
 			selected: '#F39C12',
@@ -48,9 +64,9 @@ const eplanTheme = {
 
 	},
 	logo: {
-		default: eplanLogo,
-		bigLogo: eplanLogo,
-		smallLogo: ODEUM_icon
+		margin: '5px',
+		height: '35px',
+		default: eplanLogo
 	}
 }
 

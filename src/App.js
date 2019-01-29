@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import AppContainer from 'components/AppContainer/AppContainer'
 import Header from 'components/Header/Header'
-import MenuPanel from 'components/Menu/MenuPanel3'
+import MenuPanel from 'components/Menu/MenuPanel'
 import Menu from 'components/Menu/Menu'
 import Tab from 'components/Tabs/Tab'
 import Footer from 'components/Footer/Footer'
-import Page from 'components/Menu/Page'
-// import Protected from 'components/Login/Protected'
+// import Page from 'components/Menu/Page'
+import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-import Login from 'components/Login/Login'
+import /* Login, */ { LoginCustomForm } from 'components/Login/Login'
 /* Demo */
-
+import Editor from './demos/Help/Editor'
 import ReactComp from 'demos/ReactComp'
 import { SimpleDiv } from 'demos/SimpleDiv'
 import RouteDemo from 'demos/RouteDemo'
@@ -21,8 +21,10 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
-import { Redirect } from 'react-router-dom'
-
+import CustomLoginForm from 'demos/CustomLoginForm'
+import CurrentWeather from 'demos/CurrentWeather'
+import { SetAppID } from 'components/utils/HelpReducer'
+// import MinFo from 'theme/minforetning'
 /* End Import Demo */
 
 class App extends Component {
@@ -32,12 +34,19 @@ class App extends Component {
 		this.state = {
 			theme: theme,
 			loggedIn: false,
-			redirected: false //temporary PoC, will change after a better solution "reveals itself"
+
 		}
 
 	}
-	login = () => {
-		this.setState({ loggedIn: !this.state.loggedIn })
+	componentWillMount = () => {
+		SetAppID('odeum-code-lite')
+		var loginStorage = localStorage.getItem('loggedIn') === 'true' ? true : false
+		this.setState({ loggedIn: loginStorage })
+	}
+
+	login = (username, password) => {
+		localStorage.setItem('loggedIn', true)
+		this.setState({ loggedIn: true })
 	}
 	changeTheme = () => {
 		return this.state.theme === eplanTheme ?
@@ -51,112 +60,48 @@ class App extends Component {
 						this.setState({ theme: eplanTheme })
 	}
 
-	loginRender() {
-		if (!this.state.loggedIn)
-			return ( 					
-				<MenuPanel>
-					<Page route={'/'} exact={false}>
-			 <Redirect to={'/login'}/>
-					</Page>
-					<Page route={'/login'}>
-						<Login login={this.login}> Login</Login>
-					</Page>
-				</MenuPanel>)
+	renderHeader = () => {
+		return <div style={{ align: 'left' }}>Hello World ... </div>
 	}
-	redirectTo() {
-		if (!this.state.redirected)
-		{this.setState({ redirected: true })
-			return <Redirect to={'/'}/>}
-	}
+
 	render() {
-
 		return (
-			<AppContainer theme={this.state.theme} >
-				<Header logo={this.state.theme.logo} />
-				{this.loginRender()}
-				{this.state.loggedIn && !this.state.redirected ? this.redirectTo() : this.state.loggedIn && this.state.redirected ?
-				 <MenuPanel>
-						<Page route={'/'} helpID={'root'}>
-							{/* <Button label={'Change Theme'} onClick={this.changeTheme}>Change Theme</Button> */}
-							{/* <SimpleDiv /> */}
-							<Flex />
-						</Page>
-						<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
-							<Tabb />
-							<ReactComp />
-							<SimpleDiv />
-						</Menu>
-						<Menu route={'/form'} label={'Form'}>
-							<Tab route={''} label={'Test1'} helpID={'/Form'}>
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-							</Tab>
-							<Tab route={'/test2'} label={'Test2'} helpID={'Test2'}>
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-								<Tabb />
-								<ReactComp />
-								<SimpleDiv />
-								<Flex />
-							</Tab>
-						</Menu>
-						<Menu icon={'people'} route={'/child'} label={'Menu with one Tab and a Route Demo'} >
-							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
-								<RouteDemo />
-							</Tab>
-						</Menu>
+			<AppContainer theme={this.state.theme}>
+				<Header logo={this.state.theme.logo} render={this.renderHeader} />
+				{/* <Flex/> */}
+				{/* </Header> */}
+				<MenuPanel
+					login={true}
+					redirectTo={'/login'}
+					isLoggedIn={this.state.loggedIn}
+					arrows={false}
+				>
+					{LoginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
+					{/* 	{Login(this.state.loggedIn, this.login)} */}
+					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 
-						{/* 		<Protected isProtected={false}> */}
-						<Menu label={'Protected menu'} icon={'lock_outline'} route={'/children1'} >
-							<Tab label={'Overflow'} icon={'assignment'} helpID={'/ch/overflow'}>
-								<SimpleDiv />
-							</Tab>
-							<Tab label={'Lady Gaga'} icon={'assignment_turned_in'} route={'/react-component1'} helpID={7}>
-								<ReactComp />
-							</Tab>
-							<Tab label={'Hello workspace'} icon={'visibility'} route={'/workspace1'} helpID={8}>
-								<div>Hello Protected Workspace ... </div>
-							</Tab>
-						</Menu>
-						{/* </Protected>
-						*/}
-						<Menu label={'Auto Generated'}>
-							<Tab label={'Route'} helpID={'9'}>
-							Auto Generated Route
-							</Tab>
-						</Menu>
+					<Menu route={'/'} helpID={'root'}>
+						<Flex />
+					</Menu>
+					{/* <Flex top/> */}
+					{/* <Menu route={'/top-menu-item'} label={'Top Menu Route'} top>
+						<SimpleDiv />
+					</Menu> */}
+
+					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+						<Tabb />
+						<ReactComp />
+						<SimpleDiv />
+					</Menu>
+
+					<Menu route={'/help-editor'} label={'Help'} icon={'help'}>
+						<Tab route={''}>
+						</Tab>
+						<Tab label={'Add Article'} route={'/new-help-article'}>
+							<Editor />
+						</Tab>
+					</Menu>
+					<Protected>
 						<Menu label={'Theme'} icon={'opacity'}>
 							<Tab icon={'tab'} label={'Theme'} route={'/themetab'} helpID={10}>
 								<div style={{ display: 'flex', flexFlow: 'column' }}>
@@ -167,37 +112,75 @@ class App extends Component {
 										color={this.state.theme.menu.background}
 										onClick={this.changeTheme}
 									/>
-									<Link to={'/'}>Route Home</Link>
-									<Link to={'/child/overflow'}>Route Child</Link>
+									<Link to={'/home'}>Route Home</Link>
+									<Link to={'/404'}>404</Link>
 									<Link to={'/auto-generated/route'}>Route Auto-Generated</Link>
-									<Link to={'/children1/workspace1'}>Route With Tabs, Third Tab</Link>
+									<Link to={'/child/overflow/routedemo'}>Route Dynamic</Link>
+									<Link to={'/top-menu-item'}>Top Menu Item</Link>
+									<Link to={'/menu-with-2-tabs/tab2'}>Menu with Tabs - Tab 2</Link>
 								</div>
 							</Tab>
-						</Menu></MenuPanel> : <Redirect to={'/login'}/>}
-			
-
-				}
-				
-				<Footer label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'} />
+						</Menu>
+						<Menu route={'/page'} label={'Protected Page'} icon={'home'} helpID={'home'}>
+							<Tabb />
+							<ReactComp />
+							<SimpleDiv />
+						</Menu>
+						<Menu label={'Menu with 2 tabs'} >
+							<Tab route={'/tab1'} label={'Test1'} helpID={'/Form'}>
+								<SimpleDiv />
+								<Flex />
+							</Tab>
+							<Tab route={'/tab2'} label={'Test2'} helpID={'Test2'}>
+								<Tabb />
+								<ReactComp />
+								<SimpleDiv />
+								<Flex />
+							</Tab>
+						</Menu>
+						<Menu icon={'people'} route={'/child'} label={'Menu w/ nested route'} >
+							<Tab icon={'assignment'} label={'Overflow'} helpID={'Overflow'} >
+								<RouteDemo />
+							</Tab>
+						</Menu>
+						<Menu label={'Auto Generated'}>
+							<Tab label={'Route'} helpID={'9'}>
+								Auto Generated Route
+							</Tab>
+						</Menu>
+						<Menu icon={'drafts'} label={'I have help'}>
+							<ReactComp />
+						</Menu>
+						<Menu label={'Weather'} icon='people'>
+							<CurrentWeather/>
+						</Menu>
+					</Protected>
+					{/* <Flex bottom/> */}
+				</MenuPanel>
+				<Footer help={true} /* label={RenderFooterLabel} labelLink={handleLink()} helpLabel={'Brug for Hjaelp?'}  */ />
 			</AppContainer>
 		)
 	}
 }
 
-const handleLink = () => {
-	return '/children_menu/workspace'
-}
+// const handleLink = () => {
+// 	return '/children_menu/workspace'
+// }
 
-const RenderFooterLabel = () => {
-	const date = new Date()
-	return (
-		<div>
-			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
-			{' '}{date.getFullYear()}
-			{/* {' Debug2 '}{GetHelpID()} */}
-		</div>
-	)
-}
+// const RenderFooterLabel = () => {
+// 	const date = new Date()
+// 	return (
+// 		<div>
+// 			<strong>ODEUM Code Lite </strong> v1.0.0 © Copyright
+// 			{' '}{date.getFullYear()}
+// 			{/* {' Debug2 '}{GetHelpID()} */}
+// 		</div>
+// 	)
+// }
 
 export default App
 
+// if (process.env.NODE_ENV !== 'production') {
+// 	const { whyDidYouUpdate } = require('why-did-you-update')
+// 	whyDidYouUpdate(React, { groupByComponent: true, collapseComponentGroups: true })
+// }

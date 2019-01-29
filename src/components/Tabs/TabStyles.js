@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-// import theme from 'theme/default'
 import { NavLink as RouterLink } from 'react-router-dom'
+import { rowColCalc, spanCalc, spanRowCalc } from '../utils/Functions'
 
 export const TabList = styled.div`
 	flex: 1;
@@ -32,8 +32,8 @@ export const Link = styled(RouterLink) `
 	padding-right: 20px;
 	flex-flow: row nowrap;
 	border-radius: 5px 5px 0px 0px;
-	color: ${props => props.activetab === 'true' ? '#fff' : '#000'};
-	background: ${props =>  props.activetab === 'true' ? props.theme.tab.selected : props.theme.tab.unselected };
+	color: ${props => props.activetab === 'true' ? props.theme.tab.activeColor : props.theme.tab.color};
+	background: ${props => props.activetab === 'true' ? props.theme.tab.selected : props.theme.tab.unselected};
 	-webkit-transition: all 100ms ease-in-out;
 	-moz-transition: all 100ms ease-in-out;
 	transition: all 100ms ease-in-out;
@@ -44,8 +44,12 @@ export const Link = styled(RouterLink) `
 `
 
 export const SceneDiv = styled.div`
+	-ms-grid-column: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'column')};
+	-ms-grid-row: ${p => rowColCalc(p.theme.app.gridArea, 'workspace', 'row')};
+	-ms-grid-column-span: ${p => { var x = spanCalc(p.theme.app.gridArea, 'workspace', 'column'); return x > 1 ? x : 'none' }};
+	-ms-grid-row-span: ${p => { var y = spanRowCalc(p.theme.app.gridArea, 'workspace'); return y > 1 ? y : 'none' }};
+	grid-area:workspace;
 	display: flex;
-	flex: 5;
 	flex-flow: column nowrap;
 	margin: 20px 20px 20px 20px;
 	overflow-y:auto;
