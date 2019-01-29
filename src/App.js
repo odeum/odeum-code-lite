@@ -9,7 +9,7 @@ import Footer from 'components/Footer/Footer'
 import Protected from 'components/Login/Protected'
 import { Button } from 'odeum-ui'
 import { Link } from 'react-router-dom'
-import /* Login, */ { LoginCustomForm } from 'components/Login/Login'
+import /* Login, */ LoginForm/* , { LoginCustomForm } */ from 'components/Login/Login'
 /* Demo */
 import Editor from './demos/Help/Editor'
 import ReactComp from 'demos/ReactComp'
@@ -21,7 +21,7 @@ import eplanTheme from 'theme/eplanTheme'
 import theme from 'theme/default'
 import Tabb from './demos/Tabb'
 import Flex from './demos/Flex'
-import CustomLoginForm from 'demos/CustomLoginForm'
+// import CustomLoginForm from 'demos/CustomLoginForm'
 import { SetAppID } from 'components/utils/HelpReducer'
 // import MinFo from 'theme/minforetning'
 /* End Import Demo */
@@ -74,9 +74,11 @@ class App extends Component {
 					redirectTo={'/login'}
 					isLoggedIn={this.state.loggedIn}
 					arrows={false}
+					quickNavigation={false}
+					onMenuClickClose={true}
 				>
-					{LoginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)}
-					{/* 	{Login(this.state.loggedIn, this.login)} */}
+					{/* {LoginCustomForm(this.state.loggedIn, () => <CustomLoginForm login={this.login} />)} */}
+					{LoginForm(this.state.loggedIn, this.login)}
 					{/* {Login({ isLoggedIn: this.state.loggedIn, login: this.login, Component: () => <CustomLoginForm login={this.login}/> })} */}
 
 					<Menu route={'/'} helpID={'root'}>
@@ -87,7 +89,7 @@ class App extends Component {
 						<SimpleDiv />
 					</Menu> */}
 
-					<Menu route={'/home'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
+					<Menu route={'/home/10'} label={'Menu with no tabs'} icon={'home'} helpID={'home'}>
 						<Tabb />
 						<ReactComp />
 						<SimpleDiv />
@@ -95,6 +97,7 @@ class App extends Component {
 
 					<Menu route={'/help-editor'} label={'Help'} icon={'help'}>
 						<Tab route={''}>
+							<div/>
 						</Tab>
 						<Tab label={'Add Article'} route={'/new-help-article'}>
 							<Editor />
@@ -127,8 +130,11 @@ class App extends Component {
 						</Menu>
 						<Menu label={'Menu with 2 tabs'} >
 							<Tab route={'/tab1'} label={'Test1'} helpID={'/Form'}>
-								<SimpleDiv />
-								<Flex />
+								<div>
+
+									<SimpleDiv />
+									<Flex />
+								</div>
 							</Tab>
 							<Tab route={'/tab2'} label={'Test2'} helpID={'Test2'}>
 								<Tabb />
@@ -143,8 +149,8 @@ class App extends Component {
 							</Tab>
 						</Menu>
 						<Menu label={'Auto Generated'}>
-							<Tab label={'Route'} helpID={'9'}>
-								Auto Generated Route
+							<Tab label={'Route'}>
+								<div>Auto Generated Route</div>
 							</Tab>
 						</Menu>
 						<Menu icon={'drafts'} label={'I have help'}>

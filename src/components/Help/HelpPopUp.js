@@ -55,7 +55,7 @@ export default class HelpPopup extends PureComponent {
 	}
 }
 HelpPopup.propTypes = {
-	helpObj: PropTypes.object.isRequired
+	helpObj: PropTypes.object
 }
 HelpPopup.defaultProps = {
 

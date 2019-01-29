@@ -53,7 +53,7 @@ class Menu extends Component {
 			component={this.renderChild(child)} />
 	})
 
-	renderChild = (child) => () => <Workspace >{child.props.children}</Workspace>
+	renderChild = (child) => ({ match }) => <Workspace match={match}>{React.cloneElement(child.props.children, { ...child.props, match: this.props.match })}</Workspace>
 
 	//#endregion
 

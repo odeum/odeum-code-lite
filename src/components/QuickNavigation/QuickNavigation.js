@@ -179,7 +179,7 @@ export default class QuickNavigation extends Component {
 				<Help showHelp={showHelp} SmallScreen={true} />
 				{quickButton ?
 					<QuickNavButton onClick={this.openNav}><Icon icon={'menu'} color={'white'} iconSize={18} style={{ marginRight: '8px' }} />Quick Menu</QuickNavButton>
-					: <QuickNavButtonHidden></QuickNavButtonHidden>
+					: <QuickNavButtonHidden/>
 				}
 				<QuickNavContainer helpOpen={showHelp} SmallScreen={SmallScreen} onClick={this.openNav}>
 					<QuickNavMenu SmallScreen={SmallScreen} onClick={this.menuClick()}>

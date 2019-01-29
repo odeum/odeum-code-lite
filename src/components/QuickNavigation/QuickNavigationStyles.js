@@ -157,10 +157,10 @@ export const QuickNavButtonHidden = styled.div`
     cursor: pointer;
     &:hover{
         background: ${props => props.theme.tab.hover};
-}
-display: flex;
-align-items: center;
-justify-content: center;
+	}
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `
 export const QuickNavMenu = styled.div`
     display:grid;

@@ -38,12 +38,14 @@ class Header extends Component {
 	componentWillUnmount = () => {
 		window.removeEventListener('resize', this.OnSmallScreen)
 	}
+
 	renderNotification = () => (
-		<div>NotiF</div>
+		this.props.notifComponent ? <this.props.notifComponent /> : <div>No Component provided</div>
 	)
 
-	renderAvatar = () => (
-		<div>Avatar</div>
+	renderUserLoggedIn = () => (
+		this.props.userComponent ? <this.props.userComponent /> :
+			<div>User</div>
 	)
 
 	renderLogo = () => (
@@ -57,16 +59,16 @@ class Header extends Component {
 	}
 
 	render() {
-		const { render, search, notification, avatar, children } = this.props
+		const { render, search, notification, userLogin, children } = this.props
 		const { SmallScreen } = this.state
-		const { renderLogo, renderSearchBar, renderAvatar, renderNotification } = this
+		const { renderLogo, renderSearchBar, renderUserLoggedIn, renderNotification } = this
 		return (
 			<HeaderContainer SmallScreen={SmallScreen}>
 				{children ? children : <React.Fragment>
 					{renderLogo()}
 					{render && render()}
 					{search && renderSearchBar()}
-					{avatar && renderAvatar()}
+					{userLogin && renderUserLoggedIn()}
 					{notification && renderNotification()}
 				</React.Fragment>
 				}
